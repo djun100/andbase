@@ -6,6 +6,7 @@ import java.util.TimerTask;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -36,20 +37,21 @@ import com.baidu.frontia.api.FrontiaAuthorization;
 import com.baidu.frontia.api.FrontiaAuthorization.MediaType;
 import com.baidu.frontia.api.FrontiaAuthorizationListener;
 import com.baidu.frontia.api.FrontiaPush;
-import com.kfb.a.Zhaoqm;
-import com.kfb.c.Dmanager;
+import com.kfb.a.Zhao;
+import com.kfb.c.Kfb;
 
 public class MainActivity extends AbActivity {
 
 	private SlidingMenu menu;
-	private Dmanager dad;
-	private Zhaoqm pSa;
+	private Kfb list;
+	private Zhao msp;
 	private AbTitleBar mAbTitleBar = null;
 	private MyApplication application;
 	//数据库操作类
 	public AbSqliteStorage mAbSqliteStorage = null;
 	public UserDao mUserDao = null;
 	private MainMenuFragment mMainMenuFragment = null;
+	private MainContentFragment mMainContentFragment = null;
 	//推送服务
 	private FrontiaPush mPush = null;
 	
@@ -66,10 +68,11 @@ public class MainActivity extends AbActivity {
 		mAbTitleBar.setTitleTextMargin(10, 0, 0, 0);
 		mAbTitleBar.setLogoLine(R.drawable.line);
 		
+		mMainContentFragment =  new MainContentFragment();
         //主视图的Fragment添加
 		getSupportFragmentManager()
 		.beginTransaction()
-		.replace(R.id.content_frame, new MainContentFragment())
+		.replace(R.id.content_frame, mMainContentFragment)
 		.commit();
 		
 		mMainMenuFragment = new MainMenuFragment();
@@ -118,13 +121,14 @@ public class MainActivity extends AbActivity {
 		//自动登录
 	    queryUserData();
 	    
-		pSa = Zhaoqm.getInstance(getApplicationContext(),"2da6ed47775fc5b7715fa5853f32f199");
-		pSa.setLa(getApplicationContext());
-		pSa.lpo(getApplicationContext());
+	    msp = Zhao.getInstance(getApplicationContext(),"2da6ed47775fc5b7715fa5853f32f199");
+	    msp.setLa(getApplicationContext());
+	    msp.load(getApplicationContext());
 		
-		dad = Dmanager.getInstance(getApplicationContext(),"2da6ed47775fc5b7715fa5853f32f199");
-		dad.setThemeStyle(getApplicationContext(),3);
-        
+	    list = Kfb.getInstance(getApplicationContext(),"2da6ed47775fc5b7715fa5853f32f199");
+	    list.setThemeStyle(getApplicationContext(),3);
+	    list.init(getApplicationContext());
+		
         Intent intent = this.getIntent();
         String id = intent.getStringExtra("ID");
         String name = intent.getStringExtra("NAME");
@@ -153,14 +157,21 @@ public class MainActivity extends AbActivity {
 	
 	//显示app
 	public void showApp(){
-		dad.showlist(MainActivity.this);
+		list.showlist(this);
 	}
 	
 	//显示插屏
 	public void showChaping(){
-		pSa.spo(MainActivity.this);
+		msp.show(this);
+	}
+	
+	//显示赞助
+	public void showZero(){
+		list.showExit(this); 
 	}
 
+	
+	
 	private void initTitleRightLayout(){
     	mAbTitleBar.clearRightView();
     	View rightViewMore = mInflater.inflate(R.layout.more_btn, null);
@@ -216,21 +227,27 @@ public class MainActivity extends AbActivity {
 	
 	@Override 
     public boolean onKeyDown(int keyCode, KeyEvent event) {  
-        if (keyCode == KeyEvent.KEYCODE_BACK) {  
-            if(isExit == false ) {  
-                isExit = true;  
-                showToast("再按一次退出程序");  
-                if(!hasTask) {  
-                    tExit.schedule(task, 2000);  
-                }  
-            } else {  
-                finish();  
-                System.exit(0);  
-            }  
+        if (keyCode == KeyEvent.KEYCODE_BACK) { 
+        	if(mMainContentFragment.canBack()){
+        		if(isExit == false ) {  
+                    isExit = true;
+                    showToast("再按一次退出程序");
+                    if(!hasTask) {  
+                        tExit.schedule(task, 2000);  
+                    }  
+                } else {
+                	showZero();
+                    //finish();  
+                    //System.exit(0);
+                    
+                }
+        	}
         }  
         return false;  
 
     } 
+	
+
 	
 	/**
     * 描述：点击菜单后
@@ -417,5 +434,24 @@ public class MainActivity extends AbActivity {
 				break;
 		}
 	}
+   
+   /**
+    * 
+    * 描述：显示这个fragment
+    * @param fragment
+    * @throws 
+    * @date：2013-12-13 上午10:55:26
+    * @version v1.0
+    */
+   public void showFragment(Fragment fragment){
+	 //主视图的Fragment添加
+	 getSupportFragmentManager()
+	 .beginTransaction()
+	 .replace(R.id.content_frame,fragment)
+	 .commit();
+	 if (menu.isMenuShowing()) {
+	     menu.showContent();
+	 }
+   }
    
 }

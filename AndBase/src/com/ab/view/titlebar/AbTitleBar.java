@@ -29,8 +29,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-import android.widget.TextView;
 
+import com.ab.util.AbStrUtil;
 import com.ab.util.AbViewUtil;
 
 // TODO: Auto-generated Javadoc
@@ -53,7 +53,7 @@ public class AbTitleBar extends LinearLayout {
 	protected Button titleTextBtn = null;
 	
 	/** 显示标题文字的小View. */
-	protected TextView titleSmallTextView = null;
+	protected Button titleSmallTextBtn = null;
 	
 	/** 左侧的Logo图标View. */
 	protected ImageView logoView = null;
@@ -130,7 +130,7 @@ public class AbTitleBar extends LinearLayout {
 		
 		titleTextLayoutParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT,1);
 		titleTextLayoutParams.gravity = Gravity.CENTER_VERTICAL;
-		rightViewLayoutParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT,0);
+		rightViewLayoutParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 		rightViewLayoutParams.gravity = Gravity.CENTER_VERTICAL;
 		
 		
@@ -148,14 +148,14 @@ public class AbTitleBar extends LinearLayout {
 		titleTextBtn.setSingleLine();
 		titleTextLayout.addView(titleTextBtn,new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT,1));
 		
-		titleSmallTextView = new TextView(context);
-		titleSmallTextView.setTextColor(Color.rgb(255, 255, 255));
-		titleSmallTextView.setTextSize(15);
-		titleSmallTextView.setPadding(6, 0, 5, 0);
-		titleSmallTextView.setGravity(Gravity.CENTER_VERTICAL);
-		titleSmallTextView.setBackgroundDrawable(null);
-		titleSmallTextView.setSingleLine();
-		titleTextLayout.addView(titleSmallTextView,new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,0));
+		titleSmallTextBtn = new Button(context);
+		titleSmallTextBtn.setTextColor(Color.rgb(255, 255, 255));
+		titleSmallTextBtn.setTextSize(15);
+		titleSmallTextBtn.setPadding(6, 0, 5, 0);
+		titleSmallTextBtn.setGravity(Gravity.CENTER_VERTICAL);
+		titleSmallTextBtn.setBackgroundDrawable(null);
+		titleSmallTextBtn.setSingleLine();
+		titleTextLayout.addView(titleSmallTextBtn,new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,0));
 		
 		logoView = new ImageView(context);
 		logoView.setVisibility(View.GONE);
@@ -180,7 +180,7 @@ public class AbTitleBar extends LinearLayout {
 		rightLayout.setGravity(Gravity.CENTER_VERTICAL);
 		rightLayout.setVisibility(View.GONE);
 		this.addView(rightLayout,rightViewLayoutParams);
-	
+		
 		logoView.setOnClickListener(new View.OnClickListener() {
 				
 			@Override
@@ -302,6 +302,14 @@ public class AbTitleBar extends LinearLayout {
 	}
 	
 	/**
+	 * 描述：获取小标题文本的Button.
+	 * @return the title Button view
+	 */
+	public Button getTitleSmallTextButton() {
+		return titleSmallTextBtn;
+	}
+	
+	/**
 	 * 描述：获取标题Logo的View.
 	 * @return the logo view
 	 */
@@ -374,9 +382,15 @@ public class AbTitleBar extends LinearLayout {
      * @param text  文本
      */
 	public void setTitleSmallText(String text) {
-		LinearLayout.LayoutParams titleSmallTextViewLayoutParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-		titleSmallTextView.setLayoutParams(titleSmallTextViewLayoutParams);
-		titleSmallTextView.setText(text);
+		if(AbStrUtil.isEmpty(text)){
+			LinearLayout.LayoutParams titleSmallTextViewLayoutParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, 0);
+			titleSmallTextBtn.setLayoutParams(titleSmallTextViewLayoutParams);
+			titleSmallTextBtn.setText("");
+		}else{
+			LinearLayout.LayoutParams titleSmallTextViewLayoutParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+			titleSmallTextBtn.setLayoutParams(titleSmallTextViewLayoutParams);
+			titleSmallTextBtn.setText(text);
+		}
 	}
 	
 	/**
@@ -385,8 +399,8 @@ public class AbTitleBar extends LinearLayout {
      */
 	public void setTitleSmallText(int resId) {
 		LinearLayout.LayoutParams titleSmallTextViewLayoutParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-		titleSmallTextView.setLayoutParams(titleSmallTextViewLayoutParams);
-		titleSmallTextView.setText(resId);
+		titleSmallTextBtn.setLayoutParams(titleSmallTextViewLayoutParams);
+		titleSmallTextBtn.setText(resId);
 	}
 	
 	/**
@@ -450,7 +464,7 @@ public class AbTitleBar extends LinearLayout {
      */
 	public void addRightView(View rightView) {
 		rightLayout.setVisibility(View.VISIBLE);
-		rightLayout.addView(rightView,layoutParamsWF);
+		rightLayout.addView(rightView,layoutParamsFF);
 	}
 	
 	/**
@@ -459,7 +473,7 @@ public class AbTitleBar extends LinearLayout {
      */
 	public void addRightView(int resId) {
 		rightLayout.setVisibility(View.VISIBLE);
-		rightLayout.addView(mInflater.inflate(resId, null),layoutParamsWF);
+		rightLayout.addView(mInflater.inflate(resId, null),layoutParamsFF);
 	}
 	
 	/**
@@ -469,6 +483,14 @@ public class AbTitleBar extends LinearLayout {
 		rightLayout.removeAllViews();
 	}
 	
+	/**
+	 * 获取这个右边的布局,可用来设置位置
+	 * @return
+	 */
+	public LinearLayout getRightLayout() {
+		return rightLayout;
+	}
+
 	/**
 	 * 描述：设置Logo按钮的点击事件.
 	 * @param mOnClickListener  指定的返回事件
@@ -497,18 +519,21 @@ public class AbTitleBar extends LinearLayout {
 	 * 描述：下拉菜单的的实现方法
 	 * @param parent
 	 * @param view 要显示的View
+	 * @param offsetMode 不填满的模式
 	 */
-	public void showWindow(View parent,View view) {
+	public void showWindow(View parent,View view,boolean offsetMode) {
 		AbViewUtil.measureView(view);
 		int popWidth = parent.getMeasuredWidth();
 		int popMargin = (this.getMeasuredHeight()-parent.getMeasuredHeight())/2;
 		if(view.getMeasuredWidth()>parent.getMeasuredWidth()){
 			popWidth = view.getMeasuredWidth();
 		}
-		if (popupWindow == null) {
+		if(offsetMode){
 			popupWindow = new PopupWindow(view, popWidth+10, LayoutParams.WRAP_CONTENT, true);
+		}else{
+			popupWindow = new PopupWindow(view, LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT, true);
 		}
-
+		
 		// 使其聚集
 		popupWindow.setFocusable(true);
 		// 设置允许在外点击消失
@@ -542,10 +567,44 @@ public class AbTitleBar extends LinearLayout {
 				
 			 @Override
 			 public void onClick(View v) {
-				 showWindow(titleTextBtn,view);
+				 showWindow(titleTextBtn,view,true);
 			 }
 		 });
 	}
+
+	/**
+	 * 获取标题的全体布局
+	 * @return
+	 */
+	public LinearLayout getTitleTextLayout() {
+		return titleTextLayout;
+	}
 	
+	/**
+	 * 获取子布局显示宽度比例
+	 * 默认为标题填充，右边靠右
+	 * @return
+	 */
+	public void setChildViewFillParent(boolean left) {
+		if(left){
+			titleTextLayoutParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT,1);
+			titleTextLayoutParams.gravity = Gravity.CENTER_VERTICAL;
+			titleTextLayout.setLayoutParams(titleTextLayoutParams);
+			
+			rightViewLayoutParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+			rightViewLayoutParams.gravity = Gravity.CENTER_VERTICAL;
+			rightLayout.setLayoutParams(rightViewLayoutParams);
+			
+		}else{
+			titleTextLayoutParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+			titleTextLayoutParams.gravity = Gravity.CENTER_VERTICAL;
+			titleTextLayout.setLayoutParams(titleTextLayoutParams);
+			
+			rightViewLayoutParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT,1);
+			rightViewLayoutParams.gravity = Gravity.CENTER_VERTICAL;
+			rightLayout.setLayoutParams(rightViewLayoutParams);
+		}
+		
+	}
 	
 }

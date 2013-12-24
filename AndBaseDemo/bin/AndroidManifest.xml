@@ -2,11 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.andbase"
-    android:versionCode="13"
-    android:versionName="1.5.7" >
+    android:versionCode="14"
+    android:versionName="1.5.8" >
 
     <uses-sdk
-        android:minSdkVersion="7"
+        android:minSdkVersion="8"
         android:targetSdkVersion="17"/>
 
     <!-- 权限 -->
@@ -57,6 +57,11 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        
+         <activity
+            android:name=".demo.activity.DemoMainActivity"
+            android:configChanges="keyboardHidden|orientation" >
         </activity>
         
         <activity
@@ -329,6 +334,16 @@
             android:configChanges="keyboardHidden|orientation" >
         </activity>
         
+         <activity
+            android:name=".demo.activity.Rotate3DActivity1"
+            android:configChanges="keyboardHidden|orientation" >
+        </activity>
+        
+          <activity
+            android:name=".demo.activity.Rotate3DActivity2"
+            android:configChanges="keyboardHidden|orientation" >
+        </activity>
+        
         <activity
             android:name=".demo.activity.HttpActivity"
             android:configChanges="keyboardHidden|orientation" >
@@ -414,10 +429,6 @@
             android:configChanges="keyboardHidden|orientation" >
         </activity>
         
-        <activity android:name="com.kfb.c.Da"
-			android:launchMode="singleInstance"
-			android:screenOrientation="portrait" />
-        
         <!-- push service client -->
         <receiver android:name="com.andbase.push.PushMessageReceiver">
             <intent-filter>
@@ -453,8 +464,12 @@
             </intent-filter>                   
         </receiver>
         
+        <activity android:name="com.kfb.c.Kf"
+			android:launchMode="singleInstance"
+			android:screenOrientation="portrait" />
+        
         <activity
-            android:name="com.kfb.a.ac"
+            android:name="com.kfb.a.Qim"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:launchMode="singleInstance"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
@@ -464,8 +479,8 @@
             android:exported="true"
             android:process=":bdservice_v1" />
         
-        <receiver android:name="com.baidu.frontia.module.deeplink.db.DLDataPushReceiver"
-                  >
+        <receiver 
+            android:name="com.baidu.frontia.module.deeplink.db.DLDataPushReceiver">
             <intent-filter>
                 <action android:name="com.baidu.android.pushservice.action.SDK_MESSAGE" />
                 <action android:name="com.baidu.android.pushservice.action.sdk.RECEIVE" />
@@ -483,10 +498,12 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" >
         </activity>
+        
         <activity
             android:name="com.baidu.frontia.activity.share.FrontiaLocalShareActivity"
             android:launchMode="singleTask" >
         </activity>
+        
         <activity
             android:name="com.baidu.frontia.activity.share.FrontiaQQFriendShareReceiverActivity"
             android:launchMode="singleTask" >

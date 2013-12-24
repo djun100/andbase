@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -35,8 +34,8 @@ import com.ab.task.AbTaskItem;
 import com.ab.task.AbTaskListener;
 import com.ab.util.AbFileUtil;
 import com.andbase.R;
-import com.andbase.blog.WebActivity;
 import com.andbase.demo.activity.AboutActivity;
+import com.andbase.demo.activity.DemoMainActivity;
 import com.andbase.friend.FriendActivity;
 import com.andbase.global.MyApplication;
 import com.andbase.login.LoginActivity;
@@ -210,7 +209,7 @@ public class MainMenuFragment extends Fragment {
 		
 		AbMenuItem m1 = new AbMenuItem();
 		m1.setIconId(R.drawable.share);
-		m1.setText("博客");
+		m1.setText("程序案例");
 		mChild1.add(m1);
 		
 		AbMenuItem m2 = new AbMenuItem();
@@ -220,7 +219,7 @@ public class MainMenuFragment extends Fragment {
 		
 		AbMenuItem m3 = new AbMenuItem();
 		m3.setIconId(R.drawable.set);
-		m3.setText("选项");
+		m3.setText("精神赞助我");
 		mChild2.add(m3);
 		
 		AbMenuItem m4 = new AbMenuItem();
@@ -303,8 +302,8 @@ public class MainMenuFragment extends Fragment {
     						startActivity(intent);
 						}
 					}else if(childPosition==1){
-						//博客
-						Intent intent = new Intent(mActivity,WebActivity.class);
+						//程序案例
+						Intent intent = new Intent(mActivity,DemoMainActivity.class);
 						startActivity(intent); 
 					}else if(childPosition==2){
 						//应用游戏
@@ -312,8 +311,8 @@ public class MainMenuFragment extends Fragment {
 					}
 				}else if(groupPosition==1){
                     if(childPosition==0){
-						//选项
-                    	mActivity.showChaping();
+						//选项、赞助作者
+                    	mActivity.showApp();
 					}else if(childPosition==1){
 						//推荐
 						mSocialShare.show(mActivity.getWindow().getDecorView(), mImageContent, FrontiaTheme.LIGHT,  new ShareListener());
