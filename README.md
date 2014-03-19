@@ -12,7 +12,7 @@ AndBase开发框架授权
 
 欢迎广大用户学习应用AndBase，期待与您共创美好未来。
 
-唯一官网: http://www.emengsoft.org/post-47.html
+唯一官网: http://www.amengsoft.org/post-47.html
 
 andbase开发框架介绍 
 
