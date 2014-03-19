@@ -23,7 +23,7 @@ public class FriendActivity extends AbActivity {
 	
 	private AbSlidingPlayView mSlidingPlayView = null;
 	private List<FrontiaUser.FrontiaUserDetail> mUserList = null;
-	private static final int pageSize = 16;
+	private static final int pageSize = 48;
    
 	@Override
     public void onCreate(Bundle savedInstanceState) {

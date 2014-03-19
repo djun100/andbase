@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 www.418log.org
+ * Copyright (C) 2015 www.amengsoft.org
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -126,9 +126,11 @@ public class AbSlidingButton extends CheckBox  {
 	}
 	
 	protected void onDraw(Canvas canvas){
-		canvas.saveLayerAlpha(this.mSaveLayerRectF, this.mAlpha, 31);
+		//设置一个透明度为255的图层
+		canvas.saveLayerAlpha(this.mSaveLayerRectF, this.mAlpha,Canvas.ALL_SAVE_FLAG);
 		canvas.drawBitmap(this.btnMask, 0F, this.mExtendOffsetY, this.mPaint);
-	    this.mPaint.setXfermode(this.mXfermode);
+		//混合绘制，取两层绘制交集。显示上层。btnBottom的长度超出btnMask的部分不绘制
+		this.mPaint.setXfermode(this.mXfermode);
 	    canvas.drawBitmap(this.btnBottom, this.mRealPos, this.mExtendOffsetY, this.mPaint);
 	    this.mPaint.setXfermode(null);
 	    canvas.drawBitmap(this.btnFrame, 0F, this.mExtendOffsetY, this.mPaint);
