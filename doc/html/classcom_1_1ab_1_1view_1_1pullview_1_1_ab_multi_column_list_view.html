@@ -1,0 +1,1535 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.4"/>
+<title>AndBase开发框架: com.ab.view.pullview.AbMultiColumnListView类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="ic_launcher.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">AndBase开发框架
+   &#160;<span id="projectnumber">1.5.7</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.4 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li class="current"><a href="annotated.html"><span>类</span></a></li>
+      <li><a href="files.html"><span>文件</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>类列表</span></a></li>
+      <li><a href="classes.html"><span>类索引</span></a></li>
+      <li><a href="hierarchy.html"><span>类继承关系</span></a></li>
+      <li><a href="functions.html"><span>类成员</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>类</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>命名空间</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>文件</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>变量</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>枚举值</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>页</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacecom.html">com</a></li><li class="navelem"><a class="el" href="namespacecom_1_1ab.html">ab</a></li><li class="navelem"><a class="el" href="namespacecom_1_1ab_1_1view.html">view</a></li><li class="navelem"><a class="el" href="namespacecom_1_1ab_1_1view_1_1pullview.html">pullview</a></li><li class="navelem"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html">AbMultiColumnListView</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pri-methods">Private 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
+<a href="#pri-static-attribs">静态 Private 属性</a> &#124;
+<a href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">com.ab.view.pullview.AbMultiColumnListView类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="dynheader">
+类 com.ab.view.pullview.AbMultiColumnListView 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.png" usemap="#com.ab.view.pullview.AbMultiColumnListView_map" alt=""/>
+  <map id="com.ab.view.pullview.AbMultiColumnListView_map" name="com.ab.view.pullview.AbMultiColumnListView_map">
+<area href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view.html" alt="com.ab.view.pullview.AbMultiColumnBaseListView" shape="rect" coords="428,168,846,192"/>
+<area href="interfacecom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view_1_1_on_scroll_listener.html" alt="com.ab.view.pullview.AbMultiColumnBaseAbsListView.OnScrollListener" shape="rect" coords="856,168,1274,192"/>
+<area href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html" alt="com.ab.view.pullview.AbMultiColumnAbsListView" shape="rect" coords="428,112,846,136"/>
+<area href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html" alt="com.ab.view.pullview.AbMultiColumnBaseAbsListView" shape="rect" coords="428,56,846,80"/>
+</map>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a68c09135aaef7e054f10e0f33c55021a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#a68c09135aaef7e054f10e0f33c55021a">AbMultiColumnListView</a> (Context context)</td></tr>
+<tr class="separator:a68c09135aaef7e054f10e0f33c55021a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43d5de1ab3a379d4a4fb650e44c95d7b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#a43d5de1ab3a379d4a4fb650e44c95d7b">AbMultiColumnListView</a> (Context context, AttributeSet attrs)</td></tr>
+<tr class="separator:a43d5de1ab3a379d4a4fb650e44c95d7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0dd174ac2238f1d6940ac509756292f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#ac0dd174ac2238f1d6940ac509756292f">setAdapter</a> (ListAdapter adapter)</td></tr>
+<tr class="separator:ac0dd174ac2238f1d6940ac509756292f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6555302173bdaacf4529ed48cf1efff5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#a6555302173bdaacf4529ed48cf1efff5">setPullRefreshEnable</a> (boolean enable)</td></tr>
+<tr class="separator:a6555302173bdaacf4529ed48cf1efff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f83c21db77d68c303d780bcc31576f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#a3f83c21db77d68c303d780bcc31576f2">setPullLoadEnable</a> (boolean enable)</td></tr>
+<tr class="separator:a3f83c21db77d68c303d780bcc31576f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adddc56804bb1ba75afddc228d6a6c089"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#adddc56804bb1ba75afddc228d6a6c089">stopRefresh</a> ()</td></tr>
+<tr class="separator:adddc56804bb1ba75afddc228d6a6c089"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c9be5e561e1603aedc5d841e2886de8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#a6c9be5e561e1603aedc5d841e2886de8">stopLoadMore</a> ()</td></tr>
+<tr class="separator:a6c9be5e561e1603aedc5d841e2886de8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc4a1a4194b5c385b402018beeca5ea4"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#abc4a1a4194b5c385b402018beeca5ea4">onTouchEvent</a> (MotionEvent ev)</td></tr>
+<tr class="separator:abc4a1a4194b5c385b402018beeca5ea4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04ed4478808c32367d04fb7eda3d0757"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#a04ed4478808c32367d04fb7eda3d0757">computeScroll</a> ()</td></tr>
+<tr class="separator:a04ed4478808c32367d04fb7eda3d0757"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab97229d001a9cda346502b5e786dd253"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#ab97229d001a9cda346502b5e786dd253">setAbOnListViewListener</a> (<a class="el" href="interfacecom_1_1ab_1_1view_1_1listener_1_1_ab_on_list_view_listener.html">AbOnListViewListener</a> abOnListViewListener)</td></tr>
+<tr class="separator:ab97229d001a9cda346502b5e786dd253"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29747dfcebe979b26353f2d962116b68"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#a29747dfcebe979b26353f2d962116b68">onScrollStateChanged</a> (<a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html">AbMultiColumnBaseAbsListView</a> view, int scrollState)</td></tr>
+<tr class="separator:a29747dfcebe979b26353f2d962116b68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51e0aa3af3e7caa494a209ee52446f30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#a51e0aa3af3e7caa494a209ee52446f30">onScroll</a> (<a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html">AbMultiColumnBaseAbsListView</a> view, int firstVisibleItem, int visibleItemCount, int totalItemCount)</td></tr>
+<tr class="separator:a51e0aa3af3e7caa494a209ee52446f30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e6b1901bb6d59517d73155425560284"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_list_view_header.html">AbListViewHeader</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#a5e6b1901bb6d59517d73155425560284">getHeaderView</a> ()</td></tr>
+<tr class="separator:a5e6b1901bb6d59517d73155425560284"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefd49e78efddde370ce01438c3bb19f4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_list_view_footer.html">AbListViewFooter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#aefd49e78efddde370ce01438c3bb19f4">getFooterView</a> ()</td></tr>
+<tr class="separator:aefd49e78efddde370ce01438c3bb19f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa71db7694587f6de9849b91a9ecf8422"><td class="memItemLeft" align="right" valign="top">ProgressBar&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#aa71db7694587f6de9849b91a9ecf8422">getHeaderProgressBar</a> ()</td></tr>
+<tr class="separator:aa71db7694587f6de9849b91a9ecf8422"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a95207a42bfe671394722bacb59e229"><td class="memItemLeft" align="right" valign="top">ProgressBar&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#a9a95207a42bfe671394722bacb59e229">getFooterProgressBar</a> ()</td></tr>
+<tr class="separator:a9a95207a42bfe671394722bacb59e229"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view.html">com.ab.view.pullview.AbMultiColumnBaseListView</a></td></tr>
+<tr class="memitem:a585dddcf804942b2b01f5fd463c0a69a inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view.html#a585dddcf804942b2b01f5fd463c0a69a">AbMultiColumnBaseListView</a> (Context context)</td></tr>
+<tr class="separator:a585dddcf804942b2b01f5fd463c0a69a inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ea27ff9e73660a28ba6595c0043be67 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view.html#a9ea27ff9e73660a28ba6595c0043be67">AbMultiColumnBaseListView</a> (Context context, AttributeSet attrs)</td></tr>
+<tr class="separator:a9ea27ff9e73660a28ba6595c0043be67 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27b98c3a17c07b10d14ff38327baf44c inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view.html#a27b98c3a17c07b10d14ff38327baf44c">getColumnWidth</a> ()</td></tr>
+<tr class="separator:a27b98c3a17c07b10d14ff38327baf44c inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a100c650c8d29bdc5e2dd51c1a9828afd inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view.html#a100c650c8d29bdc5e2dd51c1a9828afd">getColumnNumber</a> ()</td></tr>
+<tr class="separator:a100c650c8d29bdc5e2dd51c1a9828afd inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html">com.ab.view.pullview.AbMultiColumnAbsListView</a></td></tr>
+<tr class="memitem:a72447356c4d80359150fa89365f1acad inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a72447356c4d80359150fa89365f1acad">AbMultiColumnAbsListView</a> (Context context, AttributeSet attrs)</td></tr>
+<tr class="separator:a72447356c4d80359150fa89365f1acad inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6adab3d58117903f19b6aead92f95371 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a6adab3d58117903f19b6aead92f95371">AbMultiColumnAbsListView</a> (Context context)</td></tr>
+<tr class="separator:a6adab3d58117903f19b6aead92f95371 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb2bb683438e3418c009b99285174006 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#abb2bb683438e3418c009b99285174006">getMaxScrollAmount</a> ()</td></tr>
+<tr class="separator:abb2bb683438e3418c009b99285174006 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02b143f36ae82f486403e3fb9c3c92f1 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a02b143f36ae82f486403e3fb9c3c92f1">addHeaderView</a> (View v, Object data, boolean isSelectable)</td></tr>
+<tr class="separator:a02b143f36ae82f486403e3fb9c3c92f1 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbeade0495e01ee076eddc2273c5a9a4 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#acbeade0495e01ee076eddc2273c5a9a4">addHeaderView</a> (View v)</td></tr>
+<tr class="separator:acbeade0495e01ee076eddc2273c5a9a4 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa15c71175145c8a4882e16226e90977e inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#aa15c71175145c8a4882e16226e90977e">getHeaderViewsCount</a> ()</td></tr>
+<tr class="separator:aa15c71175145c8a4882e16226e90977e inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af21133cdc259d2bbdb3a1f1222a201f4 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#af21133cdc259d2bbdb3a1f1222a201f4">isFixedView</a> (View v)</td></tr>
+<tr class="separator:af21133cdc259d2bbdb3a1f1222a201f4 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5168ff256394099dd9a06c879446b06b inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a5168ff256394099dd9a06c879446b06b">removeHeaderView</a> (View v)</td></tr>
+<tr class="separator:a5168ff256394099dd9a06c879446b06b inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a6748784a0ff12d6feb64ddc464db79 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a2a6748784a0ff12d6feb64ddc464db79">addFooterView</a> (View v, Object data, boolean isSelectable)</td></tr>
+<tr class="separator:a2a6748784a0ff12d6feb64ddc464db79 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fe7d80fc8997b53e51dbfc7ea8a40fc inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a9fe7d80fc8997b53e51dbfc7ea8a40fc">addFooterView</a> (View v)</td></tr>
+<tr class="separator:a9fe7d80fc8997b53e51dbfc7ea8a40fc inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a608695e417b2984e87d013e053fdbac8 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a608695e417b2984e87d013e053fdbac8">getFooterViewsCount</a> ()</td></tr>
+<tr class="separator:a608695e417b2984e87d013e053fdbac8 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28726101c2f82b7c1b4575c5bdc75286 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a28726101c2f82b7c1b4575c5bdc75286">removeFooterView</a> (View v)</td></tr>
+<tr class="separator:a28726101c2f82b7c1b4575c5bdc75286 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4acd0bea241f0543a402b8993b94cf40 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">ListAdapter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a4acd0bea241f0543a402b8993b94cf40">getAdapter</a> ()</td></tr>
+<tr class="separator:a4acd0bea241f0543a402b8993b94cf40 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a299518fe94529f3ccc6480d9480a4da0 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a299518fe94529f3ccc6480d9480a4da0">setAdapter</a> (ListAdapter adapter)</td></tr>
+<tr class="separator:a299518fe94529f3ccc6480d9480a4da0 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2af5c059c787c5d34cc22df89ad57b66 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a2af5c059c787c5d34cc22df89ad57b66">getFirstVisiblePosition</a> ()</td></tr>
+<tr class="separator:a2af5c059c787c5d34cc22df89ad57b66 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5c10064241c13c3bef2d31e094d4363 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#ac5c10064241c13c3bef2d31e094d4363">getLastVisiblePosition</a> ()</td></tr>
+<tr class="separator:ac5c10064241c13c3bef2d31e094d4363 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a075e5386e4a954ba3ddc9b90daa19b1f inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a075e5386e4a954ba3ddc9b90daa19b1f">requestChildRectangleOnScreen</a> (View child, Rect rect, boolean immediate)</td></tr>
+<tr class="separator:a075e5386e4a954ba3ddc9b90daa19b1f inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83dd8c3816f355192bba03df22f1f297 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a83dd8c3816f355192bba03df22f1f297">setSelection</a> (int position)</td></tr>
+<tr class="separator:a83dd8c3816f355192bba03df22f1f297 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9250cc8cb32b299bd59831ed919a5332 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a9250cc8cb32b299bd59831ed919a5332">dispatchPopulateAccessibilityEvent</a> (AccessibilityEvent event)</td></tr>
+<tr class="separator:a9250cc8cb32b299bd59831ed919a5332 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50f728f4991d50e049f32896807bfa13 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a50f728f4991d50e049f32896807bfa13">fullScroll</a> (int direction)</td></tr>
+<tr class="separator:a50f728f4991d50e049f32896807bfa13 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8aeb539d287dccf8c856c723868537dd inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a8aeb539d287dccf8c856c723868537dd">setItemsCanFocus</a> (boolean itemsCanFocus)</td></tr>
+<tr class="separator:a8aeb539d287dccf8c856c723868537dd inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f38028b698099458201b0ee3c071240 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a2f38028b698099458201b0ee3c071240">getItemsCanFocus</a> ()</td></tr>
+<tr class="separator:a2f38028b698099458201b0ee3c071240 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bdf92cc006f8a171ed93020e40c4b7b inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a5bdf92cc006f8a171ed93020e40c4b7b">isOpaque</a> ()</td></tr>
+<tr class="separator:a5bdf92cc006f8a171ed93020e40c4b7b inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0ed7ca808ec30ef1bf873c1274d5918 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#ac0ed7ca808ec30ef1bf873c1274d5918">setCacheColorHint</a> (int color)</td></tr>
+<tr class="separator:ac0ed7ca808ec30ef1bf873c1274d5918 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4e9d964371b8e50e036f370d6126d13 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#ae4e9d964371b8e50e036f370d6126d13">setOverscrollHeader</a> (Drawable header)</td></tr>
+<tr class="separator:ae4e9d964371b8e50e036f370d6126d13 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9d35bd92c68d133b28c77c0d2a9f1ba inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">Drawable&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#aa9d35bd92c68d133b28c77c0d2a9f1ba">getOverscrollHeader</a> ()</td></tr>
+<tr class="separator:aa9d35bd92c68d133b28c77c0d2a9f1ba inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adca662400e214fc68e394e7fa6497e79 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#adca662400e214fc68e394e7fa6497e79">setOverscrollFooter</a> (Drawable footer)</td></tr>
+<tr class="separator:adca662400e214fc68e394e7fa6497e79 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a058c04b0991bf32332ef6461e9451762 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">Drawable&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a058c04b0991bf32332ef6461e9451762">getOverscrollFooter</a> ()</td></tr>
+<tr class="separator:a058c04b0991bf32332ef6461e9451762 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4bacba4eec8ba1668bf15db82131b2b inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#ac4bacba4eec8ba1668bf15db82131b2b">onTouchEvent</a> (MotionEvent ev)</td></tr>
+<tr class="separator:ac4bacba4eec8ba1668bf15db82131b2b inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b858e867f37dac0fae3d842411302fd inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a1b858e867f37dac0fae3d842411302fd">performItemClick</a> (View view, int position, long id)</td></tr>
+<tr class="separator:a1b858e867f37dac0fae3d842411302fd inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4754830bd66694e1a9bdc41df97ca58e inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a4754830bd66694e1a9bdc41df97ca58e">setItemChecked</a> (int position, boolean value)</td></tr>
+<tr class="separator:a4754830bd66694e1a9bdc41df97ca58e inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9601b86d3cf88a31c114cacbda61b52e inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a9601b86d3cf88a31c114cacbda61b52e">isItemChecked</a> (int position)</td></tr>
+<tr class="separator:a9601b86d3cf88a31c114cacbda61b52e inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdd1451ded74c32873c4f441d11da8ce inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#afdd1451ded74c32873c4f441d11da8ce">getCheckedItemPosition</a> ()</td></tr>
+<tr class="separator:afdd1451ded74c32873c4f441d11da8ce inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b514a2378bd1fd9bf0e7b785037e100 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">SparseBooleanArray&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a1b514a2378bd1fd9bf0e7b785037e100">getCheckedItemPositions</a> ()</td></tr>
+<tr class="separator:a1b514a2378bd1fd9bf0e7b785037e100 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63d3a84a6b34edf5f8d5ae70e548065b inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">long[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a63d3a84a6b34edf5f8d5ae70e548065b">getCheckItemIds</a> ()</td></tr>
+<tr class="separator:a63d3a84a6b34edf5f8d5ae70e548065b inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a26536cddfa261bd8bb231293d43096 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">long[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a5a26536cddfa261bd8bb231293d43096">getCheckedItemIds</a> ()</td></tr>
+<tr class="separator:a5a26536cddfa261bd8bb231293d43096 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58712dc779898923d3e39706697cf04a inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a58712dc779898923d3e39706697cf04a">clearChoices</a> ()</td></tr>
+<tr class="separator:a58712dc779898923d3e39706697cf04a inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html">com.ab.view.pullview.AbMultiColumnBaseAbsListView</a></td></tr>
+<tr class="memitem:ab7ed77daab072207faaa3644844a896f inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#ab7ed77daab072207faaa3644844a896f">AbMultiColumnBaseAbsListView</a> (Context context)</td></tr>
+<tr class="separator:ab7ed77daab072207faaa3644844a896f inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b52cd439bde0ef84151bc08734015f0 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a9b52cd439bde0ef84151bc08734015f0">AbMultiColumnBaseAbsListView</a> (Context context, AttributeSet attrs)</td></tr>
+<tr class="separator:a9b52cd439bde0ef84151bc08734015f0 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c28a7b169e917a21bc514351bd666f6 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a3c28a7b169e917a21bc514351bd666f6">setSmoothScrollbarEnabled</a> (boolean enabled)</td></tr>
+<tr class="separator:a3c28a7b169e917a21bc514351bd666f6 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73f8a8d36c762b756ad02e8448a850e2 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">.ExportedProperty boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a73f8a8d36c762b756ad02e8448a850e2">isSmoothScrollbarEnabled</a> ()</td></tr>
+<tr class="separator:a73f8a8d36c762b756ad02e8448a850e2 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f105a8ae670af2b01e6224a69c26788 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a5f105a8ae670af2b01e6224a69c26788">setOnScrollListener</a> (<a class="el" href="interfacecom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view_1_1_on_scroll_listener.html">OnScrollListener</a> l)</td></tr>
+<tr class="separator:a5f105a8ae670af2b01e6224a69c26788 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a313263f10c3411d64d6777fb3e9d87 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">.ExportedProperty boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a5a313263f10c3411d64d6777fb3e9d87">isScrollingCacheEnabled</a> ()</td></tr>
+<tr class="separator:a5a313263f10c3411d64d6777fb3e9d87 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c0d7b8d2f84c7116356bf56eb4d35a0 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a5c0d7b8d2f84c7116356bf56eb4d35a0">setScrollingCacheEnabled</a> (boolean enabled)</td></tr>
+<tr class="separator:a5c0d7b8d2f84c7116356bf56eb4d35a0 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab002837ba96d45fdb3fa8e65a945a234 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#ab002837ba96d45fdb3fa8e65a945a234">getFocusedRect</a> (Rect r)</td></tr>
+<tr class="separator:ab002837ba96d45fdb3fa8e65a945a234 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98051f372214bb108131a252bd5e04fa inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">.ExportedProperty boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a98051f372214bb108131a252bd5e04fa">isStackFromBottom</a> ()</td></tr>
+<tr class="separator:a98051f372214bb108131a252bd5e04fa inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae62d4f0e3f0d4d4c92cfcbfb960d6e94 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#ae62d4f0e3f0d4d4c92cfcbfb960d6e94">setStackFromBottom</a> (boolean stackFromBottom)</td></tr>
+<tr class="separator:ae62d4f0e3f0d4d4c92cfcbfb960d6e94 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe675d6cef47e6ac3bff128e6473b3cb inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#abe675d6cef47e6ac3bff128e6473b3cb">onRestoreInstanceState</a> (Parcelable state)</td></tr>
+<tr class="separator:abe675d6cef47e6ac3bff128e6473b3cb inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94782d7dde0380d47689d4f355e38d82 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a94782d7dde0380d47689d4f355e38d82">requestLayout</a> ()</td></tr>
+<tr class="separator:a94782d7dde0380d47689d4f355e38d82 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc44af3e8c8dd861adad46e77bd62bbf inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">.ExportedProperty View&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#afc44af3e8c8dd861adad46e77bd62bbf">getSelectedView</a> ()</td></tr>
+<tr class="separator:afc44af3e8c8dd861adad46e77bd62bbf inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c3a3b5350d241d4257613e2e6e71803 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a6c3a3b5350d241d4257613e2e6e71803">getListPaddingTop</a> ()</td></tr>
+<tr class="separator:a6c3a3b5350d241d4257613e2e6e71803 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19b935116fca6f90d17120335a1da65a inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a19b935116fca6f90d17120335a1da65a">getListPaddingBottom</a> ()</td></tr>
+<tr class="separator:a19b935116fca6f90d17120335a1da65a inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ef165b9d359fa755cd7fd4d6e8ade47 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a3ef165b9d359fa755cd7fd4d6e8ade47">getListPaddingLeft</a> ()</td></tr>
+<tr class="separator:a3ef165b9d359fa755cd7fd4d6e8ade47 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afafb3f69f9763d45b7f4fb57a03cbd35 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#afafb3f69f9763d45b7f4fb57a03cbd35">getListPaddingRight</a> ()</td></tr>
+<tr class="separator:afafb3f69f9763d45b7f4fb57a03cbd35 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b27644cba1b589e9b5b9214114a8ea0 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a8b27644cba1b589e9b5b9214114a8ea0">setDrawSelectorOnTop</a> (boolean onTop)</td></tr>
+<tr class="separator:a8b27644cba1b589e9b5b9214114a8ea0 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55164335f5fa102b74f40e0bf3c11893 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a55164335f5fa102b74f40e0bf3c11893">setSelector</a> (int resID)</td></tr>
+<tr class="separator:a55164335f5fa102b74f40e0bf3c11893 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e20eec8158fff25694435caa7a11b2c inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a3e20eec8158fff25694435caa7a11b2c">setSelector</a> (Drawable sel)</td></tr>
+<tr class="separator:a3e20eec8158fff25694435caa7a11b2c inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac9640b14b8940db7457fa8a285b17b4 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">Drawable&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#aac9640b14b8940db7457fa8a285b17b4">getSelector</a> ()</td></tr>
+<tr class="separator:aac9640b14b8940db7457fa8a285b17b4 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5337eec974459093868ff8a81ae39ed2 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a5337eec974459093868ff8a81ae39ed2">verifyDrawable</a> (Drawable dr)</td></tr>
+<tr class="separator:a5337eec974459093868ff8a81ae39ed2 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68597a0b9c99a85e992452d7a664d05b inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a68597a0b9c99a85e992452d7a664d05b">onWindowFocusChanged</a> (boolean hasWindowFocus)</td></tr>
+<tr class="separator:a68597a0b9c99a85e992452d7a664d05b inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7ecf1824732e9b82e001039bedb8e31 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#ad7ecf1824732e9b82e001039bedb8e31">showContextMenuForChild</a> (View originalView)</td></tr>
+<tr class="separator:ad7ecf1824732e9b82e001039bedb8e31 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1568217f187df5a910570e7adfd5aa2 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#ac1568217f187df5a910570e7adfd5aa2">onKeyDown</a> (int keyCode, KeyEvent event)</td></tr>
+<tr class="separator:ac1568217f187df5a910570e7adfd5aa2 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a879440b7b27afc146e65ef3b7fa21302 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a879440b7b27afc146e65ef3b7fa21302">pointToPosition</a> (int x, int y)</td></tr>
+<tr class="separator:a879440b7b27afc146e65ef3b7fa21302 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a953b11267e268f30221fa3533ce78938 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a953b11267e268f30221fa3533ce78938">pointToRowId</a> (int x, int y)</td></tr>
+<tr class="separator:a953b11267e268f30221fa3533ce78938 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37a883e1bf87ca025f9b40262e2f8cda inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a37a883e1bf87ca025f9b40262e2f8cda">onTouchModeChanged</a> (boolean isInTouchMode)</td></tr>
+<tr class="separator:a37a883e1bf87ca025f9b40262e2f8cda inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affe5f3bdb16e76bcc7745e1352cab27b inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#affe5f3bdb16e76bcc7745e1352cab27b">onTouchEvent</a> (MotionEvent ev)</td></tr>
+<tr class="separator:affe5f3bdb16e76bcc7745e1352cab27b inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6de5051ff5010fde877b0ab02d5d595 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#ad6de5051ff5010fde877b0ab02d5d595">onInterceptTouchEvent</a> (MotionEvent ev)</td></tr>
+<tr class="separator:ad6de5051ff5010fde877b0ab02d5d595 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00da867aaa11b85b8fd445778e8eeff0 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a00da867aaa11b85b8fd445778e8eeff0">addTouchables</a> (ArrayList&lt; View &gt; views)</td></tr>
+<tr class="separator:a00da867aaa11b85b8fd445778e8eeff0 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa95b427846f900675a47f4a21406099e inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#aa95b427846f900675a47f4a21406099e">smoothScrollToPosition</a> (int position)</td></tr>
+<tr class="separator:aa95b427846f900675a47f4a21406099e inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefcb7e4c36afa7dbeb37a105f07b62fb inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#aefcb7e4c36afa7dbeb37a105f07b62fb">smoothScrollToPosition</a> (int position, int boundPosition)</td></tr>
+<tr class="separator:aefcb7e4c36afa7dbeb37a105f07b62fb inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79a330b868d209dc0594548be1c77389 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a79a330b868d209dc0594548be1c77389">smoothScrollBy</a> (int distance, int duration)</td></tr>
+<tr class="separator:a79a330b868d209dc0594548be1c77389 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a182bbfa7813abd88cc5da29af0f1f2 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a4a182bbfa7813abd88cc5da29af0f1f2">invalidateViews</a> ()</td></tr>
+<tr class="separator:a4a182bbfa7813abd88cc5da29af0f1f2 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe80dfdd964493a4db671d3ec1908b5e inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#afe80dfdd964493a4db671d3ec1908b5e">onGlobalLayout</a> ()</td></tr>
+<tr class="separator:afe80dfdd964493a4db671d3ec1908b5e inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8fec74b2947a9ad0ba54d654ec2e269 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view_1_1_layout_params.html">LayoutParams</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#ad8fec74b2947a9ad0ba54d654ec2e269">generateLayoutParams</a> (AttributeSet attrs)</td></tr>
+<tr class="separator:ad8fec74b2947a9ad0ba54d654ec2e269 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4b1fbd1696669457cae0ad52939ab68 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#ae4b1fbd1696669457cae0ad52939ab68">setTranscriptMode</a> (int mode)</td></tr>
+<tr class="separator:ae4b1fbd1696669457cae0ad52939ab68 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5ad692deefc0e60a884d0515bec45bf inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#ac5ad692deefc0e60a884d0515bec45bf">getTranscriptMode</a> ()</td></tr>
+<tr class="separator:ac5ad692deefc0e60a884d0515bec45bf inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3de88dab6b2fefbaec6b88f22e5cf53 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#ac3de88dab6b2fefbaec6b88f22e5cf53">getSolidColor</a> ()</td></tr>
+<tr class="separator:ac3de88dab6b2fefbaec6b88f22e5cf53 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60ab4dd1a856af176cf8376b63c32e47 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a60ab4dd1a856af176cf8376b63c32e47">setCacheColorHint</a> (int color)</td></tr>
+<tr class="separator:a60ab4dd1a856af176cf8376b63c32e47 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab38e55baf09ce00d7f22acf64cea3172 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#ab38e55baf09ce00d7f22acf64cea3172">getCacheColorHint</a> ()</td></tr>
+<tr class="separator:ab38e55baf09ce00d7f22acf64cea3172 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc1e3a98b247d90059c0536bc168307e inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#afc1e3a98b247d90059c0536bc168307e">reclaimViews</a> (List&lt; View &gt; views)</td></tr>
+<tr class="separator:afc1e3a98b247d90059c0536bc168307e inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4041936f5c9a87ea93daa86c550fb221 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a4041936f5c9a87ea93daa86c550fb221">setRecyclerListener</a> (<a class="el" href="interfacecom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view_1_1_recycler_listener.html">RecyclerListener</a> listener)</td></tr>
+<tr class="separator:a4041936f5c9a87ea93daa86c550fb221 inherit pub_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private 成员函数</h2></td></tr>
+<tr class="memitem:aea81beb359b3c26f2461e28edc9bf6cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#aea81beb359b3c26f2461e28edc9bf6cb">initView</a> (Context context)</td></tr>
+<tr class="separator:aea81beb359b3c26f2461e28edc9bf6cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af04309d201d31365b6802cfebbe93379"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#af04309d201d31365b6802cfebbe93379">startLoadMore</a> ()</td></tr>
+<tr class="separator:af04309d201d31365b6802cfebbe93379"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a258792a5124333cb85d32dece7ac20"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#a9a258792a5124333cb85d32dece7ac20">updateHeaderHeight</a> (float delta)</td></tr>
+<tr class="separator:a9a258792a5124333cb85d32dece7ac20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7803be8c29aca691da211be6a6869c3e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#a7803be8c29aca691da211be6a6869c3e">resetHeaderHeight</a> ()</td></tr>
+<tr class="separator:a7803be8c29aca691da211be6a6869c3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:a8b3e9261c0be36eb9248f9f10fa8e57d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#a8b3e9261c0be36eb9248f9f10fa8e57d">mLastY</a> = -1</td></tr>
+<tr class="separator:a8b3e9261c0be36eb9248f9f10fa8e57d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba91514bf3afef493de905177ff21365"><td class="memItemLeft" align="right" valign="top">Scroller&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#aba91514bf3afef493de905177ff21365">mScroller</a></td></tr>
+<tr class="separator:aba91514bf3afef493de905177ff21365"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa95bc6f8a81edb183ced1108f8f41832"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interfacecom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view_1_1_on_scroll_listener.html">OnScrollListener</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#aa95bc6f8a81edb183ced1108f8f41832">mScrollListener</a></td></tr>
+<tr class="separator:aa95bc6f8a81edb183ced1108f8f41832"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d0b0d1c7c64b9c4955579ff69258278"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interfacecom_1_1ab_1_1view_1_1listener_1_1_ab_on_list_view_listener.html">AbOnListViewListener</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#a3d0b0d1c7c64b9c4955579ff69258278">mListViewListener</a></td></tr>
+<tr class="separator:a3d0b0d1c7c64b9c4955579ff69258278"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1de40bd2f99b480534857d40b3c437c5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_list_view_header.html">AbListViewHeader</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#a1de40bd2f99b480534857d40b3c437c5">mHeaderView</a></td></tr>
+<tr class="separator:a1de40bd2f99b480534857d40b3c437c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61f754bfff9e32dded422adbc7ed3aeb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#a61f754bfff9e32dded422adbc7ed3aeb">mHeaderViewHeight</a></td></tr>
+<tr class="separator:a61f754bfff9e32dded422adbc7ed3aeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e244dec97ef493eb18b625fcbfe276e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#a5e244dec97ef493eb18b625fcbfe276e">mFooterViewHeight</a></td></tr>
+<tr class="separator:a5e244dec97ef493eb18b625fcbfe276e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c2d7d84d672799bd87f9493e0596ba5"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#a3c2d7d84d672799bd87f9493e0596ba5">mEnablePullRefresh</a> = true</td></tr>
+<tr class="separator:a3c2d7d84d672799bd87f9493e0596ba5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a019304119311dac277b948656eab11cb"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#a019304119311dac277b948656eab11cb">mPullRefreshing</a> = false</td></tr>
+<tr class="separator:a019304119311dac277b948656eab11cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6be1da0b5cee002909600178b6acfc36"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_list_view_footer.html">AbListViewFooter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#a6be1da0b5cee002909600178b6acfc36">mFooterView</a></td></tr>
+<tr class="separator:a6be1da0b5cee002909600178b6acfc36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac85dbbafa51ad4a16d4259e790a04682"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#ac85dbbafa51ad4a16d4259e790a04682">mEnablePullLoad</a></td></tr>
+<tr class="separator:ac85dbbafa51ad4a16d4259e790a04682"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7dea6568a41a10bf24c2642db4d280aa"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#a7dea6568a41a10bf24c2642db4d280aa">mPullLoading</a></td></tr>
+<tr class="separator:a7dea6568a41a10bf24c2642db4d280aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6564a44e7ed50599d41ae766d3189bb4"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#a6564a44e7ed50599d41ae766d3189bb4">mIsFooterReady</a> = false</td></tr>
+<tr class="separator:a6564a44e7ed50599d41ae766d3189bb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb565033635c7dc75fffeb278e67d46e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#aeb565033635c7dc75fffeb278e67d46e">mTotalItemCount</a></td></tr>
+<tr class="separator:aeb565033635c7dc75fffeb278e67d46e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a63fee06812bd9a441fdd1a6030599b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#a3a63fee06812bd9a441fdd1a6030599b">mScrollBack</a></td></tr>
+<tr class="separator:a3a63fee06812bd9a441fdd1a6030599b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96cb8bb4458816415f1d15b4322021fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#a96cb8bb4458816415f1d15b4322021fe">count</a> = 0</td></tr>
+<tr class="separator:a96cb8bb4458816415f1d15b4322021fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+静态 Private 属性</h2></td></tr>
+<tr class="memitem:a5ac161aa0ed43125d8ef89f856d1d01e"><td class="memItemLeft" align="right" valign="top">static final int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#a5ac161aa0ed43125d8ef89f856d1d01e">SCROLLBACK_HEADER</a> = 0</td></tr>
+<tr class="separator:a5ac161aa0ed43125d8ef89f856d1d01e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5c723d4c46e05d14dedbbface6682bc"><td class="memItemLeft" align="right" valign="top">static final int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#ad5c723d4c46e05d14dedbbface6682bc">SCROLLBACK_FOOTER</a> = 1</td></tr>
+<tr class="separator:ad5c723d4c46e05d14dedbbface6682bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1eb1e7db0b29f58d775c9f84d9c9f59"><td class="memItemLeft" align="right" valign="top">static final int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#ab1eb1e7db0b29f58d775c9f84d9c9f59">SCROLL_DURATION</a> = 200</td></tr>
+<tr class="separator:ab1eb1e7db0b29f58d775c9f84d9c9f59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6eef60d25755d2471d3e9eb00b62e4e0"><td class="memItemLeft" align="right" valign="top">static final float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html#a6eef60d25755d2471d3e9eb00b62e4e0">OFFSET_RADIO</a> = 1.8f</td></tr>
+<tr class="separator:a6eef60d25755d2471d3e9eb00b62e4e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+额外继承的成员函数</h2></td></tr>
+<tr class="inherit_header pub_static_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view')"><img src="closed.png" alt="-"/>&#160;静态 Public 属性 继承自 <a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html">com.ab.view.pullview.AbMultiColumnBaseAbsListView</a></td></tr>
+<tr class="memitem:addb4a81884e8ac69c8320d06c3e79416 inherit pub_static_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">static final int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#addb4a81884e8ac69c8320d06c3e79416">TRANSCRIPT_MODE_DISABLED</a> = 0</td></tr>
+<tr class="separator:addb4a81884e8ac69c8320d06c3e79416 inherit pub_static_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13d6b758e9a6bebd7de85350d70ee0f5 inherit pub_static_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">static final int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a13d6b758e9a6bebd7de85350d70ee0f5">TRANSCRIPT_MODE_NORMAL</a> = 1</td></tr>
+<tr class="separator:a13d6b758e9a6bebd7de85350d70ee0f5 inherit pub_static_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a516255184aef7eeb422eb7a13b41c7e7 inherit pub_static_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">static final int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a516255184aef7eeb422eb7a13b41c7e7">TRANSCRIPT_MODE_ALWAYS_SCROLL</a> = 2</td></tr>
+<tr class="separator:a516255184aef7eeb422eb7a13b41c7e7 inherit pub_static_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_static_attribs_interfacecom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view_1_1_on_scroll_listener"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_interfacecom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view_1_1_on_scroll_listener')"><img src="closed.png" alt="-"/>&#160;静态 Public 属性 继承自 <a class="el" href="interfacecom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view_1_1_on_scroll_listener.html">com.ab.view.pullview.AbMultiColumnBaseAbsListView.OnScrollListener</a></td></tr>
+<tr class="memitem:a5d4c0bab7286947d7a30f3e96e802a5a inherit pub_static_attribs_interfacecom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view_1_1_on_scroll_listener"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacecom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view_1_1_on_scroll_listener.html#a5d4c0bab7286947d7a30f3e96e802a5a">SCROLL_STATE_IDLE</a> = 0</td></tr>
+<tr class="separator:a5d4c0bab7286947d7a30f3e96e802a5a inherit pub_static_attribs_interfacecom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view_1_1_on_scroll_listener"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05c622254c148d1e650e00dcf792a771 inherit pub_static_attribs_interfacecom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view_1_1_on_scroll_listener"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacecom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view_1_1_on_scroll_listener.html#a05c622254c148d1e650e00dcf792a771">SCROLL_STATE_TOUCH_SCROLL</a> = 1</td></tr>
+<tr class="separator:a05c622254c148d1e650e00dcf792a771 inherit pub_static_attribs_interfacecom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view_1_1_on_scroll_listener"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadcce126fa35c6e0fc66e89f4075aa84 inherit pub_static_attribs_interfacecom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view_1_1_on_scroll_listener"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacecom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view_1_1_on_scroll_listener.html#aadcce126fa35c6e0fc66e89f4075aa84">SCROLL_STATE_FLING</a> = 2</td></tr>
+<tr class="separator:aadcce126fa35c6e0fc66e89f4075aa84 inherit pub_static_attribs_interfacecom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view_1_1_on_scroll_listener"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view')"><img src="closed.png" alt="-"/>&#160;Protected 成员函数 继承自 <a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view.html">com.ab.view.pullview.AbMultiColumnBaseListView</a></td></tr>
+<tr class="memitem:aee5c40bae07b33259e564360475c758d inherit pro_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view.html#aee5c40bae07b33259e564360475c758d">onLayout</a> (boolean changed, int l, int t, int r, int b)</td></tr>
+<tr class="separator:aee5c40bae07b33259e564360475c758d inherit pro_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a410ba3d86aa3af1ca5da24f61a87cbc4 inherit pro_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view.html#a410ba3d86aa3af1ca5da24f61a87cbc4">onMeasure</a> (int widthMeasureSpec, int heightMeasureSpec)</td></tr>
+<tr class="separator:a410ba3d86aa3af1ca5da24f61a87cbc4 inherit pro_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ec6346880c2ef3a966f5d6bf84dd4e3 inherit pro_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view.html#a9ec6346880c2ef3a966f5d6bf84dd4e3">onMeasureChild</a> (View child, int position, int widthMeasureSpec, int heightMeasureSpec)</td></tr>
+<tr class="separator:a9ec6346880c2ef3a966f5d6bf84dd4e3 inherit pro_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f53c820d9976579112089451fb10e91 inherit pro_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view.html#a9f53c820d9976579112089451fb10e91">modifyFlingInitialVelocity</a> (int initialVelocity)</td></tr>
+<tr class="separator:a9f53c820d9976579112089451fb10e91 inherit pro_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab93ba394a9b77501ae0f5fb4e8f35b61 inherit pro_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view.html#ab93ba394a9b77501ae0f5fb4e8f35b61">onItemAddedToList</a> (int position, boolean flow)</td></tr>
+<tr class="separator:ab93ba394a9b77501ae0f5fb4e8f35b61 inherit pro_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99aba137816b56904e48b29e97ba5039 inherit pro_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view.html#a99aba137816b56904e48b29e97ba5039">onLayoutSync</a> (int syncPos)</td></tr>
+<tr class="separator:a99aba137816b56904e48b29e97ba5039 inherit pro_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14cd742a6318cd94394ebc9779ef4740 inherit pro_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view.html#a14cd742a6318cd94394ebc9779ef4740">onLayoutSyncFinished</a> (int syncPos)</td></tr>
+<tr class="separator:a14cd742a6318cd94394ebc9779ef4740 inherit pro_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab077c1f3c301fab4b01292f082cbf646 inherit pro_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view.html#ab077c1f3c301fab4b01292f082cbf646">onAdjustChildViews</a> (boolean down)</td></tr>
+<tr class="separator:ab077c1f3c301fab4b01292f082cbf646 inherit pro_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24f58a1d1554cb71314e1754324debb6 inherit pro_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view.html#a24f58a1d1554cb71314e1754324debb6">getFillChildBottom</a> ()</td></tr>
+<tr class="separator:a24f58a1d1554cb71314e1754324debb6 inherit pro_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f2642c7443f606329829132f68227a8 inherit pro_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view.html#a2f2642c7443f606329829132f68227a8">getFillChildTop</a> ()</td></tr>
+<tr class="separator:a2f2642c7443f606329829132f68227a8 inherit pro_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9f47903ef71dfba2f06e774f5cf0ca7 inherit pro_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view.html#ae9f47903ef71dfba2f06e774f5cf0ca7">getScrollChildBottom</a> ()</td></tr>
+<tr class="separator:ae9f47903ef71dfba2f06e774f5cf0ca7 inherit pro_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9f7d335c7a0a26e5f6b151aa3b0347a inherit pro_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view.html#ad9f7d335c7a0a26e5f6b151aa3b0347a">getScrollChildTop</a> ()</td></tr>
+<tr class="separator:ad9f7d335c7a0a26e5f6b151aa3b0347a inherit pro_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42da1ce5ba7ce8bfd2e03070830139fd inherit pro_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view.html#a42da1ce5ba7ce8bfd2e03070830139fd">getItemLeft</a> (int pos)</td></tr>
+<tr class="separator:a42da1ce5ba7ce8bfd2e03070830139fd inherit pro_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a984e5955d781def64ebcfeea202082 inherit pro_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view.html#a0a984e5955d781def64ebcfeea202082">getItemTop</a> (int pos)</td></tr>
+<tr class="separator:a0a984e5955d781def64ebcfeea202082 inherit pro_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a413d53fd4f55755059d92c6f34e8716d inherit pro_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view.html#a413d53fd4f55755059d92c6f34e8716d">getItemBottom</a> (int pos)</td></tr>
+<tr class="separator:a413d53fd4f55755059d92c6f34e8716d inherit pro_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view')"><img src="closed.png" alt="-"/>&#160;Protected 属性 继承自 <a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html">com.ab.view.pullview.AbMultiColumnBaseAbsListView</a></td></tr>
+<tr class="memitem:a7aa26a55b00f123b3a83420b17db052f inherit pro_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">ListAdapter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a7aa26a55b00f123b3a83420b17db052f">mAdapter</a></td></tr>
+<tr class="separator:a7aa26a55b00f123b3a83420b17db052f inherit pro_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c7eb0f58b2f3c7fad6ff9a6ab275220 inherit pro_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">Rect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a6c7eb0f58b2f3c7fad6ff9a6ab275220">mListPadding</a> = new Rect()</td></tr>
+<tr class="separator:a6c7eb0f58b2f3c7fad6ff9a6ab275220 inherit pro_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14b8d8cf7dfa97e1235d5f8c50537df8 inherit pro_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a14b8d8cf7dfa97e1235d5f8c50537df8">mWidthMeasureSpec</a> = 0</td></tr>
+<tr class="separator:a14b8d8cf7dfa97e1235d5f8c50537df8 inherit pro_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbd8dd9711f4b493852fe450e38df48b inherit pro_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#abbd8dd9711f4b493852fe450e38df48b">mCachingStarted</a></td></tr>
+<tr class="separator:abbd8dd9711f4b493852fe450e38df48b inherit pro_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae3f6320fc5e3519cf6e83bc99094c56 inherit pro_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#aae3f6320fc5e3519cf6e83bc99094c56">mMotionPosition</a></td></tr>
+<tr class="separator:aae3f6320fc5e3519cf6e83bc99094c56 inherit pro_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7087121ca93e520546afbf3681011607 inherit pro_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a7087121ca93e520546afbf3681011607">mTouchMode</a> = <a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a36468735ad40852747fa2a22dfff2452">TOUCH_MODE_REST</a></td></tr>
+<tr class="separator:a7087121ca93e520546afbf3681011607 inherit pro_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_static_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td colspan="2" onclick="javascript:toggleInherit('pro_static_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view')"><img src="closed.png" alt="-"/>&#160;静态 Protected 属性 继承自 <a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html">com.ab.view.pullview.AbMultiColumnBaseAbsListView</a></td></tr>
+<tr class="memitem:a4cebdfeda235b88476bf0e37090ebaf8 inherit pro_static_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">static final int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a4cebdfeda235b88476bf0e37090ebaf8">TOUCH_MODE_DOWN</a> = 0</td></tr>
+<tr class="separator:a4cebdfeda235b88476bf0e37090ebaf8 inherit pro_static_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae674c239d23e99c10077d08cec2521da inherit pro_static_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">static final int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#ae674c239d23e99c10077d08cec2521da">TOUCH_MODE_TAP</a> = 1</td></tr>
+<tr class="separator:ae674c239d23e99c10077d08cec2521da inherit pro_static_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af65be23d01ee43218a8c07c9076ebe29 inherit pro_static_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">static final int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#af65be23d01ee43218a8c07c9076ebe29">TOUCH_MODE_DONE_WAITING</a> = 2</td></tr>
+<tr class="separator:af65be23d01ee43218a8c07c9076ebe29 inherit pro_static_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec75267dba6eb32ede757c506ffdcada inherit pro_static_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">static final int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#aec75267dba6eb32ede757c506ffdcada">TOUCH_MODE_SCROLL</a> = 3</td></tr>
+<tr class="separator:aec75267dba6eb32ede757c506ffdcada inherit pro_static_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0681065dab1f2adc2e400f722ca07b25 inherit pro_static_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">static final int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a0681065dab1f2adc2e400f722ca07b25">TOUCH_MODE_FLING</a> = 4</td></tr>
+<tr class="separator:a0681065dab1f2adc2e400f722ca07b25 inherit pro_static_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5250527880da2d887099fd6ae687bb6 inherit pro_static_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">static final boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#aa5250527880da2d887099fd6ae687bb6">DEBUG</a> = false</td></tr>
+<tr class="separator:aa5250527880da2d887099fd6ae687bb6 inherit pro_static_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pac_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td colspan="2" onclick="javascript:toggleInherit('pac_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view')"><img src="closed.png" alt="-"/>&#160;包函数 继承自 <a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html">com.ab.view.pullview.AbMultiColumnAbsListView</a></td></tr>
+<tr class="memitem:ab53801a5580c47ec0e1d580659745459 inherit pac_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#ab53801a5580c47ec0e1d580659745459">resetList</a> ()</td></tr>
+<tr class="separator:ab53801a5580c47ec0e1d580659745459 inherit pac_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a048377ecf5aba55f5e4ff6bc23e3b385 inherit pac_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">final int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a048377ecf5aba55f5e4ff6bc23e3b385">measureHeightOfChildren</a> (int widthMeasureSpec, int startPosition, int endPosition, final int maxHeight, int disallowPartialChildPosition)</td></tr>
+<tr class="separator:a048377ecf5aba55f5e4ff6bc23e3b385 inherit pac_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a2bb0562a651402d946cf8a41b173c0 inherit pac_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a7a2bb0562a651402d946cf8a41b173c0">findMotionRow</a> (int y)</td></tr>
+<tr class="separator:a7a2bb0562a651402d946cf8a41b173c0 inherit pac_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87ab11898b15f216604851764f829a82 inherit pac_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a87ab11898b15f216604851764f829a82">lookForSelectablePosition</a> (int position, boolean lookDown)</td></tr>
+<tr class="separator:a87ab11898b15f216604851764f829a82 inherit pac_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcbf28dbba77e743fc50bd0e52b71620 inherit pac_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#adcbf28dbba77e743fc50bd0e52b71620">drawOverscrollHeader</a> (Canvas canvas, Drawable drawable, Rect bounds)</td></tr>
+<tr class="separator:adcbf28dbba77e743fc50bd0e52b71620 inherit pac_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90dd78393954b5bc290501d7c0897924 inherit pac_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a90dd78393954b5bc290501d7c0897924">drawOverscrollFooter</a> (Canvas canvas, Drawable drawable, Rect bounds)</td></tr>
+<tr class="separator:a90dd78393954b5bc290501d7c0897924 inherit pac_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pac_static_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td colspan="2" onclick="javascript:toggleInherit('pac_static_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view')"><img src="closed.png" alt="-"/>&#160;静态包函数 继承自 <a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html">com.ab.view.pullview.AbMultiColumnBaseAbsListView</a></td></tr>
+<tr class="memitem:a04ded2e4efe9e8f5af2e369fec6ca79f inherit pac_static_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html#a04ded2e4efe9e8f5af2e369fec6ca79f">getDistance</a> (Rect source, Rect dest, int direction)</td></tr>
+<tr class="separator:a04ded2e4efe9e8f5af2e369fec6ca79f inherit pac_static_methods_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pac_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td colspan="2" onclick="javascript:toggleInherit('pac_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view')"><img src="closed.png" alt="-"/>&#160;包属性 继承自 <a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html">com.ab.view.pullview.AbMultiColumnAbsListView</a></td></tr>
+<tr class="memitem:ad54991d051f117e74f88dc5306e82626 inherit pac_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">Drawable&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#ad54991d051f117e74f88dc5306e82626">mOverScrollHeader</a></td></tr>
+<tr class="separator:ad54991d051f117e74f88dc5306e82626 inherit pac_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e141a082915fc8cc2684b16763e1013 inherit pac_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">Drawable&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a2e141a082915fc8cc2684b16763e1013">mOverScrollFooter</a></td></tr>
+<tr class="separator:a2e141a082915fc8cc2684b16763e1013 inherit pac_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pac_static_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td colspan="2" onclick="javascript:toggleInherit('pac_static_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view')"><img src="closed.png" alt="-"/>&#160;静态包属性 继承自 <a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html">com.ab.view.pullview.AbMultiColumnAbsListView</a></td></tr>
+<tr class="memitem:a109c4a92d8a75c37d553efb7cc42a5e3 inherit pac_static_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memItemLeft" align="right" valign="top">static final int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a109c4a92d8a75c37d553efb7cc42a5e3">NO_POSITION</a> = -1</td></tr>
+<tr class="separator:a109c4a92d8a75c37d553efb7cc42a5e3 inherit pac_static_attribs_classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>The Class <a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_list_view.html">AbMultiColumnListView</a>. </p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a class="anchor" id="a68c09135aaef7e054f10e0f33c55021a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">com.ab.view.pullview.AbMultiColumnListView.AbMultiColumnListView </td>
+          <td>(</td>
+          <td class="paramtype">Context&#160;</td>
+          <td class="paramname"><em>context</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Instantiates a new ab multi column list view.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>the context </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a43d5de1ab3a379d4a4fb650e44c95d7b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">com.ab.view.pullview.AbMultiColumnListView.AbMultiColumnListView </td>
+          <td>(</td>
+          <td class="paramtype">Context&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">AttributeSet&#160;</td>
+          <td class="paramname"><em>attrs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Instantiates a new ab multi column list view.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>the context </td></tr>
+    <tr><td class="paramname">attrs</td><td>the attrs </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a class="anchor" id="a04ed4478808c32367d04fb7eda3d0757"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.view.pullview.AbMultiColumnListView.computeScroll </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：TODO </p>
+<dl class="section see"><dt>参见</dt><dd>android.view.View::computeScroll() </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a9a95207a42bfe671394722bacb59e229"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ProgressBar com.ab.view.pullview.AbMultiColumnListView.getFooterProgressBar </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：获取Footer ProgressBar，用于设置自定义样式 </p>
+<dl class="section return"><dt>返回</dt><dd></dd></dl>
+<dl class="exception"><dt>异常</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aefd49e78efddde370ce01438c3bb19f4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_list_view_footer.html">AbListViewFooter</a> com.ab.view.pullview.AbMultiColumnListView.getFooterView </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：获取Footer View </p>
+<dl class="section return"><dt>返回</dt><dd></dd></dl>
+<dl class="exception"><dt>异常</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aa71db7694587f6de9849b91a9ecf8422"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ProgressBar com.ab.view.pullview.AbMultiColumnListView.getHeaderProgressBar </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：获取Header ProgressBar，用于设置自定义样式 </p>
+<dl class="section return"><dt>返回</dt><dd></dd></dl>
+<dl class="exception"><dt>异常</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a5e6b1901bb6d59517d73155425560284"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_list_view_header.html">AbListViewHeader</a> com.ab.view.pullview.AbMultiColumnListView.getHeaderView </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：获取Header View </p>
+<dl class="section return"><dt>返回</dt><dd></dd></dl>
+<dl class="exception"><dt>异常</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aea81beb359b3c26f2461e28edc9bf6cb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.view.pullview.AbMultiColumnListView.initView </td>
+          <td>(</td>
+          <td class="paramtype">Context&#160;</td>
+          <td class="paramname"><em>context</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Inits the with context.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>the context </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a51e0aa3af3e7caa494a209ee52446f30"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.view.pullview.AbMultiColumnListView.onScroll </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html">AbMultiColumnBaseAbsListView</a>&#160;</td>
+          <td class="paramname"><em>view</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>firstVisibleItem</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>visibleItemCount</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>totalItemCount</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：TODO </p>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="interfacecom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view_1_1_on_scroll_listener.html#af3d09ce1d8eee87acb90a11a21bf3c71">com.ab.view.pullview.AbMultiColumnBaseAbsListView.OnScrollListener::onScroll</a>(<a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html">com.ab.view.pullview.AbMultiColumnBaseAbsListView</a>, int, int, int) </dd></dl>
+<dl class="section author"><dt>作者</dt><dd>: zhaoqp </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>：2013-9-4 下午4:06:32 </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>v1.0 </dd></dl>
+
+<p>实现了 <a class="el" href="interfacecom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view_1_1_on_scroll_listener.html#af3d09ce1d8eee87acb90a11a21bf3c71">com.ab.view.pullview.AbMultiColumnBaseAbsListView.OnScrollListener</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a29747dfcebe979b26353f2d962116b68"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.view.pullview.AbMultiColumnListView.onScrollStateChanged </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html">AbMultiColumnBaseAbsListView</a>&#160;</td>
+          <td class="paramname"><em>view</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>scrollState</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：TODO </p>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="interfacecom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view_1_1_on_scroll_listener.html#a60b14c09cc7314ebe810703153845f0c">com.ab.view.pullview.AbMultiColumnBaseAbsListView.OnScrollListener::onScrollStateChanged</a>(<a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view.html">com.ab.view.pullview.AbMultiColumnBaseAbsListView</a>, int) </dd></dl>
+<dl class="section author"><dt>作者</dt><dd>: zhaoqp </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>：2013-9-4 下午4:06:32 </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>v1.0 </dd></dl>
+
+<p>实现了 <a class="el" href="interfacecom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view_1_1_on_scroll_listener.html#a60b14c09cc7314ebe810703153845f0c">com.ab.view.pullview.AbMultiColumnBaseAbsListView.OnScrollListener</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abc4a1a4194b5c385b402018beeca5ea4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean com.ab.view.pullview.AbMultiColumnListView.onTouchEvent </td>
+          <td>(</td>
+          <td class="paramtype">MotionEvent&#160;</td>
+          <td class="paramname"><em>ev</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：TODO </p>
+
+</div>
+</div>
+<a class="anchor" id="a7803be8c29aca691da211be6a6869c3e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.view.pullview.AbMultiColumnListView.resetHeaderHeight </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>根据状态设置Header的位置. </p>
+
+</div>
+</div>
+<a class="anchor" id="ab97229d001a9cda346502b5e786dd253"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.view.pullview.AbMultiColumnListView.setAbOnListViewListener </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="interfacecom_1_1ab_1_1view_1_1listener_1_1_ab_on_list_view_listener.html">AbOnListViewListener</a>&#160;</td>
+          <td class="paramname"><em>abOnListViewListener</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：设置ListView的监听器.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">abOnListViewListener</td><td>the new ab on list view listener </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ac0dd174ac2238f1d6940ac509756292f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.view.pullview.AbMultiColumnListView.setAdapter </td>
+          <td>(</td>
+          <td class="paramtype">ListAdapter&#160;</td>
+          <td class="paramname"><em>adapter</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：TODO </p>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_abs_list_view.html#a299518fe94529f3ccc6480d9480a4da0">com.ab.view.pullview.AbMultiColumnAbsListView::setAdapter</a>(android.widget.ListAdapter) </dd></dl>
+<dl class="section author"><dt>作者</dt><dd>: zhaoqp </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>：2013-9-4 下午4:06:32 </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>v1.0 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a3f83c21db77d68c303d780bcc31576f2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.view.pullview.AbMultiColumnListView.setPullLoadEnable </td>
+          <td>(</td>
+          <td class="paramtype">boolean&#160;</td>
+          <td class="paramname"><em>enable</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>enable or disable pull up load more feature.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">enable</td><td>the new pull load enable </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a6555302173bdaacf4529ed48cf1efff5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.view.pullview.AbMultiColumnListView.setPullRefreshEnable </td>
+          <td>(</td>
+          <td class="paramtype">boolean&#160;</td>
+          <td class="paramname"><em>enable</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>enable or disable pull down refresh feature.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">enable</td><td>the new pull refresh enable </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="af04309d201d31365b6802cfebbe93379"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.view.pullview.AbMultiColumnListView.startLoadMore </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>开始加载更多. </p>
+
+</div>
+</div>
+<a class="anchor" id="a6c9be5e561e1603aedc5d841e2886de8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.view.pullview.AbMultiColumnListView.stopLoadMore </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>停止加载更多并重置footer的状态. </p>
+
+</div>
+</div>
+<a class="anchor" id="adddc56804bb1ba75afddc228d6a6c089"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.view.pullview.AbMultiColumnListView.stopRefresh </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>stop refresh, reset header view. </p>
+
+</div>
+</div>
+<a class="anchor" id="a9a258792a5124333cb85d32dece7ac20"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.view.pullview.AbMultiColumnListView.updateHeaderHeight </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>delta</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Update header height.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">delta</td><td>the delta </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a class="anchor" id="a96cb8bb4458816415f1d15b4322021fe"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.ab.view.pullview.AbMultiColumnListView.count = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>上一次的数量 </p>
+
+</div>
+</div>
+<a class="anchor" id="ac85dbbafa51ad4a16d4259e790a04682"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean com.ab.view.pullview.AbMultiColumnListView.mEnablePullLoad</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The m enable pull load. </p>
+
+</div>
+</div>
+<a class="anchor" id="a3c2d7d84d672799bd87f9493e0596ba5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean com.ab.view.pullview.AbMultiColumnListView.mEnablePullRefresh = true</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The m enable pull refresh. </p>
+
+</div>
+</div>
+<a class="anchor" id="a6be1da0b5cee002909600178b6acfc36"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_list_view_footer.html">AbListViewFooter</a> com.ab.view.pullview.AbMultiColumnListView.mFooterView</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The m footer view. </p>
+
+</div>
+</div>
+<a class="anchor" id="a5e244dec97ef493eb18b625fcbfe276e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.ab.view.pullview.AbMultiColumnListView.mFooterViewHeight</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The m footer view height. </p>
+
+</div>
+</div>
+<a class="anchor" id="a1de40bd2f99b480534857d40b3c437c5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classcom_1_1ab_1_1view_1_1pullview_1_1_ab_list_view_header.html">AbListViewHeader</a> com.ab.view.pullview.AbMultiColumnListView.mHeaderView</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The m header view. </p>
+
+</div>
+</div>
+<a class="anchor" id="a61f754bfff9e32dded422adbc7ed3aeb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.ab.view.pullview.AbMultiColumnListView.mHeaderViewHeight</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The m header view height. </p>
+
+</div>
+</div>
+<a class="anchor" id="a6564a44e7ed50599d41ae766d3189bb4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean com.ab.view.pullview.AbMultiColumnListView.mIsFooterReady = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The m is footer ready. </p>
+
+</div>
+</div>
+<a class="anchor" id="a8b3e9261c0be36eb9248f9f10fa8e57d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float com.ab.view.pullview.AbMultiColumnListView.mLastY = -1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The m last y. </p>
+
+</div>
+</div>
+<a class="anchor" id="a3d0b0d1c7c64b9c4955579ff69258278"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="interfacecom_1_1ab_1_1view_1_1listener_1_1_ab_on_list_view_listener.html">AbOnListViewListener</a> com.ab.view.pullview.AbMultiColumnListView.mListViewListener</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The m list view listener. </p>
+
+</div>
+</div>
+<a class="anchor" id="a7dea6568a41a10bf24c2642db4d280aa"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean com.ab.view.pullview.AbMultiColumnListView.mPullLoading</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The m pull loading. </p>
+
+</div>
+</div>
+<a class="anchor" id="a019304119311dac277b948656eab11cb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean com.ab.view.pullview.AbMultiColumnListView.mPullRefreshing = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The m pull refreshing. </p>
+
+</div>
+</div>
+<a class="anchor" id="a3a63fee06812bd9a441fdd1a6030599b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.ab.view.pullview.AbMultiColumnListView.mScrollBack</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The m scroll back. </p>
+
+</div>
+</div>
+<a class="anchor" id="aba91514bf3afef493de905177ff21365"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Scroller com.ab.view.pullview.AbMultiColumnListView.mScroller</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The m scroller. </p>
+
+</div>
+</div>
+<a class="anchor" id="aa95bc6f8a81edb183ced1108f8f41832"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="interfacecom_1_1ab_1_1view_1_1pullview_1_1_ab_multi_column_base_abs_list_view_1_1_on_scroll_listener.html">OnScrollListener</a> com.ab.view.pullview.AbMultiColumnListView.mScrollListener</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The m scroll listener. </p>
+
+</div>
+</div>
+<a class="anchor" id="aeb565033635c7dc75fffeb278e67d46e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.ab.view.pullview.AbMultiColumnListView.mTotalItemCount</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The m total item count. </p>
+
+</div>
+</div>
+<a class="anchor" id="a6eef60d25755d2471d3e9eb00b62e4e0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final float com.ab.view.pullview.AbMultiColumnListView.OFFSET_RADIO = 1.8f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The Constant OFFSET_RADIO. </p>
+
+</div>
+</div>
+<a class="anchor" id="ab1eb1e7db0b29f58d775c9f84d9c9f59"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final int com.ab.view.pullview.AbMultiColumnListView.SCROLL_DURATION = 200</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The Constant SCROLL_DURATION. </p>
+
+</div>
+</div>
+<a class="anchor" id="ad5c723d4c46e05d14dedbbface6682bc"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final int com.ab.view.pullview.AbMultiColumnListView.SCROLLBACK_FOOTER = 1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The Constant SCROLLBACK_FOOTER. </p>
+
+</div>
+</div>
+<a class="anchor" id="a5ac161aa0ed43125d8ef89f856d1d01e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final int com.ab.view.pullview.AbMultiColumnListView.SCROLLBACK_HEADER = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The Constant SCROLLBACK_HEADER. </p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>src/com/ab/view/pullview/<a class="el" href="_ab_multi_column_list_view_8java.html">AbMultiColumnListView.java</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2014年 三月 19日 星期三 16:24:31 , 为 AndBase开发框架使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.4
+</small></address>
+</body>
+</html>

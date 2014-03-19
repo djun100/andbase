@@ -1,0 +1,728 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.4"/>
+<title>AndBase开发框架: com.ab.db.storage.AbSqliteStorage类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="ic_launcher.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">AndBase开发框架
+   &#160;<span id="projectnumber">1.5.7</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.4 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li class="current"><a href="annotated.html"><span>类</span></a></li>
+      <li><a href="files.html"><span>文件</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>类列表</span></a></li>
+      <li><a href="classes.html"><span>类索引</span></a></li>
+      <li><a href="hierarchy.html"><span>类继承关系</span></a></li>
+      <li><a href="functions.html"><span>类成员</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>类</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>命名空间</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>文件</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>变量</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>枚举值</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>页</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacecom.html">com</a></li><li class="navelem"><a class="el" href="namespacecom_1_1ab.html">ab</a></li><li class="navelem"><a class="el" href="namespacecom_1_1ab_1_1db.html">db</a></li><li class="navelem"><a class="el" href="namespacecom_1_1ab_1_1db_1_1storage.html">storage</a></li><li class="navelem"><a class="el" href="classcom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage.html">AbSqliteStorage</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pac-methods">包函数</a> &#124;
+<a href="#pri-methods">Private 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
+<a href="#pri-static-attribs">静态 Private 属性</a> &#124;
+<a href="classcom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">com.ab.db.storage.AbSqliteStorage类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a81dc7dac3b444e43c8efcc3da3df31d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage.html#a81dc7dac3b444e43c8efcc3da3df31d1">release</a> ()</td></tr>
+<tr class="separator:a81dc7dac3b444e43c8efcc3da3df31d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:a573d3dfcb9cc9945a827434d13b9dfbd"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classcom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage.html">AbSqliteStorage</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage.html#a573d3dfcb9cc9945a827434d13b9dfbd">getInstance</a> (Context context)</td></tr>
+<tr class="separator:a573d3dfcb9cc9945a827434d13b9dfbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pac-methods"></a>
+包函数</h2></td></tr>
+<tr class="memitem:aaa87e8657af57deda5903ffd44f6e79f"><td class="memItemLeft" align="right" valign="top">public&lt; T &gt; void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage.html#aaa87e8657af57deda5903ffd44f6e79f">insertData</a> (final T entity, final AbDBDaoImpl&lt; T &gt; dao, final <a class="el" href="interfacecom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage_listener_1_1_ab_data_insert_listener.html">AbDataInsertListener</a> paramDataInsertListener)</td></tr>
+<tr class="separator:aaa87e8657af57deda5903ffd44f6e79f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77eec1ac0fe7db4bc435335b873ef91c"><td class="memItemLeft" align="right" valign="top">public&lt; T &gt; void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage.html#a77eec1ac0fe7db4bc435335b873ef91c">insertData</a> (final List&lt; T &gt; entityList, final AbDBDaoImpl&lt; T &gt; dao, final <a class="el" href="interfacecom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage_listener_1_1_ab_data_insert_listener.html">AbDataInsertListener</a> paramDataInsertListener)</td></tr>
+<tr class="separator:a77eec1ac0fe7db4bc435335b873ef91c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdd644b49bfa7fbc8ec68f61ad58adc7"><td class="memItemLeft" align="right" valign="top">public&lt; T &gt; void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage.html#afdd644b49bfa7fbc8ec68f61ad58adc7">findData</a> (final <a class="el" href="classcom_1_1ab_1_1db_1_1storage_1_1_ab_storage_query.html">AbStorageQuery</a> storageQuery, final AbDBDaoImpl&lt; T &gt; dao, final <a class="el" href="interfacecom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage_listener_1_1_ab_data_info_listener.html">AbDataInfoListener</a> paramDataInsertListener)</td></tr>
+<tr class="separator:afdd644b49bfa7fbc8ec68f61ad58adc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac098a014ec5a4d6bb10e66f223dc4fb1"><td class="memItemLeft" align="right" valign="top">public&lt; T &gt; void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage.html#ac098a014ec5a4d6bb10e66f223dc4fb1">updateData</a> (final T entity, final AbDBDaoImpl&lt; T &gt; dao, final <a class="el" href="interfacecom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage_listener_1_1_ab_data_operation_listener.html">AbDataOperationListener</a> paramDataInsertListener)</td></tr>
+<tr class="separator:ac098a014ec5a4d6bb10e66f223dc4fb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a922e8a9283055b5298c479be08f53870"><td class="memItemLeft" align="right" valign="top">public&lt; T &gt; void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage.html#a922e8a9283055b5298c479be08f53870">updateData</a> (final List&lt; T &gt; entityList, final AbDBDaoImpl&lt; T &gt; dao, final <a class="el" href="interfacecom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage_listener_1_1_ab_data_operation_listener.html">AbDataOperationListener</a> paramDataInsertListener)</td></tr>
+<tr class="separator:a922e8a9283055b5298c479be08f53870"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aead6cede21cfad0053b5742b6754b741"><td class="memItemLeft" align="right" valign="top">public&lt; T &gt; void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage.html#aead6cede21cfad0053b5742b6754b741">deleteData</a> (final <a class="el" href="classcom_1_1ab_1_1db_1_1storage_1_1_ab_storage_query.html">AbStorageQuery</a> storageQuery, final AbDBDaoImpl&lt; T &gt; dao, final <a class="el" href="interfacecom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage_listener_1_1_ab_data_operation_listener.html">AbDataOperationListener</a> paramDataInsertListener)</td></tr>
+<tr class="separator:aead6cede21cfad0053b5742b6754b741"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private 成员函数</h2></td></tr>
+<tr class="memitem:ad066b8ae9683c9b9269671ec6c2f3e07"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage.html#ad066b8ae9683c9b9269671ec6c2f3e07">AbSqliteStorage</a> (Context context)</td></tr>
+<tr class="separator:ad066b8ae9683c9b9269671ec6c2f3e07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:a8c1935386300eb0e3fb4406acc8473cb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage.html#a8c1935386300eb0e3fb4406acc8473cb">errorCode100</a> = 100</td></tr>
+<tr class="separator:a8c1935386300eb0e3fb4406acc8473cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f1056263d90d825253236ecfcb5b794"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage.html#a4f1056263d90d825253236ecfcb5b794">errorMessage100</a> = &quot;参数错误&quot;</td></tr>
+<tr class="separator:a4f1056263d90d825253236ecfcb5b794"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69cf171e0c33c0fc9858a0457cfe9343"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage.html#a69cf171e0c33c0fc9858a0457cfe9343">errorCode101</a> = 101</td></tr>
+<tr class="separator:a69cf171e0c33c0fc9858a0457cfe9343"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af781c21a5f5eb07255284c38c40e0d32"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage.html#af781c21a5f5eb07255284c38c40e0d32">errorMessage101</a> = &quot;执行时错误&quot;</td></tr>
+<tr class="separator:af781c21a5f5eb07255284c38c40e0d32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fdd6d177008f0473c6a204eb1b6141e"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage.html#a6fdd6d177008f0473c6a204eb1b6141e">retValue</a> = -1</td></tr>
+<tr class="separator:a6fdd6d177008f0473c6a204eb1b6141e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+静态 Private 属性</h2></td></tr>
+<tr class="memitem:a33eaeaa847b901dc0a8c20c02cd57b78"><td class="memItemLeft" align="right" valign="top">static Context&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage.html#a33eaeaa847b901dc0a8c20c02cd57b78">mContext</a></td></tr>
+<tr class="separator:a33eaeaa847b901dc0a8c20c02cd57b78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37fb77ec783f7597dec0c7a56d6ec5a1"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classcom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage.html">AbSqliteStorage</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage.html#a37fb77ec783f7597dec0c7a56d6ec5a1">mSqliteStorage</a> = null</td></tr>
+<tr class="separator:a37fb77ec783f7597dec0c7a56d6ec5a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d3f0fbc4c29435754a8e639e446cade"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classcom_1_1ab_1_1task_1_1_ab_task_queue.html">AbTaskQueue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage.html#a6d3f0fbc4c29435754a8e639e446cade">mAbTaskQueue</a> = null</td></tr>
+<tr class="separator:a6d3f0fbc4c29435754a8e639e446cade"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>The Class <a class="el" href="classcom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage.html">AbSqliteStorage</a>. </p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a class="anchor" id="ad066b8ae9683c9b9269671ec6c2f3e07"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">com.ab.db.storage.AbSqliteStorage.AbSqliteStorage </td>
+          <td>(</td>
+          <td class="paramtype">Context&#160;</td>
+          <td class="paramname"><em>context</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Instantiates a new ab sqlite storage.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>the context </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a class="anchor" id="aead6cede21cfad0053b5742b6754b741"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">public&lt;T&gt; void com.ab.db.storage.AbSqliteStorage.deleteData </td>
+          <td>(</td>
+          <td class="paramtype">final <a class="el" href="classcom_1_1ab_1_1db_1_1storage_1_1_ab_storage_query.html">AbStorageQuery</a>&#160;</td>
+          <td class="paramname"><em>storageQuery</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final AbDBDaoImpl&lt; T &gt;&#160;</td>
+          <td class="paramname"><em>dao</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final <a class="el" href="interfacecom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage_listener_1_1_ab_data_operation_listener.html">AbDataOperationListener</a>&#160;</td>
+          <td class="paramname"><em>paramDataInsertListener</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：修改数据.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">&lt;T&gt;</td><td>the generic type </td></tr>
+    <tr><td class="paramname">storageQuery</td><td>条件实体 </td></tr>
+    <tr><td class="paramname">dao</td><td>实现AbDBDaoImpl的Dao </td></tr>
+    <tr><td class="paramname">paramDataInsertListener</td><td>返回监听器 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="afdd644b49bfa7fbc8ec68f61ad58adc7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">public&lt;T&gt; void com.ab.db.storage.AbSqliteStorage.findData </td>
+          <td>(</td>
+          <td class="paramtype">final <a class="el" href="classcom_1_1ab_1_1db_1_1storage_1_1_ab_storage_query.html">AbStorageQuery</a>&#160;</td>
+          <td class="paramname"><em>storageQuery</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final AbDBDaoImpl&lt; T &gt;&#160;</td>
+          <td class="paramname"><em>dao</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final <a class="el" href="interfacecom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage_listener_1_1_ab_data_info_listener.html">AbDataInfoListener</a>&#160;</td>
+          <td class="paramname"><em>paramDataInsertListener</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Find data.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">&lt;T&gt;</td><td>描述：查询数据 </td></tr>
+    <tr><td class="paramname">storageQuery</td><td>the storage query </td></tr>
+    <tr><td class="paramname">dao</td><td>实现AbDBDaoImpl的Dao </td></tr>
+    <tr><td class="paramname">paramDataInsertListener</td><td>返回监听器 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a573d3dfcb9cc9945a827434d13b9dfbd"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classcom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage.html">AbSqliteStorage</a> com.ab.db.storage.AbSqliteStorage.getInstance </td>
+          <td>(</td>
+          <td class="paramtype">Context&#160;</td>
+          <td class="paramname"><em>context</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：获取存储实例.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>the context </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>single instance of <a class="el" href="classcom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage.html">AbSqliteStorage</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aaa87e8657af57deda5903ffd44f6e79f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">public&lt;T&gt; void com.ab.db.storage.AbSqliteStorage.insertData </td>
+          <td>(</td>
+          <td class="paramtype">final T&#160;</td>
+          <td class="paramname"><em>entity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final AbDBDaoImpl&lt; T &gt;&#160;</td>
+          <td class="paramname"><em>dao</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final <a class="el" href="interfacecom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage_listener_1_1_ab_data_insert_listener.html">AbDataInsertListener</a>&#160;</td>
+          <td class="paramname"><em>paramDataInsertListener</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：插入数据.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">&lt;T&gt;</td><td>the generic type </td></tr>
+    <tr><td class="paramname">entity</td><td>实体类 设置了对象关系映射 </td></tr>
+    <tr><td class="paramname">dao</td><td>实现AbDBDaoImpl的Dao </td></tr>
+    <tr><td class="paramname">paramDataInsertListener</td><td>返回监听器 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a77eec1ac0fe7db4bc435335b873ef91c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">public&lt;T&gt; void com.ab.db.storage.AbSqliteStorage.insertData </td>
+          <td>(</td>
+          <td class="paramtype">final List&lt; T &gt;&#160;</td>
+          <td class="paramname"><em>entityList</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final AbDBDaoImpl&lt; T &gt;&#160;</td>
+          <td class="paramname"><em>dao</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final <a class="el" href="interfacecom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage_listener_1_1_ab_data_insert_listener.html">AbDataInsertListener</a>&#160;</td>
+          <td class="paramname"><em>paramDataInsertListener</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：插入数据.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">&lt;T&gt;</td><td>the generic type </td></tr>
+    <tr><td class="paramname">entityList</td><td>实体类 设置了对象关系映射 </td></tr>
+    <tr><td class="paramname">dao</td><td>实现AbDBDaoImpl的Dao </td></tr>
+    <tr><td class="paramname">paramDataInsertListener</td><td>返回监听器 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a81dc7dac3b444e43c8efcc3da3df31d1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.db.storage.AbSqliteStorage.release </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：释放存储实例. </p>
+
+</div>
+</div>
+<a class="anchor" id="ac098a014ec5a4d6bb10e66f223dc4fb1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">public&lt;T&gt; void com.ab.db.storage.AbSqliteStorage.updateData </td>
+          <td>(</td>
+          <td class="paramtype">final T&#160;</td>
+          <td class="paramname"><em>entity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final AbDBDaoImpl&lt; T &gt;&#160;</td>
+          <td class="paramname"><em>dao</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final <a class="el" href="interfacecom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage_listener_1_1_ab_data_operation_listener.html">AbDataOperationListener</a>&#160;</td>
+          <td class="paramname"><em>paramDataInsertListener</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：修改数据.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">&lt;T&gt;</td><td>the generic type </td></tr>
+    <tr><td class="paramname">entity</td><td>实体类 设置了对象关系映射 </td></tr>
+    <tr><td class="paramname">dao</td><td>实现AbDBDaoImpl的Dao </td></tr>
+    <tr><td class="paramname">paramDataInsertListener</td><td>返回监听器 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a922e8a9283055b5298c479be08f53870"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">public&lt;T&gt; void com.ab.db.storage.AbSqliteStorage.updateData </td>
+          <td>(</td>
+          <td class="paramtype">final List&lt; T &gt;&#160;</td>
+          <td class="paramname"><em>entityList</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final AbDBDaoImpl&lt; T &gt;&#160;</td>
+          <td class="paramname"><em>dao</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final <a class="el" href="interfacecom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage_listener_1_1_ab_data_operation_listener.html">AbDataOperationListener</a>&#160;</td>
+          <td class="paramname"><em>paramDataInsertListener</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：修改数据.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">&lt;T&gt;</td><td>the generic type </td></tr>
+    <tr><td class="paramname">entityList</td><td>实体类 设置了对象关系映射 </td></tr>
+    <tr><td class="paramname">dao</td><td>实现AbDBDaoImpl的Dao </td></tr>
+    <tr><td class="paramname">paramDataInsertListener</td><td>返回监听器 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a class="anchor" id="a8c1935386300eb0e3fb4406acc8473cb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.ab.db.storage.AbSqliteStorage.errorCode100 = 100</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The error code100. </p>
+
+</div>
+</div>
+<a class="anchor" id="a69cf171e0c33c0fc9858a0457cfe9343"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.ab.db.storage.AbSqliteStorage.errorCode101 = 101</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The error code101. </p>
+
+</div>
+</div>
+<a class="anchor" id="a4f1056263d90d825253236ecfcb5b794"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.ab.db.storage.AbSqliteStorage.errorMessage100 = &quot;参数错误&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The error message100. </p>
+
+</div>
+</div>
+<a class="anchor" id="af781c21a5f5eb07255284c38c40e0d32"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.ab.db.storage.AbSqliteStorage.errorMessage101 = &quot;执行时错误&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The error message101. </p>
+
+</div>
+</div>
+<a class="anchor" id="a6d3f0fbc4c29435754a8e639e446cade"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classcom_1_1ab_1_1task_1_1_ab_task_queue.html">AbTaskQueue</a> com.ab.db.storage.AbSqliteStorage.mAbTaskQueue = null</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The m ab task queue. </p>
+
+</div>
+</div>
+<a class="anchor" id="a33eaeaa847b901dc0a8c20c02cd57b78"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Context com.ab.db.storage.AbSqliteStorage.mContext</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The m context. </p>
+
+</div>
+</div>
+<a class="anchor" id="a37fb77ec783f7597dec0c7a56d6ec5a1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classcom_1_1ab_1_1db_1_1storage_1_1_ab_sqlite_storage.html">AbSqliteStorage</a> com.ab.db.storage.AbSqliteStorage.mSqliteStorage = null</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The m sqlite storage. </p>
+
+</div>
+</div>
+<a class="anchor" id="a6fdd6d177008f0473c6a204eb1b6141e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">long com.ab.db.storage.AbSqliteStorage.retValue = -1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The ret value. </p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>src/com/ab/db/storage/<a class="el" href="_ab_sqlite_storage_8java.html">AbSqliteStorage.java</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2014年 三月 19日 星期三 16:24:29 , 为 AndBase开发框架使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.4
+</small></address>
+</body>
+</html>

@@ -1,0 +1,2061 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.4"/>
+<title>AndBase开发框架: com.ab.activity.AbActivity类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="ic_launcher.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">AndBase开发框架
+   &#160;<span id="projectnumber">1.5.7</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.4 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li class="current"><a href="annotated.html"><span>类</span></a></li>
+      <li><a href="files.html"><span>文件</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>类列表</span></a></li>
+      <li><a href="classes.html"><span>类索引</span></a></li>
+      <li><a href="hierarchy.html"><span>类继承关系</span></a></li>
+      <li><a href="functions.html"><span>类成员</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>类</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>命名空间</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>文件</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>变量</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>枚举值</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>页</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacecom.html">com</a></li><li class="navelem"><a class="el" href="namespacecom_1_1ab.html">ab</a></li><li class="navelem"><a class="el" href="namespacecom_1_1ab_1_1activity.html">activity</a></li><li class="navelem"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html">AbActivity</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">类</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-attribs">Public 属性</a> &#124;
+<a href="#pro-methods">Protected 成员函数</a> &#124;
+<a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="#pri-methods">Private 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
+<a href="classcom_1_1ab_1_1activity_1_1_ab_activity-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">com.ab.activity.AbActivity类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="dynheader">
+类 com.ab.activity.AbActivity 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classcom_1_1ab_1_1activity_1_1_ab_activity.png" usemap="#com.ab.activity.AbActivity_map" alt=""/>
+  <map id="com.ab.activity.AbActivity_map" name="com.ab.activity.AbActivity_map">
+</map>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="enumcom_1_1ab_1_1activity_1_1_ab_activity_1_1_method.html">Method</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a0442b8d019b31b315a01ec485fc5cd7f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a0442b8d019b31b315a01ec485fc5cd7f">showToast</a> (String text)</td></tr>
+<tr class="separator:a0442b8d019b31b315a01ec485fc5cd7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e698f34472b8ca6c767935ab86ef31e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a9e698f34472b8ca6c767935ab86ef31e">showToast</a> (int resId)</td></tr>
+<tr class="separator:a9e698f34472b8ca6c767935ab86ef31e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6633bee40347babe2216fe485961c881"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a6633bee40347babe2216fe485961c881">setAbContentView</a> (View contentView)</td></tr>
+<tr class="separator:a6633bee40347babe2216fe485961c881"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7333c2a0a066c65d926fcae3bb923dab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a7333c2a0a066c65d926fcae3bb923dab">setAbContentView</a> (int resId)</td></tr>
+<tr class="separator:a7333c2a0a066c65d926fcae3bb923dab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6eb96e690d68f89f4f8dc1ff6db64862"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a6eb96e690d68f89f4f8dc1ff6db64862">showToastInThread</a> (int resId)</td></tr>
+<tr class="separator:a6eb96e690d68f89f4f8dc1ff6db64862"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab535cfb87408189dfd7b25f9bcc0ac23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#ab535cfb87408189dfd7b25f9bcc0ac23">showToastInThread</a> (String toast)</td></tr>
+<tr class="separator:ab535cfb87408189dfd7b25f9bcc0ac23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d2ad48cd4f9b73f53aa82992c1bc036"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a1d2ad48cd4f9b73f53aa82992c1bc036">showProgressDialog</a> ()</td></tr>
+<tr class="separator:a1d2ad48cd4f9b73f53aa82992c1bc036"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab558bbb5f99d054dfdc439f087ed7375"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#ab558bbb5f99d054dfdc439f087ed7375">showProgressDialog</a> (String message)</td></tr>
+<tr class="separator:ab558bbb5f99d054dfdc439f087ed7375"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01f69d1b467070e41bb5ce746e74c6cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a01f69d1b467070e41bb5ce746e74c6cd">showDialog</a> (int id, View view)</td></tr>
+<tr class="separator:a01f69d1b467070e41bb5ce746e74c6cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5dd835f283438473361862f30d367c28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a5dd835f283438473361862f30d367c28">showDialog</a> (String title, String msg, DialogInterface.OnClickListener mOkOnClickListener)</td></tr>
+<tr class="separator:a5dd835f283438473361862f30d367c28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d49533a1b41709fa0fcc0aa726e3e0e"><td class="memItemLeft" align="right" valign="top">AlertDialog&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a1d49533a1b41709fa0fcc0aa726e3e0e">showDialog</a> (String title, View view, DialogInterface.OnClickListener mOkOnClickListener)</td></tr>
+<tr class="separator:a1d49533a1b41709fa0fcc0aa726e3e0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9039571c136579b45e7e4ca3b7bd4a0"><td class="memItemLeft" align="right" valign="top">AlertDialog&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#ab9039571c136579b45e7e4ca3b7bd4a0">showDialog</a> (String title, String msg)</td></tr>
+<tr class="separator:ab9039571c136579b45e7e4ca3b7bd4a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4402705a5a20beaa771a2ee4594c395f"><td class="memItemLeft" align="right" valign="top">AlertDialog&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a4402705a5a20beaa771a2ee4594c395f">showDialog</a> (String title, View view)</td></tr>
+<tr class="separator:a4402705a5a20beaa771a2ee4594c395f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41be1d768a9c4dd69f343db4bbc097f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a41be1d768a9c4dd69f343db4bbc097f1">removeProgressDialog</a> ()</td></tr>
+<tr class="separator:a41be1d768a9c4dd69f343db4bbc097f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a692b499ad7fa89aab52c2a755b90b21e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a692b499ad7fa89aab52c2a755b90b21e">removeDialogInThread</a> (int id)</td></tr>
+<tr class="separator:a692b499ad7fa89aab52c2a755b90b21e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c0d237f8f010e5d9d13e64b38ea0b7d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1ab_1_1view_1_1titlebar_1_1_ab_title_bar.html">AbTitleBar</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a6c0d237f8f010e5d9d13e64b38ea0b7d">getTitleBar</a> ()</td></tr>
+<tr class="separator:a6c0d237f8f010e5d9d13e64b38ea0b7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0637f1c944d4be6102c77fa79d9aa299"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1ab_1_1view_1_1titlebar_1_1_ab_bottom_bar.html">AbBottomBar</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a0637f1c944d4be6102c77fa79d9aa299">getAbBottomBar</a> ()</td></tr>
+<tr class="separator:a0637f1c944d4be6102c77fa79d9aa299"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07839f5a60f49bea19b9b1cfe2176189"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a07839f5a60f49bea19b9b1cfe2176189">openMonitor</a> ()</td></tr>
+<tr class="separator:a07839f5a60f49bea19b9b1cfe2176189"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1ba232fd65af2d5a6d7176d4f3e7bac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#ac1ba232fd65af2d5a6d7176d4f3e7bac">closeMonitor</a> ()</td></tr>
+<tr class="separator:ac1ba232fd65af2d5a6d7176d4f3e7bac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23470c026397b1ed26a6e988bcf1771c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a23470c026397b1ed26a6e988bcf1771c">setDialogPadding</a> (int <a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#adaf824c5e9e576881f70c6fdaf42f677">dialogPadding</a>)</td></tr>
+<tr class="separator:a23470c026397b1ed26a6e988bcf1771c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c313467a411f70ad22cf164c9048509"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a8c313467a411f70ad22cf164c9048509">getProgressMessage</a> ()</td></tr>
+<tr class="separator:a8c313467a411f70ad22cf164c9048509"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1ebef45baf26182c4877957ceec3590"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#aa1ebef45baf26182c4877957ceec3590">setProgressMessage</a> (String message)</td></tr>
+<tr class="separator:aa1ebef45baf26182c4877957ceec3590"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaaadf3b77467f75c89aec75b88393e43"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#aaaadf3b77467f75c89aec75b88393e43">onBackPressed</a> ()</td></tr>
+<tr class="separator:aaaadf3b77467f75c89aec75b88393e43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa173dc8599b8b02bc3bba5a3300c94ad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#aa173dc8599b8b02bc3bba5a3300c94ad">finish</a> ()</td></tr>
+<tr class="separator:aa173dc8599b8b02bc3bba5a3300c94ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15753667337792b7c267a5446810e725"><td class="memItemLeft" align="right" valign="top">Dialog&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a15753667337792b7c267a5446810e725">getBottomDialog</a> ()</td></tr>
+<tr class="separator:a15753667337792b7c267a5446810e725"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78a0dbf36abc386b99721e5684397774"><td class="memItemLeft" align="right" valign="top">Dialog&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a78a0dbf36abc386b99721e5684397774">getCenterDialog</a> ()</td></tr>
+<tr class="separator:a78a0dbf36abc386b99721e5684397774"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf0c9a69c7ebce54d013034123e8b9e7"><td class="memItemLeft" align="right" valign="top">Dialog&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#adf0c9a69c7ebce54d013034123e8b9e7">getTopDialog</a> ()</td></tr>
+<tr class="separator:adf0c9a69c7ebce54d013034123e8b9e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92cff224d163a9a64405a1eb6a96656f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a92cff224d163a9a64405a1eb6a96656f">setTitleBarAbove</a> (boolean above)</td></tr>
+<tr class="separator:a92cff224d163a9a64405a1eb6a96656f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a048ca0368103c812b727804b9ee07bba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a048ca0368103c812b727804b9ee07bba">setContentView</a> (int layoutResID)</td></tr>
+<tr class="separator:a048ca0368103c812b727804b9ee07bba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3c3c5a7c98322db6bba8d9203f21458"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#ac3c3c5a7c98322db6bba8d9203f21458">setContentView</a> (View view, android.view.ViewGroup.LayoutParams params)</td></tr>
+<tr class="separator:ac3c3c5a7c98322db6bba8d9203f21458"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaefde297bbbfe89439e675b61f114fbb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#aaefde297bbbfe89439e675b61f114fbb">setContentView</a> (View view)</td></tr>
+<tr class="separator:aaefde297bbbfe89439e675b61f114fbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public 属性</h2></td></tr>
+<tr class="memitem:a85e15f0d9e1b2c2af0c0e1bb738a3e5f"><td class="memItemLeft" align="right" valign="top">LayoutInflater&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a85e15f0d9e1b2c2af0c0e1bb738a3e5f">mInflater</a></td></tr>
+<tr class="separator:a85e15f0d9e1b2c2af0c0e1bb738a3e5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfba69eb60a920125054f51bcd129ae9"><td class="memItemLeft" align="right" valign="top">ProgressDialog&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#abfba69eb60a920125054f51bcd129ae9">mProgressDialog</a></td></tr>
+<tr class="separator:abfba69eb60a920125054f51bcd129ae9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac45cbf39329e5a3b4b06db85f41f0a30"><td class="memItemLeft" align="right" valign="top">Application&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#ac45cbf39329e5a3b4b06db85f41f0a30">abApplication</a> = null</td></tr>
+<tr class="separator:ac45cbf39329e5a3b4b06db85f41f0a30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bb05353bad2e964f0c89e0afbd1dbb2"><td class="memItemLeft" align="right" valign="top">SharedPreferences&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a2bb05353bad2e964f0c89e0afbd1dbb2">abSharedPreferences</a> = null</td></tr>
+<tr class="separator:a2bb05353bad2e964f0c89e0afbd1dbb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac27a806f99b54468b47848e845589f6d"><td class="memItemLeft" align="right" valign="top">LinearLayout.LayoutParams&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#ac27a806f99b54468b47848e845589f6d">layoutParamsFF</a> = null</td></tr>
+<tr class="separator:ac27a806f99b54468b47848e845589f6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7af493b066aeca39a7afba3b88a9324b"><td class="memItemLeft" align="right" valign="top">LinearLayout.LayoutParams&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a7af493b066aeca39a7afba3b88a9324b">layoutParamsFW</a> = null</td></tr>
+<tr class="separator:a7af493b066aeca39a7afba3b88a9324b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a541066b86492e0def94c39d23f73a7e4"><td class="memItemLeft" align="right" valign="top">LinearLayout.LayoutParams&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a541066b86492e0def94c39d23f73a7e4">layoutParamsWF</a> = null</td></tr>
+<tr class="separator:a541066b86492e0def94c39d23f73a7e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91f3522ad7c3085a6237851b3028ae3f"><td class="memItemLeft" align="right" valign="top">LinearLayout.LayoutParams&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a91f3522ad7c3085a6237851b3028ae3f">layoutParamsWW</a> = null</td></tr>
+<tr class="separator:a91f3522ad7c3085a6237851b3028ae3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a0660d7eb07dee276d520393aff2602"><td class="memItemLeft" align="right" valign="top">RelativeLayout&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a2a0660d7eb07dee276d520393aff2602">ab_base</a> = null</td></tr>
+<tr class="separator:a2a0660d7eb07dee276d520393aff2602"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8be25f303e8362a53bc2ad75eadaf6c5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a8be25f303e8362a53bc2ad75eadaf6c5">diaplayWidth</a> = 320</td></tr>
+<tr class="separator:a8be25f303e8362a53bc2ad75eadaf6c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefcbfe6ca71f05f36399eb612685a3bd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#aefcbfe6ca71f05f36399eb612685a3bd">diaplayHeight</a> = 480</td></tr>
+<tr class="separator:aefcbfe6ca71f05f36399eb612685a3bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected 成员函数</h2></td></tr>
+<tr class="memitem:a7afba96464cfded48ca1a3936918fc6d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a7afba96464cfded48ca1a3936918fc6d">onCreate</a> (Bundle savedInstanceState)</td></tr>
+<tr class="separator:a7afba96464cfded48ca1a3936918fc6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab354dc7bae2d1b487a8178b3e91d3fb8"><td class="memItemLeft" align="right" valign="top">Dialog&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#ab354dc7bae2d1b487a8178b3e91d3fb8">onCreateDialog</a> (int id)</td></tr>
+<tr class="separator:ab354dc7bae2d1b487a8178b3e91d3fb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected 属性</h2></td></tr>
+<tr class="memitem:ad2d9aab83763f9cc489d04ea9dafca74"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1ab_1_1view_1_1titlebar_1_1_ab_title_bar.html">AbTitleBar</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#ad2d9aab83763f9cc489d04ea9dafca74">mAbTitleBar</a> = null</td></tr>
+<tr class="separator:ad2d9aab83763f9cc489d04ea9dafca74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45894dde843bd31ff66168a7dc56201a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1ab_1_1view_1_1titlebar_1_1_ab_bottom_bar.html">AbBottomBar</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a45894dde843bd31ff66168a7dc56201a">mAbBottomBar</a> = null</td></tr>
+<tr class="separator:a45894dde843bd31ff66168a7dc56201a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53769b59db5804871bb8788bccaac52d"><td class="memItemLeft" align="right" valign="top">RelativeLayout&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a53769b59db5804871bb8788bccaac52d">contentLayout</a> = null</td></tr>
+<tr class="separator:a53769b59db5804871bb8788bccaac52d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private 成员函数</h2></td></tr>
+<tr class="memitem:a0a3e71c8dd4af4567fb9c3d74b7d53c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a0a3e71c8dd4af4567fb9c3d74b7d53c8">setDialogLayoutParams</a> (Dialog dialog, int <a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#adaf824c5e9e576881f70c6fdaf42f677">dialogPadding</a>, int gravity)</td></tr>
+<tr class="separator:a0a3e71c8dd4af4567fb9c3d74b7d53c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66a4871c62e17b9e1e8f2bfd2c8bdb0a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a66a4871c62e17b9e1e8f2bfd2c8bdb0a">initIocView</a> ()</td></tr>
+<tr class="separator:a66a4871c62e17b9e1e8f2bfd2c8bdb0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b396b3044a5f1ebe749c20fe9e5f45a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a4b396b3044a5f1ebe749c20fe9e5f45a">setViewSelectListener</a> (Field field, String select, String noSelect)  throws Exception</td></tr>
+<tr class="separator:a4b396b3044a5f1ebe749c20fe9e5f45a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9f920df5eb2ecbf3be96e40ab527662"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#ac9f920df5eb2ecbf3be96e40ab527662">setListener</a> (Field field, String methodName, <a class="el" href="enumcom_1_1ab_1_1activity_1_1_ab_activity_1_1_method.html">Method</a> method)  throws Exception</td></tr>
+<tr class="separator:ac9f920df5eb2ecbf3be96e40ab527662"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:a2c4ba43170e663c1bc81ac13ff05bbb8"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a2c4ba43170e663c1bc81ac13ff05bbb8">TAG</a> = AbActivity.class.getSimpleName()</td></tr>
+<tr class="separator:a2c4ba43170e663c1bc81ac13ff05bbb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60f6067b589b54a9ad00a60ca994de72"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a60f6067b589b54a9ad00a60ca994de72">D</a> = <a class="el" href="classcom_1_1ab_1_1global_1_1_ab_app_data.html#acd537fab5c27e4f2c7cb650ab1a5bd5d">AbAppData.DEBUG</a></td></tr>
+<tr class="separator:a60f6067b589b54a9ad00a60ca994de72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42fd6f5657fdb8c54f841301c30ab9ff"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a42fd6f5657fdb8c54f841301c30ab9ff">mProgressMessage</a> = &quot;请稍候...&quot;</td></tr>
+<tr class="separator:a42fd6f5657fdb8c54f841301c30ab9ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd864ba80c5b70be45ba1fb0f8531eea"><td class="memItemLeft" align="right" valign="top">Dialog&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#abd864ba80c5b70be45ba1fb0f8531eea">mBottomDialog</a></td></tr>
+<tr class="separator:abd864ba80c5b70be45ba1fb0f8531eea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88c5498c098158c9efce7ab8d905c0e8"><td class="memItemLeft" align="right" valign="top">Dialog&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a88c5498c098158c9efce7ab8d905c0e8">mCenterDialog</a></td></tr>
+<tr class="separator:a88c5498c098158c9efce7ab8d905c0e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac96d4f0a1aac6ee9ed7a94ae24e0cfa2"><td class="memItemLeft" align="right" valign="top">Dialog&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#ac96d4f0a1aac6ee9ed7a94ae24e0cfa2">mTopDialog</a></td></tr>
+<tr class="separator:ac96d4f0a1aac6ee9ed7a94ae24e0cfa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adebc47dee165e3e1f7a8e67afdd83f86"><td class="memItemLeft" align="right" valign="top">View&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#adebc47dee165e3e1f7a8e67afdd83f86">mBottomDialogView</a> = null</td></tr>
+<tr class="separator:adebc47dee165e3e1f7a8e67afdd83f86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a604800c8b6885eee4349fef2481f4a54"><td class="memItemLeft" align="right" valign="top">View&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a604800c8b6885eee4349fef2481f4a54">mCenterDialogView</a> = null</td></tr>
+<tr class="separator:a604800c8b6885eee4349fef2481f4a54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9133a76893ac3c9624ed1e5ae8f4a31"><td class="memItemLeft" align="right" valign="top">View&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#ad9133a76893ac3c9624ed1e5ae8f4a31">mTopDialogView</a> = null</td></tr>
+<tr class="separator:ad9133a76893ac3c9624ed1e5ae8f4a31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adaf824c5e9e576881f70c6fdaf42f677"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#adaf824c5e9e576881f70c6fdaf42f677">dialogPadding</a> = 40</td></tr>
+<tr class="separator:adaf824c5e9e576881f70c6fdaf42f677"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad30d262a7c53594c343da662a10df489"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1ab_1_1view_1_1app_1_1_ab_monitor_view.html">AbMonitorView</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#ad30d262a7c53594c343da662a10df489">mAbMonitorView</a> = null</td></tr>
+<tr class="separator:ad30d262a7c53594c343da662a10df489"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6eb56aaeae7c1138fb582076b5321704"><td class="memItemLeft" align="right" valign="top">Handler&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a6eb56aaeae7c1138fb582076b5321704">mMonitorHandler</a> = new Handler()</td></tr>
+<tr class="separator:a6eb56aaeae7c1138fb582076b5321704"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae2683a80cb1ceff31284cf83b51511a"><td class="memItemLeft" align="right" valign="top">Runnable&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#aae2683a80cb1ceff31284cf83b51511a">mMonitorRunnable</a> = null</td></tr>
+<tr class="separator:aae2683a80cb1ceff31284cf83b51511a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f795f2137d64ceeb74118dc04054cc7"><td class="memItemLeft" align="right" valign="top">WindowManager&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a1f795f2137d64ceeb74118dc04054cc7">mWindowManager</a> = null</td></tr>
+<tr class="separator:a1f795f2137d64ceeb74118dc04054cc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72474fb2f054e18f0076785497780106"><td class="memItemLeft" align="right" valign="top">WindowManager.LayoutParams&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a72474fb2f054e18f0076785497780106">mMonitorParams</a> = null</td></tr>
+<tr class="separator:a72474fb2f054e18f0076785497780106"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa818f4678ed240a795bd23a89c9a4aa3"><td class="memItemLeft" align="right" valign="top">Handler&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#aa818f4678ed240a795bd23a89c9a4aa3">baseHandler</a></td></tr>
+<tr class="separator:aa818f4678ed240a795bd23a89c9a4aa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>描述：继承这个Activity使你的Activity拥有一个程序框架. </p>
+<dl class="section author"><dt>作者</dt><dd>zhaoqp </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>：2013-1-15 下午3:27:05 </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>v1.0 </dd></dl>
+</div><h2 class="groupheader">成员函数说明</h2>
+<a class="anchor" id="ac1ba232fd65af2d5a6d7176d4f3e7bac"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.activity.AbActivity.closeMonitor </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：关闭帧数测试. </p>
+
+</div>
+</div>
+<a class="anchor" id="aa173dc8599b8b02bc3bba5a3300c94ad"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.activity.AbActivity.finish </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：Activity结束.</p>
+<dl class="section see"><dt>参见</dt><dd>android.app.Activity::finish() </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a0637f1c944d4be6102c77fa79d9aa299"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classcom_1_1ab_1_1view_1_1titlebar_1_1_ab_bottom_bar.html">AbBottomBar</a> com.ab.activity.AbActivity.getAbBottomBar </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>获取副标题栏布局. </p>
+<dl class="section return"><dt>返回</dt><dd>the bottom layout </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a15753667337792b7c267a5446810e725"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Dialog com.ab.activity.AbActivity.getBottomDialog </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Gets the bottom dialog.</p>
+<dl class="section return"><dt>返回</dt><dd>the bottom dialog </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a78a0dbf36abc386b99721e5684397774"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Dialog com.ab.activity.AbActivity.getCenterDialog </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>获取显示在中间的Dialog.</p>
+<dl class="section return"><dt>返回</dt><dd>the center dialog </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a8c313467a411f70ad22cf164c9048509"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.ab.activity.AbActivity.getProgressMessage </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：获取进度框显示的文字.</p>
+<dl class="section return"><dt>返回</dt><dd>the progress message </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a6c0d237f8f010e5d9d13e64b38ea0b7d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classcom_1_1ab_1_1view_1_1titlebar_1_1_ab_title_bar.html">AbTitleBar</a> com.ab.activity.AbActivity.getTitleBar </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>获取主标题栏布局. </p>
+<dl class="section return"><dt>返回</dt><dd>the title layout </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="adf0c9a69c7ebce54d013034123e8b9e7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Dialog com.ab.activity.AbActivity.getTopDialog </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Gets the top dialog.</p>
+<dl class="section return"><dt>返回</dt><dd>the top dialog </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a66a4871c62e17b9e1e8f2bfd2c8bdb0a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.activity.AbActivity.initIocView </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>初始化为IOC控制的View. </p>
+
+</div>
+</div>
+<a class="anchor" id="aaaadf3b77467f75c89aec75b88393e43"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.activity.AbActivity.onBackPressed </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：返回.</p>
+<dl class="section see"><dt>参见</dt><dd>android.support.v4.app.FragmentActivity::onBackPressed() </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a7afba96464cfded48ca1a3936918fc6d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.activity.AbActivity.onCreate </td>
+          <td>(</td>
+          <td class="paramtype">Bundle&#160;</td>
+          <td class="paramname"><em>savedInstanceState</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：创建.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">savedInstanceState</td><td>the saved instance state </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd>android.support.v4.app.FragmentActivity::onCreate(android.os.Bundle) </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ab354dc7bae2d1b487a8178b3e91d3fb8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Dialog com.ab.activity.AbActivity.onCreateDialog </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：对话框初始化. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>the id </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>the dialog </dd></dl>
+<dl class="section see"><dt>参见</dt><dd>android.app.Activity::onCreateDialog(int) </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a07839f5a60f49bea19b9b1cfe2176189"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.activity.AbActivity.openMonitor </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：打开关闭帧数测试 &lt;uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/&gt; lp.type = WindowManager.LayoutParams.TYPE_APPLICATION_ATTACHED_DIALOG </p>
+
+</div>
+</div>
+<a class="anchor" id="a692b499ad7fa89aab52c2a755b90b21e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.activity.AbActivity.removeDialogInThread </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：移除Dialog. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>the id </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd>android.app.Activity::removeDialog(int) </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a41be1d768a9c4dd69f343db4bbc097f1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.activity.AbActivity.removeProgressDialog </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：移除进度框. </p>
+
+</div>
+</div>
+<a class="anchor" id="a6633bee40347babe2216fe485961c881"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.activity.AbActivity.setAbContentView </td>
+          <td>(</td>
+          <td class="paramtype">View&#160;</td>
+          <td class="paramname"><em>contentView</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：用指定的View填充主界面. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">contentView</td><td>指定的View </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a7333c2a0a066c65d926fcae3bb923dab"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.activity.AbActivity.setAbContentView </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>resId</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：用指定资源ID表示的View填充主界面. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">resId</td><td>指定的View的资源ID </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a048ca0368103c812b727804b9ee07bba"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.activity.AbActivity.setContentView </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>layoutResID</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：设置界面显示（忽略标题栏） </p>
+<dl class="section see"><dt>参见</dt><dd>android.app.Activity::setContentView(int) </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ac3c3c5a7c98322db6bba8d9203f21458"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.activity.AbActivity.setContentView </td>
+          <td>(</td>
+          <td class="paramtype">View&#160;</td>
+          <td class="paramname"><em>view</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">android.view.ViewGroup.LayoutParams&#160;</td>
+          <td class="paramname"><em>params</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：设置界面显示（忽略标题栏） </p>
+<dl class="section see"><dt>参见</dt><dd>android.app.Activity::setContentView(android.view.View, android.view.ViewGroup.LayoutParams) </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aaefde297bbbfe89439e675b61f114fbb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.activity.AbActivity.setContentView </td>
+          <td>(</td>
+          <td class="paramtype">View&#160;</td>
+          <td class="paramname"><em>view</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：设置界面显示（忽略标题栏） </p>
+<dl class="section see"><dt>参见</dt><dd>android.app.Activity::setContentView(android.view.View) </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a0a3e71c8dd4af4567fb9c3d74b7d53c8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.activity.AbActivity.setDialogLayoutParams </td>
+          <td>(</td>
+          <td class="paramtype">Dialog&#160;</td>
+          <td class="paramname"><em>dialog</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>dialogPadding</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gravity</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：设置弹出Dialog的属性.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dialog</td><td>弹出Dialog </td></tr>
+    <tr><td class="paramname">dialogPadding</td><td>如果Dialog不是充满屏幕，要设置这个值 </td></tr>
+    <tr><td class="paramname">gravity</td><td>the gravity </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a23470c026397b1ed26a6e988bcf1771c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.activity.AbActivity.setDialogPadding </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>dialogPadding</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：设置弹出的Dialog的左右边距.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dialogPadding</td><td>如果Dialog不是充满屏幕，要设置这个值 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ac9f920df5eb2ecbf3be96e40ab527662"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.activity.AbActivity.setListener </td>
+          <td>(</td>
+          <td class="paramtype">Field&#160;</td>
+          <td class="paramname"><em>field</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>methodName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="enumcom_1_1ab_1_1activity_1_1_ab_activity_1_1_method.html">Method</a>&#160;</td>
+          <td class="paramname"><em>method</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> throws Exception</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>设置view的监听器.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">field</td><td>the field </td></tr>
+    <tr><td class="paramname">methodName</td><td>the method name </td></tr>
+    <tr><td class="paramname">method</td><td>the method </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>异常</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">Exception</td><td>the exception </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aa1ebef45baf26182c4877957ceec3590"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.activity.AbActivity.setProgressMessage </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>message</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：设置进度框显示的文字.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>the new progress message </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a92cff224d163a9a64405a1eb6a96656f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.activity.AbActivity.setTitleBarAbove </td>
+          <td>(</td>
+          <td class="paramtype">boolean&#160;</td>
+          <td class="paramname"><em>above</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：设置绝对定位的主标题栏覆盖到内容的上边 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">above</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>异常</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a4b396b3044a5f1ebe749c20fe9e5f45a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.activity.AbActivity.setViewSelectListener </td>
+          <td>(</td>
+          <td class="paramtype">Field&#160;</td>
+          <td class="paramname"><em>field</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>select</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>noSelect</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> throws Exception</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>设置view的监听器.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">field</td><td>the field </td></tr>
+    <tr><td class="paramname">select</td><td>the select </td></tr>
+    <tr><td class="paramname">noSelect</td><td>the no select </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>异常</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">Exception</td><td>the exception </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a01f69d1b467070e41bb5ce746e74c6cd"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.activity.AbActivity.showDialog </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">View&#160;</td>
+          <td class="paramname"><em>view</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：在底部显示一个Dialog,id为1,在中间显示id为2. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Dialog的类型 </td></tr>
+    <tr><td class="paramname">view</td><td>指定一个新View </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="classcom_1_1ab_1_1global_1_1_ab_constant.html#a353935578238fd5ff174a79eba229847">AbConstant.DIALOGBOTTOM</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a5dd835f283438473361862f30d367c28"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.activity.AbActivity.showDialog </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>title</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>msg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">DialogInterface.OnClickListener&#160;</td>
+          <td class="paramname"><em>mOkOnClickListener</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：对话框dialog （确认，取消）. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">title</td><td>对话框标题内容 </td></tr>
+    <tr><td class="paramname">msg</td><td>对话框提示内容 </td></tr>
+    <tr><td class="paramname">mOkOnClickListener</td><td>点击确认按钮的事件监听 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a1d49533a1b41709fa0fcc0aa726e3e0e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AlertDialog com.ab.activity.AbActivity.showDialog </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>title</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">View&#160;</td>
+          <td class="paramname"><em>view</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">DialogInterface.OnClickListener&#160;</td>
+          <td class="paramname"><em>mOkOnClickListener</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：对话框dialog （确认，取消）. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">title</td><td>对话框标题内容 </td></tr>
+    <tr><td class="paramname">view</td><td>对话框提示内容 </td></tr>
+    <tr><td class="paramname">mOkOnClickListener</td><td>点击确认按钮的事件监听 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ab9039571c136579b45e7e4ca3b7bd4a0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AlertDialog com.ab.activity.AbActivity.showDialog </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>title</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>msg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：对话框dialog （无按钮）. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">title</td><td>对话框标题内容 </td></tr>
+    <tr><td class="paramname">msg</td><td>对话框提示内容 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a4402705a5a20beaa771a2ee4594c395f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AlertDialog com.ab.activity.AbActivity.showDialog </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>title</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">View&#160;</td>
+          <td class="paramname"><em>view</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：对话框dialog （无按钮）. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">title</td><td>对话框标题内容 </td></tr>
+    <tr><td class="paramname">view</td><td>对话框提示内容 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a1d2ad48cd4f9b73f53aa82992c1bc036"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.activity.AbActivity.showProgressDialog </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：显示进度框. </p>
+
+</div>
+</div>
+<a class="anchor" id="ab558bbb5f99d054dfdc439f087ed7375"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.activity.AbActivity.showProgressDialog </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>message</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：显示进度框. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>the message </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a0442b8d019b31b315a01ec485fc5cd7f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.activity.AbActivity.showToast </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>text</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：Toast提示文本. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text</td><td>文本 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a9e698f34472b8ca6c767935ab86ef31e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.activity.AbActivity.showToast </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>resId</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：Toast提示文本. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">resId</td><td>文本的资源ID </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a6eb96e690d68f89f4f8dc1ff6db64862"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.activity.AbActivity.showToastInThread </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>resId</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：在线程中提示文本信息. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">resId</td><td>要提示的字符串资源ID，消息what值为0, </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ab535cfb87408189dfd7b25f9bcc0ac23"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.activity.AbActivity.showToastInThread </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>toast</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：在线程中提示文本信息. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">toast</td><td>消息what值为0 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a class="anchor" id="a2a0660d7eb07dee276d520393aff2602"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">RelativeLayout com.ab.activity.AbActivity.ab_base = null</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>总布局. </p>
+
+</div>
+</div>
+<a class="anchor" id="ac45cbf39329e5a3b4b06db85f41f0a30"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Application com.ab.activity.AbActivity.abApplication = null</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>全局的Application对象，已经完成初始化. </p>
+
+</div>
+</div>
+<a class="anchor" id="a2bb05353bad2e964f0c89e0afbd1dbb2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SharedPreferences com.ab.activity.AbActivity.abSharedPreferences = null</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>全局的SharedPreferences对象，已经完成初始化. </p>
+
+</div>
+</div>
+<a class="anchor" id="aa818f4678ed240a795bd23a89c9a4aa3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Handler com.ab.activity.AbActivity.baseHandler</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>初始值:</b><div class="fragment"><div class="line">= <span class="keyword">new</span> Handler() {</div>
+<div class="line"></div>
+<div class="line">        @Override</div>
+<div class="line">        <span class="keyword">public</span> <span class="keywordtype">void</span> handleMessage(Message msg) {</div>
+<div class="line">            <span class="keywordflow">switch</span> (msg.what) {</div>
+<div class="line">                <span class="keywordflow">case</span> AbConstant.SHOW_TOAST:</div>
+<div class="line">                    <a class="code" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a0442b8d019b31b315a01ec485fc5cd7f">showToast</a>(msg.getData().getString(<span class="stringliteral">&quot;Msg&quot;</span>));</div>
+<div class="line">                    <span class="keywordflow">break</span>;</div>
+<div class="line">                <span class="keywordflow">case</span> AbConstant.SHOW_PROGRESS:</div>
+<div class="line">                    <a class="code" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a1d2ad48cd4f9b73f53aa82992c1bc036">showProgressDialog</a>(<a class="code" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a42fd6f5657fdb8c54f841301c30ab9ff">mProgressMessage</a>);</div>
+<div class="line">                    <span class="keywordflow">break</span>;</div>
+<div class="line">                <span class="keywordflow">case</span> AbConstant.REMOVE_PROGRESS:</div>
+<div class="line">                    <a class="code" href="classcom_1_1ab_1_1activity_1_1_ab_activity.html#a41be1d768a9c4dd69f343db4bbc097f1">removeProgressDialog</a>();</div>
+<div class="line">                    <span class="keywordflow">break</span>;</div>
+<div class="line">                <span class="keywordflow">case</span> AbConstant.REMOVE_DIALOGBOTTOM:</div>
+<div class="line">                    removeDialog(AbConstant.DIALOGBOTTOM);</div>
+<div class="line">                <span class="keywordflow">case</span> AbConstant.REMOVE_DIALOGCENTER:</div>
+<div class="line">                    removeDialog(AbConstant.DIALOGCENTER);</div>
+<div class="line">                <span class="keywordflow">case</span> AbConstant.REMOVE_DIALOGTOP:</div>
+<div class="line">                    removeDialog(AbConstant.DIALOGTOP);</div>
+<div class="line">                <span class="keywordflow">default</span>:</div>
+<div class="line">                    <span class="keywordflow">break</span>;</div>
+<div class="line">            }</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+</div><!-- fragment --><p>主要Handler类，在线程中可用 what：0.提示文本信息,1.等待框 ,2.移除等待框 </p>
+
+</div>
+</div>
+<a class="anchor" id="a53769b59db5804871bb8788bccaac52d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">RelativeLayout com.ab.activity.AbActivity.contentLayout = null</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>主内容布局. </p>
+
+</div>
+</div>
+<a class="anchor" id="a60f6067b589b54a9ad00a60ca994de72"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean com.ab.activity.AbActivity.D = <a class="el" href="classcom_1_1ab_1_1global_1_1_ab_app_data.html#acd537fab5c27e4f2c7cb650ab1a5bd5d">AbAppData.DEBUG</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>记录日志的开关. </p>
+
+</div>
+</div>
+<a class="anchor" id="adaf824c5e9e576881f70c6fdaf42f677"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.ab.activity.AbActivity.dialogPadding = 40</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>弹出的Dialog的左右边距. </p>
+
+</div>
+</div>
+<a class="anchor" id="aefcbfe6ca71f05f36399eb612685a3bd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.ab.activity.AbActivity.diaplayHeight = 480</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>屏幕高度. </p>
+
+</div>
+</div>
+<a class="anchor" id="a8be25f303e8362a53bc2ad75eadaf6c5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.ab.activity.AbActivity.diaplayWidth = 320</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>屏幕宽度. </p>
+
+</div>
+</div>
+<a class="anchor" id="ac27a806f99b54468b47848e845589f6d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LinearLayout.LayoutParams com.ab.activity.AbActivity.layoutParamsFF = null</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>LinearLayout.LayoutParams，已经初始化为FILL_PARENT, FILL_PARENT </p>
+
+</div>
+</div>
+<a class="anchor" id="a7af493b066aeca39a7afba3b88a9324b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LinearLayout.LayoutParams com.ab.activity.AbActivity.layoutParamsFW = null</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>LinearLayout.LayoutParams，已经初始化为FILL_PARENT, WRAP_CONTENT </p>
+
+</div>
+</div>
+<a class="anchor" id="a541066b86492e0def94c39d23f73a7e4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LinearLayout.LayoutParams com.ab.activity.AbActivity.layoutParamsWF = null</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>LinearLayout.LayoutParams，已经初始化为WRAP_CONTENT, FILL_PARENT </p>
+
+</div>
+</div>
+<a class="anchor" id="a91f3522ad7c3085a6237851b3028ae3f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LinearLayout.LayoutParams com.ab.activity.AbActivity.layoutParamsWW = null</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>LinearLayout.LayoutParams，已经初始化为WRAP_CONTENT, WRAP_CONTENT </p>
+
+</div>
+</div>
+<a class="anchor" id="a45894dde843bd31ff66168a7dc56201a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classcom_1_1ab_1_1view_1_1titlebar_1_1_ab_bottom_bar.html">AbBottomBar</a> com.ab.activity.AbActivity.mAbBottomBar = null</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>副标题栏布局. </p>
+
+</div>
+</div>
+<a class="anchor" id="ad30d262a7c53594c343da662a10df489"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classcom_1_1ab_1_1view_1_1app_1_1_ab_monitor_view.html">AbMonitorView</a> com.ab.activity.AbActivity.mAbMonitorView = null</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>帧测试View. </p>
+
+</div>
+</div>
+<a class="anchor" id="ad2d9aab83763f9cc489d04ea9dafca74"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classcom_1_1ab_1_1view_1_1titlebar_1_1_ab_title_bar.html">AbTitleBar</a> com.ab.activity.AbActivity.mAbTitleBar = null</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>标题栏布局. </p>
+
+</div>
+</div>
+<a class="anchor" id="abd864ba80c5b70be45ba1fb0f8531eea"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Dialog com.ab.activity.AbActivity.mBottomDialog</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>底部弹出的Dialog. </p>
+
+</div>
+</div>
+<a class="anchor" id="adebc47dee165e3e1f7a8e67afdd83f86"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">View com.ab.activity.AbActivity.mBottomDialogView = null</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>底部弹出的Dialog的View. </p>
+
+</div>
+</div>
+<a class="anchor" id="a88c5498c098158c9efce7ab8d905c0e8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Dialog com.ab.activity.AbActivity.mCenterDialog</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>居中弹出的Dialog. </p>
+
+</div>
+</div>
+<a class="anchor" id="a604800c8b6885eee4349fef2481f4a54"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">View com.ab.activity.AbActivity.mCenterDialogView = null</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>居中弹出的Dialog的View. </p>
+
+</div>
+</div>
+<a class="anchor" id="a85e15f0d9e1b2c2af0c0e1bb738a3e5f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LayoutInflater com.ab.activity.AbActivity.mInflater</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>全局的LayoutInflater对象，已经完成初始化. </p>
+
+</div>
+</div>
+<a class="anchor" id="a6eb56aaeae7c1138fb582076b5321704"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Handler com.ab.activity.AbActivity.mMonitorHandler = new Handler()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>帧测试Handler. </p>
+
+</div>
+</div>
+<a class="anchor" id="a72474fb2f054e18f0076785497780106"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">WindowManager.LayoutParams com.ab.activity.AbActivity.mMonitorParams = null</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>帧测试参数. </p>
+
+</div>
+</div>
+<a class="anchor" id="aae2683a80cb1ceff31284cf83b51511a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Runnable com.ab.activity.AbActivity.mMonitorRunnable = null</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>帧测试线程. </p>
+
+</div>
+</div>
+<a class="anchor" id="abfba69eb60a920125054f51bcd129ae9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ProgressDialog com.ab.activity.AbActivity.mProgressDialog</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>全局的加载框对象，已经完成初始化. </p>
+
+</div>
+</div>
+<a class="anchor" id="a42fd6f5657fdb8c54f841301c30ab9ff"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.ab.activity.AbActivity.mProgressMessage = &quot;请稍候...&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>加载框的文字说明. </p>
+
+</div>
+</div>
+<a class="anchor" id="ac96d4f0a1aac6ee9ed7a94ae24e0cfa2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Dialog com.ab.activity.AbActivity.mTopDialog</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>顶部弹出的Dialog. </p>
+
+</div>
+</div>
+<a class="anchor" id="ad9133a76893ac3c9624ed1e5ae8f4a31"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">View com.ab.activity.AbActivity.mTopDialogView = null</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>顶部弹出的Dialog的View. </p>
+
+</div>
+</div>
+<a class="anchor" id="a1f795f2137d64ceeb74118dc04054cc7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">WindowManager com.ab.activity.AbActivity.mWindowManager = null</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Window 管理器. </p>
+
+</div>
+</div>
+<a class="anchor" id="a2c4ba43170e663c1bc81ac13ff05bbb8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.ab.activity.AbActivity.TAG = AbActivity.class.getSimpleName()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>记录日志的标记. </p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>src/com/ab/activity/<a class="el" href="_ab_activity_8java.html">AbActivity.java</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2014年 三月 19日 星期三 16:24:28 , 为 AndBase开发框架使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.4
+</small></address>
+</body>
+</html>

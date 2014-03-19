@@ -1,0 +1,1224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.4"/>
+<title>AndBase开发框架: com.ab.view.carousel.CarouselSpinner类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="ic_launcher.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">AndBase开发框架
+   &#160;<span id="projectnumber">1.5.7</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.4 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li class="current"><a href="annotated.html"><span>类</span></a></li>
+      <li><a href="files.html"><span>文件</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>类列表</span></a></li>
+      <li><a href="classes.html"><span>类索引</span></a></li>
+      <li><a href="hierarchy.html"><span>类继承关系</span></a></li>
+      <li><a href="functions.html"><span>类成员</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>全部</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>类</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>命名空间</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>文件</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>函数</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>变量</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>枚举值</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>页</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacecom.html">com</a></li><li class="navelem"><a class="el" href="namespacecom_1_1ab.html">ab</a></li><li class="navelem"><a class="el" href="namespacecom_1_1ab_1_1view.html">view</a></li><li class="navelem"><a class="el" href="namespacecom_1_1ab_1_1view_1_1carousel.html">carousel</a></li><li class="navelem"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html">CarouselSpinner</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">类</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pro-methods">Protected 成员函数</a> &#124;
+<a href="#pac-methods">包函数</a> &#124;
+<a href="#pac-attribs">包属性</a> &#124;
+<a href="#pri-methods">Private 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
+<a href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">com.ab.view.carousel.CarouselSpinner类 参考<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="dynheader">
+类 com.ab.view.carousel.CarouselSpinner 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.png" usemap="#com.ab.view.carousel.CarouselSpinner_map" alt=""/>
+  <map id="com.ab.view.carousel.CarouselSpinner_map" name="com.ab.view.carousel.CarouselSpinner_map">
+<area href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_image_view.html" alt="com.ab.view.carousel.CarouselImageView" shape="rect" coords="0,112,252,136"/>
+<area href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_view.html" alt="com.ab.view.carousel.CarouselView" shape="rect" coords="262,112,514,136"/>
+</map>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner_1_1_recycle_bin.html">RecycleBin</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner_1_1_saved_state.html">SavedState</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a16d2848492e919bc34fd1e542c78d8f0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#a16d2848492e919bc34fd1e542c78d8f0">CarouselSpinner</a> (Context context)</td></tr>
+<tr class="separator:a16d2848492e919bc34fd1e542c78d8f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa610194002011cf6eab9406e95476aec"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#aa610194002011cf6eab9406e95476aec">CarouselSpinner</a> (Context context, AttributeSet attrs)</td></tr>
+<tr class="separator:aa610194002011cf6eab9406e95476aec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86ddb19cbe4333eb8eb7415be8360f04"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#a86ddb19cbe4333eb8eb7415be8360f04">CarouselSpinner</a> (Context context, AttributeSet attrs, int defStyle)</td></tr>
+<tr class="separator:a86ddb19cbe4333eb8eb7415be8360f04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6399f1350f3d049b317fb9aada3988d3"><td class="memItemLeft" align="right" valign="top">SpinnerAdapter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#a6399f1350f3d049b317fb9aada3988d3">getAdapter</a> ()</td></tr>
+<tr class="separator:a6399f1350f3d049b317fb9aada3988d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a2bfed5b1b399d9aa4f015f90f5ed97"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#a3a2bfed5b1b399d9aa4f015f90f5ed97">setAdapter</a> (SpinnerAdapter adapter)</td></tr>
+<tr class="separator:a3a2bfed5b1b399d9aa4f015f90f5ed97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5420fb7856e506bb9bfebcc5e7ad1731"><td class="memItemLeft" align="right" valign="top">View&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#a5420fb7856e506bb9bfebcc5e7ad1731">getSelectedView</a> ()</td></tr>
+<tr class="separator:a5420fb7856e506bb9bfebcc5e7ad1731"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9dfb9e5eb5dc675070aaed7af554b681"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#a9dfb9e5eb5dc675070aaed7af554b681">setSelection</a> (int position, boolean animate)</td></tr>
+<tr class="separator:a9dfb9e5eb5dc675070aaed7af554b681"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada4ab24cfbfd01657c31651e24eace00"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#ada4ab24cfbfd01657c31651e24eace00">setSelection</a> (int position)</td></tr>
+<tr class="separator:ada4ab24cfbfd01657c31651e24eace00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4205a17c0b5bc2436526aa14bf07d060"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#a4205a17c0b5bc2436526aa14bf07d060">requestLayout</a> ()</td></tr>
+<tr class="separator:a4205a17c0b5bc2436526aa14bf07d060"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af863c7888d641af723f1aaf6aad1a2e6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#af863c7888d641af723f1aaf6aad1a2e6">getCount</a> ()</td></tr>
+<tr class="separator:af863c7888d641af723f1aaf6aad1a2e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a572d03ff14336e2c795b0b4f96e99508"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#a572d03ff14336e2c795b0b4f96e99508">pointToPositionView</a> (int x, int y)</td></tr>
+<tr class="separator:a572d03ff14336e2c795b0b4f96e99508"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a259cac8b759bdc69c1a57ebdf4c13289"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#a259cac8b759bdc69c1a57ebdf4c13289">pointToPositionImage</a> (int x, int y)</td></tr>
+<tr class="separator:a259cac8b759bdc69c1a57ebdf4c13289"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fe4ac305cdc60ddf77b18ba5c53b24b"><td class="memItemLeft" align="right" valign="top">Parcelable&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#a1fe4ac305cdc60ddf77b18ba5c53b24b">onSaveInstanceState</a> ()</td></tr>
+<tr class="separator:a1fe4ac305cdc60ddf77b18ba5c53b24b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab35157d076c3809f4a12a2600ce139c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#ab35157d076c3809f4a12a2600ce139c5">onRestoreInstanceState</a> (Parcelable state)</td></tr>
+<tr class="separator:ab35157d076c3809f4a12a2600ce139c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected 成员函数</h2></td></tr>
+<tr class="memitem:aa8c335c2dc5fa0f4c543e4e5f3f0e0aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#aa8c335c2dc5fa0f4c543e4e5f3f0e0aa">onMeasure</a> (int widthMeasureSpec, int heightMeasureSpec)</td></tr>
+<tr class="separator:aa8c335c2dc5fa0f4c543e4e5f3f0e0aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a502eab818d78231ea9f62d6b90f2ffbc"><td class="memItemLeft" align="right" valign="top">ViewGroup.LayoutParams&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#a502eab818d78231ea9f62d6b90f2ffbc">generateDefaultLayoutParams</a> ()</td></tr>
+<tr class="separator:a502eab818d78231ea9f62d6b90f2ffbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pac-methods"></a>
+包函数</h2></td></tr>
+<tr class="memitem:a3303c71e5f7636b523227f065b169a83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#a3303c71e5f7636b523227f065b169a83">setSelectionInt</a> (int position, boolean animate)</td></tr>
+<tr class="separator:a3303c71e5f7636b523227f065b169a83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04d6b18c75ed9f44945ea60aca91247c"><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#a04d6b18c75ed9f44945ea60aca91247c">layout</a> (int delta, boolean animate)</td></tr>
+<tr class="separator:a04d6b18c75ed9f44945ea60aca91247c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8056c1d9588cf44b1f289f6144ec18e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#a8056c1d9588cf44b1f289f6144ec18e9">resetList</a> ()</td></tr>
+<tr class="separator:a8056c1d9588cf44b1f289f6144ec18e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2db4dc92ecb4f1825c7c0972dd6d9d58"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#a2db4dc92ecb4f1825c7c0972dd6d9d58">getChildHeight</a> (View child)</td></tr>
+<tr class="separator:a2db4dc92ecb4f1825c7c0972dd6d9d58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87e89ffd829e8435c232396f211ff13a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#a87e89ffd829e8435c232396f211ff13a">getChildWidth</a> (View child)</td></tr>
+<tr class="separator:a87e89ffd829e8435c232396f211ff13a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a628a4d47fc76424ac3f6145b7789a32e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#a628a4d47fc76424ac3f6145b7789a32e">recycleAllViews</a> ()</td></tr>
+<tr class="separator:a628a4d47fc76424ac3f6145b7789a32e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pac-attribs"></a>
+包属性</h2></td></tr>
+<tr class="memitem:a41123affe15dd99f0aa54a5dc6ecb7b7"><td class="memItemLeft" align="right" valign="top">SpinnerAdapter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#a41123affe15dd99f0aa54a5dc6ecb7b7">mAdapter</a></td></tr>
+<tr class="separator:a41123affe15dd99f0aa54a5dc6ecb7b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70afa5ec8ddd0c439936ed611bd64e6f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#a70afa5ec8ddd0c439936ed611bd64e6f">mHeightMeasureSpec</a></td></tr>
+<tr class="separator:a70afa5ec8ddd0c439936ed611bd64e6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a931e3cb6a95a7cd3885f244c101cb787"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#a931e3cb6a95a7cd3885f244c101cb787">mWidthMeasureSpec</a></td></tr>
+<tr class="separator:a931e3cb6a95a7cd3885f244c101cb787"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a518d28e90e699e24e20a4d75b096c3e6"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#a518d28e90e699e24e20a4d75b096c3e6">mBlockLayoutRequests</a></td></tr>
+<tr class="separator:a518d28e90e699e24e20a4d75b096c3e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85009c97a09d70d1512a9e2f2a44daa3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#a85009c97a09d70d1512a9e2f2a44daa3">mSelectionLeftPadding</a> = 0</td></tr>
+<tr class="separator:a85009c97a09d70d1512a9e2f2a44daa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8209df0bdfcbf131c4d15517f494e2eb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#a8209df0bdfcbf131c4d15517f494e2eb">mSelectionTopPadding</a> = 0</td></tr>
+<tr class="separator:a8209df0bdfcbf131c4d15517f494e2eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d8882ed13c96d8ad13a8d4895dd664c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#a6d8882ed13c96d8ad13a8d4895dd664c">mSelectionRightPadding</a> = 0</td></tr>
+<tr class="separator:a6d8882ed13c96d8ad13a8d4895dd664c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a574b934f9886a7d01ffa5073ef39b6a9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#a574b934f9886a7d01ffa5073ef39b6a9">mSelectionBottomPadding</a> = 0</td></tr>
+<tr class="separator:a574b934f9886a7d01ffa5073ef39b6a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67f14ea653b53e18779a28326c6d0149"><td class="memItemLeft" align="right" valign="top">final Rect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#a67f14ea653b53e18779a28326c6d0149">mSpinnerPadding</a> = new Rect()</td></tr>
+<tr class="separator:a67f14ea653b53e18779a28326c6d0149"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e1a7444de3be66093885caafba9feb1"><td class="memItemLeft" align="right" valign="top">final <a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner_1_1_recycle_bin.html">RecycleBin</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#a8e1a7444de3be66093885caafba9feb1">mRecycler</a> = new <a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner_1_1_recycle_bin.html">RecycleBin</a>()</td></tr>
+<tr class="separator:a8e1a7444de3be66093885caafba9feb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private 成员函数</h2></td></tr>
+<tr class="memitem:a9a0c08fc578914040f78953841589c23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#a9a0c08fc578914040f78953841589c23">initCarouselSpinner</a> ()</td></tr>
+<tr class="separator:a9a0c08fc578914040f78953841589c23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:a09029ea124042d2080161d2f97acd24d"><td class="memItemLeft" align="right" valign="top">DataSetObserver&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html#a09029ea124042d2080161d2f97acd24d">mDataSetObserver</a></td></tr>
+<tr class="separator:a09029ea124042d2080161d2f97acd24d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>The Class <a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner.html">CarouselSpinner</a>. </p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a class="anchor" id="a16d2848492e919bc34fd1e542c78d8f0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">com.ab.view.carousel.CarouselSpinner.CarouselSpinner </td>
+          <td>(</td>
+          <td class="paramtype">Context&#160;</td>
+          <td class="paramname"><em>context</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Instantiates a new carousel spinner.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>the context </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aa610194002011cf6eab9406e95476aec"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">com.ab.view.carousel.CarouselSpinner.CarouselSpinner </td>
+          <td>(</td>
+          <td class="paramtype">Context&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">AttributeSet&#160;</td>
+          <td class="paramname"><em>attrs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Instantiates a new carousel spinner.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>the context </td></tr>
+    <tr><td class="paramname">attrs</td><td>the attrs </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a86ddb19cbe4333eb8eb7415be8360f04"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">com.ab.view.carousel.CarouselSpinner.CarouselSpinner </td>
+          <td>(</td>
+          <td class="paramtype">Context&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">AttributeSet&#160;</td>
+          <td class="paramname"><em>attrs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>defStyle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Instantiates a new carousel spinner.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>the context </td></tr>
+    <tr><td class="paramname">attrs</td><td>the attrs </td></tr>
+    <tr><td class="paramname">defStyle</td><td>the def style </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a class="anchor" id="a502eab818d78231ea9f62d6b90f2ffbc"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ViewGroup.LayoutParams com.ab.view.carousel.CarouselSpinner.generateDefaultLayoutParams </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：TODO </p>
+<dl class="section see"><dt>参见</dt><dd>android.view.ViewGroup::generateDefaultLayoutParams() </dd></dl>
+<dl class="section author"><dt>作者</dt><dd>: zhaoqp </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>：2013-11-28 上午11:14:34 </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>v1.0 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a6399f1350f3d049b317fb9aada3988d3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">SpinnerAdapter com.ab.view.carousel.CarouselSpinner.getAdapter </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：TODO </p>
+<dl class="section see"><dt>参见</dt><dd>com.ab.view.carousel.CarouselAdapter::getAdapter() </dd></dl>
+<dl class="section author"><dt>作者</dt><dd>: zhaoqp </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>：2013-11-28 上午11:14:34 </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>v1.0 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a2db4dc92ecb4f1825c7c0972dd6d9d58"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.ab.view.carousel.CarouselSpinner.getChildHeight </td>
+          <td>(</td>
+          <td class="paramtype">View&#160;</td>
+          <td class="paramname"><em>child</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Gets the child height.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">child</td><td>the child </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>the child height </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a87e89ffd829e8435c232396f211ff13a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.ab.view.carousel.CarouselSpinner.getChildWidth </td>
+          <td>(</td>
+          <td class="paramtype">View&#160;</td>
+          <td class="paramname"><em>child</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Gets the child width.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">child</td><td>the child </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>the child width </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="af863c7888d641af723f1aaf6aad1a2e6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.ab.view.carousel.CarouselSpinner.getCount </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：TODO </p>
+<dl class="section see"><dt>参见</dt><dd>com.ab.view.carousel.CarouselAdapter::getCount() </dd></dl>
+<dl class="section author"><dt>作者</dt><dd>: zhaoqp </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>：2013-11-28 上午11:14:34 </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>v1.0 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a5420fb7856e506bb9bfebcc5e7ad1731"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">View com.ab.view.carousel.CarouselSpinner.getSelectedView </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：TODO </p>
+<dl class="section see"><dt>参见</dt><dd>com.ab.view.carousel.CarouselAdapter::getSelectedView() </dd></dl>
+<dl class="section author"><dt>作者</dt><dd>: zhaoqp </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>：2013-11-28 上午11:14:34 </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>v1.0 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a9a0c08fc578914040f78953841589c23"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.view.carousel.CarouselSpinner.initCarouselSpinner </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Common code for different constructor flavors. </p>
+
+</div>
+</div>
+<a class="anchor" id="a04d6b18c75ed9f44945ea60aca91247c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract void com.ab.view.carousel.CarouselSpinner.layout </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>delta</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">boolean&#160;</td>
+          <td class="paramname"><em>animate</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Layout.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">delta</td><td>the delta </td></tr>
+    <tr><td class="paramname">animate</td><td>the animate </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>在 <a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_image_view.html#a4c7317f4c18f0fe36f496475f79c0f08">com.ab.view.carousel.CarouselImageView</a> , 以及 <a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_view.html#a99b9431d2d53384cadfc65fdec650488">com.ab.view.carousel.CarouselView</a> 内被实现.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa8c335c2dc5fa0f4c543e4e5f3f0e0aa"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.view.carousel.CarouselSpinner.onMeasure </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>widthMeasureSpec</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>heightMeasureSpec</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>On measure.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">widthMeasureSpec</td><td>the width measure spec </td></tr>
+    <tr><td class="paramname">heightMeasureSpec</td><td>the height measure spec </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd>android.view.View::measure(int, int)</dd></dl>
+<p>Figure out the dimensions of this Spinner. The width comes from the widthMeasureSpec as Spinnners can't have their width set to UNSPECIFIED. The height is based on the height of the selected item plus padding. </p>
+
+</div>
+</div>
+<a class="anchor" id="ab35157d076c3809f4a12a2600ce139c5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.view.carousel.CarouselSpinner.onRestoreInstanceState </td>
+          <td>(</td>
+          <td class="paramtype">Parcelable&#160;</td>
+          <td class="paramname"><em>state</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：TODO </p>
+<dl class="section see"><dt>参见</dt><dd>android.view.View::onRestoreInstanceState(android.os.Parcelable) </dd></dl>
+<dl class="section author"><dt>作者</dt><dd>: zhaoqp </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>：2013-11-28 上午11:14:34 </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>v1.0 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a1fe4ac305cdc60ddf77b18ba5c53b24b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Parcelable com.ab.view.carousel.CarouselSpinner.onSaveInstanceState </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：TODO </p>
+<dl class="section see"><dt>参见</dt><dd>android.view.View::onSaveInstanceState() </dd></dl>
+<dl class="section author"><dt>作者</dt><dd>: zhaoqp </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>：2013-11-28 上午11:14:34 </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>v1.0 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a259cac8b759bdc69c1a57ebdf4c13289"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.ab.view.carousel.CarouselSpinner.pointToPositionImage </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Maps a point to a position in the list.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>X in local coordinate </td></tr>
+    <tr><td class="paramname">y</td><td>Y in local coordinate </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>The position of the item which contains the specified point, or <a class="el" href="">INVALID_POSITION</a> if the point does not intersect an item. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a572d03ff14336e2c795b0b4f96e99508"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.ab.view.carousel.CarouselSpinner.pointToPositionView </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Maps a point to a position in the list.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>X in local coordinate </td></tr>
+    <tr><td class="paramname">y</td><td>Y in local coordinate </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>The position of the item which contains the specified point, or <a class="el" href="">INVALID_POSITION</a> if the point does not intersect an item. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a628a4d47fc76424ac3f6145b7789a32e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.view.carousel.CarouselSpinner.recycleAllViews </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Recycle all views. </p>
+
+</div>
+</div>
+<a class="anchor" id="a4205a17c0b5bc2436526aa14bf07d060"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.view.carousel.CarouselSpinner.requestLayout </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Override to prevent spamming ourselves with layout requests as we place views.</p>
+<dl class="section see"><dt>参见</dt><dd>android.view.View::requestLayout() </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a8056c1d9588cf44b1f289f6144ec18e9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.view.carousel.CarouselSpinner.resetList </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Clear out all children from the list. </p>
+
+</div>
+</div>
+<a class="anchor" id="a3a2bfed5b1b399d9aa4f015f90f5ed97"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.view.carousel.CarouselSpinner.setAdapter </td>
+          <td>(</td>
+          <td class="paramtype">SpinnerAdapter&#160;</td>
+          <td class="paramname"><em>adapter</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：TODO </p>
+<dl class="section see"><dt>参见</dt><dd>com.ab.view.carousel.CarouselAdapter::setAdapter(android.widget.Adapter) </dd></dl>
+<dl class="section author"><dt>作者</dt><dd>: zhaoqp </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>：2013-11-28 上午11:14:34 </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>v1.0 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a9dfb9e5eb5dc675070aaed7af554b681"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.view.carousel.CarouselSpinner.setSelection </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">boolean&#160;</td>
+          <td class="paramname"><em>animate</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Jump directly to a specific item in the adapter data.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>the position </td></tr>
+    <tr><td class="paramname">animate</td><td>the animate </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ada4ab24cfbfd01657c31651e24eace00"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.view.carousel.CarouselSpinner.setSelection </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>position</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>描述：TODO </p>
+<dl class="section see"><dt>参见</dt><dd>com.ab.view.carousel.CarouselAdapter::setSelection(int) </dd></dl>
+<dl class="section author"><dt>作者</dt><dd>: zhaoqp </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>：2013-11-28 上午11:14:34 </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>v1.0 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a3303c71e5f7636b523227f065b169a83"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.ab.view.carousel.CarouselSpinner.setSelectionInt </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">boolean&#160;</td>
+          <td class="paramname"><em>animate</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Makes the item at the supplied position selected.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>Position to select </td></tr>
+    <tr><td class="paramname">animate</td><td>Should the transition be animated </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a class="anchor" id="a41123affe15dd99f0aa54a5dc6ecb7b7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">SpinnerAdapter com.ab.view.carousel.CarouselSpinner.mAdapter</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The m adapter. </p>
+
+</div>
+</div>
+<a class="anchor" id="a518d28e90e699e24e20a4d75b096c3e6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean com.ab.view.carousel.CarouselSpinner.mBlockLayoutRequests</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The m block layout requests. </p>
+
+</div>
+</div>
+<a class="anchor" id="a09029ea124042d2080161d2f97acd24d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">DataSetObserver com.ab.view.carousel.CarouselSpinner.mDataSetObserver</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The m data set observer. </p>
+
+</div>
+</div>
+<a class="anchor" id="a70afa5ec8ddd0c439936ed611bd64e6f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.ab.view.carousel.CarouselSpinner.mHeightMeasureSpec</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The m height measure spec. </p>
+
+</div>
+</div>
+<a class="anchor" id="a8e1a7444de3be66093885caafba9feb1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final <a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner_1_1_recycle_bin.html">RecycleBin</a> com.ab.view.carousel.CarouselSpinner.mRecycler = new <a class="el" href="classcom_1_1ab_1_1view_1_1carousel_1_1_carousel_spinner_1_1_recycle_bin.html">RecycleBin</a>()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The m recycler. </p>
+
+</div>
+</div>
+<a class="anchor" id="a574b934f9886a7d01ffa5073ef39b6a9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.ab.view.carousel.CarouselSpinner.mSelectionBottomPadding = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The m selection bottom padding. </p>
+
+</div>
+</div>
+<a class="anchor" id="a85009c97a09d70d1512a9e2f2a44daa3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.ab.view.carousel.CarouselSpinner.mSelectionLeftPadding = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The m selection left padding. </p>
+
+</div>
+</div>
+<a class="anchor" id="a6d8882ed13c96d8ad13a8d4895dd664c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.ab.view.carousel.CarouselSpinner.mSelectionRightPadding = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The m selection right padding. </p>
+
+</div>
+</div>
+<a class="anchor" id="a8209df0bdfcbf131c4d15517f494e2eb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.ab.view.carousel.CarouselSpinner.mSelectionTopPadding = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The m selection top padding. </p>
+
+</div>
+</div>
+<a class="anchor" id="a67f14ea653b53e18779a28326c6d0149"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final Rect com.ab.view.carousel.CarouselSpinner.mSpinnerPadding = new Rect()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The m spinner padding. </p>
+
+</div>
+</div>
+<a class="anchor" id="a931e3cb6a95a7cd3885f244c101cb787"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.ab.view.carousel.CarouselSpinner.mWidthMeasureSpec</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The m width measure spec. </p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>src/com/ab/view/carousel/<a class="el" href="_carousel_spinner_8java.html">CarouselSpinner.java</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2014年 三月 19日 星期三 16:24:30 , 为 AndBase开发框架使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.4
+</small></address>
+</body>
+</html>

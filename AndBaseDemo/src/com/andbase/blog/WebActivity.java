@@ -64,7 +64,7 @@ public class WebActivity extends AbActivity {
 		webSettings.setDefaultFontSize(20);
 		
         //访问assets目录下的文件
-        String url = "http://www.418log.org/m";
+        String url = "http://www.amengsoft.org/m";
         mWebView.loadUrl(url);
         
 		
