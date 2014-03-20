@@ -165,13 +165,6 @@ public class MainActivity extends AbActivity {
 		msp.show(this);
 	}
 	
-	//显示赞助
-	public void showZero(){
-		list.showExit(this); 
-	}
-
-	
-	
 	private void initTitleRightLayout(){
     	mAbTitleBar.clearRightView();
     	View rightViewMore = mInflater.inflate(R.layout.more_btn, null);
@@ -236,10 +229,7 @@ public class MainActivity extends AbActivity {
                         tExit.schedule(task, 2000);  
                     }  
                 } else {
-                	showZero();
-                    //finish();  
-                    //System.exit(0);
-                    
+                    finish();  
                 }
         	}
         }  
