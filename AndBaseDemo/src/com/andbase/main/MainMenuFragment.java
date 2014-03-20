@@ -219,7 +219,7 @@ public class MainMenuFragment extends Fragment {
 		
 		AbMenuItem m3 = new AbMenuItem();
 		m3.setIconId(R.drawable.set);
-		m3.setText("精神赞助我");
+		m3.setText("支持我");
 		mChild2.add(m3);
 		
 		AbMenuItem m4 = new AbMenuItem();

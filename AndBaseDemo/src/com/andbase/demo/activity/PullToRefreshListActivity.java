@@ -112,7 +112,7 @@ public class PullToRefreshListActivity extends AbActivity {
 	   		    	newList = new ArrayList<Map<String, Object>>();
 	   		    	Map<String, Object> map = null;
 	   		    	
-	   		    	for (int i = 0; i < pageSize; i++) {
+	   		    	for (int i = 0; i < 2; i++) {
 	   		    		map = new HashMap<String, Object>();
 	   					map.put("itemsIcon",mPhotoList.get(new Random().nextInt(mPhotoList.size())));
 		   		    	map.put("itemsTitle", "item"+(i+1));

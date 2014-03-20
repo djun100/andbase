@@ -11,7 +11,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 
 import com.ab.activity.AbActivity;
-import com.ab.global.AbConstant;
 import com.ab.view.sliding.AbSlidingPlayView;
 import com.ab.view.titlebar.AbTitleBar;
 import com.andbase.R;

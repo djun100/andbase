@@ -49,7 +49,7 @@ public class AbBasicDBDao {
 	 * @param cursor the cursor
 	 * @param db the db
 	 */
-	public void closeDB(Cursor cursor, SQLiteDatabase db) {
+	public void closeDatabase(Cursor cursor, SQLiteDatabase db) {
 		if (cursor != null) {
 			cursor.close();
 			cursor = null;

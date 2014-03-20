@@ -94,7 +94,7 @@ public class DownFileDao extends AbBasicDBDao{
 			e.printStackTrace();
 			return null;
 		}finally{
-			closeDB(cursor,db);
+			closeDatabase(cursor,db);
 		}
 		return mDownFile;
 	}
@@ -124,7 +124,7 @@ public class DownFileDao extends AbBasicDBDao{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{
-			closeDB(null,db);
+			closeDatabase(null,db);
 		}
 		return row;
 	}
@@ -150,7 +150,7 @@ public class DownFileDao extends AbBasicDBDao{
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			closeDB(null, db);
+			closeDatabase(null, db);
 		}
 		return row;
 	}
@@ -172,7 +172,7 @@ public class DownFileDao extends AbBasicDBDao{
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			closeDB(null, db);
+			closeDatabase(null, db);
 		}
 		return row;
 	}

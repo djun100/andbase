@@ -17,7 +17,6 @@ package com.ab.view.pullview;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -306,7 +305,7 @@ public class AbPullGridView extends AbBaseGridView implements OnScrollListener,O
 				if (mEnablePullRefresh && (mHeaderView.getVisiableHeight() > 0 || deltaY > 0)) {
 					//下拉更新高度
 					updateHeaderHeight(deltaY / OFFSET_RADIO);
-				} else if (mEnablePullLoad && !mPullLoading && mGridView.getLastVisiblePosition() == (mTotalItemCount-1) && deltaY<0) {
+				} else if (mEnablePullLoad && !mPullLoading && mGridView.getLastVisiblePosition() == (mTotalItemCount-1) && deltaY<-5) {
 					startLoadMore();
 				}
 				break;

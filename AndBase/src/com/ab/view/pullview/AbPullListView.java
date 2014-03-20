@@ -300,7 +300,7 @@ public class AbPullListView extends ListView implements OnScrollListener {
 			mLastY = ev.getRawY();
 			if (mEnablePullRefresh && getFirstVisiblePosition() == 0 && (mHeaderView.getVisiableHeight() > 0 || deltaY > 0)) {
 				updateHeaderHeight(deltaY / OFFSET_RADIO);
-			} else if (mEnablePullLoad && !mPullLoading && getLastVisiblePosition() == mTotalItemCount - 1 && deltaY<0) {
+			} else if (mEnablePullLoad && !mPullLoading && getLastVisiblePosition() == mTotalItemCount - 1 && deltaY<-5) {
 				startLoadMore();
 			}
 			break;

@@ -20,7 +20,7 @@ public class FriendAdapter extends BaseAdapter {
 	
 	private List<FrontiaUser.FrontiaUserDetail> mList;
 	private Context mContext;
-	public  int pageSize = 16;
+	public  int pageSize = 48;
 	//图片下载器
     private AbImageDownloader mAbImageDownloader = null;
 	
