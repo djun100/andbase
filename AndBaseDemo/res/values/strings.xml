@@ -12,7 +12,9 @@
     <string name="down_list">下载器</string>
     <string name="welcome_name">欢迎页面</string>
     <string name="level_name">等级条</string>
-    <string name="sliding_tab_name">Sliding Tab</string>
+    <string name="tab_name">Tab切换</string>
+    <string name="tab_top_name">顶部切换Tab</string>
+    <string name="tab_bottom_name">底部切换Tab</string>
     <string name="wheel_name">轮子选择</string>
     <string name="photo_add_name">拍照相册选择</string>
     <string name="chart_name">图表</string>
@@ -61,11 +63,12 @@
     <string name="see">查看</string>
     <string name="about">关于</string>
     <string name="version_lable">程序版本：</string>
-    <string name="copyright">版权所有  CopyRight 2012 418log.org</string>
-    <string name="about_desc">      \t\tAndroid开发宝
+    <string name="copyright">版权所有  CopyRight 2015 amengsoft.org</string>
+    <string name="about_desc">
+      \t\tAndroid开发宝
       \n\t\t又“andBase开发框架”
       andbase是为Android开发者量身打造的一款开源类库产品，
-               您可以在418log.org中获取到最新的代码，示例以及开发文档。
+                 您可以在418log.org中获取到最新的代码，示例以及开发文档。
       \n\t\tandbase中包含了大量的开发常用手段，如网络下载，Http请求,线程与线程池的管理，
 	      图片缓存管理，图片文件下载上传，数据库ORM框架，并封装了大量常用工具类入如字符串，日期，文件处理，图片处理等，
 	      能够使您的应用在团队开发中减少冗余代码，很大的提高了代码的维护性与开发高效性，
@@ -74,8 +77,9 @@
 	      不会使你的程序包变大，却能大幅度缩小您的程序。
 	      而这一切都是免费的。 
 	   \n
-       \n\t\t官方主页：www.418log.org
-       \n\t\t交流QQ群：38535812</string>
+       \n\t\t官方主页：www.amengsoft.org
+       \n\t\t交流QQ群：38535812    </string>
+    
     <string name="date_picker">年月日：</string>
     <string name="time_picker1">月日时分：</string>
     <string name="time_picker2">时分：</string>
@@ -141,7 +145,7 @@
 		\n5、用户管理
 		\n用户单独承担发布内容的责任。用户对服务的使用是根据所有适用于服务的地方法律、国家法律和国际法律标准的。
 		\n6、通告
-		\n所有发给用户的通告都可通过电子邮件或常规的信件传送。  </string>
+		\n所有发给用户的通告都可通过电子邮件或常规的信件传送。      </string>
     <string name="read_desc">请仔细阅读如下条款</string>
     <string name="register_protocol">同意注册协议</string>
     <string name="clear_cache">清空缓存</string>

@@ -125,6 +125,21 @@
         </activity>
         
          <activity
+            android:name=".demo.activity.TabActivity"
+            android:configChanges="keyboardHidden|orientation" >
+        </activity>
+        
+        <activity
+            android:name=".demo.activity.TabTopActivity"
+            android:configChanges="keyboardHidden|orientation" >
+        </activity>
+        
+        <activity
+            android:name=".demo.activity.TabBottomActivity"
+            android:configChanges="keyboardHidden|orientation" >
+        </activity>
+        
+         <activity
             android:name=".demo.activity.DownListActivity"
             android:configChanges="keyboardHidden|orientation" >
         </activity>
@@ -166,11 +181,6 @@
         
         <activity
             android:name=".demo.activity.LevelChartActivity"
-            android:configChanges="keyboardHidden|orientation" >
-        </activity>
-        
-        <activity
-            android:name=".demo.activity.SlidingTabActivity"
             android:configChanges="keyboardHidden|orientation" >
         </activity>
         

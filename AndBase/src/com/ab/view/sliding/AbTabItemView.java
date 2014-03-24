@@ -105,5 +105,15 @@ public class AbTabItemView extends LinearLayout {
 	public void setTabBackgroundResource(int resid) {
 		this.setBackgroundResource(resid);
 	}
+	
+	/**
+     * 
+     * 描述：设置tab的背景选择
+     * @param resid
+     * @throws 
+     */
+	public void setTabBackgroundDrawable(Drawable d) {
+		this.setBackgroundDrawable(d);
+	}
     
 }

@@ -144,8 +144,8 @@ public class DemoMainActivity extends AbActivity {
 
 		map = new HashMap<String, Object>();
 		map.put("itemsIcon", R.drawable.image_bg);
-		map.put("itemsTitle", "14.sliding Tab");
-		map.put("itemsText", "可滑动的tab标签");
+		map.put("itemsTitle", "14.Tab切换");
+		map.put("itemsText", "可滑动的tab标签,顶部和底部");
 		list.add(map);
 
 		map = new HashMap<String, Object>();
@@ -280,7 +280,7 @@ public class DemoMainActivity extends AbActivity {
 					startActivity(intent);
 					break;
 				case 13:
-					intent = new Intent(DemoMainActivity.this, SlidingTabActivity.class);
+					intent = new Intent(DemoMainActivity.this, TabActivity.class);
 					startActivity(intent);
 					break;
 				case 14:

@@ -136,8 +136,7 @@ public class AbImageUtil {
 	    //设置为true,decodeFile先不创建内存 只获取一些解码边界信息即图片大小信息
 	    opts.inJustDecodeBounds = true;	
 	    BitmapFactory.decodeFile(file.getPath(),opts);
-	    //inSampleSize=2表示图片宽高都为原来的二分之一，即图片为原来的四分之一
-	    //缩放可以将像素点打薄
+	    
 	    // 获取图片的原始宽度高度
 		int srcWidth = opts.outWidth;  
 		int srcHeight = opts.outHeight;
@@ -167,13 +166,14 @@ public class AbImageUtil {
 		opts.inPurgeable = true;
 		//位图可以共享一个参考输入数据(inputstream、阵列等)
 		opts.inInputShareable = true;
-        
-		// 缩放的比例，缩放是很难按准备的比例进行缩放的，通过inSampleSize来进行缩放，其值表明缩放的倍数，SDK中建议其值是2的指数值
+		
+		//inSampleSize=2 表示图片宽高都为原来的二分之一，即图片为原来的四分之一
+		// 缩放的比例，SDK中建议其值是2的指数值，通过inSampleSize来进行缩放，其值表明缩放的倍数
 		if(scale>1){
 			//缩小
 			opts.inSampleSize = (int)scale;
 		}else{
-			//放大
+			//不缩放
 			opts.inSampleSize = 1;
 		}
 		

@@ -9,7 +9,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.ab.view.sliding.AbSlidingTabView;
 import com.andbase.R;
@@ -19,7 +18,7 @@ public class SlidingTabFragment extends Fragment {
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.sliding_tab, null);
+		View view = inflater.inflate(R.layout.tab_top, null);
 		AbSlidingTabView mAbSlidingTabView = (AbSlidingTabView)view.findViewById(R.id.mAbSlidingTabView);
 		
 		//如果里面的页面列表不能下载原因：

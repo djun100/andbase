@@ -72,7 +72,6 @@ public class AbSlidingTabView extends LinearLayout {
 	/**tab的图标*/
 	private List<Drawable> tabItemDrawableList = null;
 	
-	
 	/**内容的View*/
 	private ArrayList<Fragment> pagerItemList = null;
 	
@@ -350,7 +349,7 @@ public class AbSlidingTabView extends LinearLayout {
 	}
 	
 	/**
-     * 描述：设置tab的背景选择
+     * 描述：设置单个tab的背景选择器
      * @param resid
      * @throws 
      */
@@ -364,8 +363,8 @@ public class AbSlidingTabView extends LinearLayout {
 	 * @param res
 	 * @throws 
 	 */
-	public void setTabLayoutBackgroundResource(int res) {
-		this.mTabLayout.setBackgroundResource(res);
+	public void setTabLayoutBackgroundResource(int resid) {
+		this.mTabLayout.setBackgroundResource(resid);
 	}
 	
 	/**
@@ -377,7 +376,6 @@ public class AbSlidingTabView extends LinearLayout {
 		
 		tabItemTextList.addAll(tabTexts);
 		pagerItemList.addAll(fragments);
-		
 		mFragmentPagerAdapter.notifyDataSetChanged();
 		notifyTabDataSetChanged();
 	}
@@ -387,7 +385,7 @@ public class AbSlidingTabView extends LinearLayout {
 	 * 描述：增加一组内容与tab
 	 * @throws 
 	 */
-	public void addItemViews(List<String> tabTexts,List<Drawable> drawables,List<Fragment> fragments){
+	public void addItemViews(List<String> tabTexts,List<Fragment> fragments,List<Drawable> drawables){
 		
 		tabItemTextList.addAll(tabTexts);
 		pagerItemList.addAll(fragments);
@@ -413,7 +411,7 @@ public class AbSlidingTabView extends LinearLayout {
 	 * 描述：增加一个内容与tab
 	 * @throws 
 	 */
-	public void addItemView(String tabText,Drawable drawable,Fragment fragment){
+	public void addItemView(String tabText,Fragment fragment,Drawable drawable){
 		tabItemTextList.add(tabText);
 		pagerItemList.add(fragment);
 		tabItemDrawableList.add(drawable);

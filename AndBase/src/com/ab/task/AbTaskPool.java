@@ -49,7 +49,7 @@ public class AbTaskPool{
 	private static AbTaskPool mAbTaskPool = null; 
 	
 	/** 固定5个线程来执行任务. */
-	private static int nThreads  = 5;
+	private static int nThreads  = 10;
 	
 	/** 线程执行器. */
 	private static ExecutorService executorService = null; 
@@ -74,7 +74,7 @@ public class AbTaskPool{
      */
     static{
     	nThreads = AbAppUtil.getNumCores();
-    	mAbTaskPool = new AbTaskPool(nThreads*5); 
+    	mAbTaskPool = new AbTaskPool(nThreads*10); 
     }
 	
 	/**

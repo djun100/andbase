@@ -37,7 +37,7 @@ import com.andbase.demo.activity.SceneActivity;
 import com.andbase.demo.activity.SlidingButtonActivity;
 import com.andbase.demo.activity.SlidingMenuActivity;
 import com.andbase.demo.activity.SlidingPlayViewActivity;
-import com.andbase.demo.activity.SlidingTabActivity;
+import com.andbase.demo.activity.TabTopActivity;
 import com.andbase.demo.activity.TableActivity;
 import com.andbase.demo.activity.ThreadControlActivity;
 import com.andbase.demo.activity.WelcomeActivity;
@@ -283,7 +283,7 @@ public class DemoMainFragment extends Fragment {
 						startActivity(intent);
 						break;
 					case 13:
-						intent = new Intent(mActivity,SlidingTabActivity.class);
+						intent = new Intent(mActivity,TabTopActivity.class);
 						startActivity(intent);
 						break;
 					case 14:
