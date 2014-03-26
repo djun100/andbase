@@ -343,7 +343,7 @@ containing a value of this type.
         public static final int yuan1_z=0x7f020119;
     }
     public static final class id {
-        public static final int add=0x7f0b00ec;
+        public static final int add=0x7f0b00ed;
         public static final int addAllBtn=0x7f0b00d0;
         public static final int addBtn=0x7f0b0022;
         public static final int add_name=0x7f0b003a;
@@ -356,7 +356,7 @@ containing a value of this type.
         public static final int blank=0x7f0b0061;
         public static final int bottomTab=0x7f0b00d6;
         public static final int btn1=0x7f0b0015;
-        public static final int btn10=0x7f0b00e2;
+        public static final int btn10=0x7f0b00e3;
         public static final int btn2=0x7f0b0016;
         public static final int btn3=0x7f0b004d;
         public static final int btn4=0x7f0b004e;
@@ -364,7 +364,7 @@ containing a value of this type.
         public static final int btn6=0x7f0b0050;
         public static final int btn7=0x7f0b0051;
         public static final int btn8=0x7f0b00ca;
-        public static final int btn9=0x7f0b00e1;
+        public static final int btn9=0x7f0b00e2;
         public static final int btnLayout=0x7f0b005f;
         public static final int button1=0x7f0b00ac;
         public static final int button2=0x7f0b00ad;
@@ -405,14 +405,14 @@ containing a value of this type.
         public static final int current=0x7f0b0046;
         public static final int cut_img=0x7f0b006e;
         public static final int cut_text=0x7f0b006f;
-        public static final int dataTextView1=0x7f0b00ea;
+        public static final int dataTextView1=0x7f0b00eb;
         public static final int delBtn=0x7f0b003d;
         public static final int deleteBtn=0x7f0b004a;
         public static final int description=0x7f0b0002;
         public static final int desktop_list_child_icon=0x7f0b0097;
         public static final int desktop_list_child_name=0x7f0b0098;
         public static final int desktop_list_group_name=0x7f0b0099;
-        public static final int edit=0x7f0b00ed;
+        public static final int edit=0x7f0b00ee;
         public static final int email=0x7f0b005d;
         public static final int fileBtn=0x7f0b0068;
         public static final int fileUploadBtn=0x7f0b0069;
@@ -420,8 +420,8 @@ containing a value of this type.
         public static final int front_leftBtn=0x7f0b007a;
         public static final int front_rightBtn=0x7f0b007b;
         public static final int getBtn=0x7f0b0065;
-        public static final int guide_content=0x7f0b00e6;
-        public static final int guide_picture=0x7f0b00e5;
+        public static final int guide_content=0x7f0b00e7;
+        public static final int guide_picture=0x7f0b00e6;
         public static final int horView=0x7f0b00d8;
         public static final int horizontalProgressBar=0x7f0b00b8;
         public static final int insertBtn=0x7f0b0048;
@@ -476,9 +476,9 @@ containing a value of this type.
         public static final int mWheelView=0x7f0b0032;
         public static final int mainScrollView=0x7f0b00b3;
         public static final int maxText=0x7f0b00b6;
-        public static final int measureTimeText1=0x7f0b00e7;
-        public static final int measureTimeText2=0x7f0b00e8;
-        public static final int measureTimeText3=0x7f0b00e9;
+        public static final int measureTimeText1=0x7f0b00e8;
+        public static final int measureTimeText2=0x7f0b00e9;
+        public static final int measureTimeText3=0x7f0b00ea;
         public static final int menuBtn=0x7f0b009a;
         public static final int menu_frame=0x7f0b00cc;
         public static final int menu_frame_two=0x7f0b00cd;
@@ -511,7 +511,7 @@ containing a value of this type.
         public static final int postBtn=0x7f0b0066;
         public static final int preView=0x7f0b0044;
         public static final int progressBar=0x7f0b0086;
-        public static final int progress_bar=0x7f0b00e3;
+        public static final int progress_bar=0x7f0b00e4;
         public static final int pwdBtn=0x7f0b008d;
         public static final int queryBtn=0x7f0b0049;
         public static final int queueBtn=0x7f0b00dd;
@@ -535,12 +535,12 @@ containing a value of this type.
         public static final int scrollList=0x7f0b009f;
         public static final int scrollPager=0x7f0b00a0;
         public static final int sdSample=0x7f0b003f;
-        public static final int search=0x7f0b00eb;
+        public static final int search=0x7f0b00ec;
         public static final int sendBtn=0x7f0b0024;
         public static final int sendTime=0x7f0b0026;
         public static final int set_img=0x7f0b0070;
         public static final int set_text=0x7f0b0071;
-        public static final int share=0x7f0b00ee;
+        public static final int share=0x7f0b00ef;
         public static final int slidingMenuPager=0x7f0b009d;
         public static final int slidingMenuTab=0x7f0b009e;
         public static final int sourseData=0x7f0b004b;
@@ -557,11 +557,12 @@ containing a value of this type.
         public static final int table1=0x7f0b00d9;
         public static final int table2=0x7f0b00da;
         public static final int table3=0x7f0b00db;
-        public static final int taskBtn=0x7f0b00df;
+        public static final int taskBtn1=0x7f0b00df;
+        public static final int taskBtn2=0x7f0b00e0;
         public static final int textView1=0x7f0b0052;
         public static final int threadBtn=0x7f0b00dc;
         public static final int timeChart=0x7f0b001c;
-        public static final int titleBar=0x7f0b00e0;
+        public static final int titleBar=0x7f0b00e1;
         public static final int title_text=0x7f0b005a;
         public static final int topTab=0x7f0b00d5;
         public static final int total=0x7f0b0045;
@@ -576,7 +577,7 @@ containing a value of this type.
         public static final int version_lable=0x7f0b0000;
         public static final int version_val=0x7f0b0001;
         public static final int voiceBtn=0x7f0b0021;
-        public static final int webView=0x7f0b00e4;
+        public static final int webView=0x7f0b00e5;
         public static final int wheelView1=0x7f0b0033;
         public static final int wheelView2=0x7f0b0034;
         public static final int wheelView3=0x7f0b0035;

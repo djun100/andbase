@@ -200,7 +200,7 @@ public class FindPwdActivity extends AbActivity {
 			
 			showProgressDialog();
 			final AbTaskItem item = new AbTaskItem();
-			item.listener = new AbTaskListener() {
+			item.setListener(new AbTaskListener() {
 
 				@Override
 				public void update() {
@@ -222,7 +222,7 @@ public class FindPwdActivity extends AbActivity {
 		   		    	showToastInThread(e.getMessage());
 		   		    }
 			  };
-			};
+			});
 			mAbTaskPool.execute(item);
 		}
 	}

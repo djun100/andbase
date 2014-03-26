@@ -53,7 +53,7 @@ public class PullToRefreshViewActivity extends AbActivity {
 
     	//定义查询的事件
     	final AbTaskItem item = new AbTaskItem();
-		item.listener = new AbTaskListener() {
+		item.setListener(new AbTaskListener() {
 
 			@Override
 			public void update() {
@@ -70,7 +70,7 @@ public class PullToRefreshViewActivity extends AbActivity {
 	   		    } catch (Exception e) {
 	   		    }
 		  };
-		};
+		});
 		
 		mAbPullView.setAbOnRefreshListener(new AbOnRefreshListener(){
 

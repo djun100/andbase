@@ -74,16 +74,26 @@ public class AbFileUtil {
 	/**MB  单位B*/
 	private static int MB = 1024*1024;
 	
+	/** 设置好的图片存储目录*/
+	private static String imageDownFullDir = null;
+	
+	/** 设置好的文件存储目录*/
+	private static String fileDownFullDir = null;
 	
     /**剩余空间大于200M才使用缓存*/
 	private static int freeSdSpaceNeededToCache = 200*MB;
+	
+	static{
+		initImageDownFullDir();
+		initFileDownFullDir();
+	}
 	
 	/**
 	 * 下载网络文件到SD卡中.如果SD中存在同名文件将不再下载
 	 * @param url 要下载文件的网络地址
 	 * @return 下载好的本地文件地址
 	 */
-	 public static String downFileToSD(String url,String name){
+	 public static String downFileToSD(String url,String fullPath){
 		 InputStream in = null;
 		 FileOutputStream fileOutputStream = null;
 		 HttpURLConnection con = null;
@@ -93,13 +103,8 @@ public class AbFileUtil {
 	    	if(!isCanUseSD()){
 	    		return null;
 	    	}
-	    	File path = Environment.getExternalStorageDirectory();
-	    	File fileDirectory = new File(path.getAbsolutePath() + downPathImageDir);
-			if(!fileDirectory.exists()){
-				fileDirectory.mkdirs();
-			}
 			
-			file = new File(fileDirectory,name);
+			file = new File(fullPath);
 			if(!file.exists()){
 				file.createNewFile();
 			}else{
@@ -118,6 +123,7 @@ public class AbFileUtil {
 			}
 		}catch(Exception e){
 			e.printStackTrace();
+			Log.e(TAG, "文件下载出错了");
 			return null;
 		}finally{
 			try {
@@ -145,7 +151,7 @@ public class AbFileUtil {
 			try {
 				//检查文件大小,如果文件为0B说明网络不好没有下载成功，要将建立的空文件删除
 				if(file.length() == 0){
-					Log.d(TAG, "下载出错了，文件大小为0");
+					Log.e(TAG, "下载出错了，文件大小为0");
 					file.delete();
 				}
 				
@@ -182,24 +188,23 @@ public class AbFileUtil {
 				 throw new IllegalArgumentException("缩放和裁剪图片的宽高设置不能小于0");
 			 }
 			 
+			 initImageDownFullDir();
+			 
 			 //缓存的key，也是文件名
 			 String key =  AbImageCache.getCacheKey(url, width, height, type);
-			 
-			 //文件是否存在
-			 File path = Environment.getExternalStorageDirectory();
-			 File fileDirectory = new File(path.getAbsolutePath() + downPathImageDir);
 			 
 			 //获取后缀
 			 String suffix = getSuffixFromNetUrl(url);
 			 
 			 //缓存的图片文件名
 			 String fileName = key+suffix;
-			 File file = new File(fileDirectory,fileName);
+			 
+			 File file = new File(imageDownFullDir,fileName);
 			 
 			 //检查文件缓存中是否存在文件
 			 File fileCache = AbFileCache.getFileFromCache(fileName);
 			 if(fileCache == null){
-				 String downFilePath = downFileToSD(url,file.getName());
+				 String downFilePath = downFileToSD(url,file.getPath());
 				 if(downFilePath != null){
 					 //下载成功后存入缓存
 					 AbFileCache.addFileToCache(fileName, file);
@@ -246,14 +251,11 @@ public class AbFileUtil {
 			 //缓存的key，也是文件名
 			 String key =  AbImageCache.getCacheKey(url, width, height, type);
 			 
-			 //文件是否存在
-			 File path = Environment.getExternalStorageDirectory();
-			 File fileDirectory = new File(path.getAbsolutePath() + downPathImageDir);
 			 //获取后缀
 			 String suffix = getSuffixFromNetUrl(url);
 			 //缓存的图片文件名
 			 String fileName = key+suffix;
-			 File file = new File(fileDirectory,fileName);
+			 File file = new File(imageDownFullDir,fileName);
 			 if(!file.exists()){
 				 return null;
 			 }else{
@@ -351,13 +353,8 @@ public class AbFileUtil {
     	   File file = null;
     	   try {
     		   if(imgByte!=null){
-    			   File sdcardDir = Environment.getExternalStorageDirectory();
-    			   String path = sdcardDir.getAbsolutePath()+downPathImageDir;
-    			   file = new File(path+fileName);
-    				 
-    			   if(!file.getParentFile().exists()){
-    			          file.getParentFile().mkdirs();
-    			   }
+    			   
+    			   file = new File(imageDownFullDir+fileName);
     			   if(!file.exists()){
     			          file.createNewFile();
     			   }
@@ -734,6 +731,7 @@ public class AbFileUtil {
 	 */
 	public static void setDownPathImageDir(String downPathImageDir) {
 		AbFileUtil.downPathImageDir = downPathImageDir;
+		initImageDownFullDir();
 	}
 
 	
@@ -752,6 +750,7 @@ public class AbFileUtil {
 	 */
 	public static void setDownPathFileDir(String downPathFileDir) {
 		AbFileUtil.downPathFileDir = downPathFileDir;
+		initFileDownFullDir();
 	}
 	
 	/**
@@ -759,22 +758,45 @@ public class AbFileUtil {
 	 *
 	 * @return 完成的存储目录
 	 */
-	public static String getFullImageDownPathDir(){
+	private static void initImageDownFullDir(){
 		String pathDir = null;
 	    try {
 			if(!isCanUseSD()){
-				return null;
+				return;
 			}
 			//初始化图片保存路径
 			File fileRoot = Environment.getExternalStorageDirectory();
-			File dirFile = new File(fileRoot.getAbsolutePath() + AbFileUtil.downPathImageDir);
+			File dirFile = new File(fileRoot.getAbsolutePath() + downPathImageDir);
 			if(!dirFile.exists()){
 				dirFile.mkdirs();
 			}
 			pathDir = dirFile.getPath();
+			imageDownFullDir = pathDir;
 		} catch (Exception e) {
 		}
-	    return pathDir;
+	}
+	
+	/**
+	 * 描述：获取默认的文件保存全路径.
+	 *
+	 * @return 完成的存储目录
+	 */
+	private static void initFileDownFullDir(){
+		String pathDir = null;
+	    try {
+			if(!isCanUseSD()){
+				return;
+			}
+			//初始化图片保存路径
+			File fileRoot = Environment.getExternalStorageDirectory();
+			File dirFile = new File(fileRoot.getAbsolutePath() + downPathFileDir);
+			if(!dirFile.exists()){
+				dirFile.mkdirs();
+			}
+			pathDir = dirFile.getPath();
+			fileDownFullDir = pathDir;
+		} catch (Exception e) {
+		}
 	}
 	
 	
@@ -991,5 +1013,22 @@ public class AbFileUtil {
 		}
         return text;
     }
+
+	public static String getImageDownFullDir() {
+		return imageDownFullDir;
+	}
+
+	public static void setImageDownFullDir(String imageDownFullDir) {
+		AbFileUtil.imageDownFullDir = imageDownFullDir;
+	}
+
+	public static String getFileDownFullDir() {
+		return fileDownFullDir;
+	}
+
+	public static void setFileDownFullDir(String fileDownFullDir) {
+		AbFileUtil.fileDownFullDir = fileDownFullDir;
+	}
+    
     
 }

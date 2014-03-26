@@ -90,7 +90,7 @@ public class ListNestViewPagerActivity extends AbActivity {
 
     	//定义两种查询的事件
     	final AbTaskItem item1 = new AbTaskItem();
-		item1.listener = new AbTaskListener() {
+		item1.setListener(new AbTaskListener() {
 
 			@Override
 			public void update() {
@@ -122,10 +122,10 @@ public class ListNestViewPagerActivity extends AbActivity {
 	   		    } catch (Exception e) {
 	   		    }
 		  };
-		};
+		});
 		
 		final AbTaskItem item2 = new AbTaskItem();
-		item2.listener = new AbTaskListener() {
+		item2.setListener(new AbTaskListener() {
 
 			@Override
 			public void update() {
@@ -159,7 +159,7 @@ public class ListNestViewPagerActivity extends AbActivity {
 	   		    	showToastInThread(e.getMessage());
 	   		    }
 		  };
-		};
+		});
 		
 		mAbPullListView.setAbOnListViewListener(new AbOnListViewListener(){
 

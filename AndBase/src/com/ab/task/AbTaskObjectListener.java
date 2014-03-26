@@ -1,3 +1,5 @@
+package com.ab.task;
+
 /*
  * Copyright (C) 2015 www.amengsoft.org
  * 
@@ -13,12 +15,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.ab.task;
 
 
 // TODO: Auto-generated Javadoc
 /**
- * 描述：数据执行的接口.
+ * 描述：返回对象的监听器.
  *
  * @author zhaoqp
  * @date 2011-12-10
@@ -28,8 +29,8 @@ public abstract class AbTaskObjectListener extends AbTaskListener{
 
 	/**
 	 * 描述：执行开始后调用.
-	 * @param <T> 返回的对象
-	 */
+	 * @param <T> 返回的对象	 
+	 * */
 	public abstract <T> void update(T entity); 
     
 	

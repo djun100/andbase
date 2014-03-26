@@ -189,7 +189,7 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
 				        	mDownFile.setState(Constant.downInProgress);
 				        	AbThread mAbHttpThread = new AbThread();
 							final AbTaskItem item = new AbTaskItem();
-							item.listener = new AbTaskListener() {
+							item.setListener(new AbTaskListener() {
 
 								@Override
 								public void update() {
@@ -209,7 +209,7 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
 										e.printStackTrace();
 									}
 							  };
-							};
+							});
 							mAbHttpThread.execute(item);
 							
 				        	

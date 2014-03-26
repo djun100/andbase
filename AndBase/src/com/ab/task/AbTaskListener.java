@@ -18,22 +18,27 @@ package com.ab.task;
 
 // TODO: Auto-generated Javadoc
 /**
- * 描述：任务执行的控制父类.
- *
+ * 描述：通用监听器.
+ * 直接子类AbTaskListListener，AbTaskObjectListener
  * @author zhaoqp
  * @date 2011-12-10
  * @version v1.0
  */
-public class AbTaskListener {
+public abstract class AbTaskListener {
 	
 	/**
-	 * 描述：执行开始后调用.
+	 * 执行开始后调用.
 	 */
-	public void get(){}; 
+	public abstract void get(); 
 	
 	/**
-	 * 描述：执行开始后调用.
+	 * 执行开始后调用.
 	 */
 	public void update(){}; 
+	
+	/**
+	 * 监听进度变化.
+	 */
+	public void onProgressUpdate(Integer... values){}
 
 }

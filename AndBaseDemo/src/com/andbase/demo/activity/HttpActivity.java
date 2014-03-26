@@ -331,6 +331,7 @@ public class HttpActivity extends AbActivity {
 				AbRequestParams params = new AbRequestParams(); 
 				
 				try {
+					//多文件上传添加多个即可
 					File pathRoot = Environment.getExternalStorageDirectory();
 					String path = pathRoot.getAbsolutePath();
 					params.put("data1",URLEncoder.encode("中文可处理",HTTP.UTF_8));

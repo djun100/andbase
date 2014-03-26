@@ -15,24 +15,20 @@
  */
 package com.ab.task;
 
+import java.util.List;
+
 import android.os.Handler;
 import android.os.Message;
 
 // TODO: Auto-generated Javadoc
 /**
- * 描述： 数据下载线程.
+ * 下载线程.
  *
  * @author zhaoqp
  * @date 2011-11-10
  * @version v1.0
  */
 public class AbThread extends Thread { 
-	
-	/** The tag. */
-	private static String TAG = "AbHttpThread";
-	
-	/** The Constant D. */
-	private static final boolean D = true;
 	
 	/** 下载单位. */
 	public AbTaskItem item = null;
@@ -42,7 +38,13 @@ public class AbThread extends Thread {
         @Override 
         public void handleMessage(Message msg) { 
         	AbTaskItem item = (AbTaskItem)msg.obj; 
-            item.listener.update(); 
+        	if(item.getListener() instanceof AbTaskListListener){
+        		((AbTaskListListener)item.getListener()).update((List<?>)item.getResult()); 
+        	}else if(item.getListener() instanceof AbTaskObjectListener){
+        		((AbTaskObjectListener)item.getListener()).update(item.getResult()); 
+        	}else{
+        		item.getListener().update(); 
+        	}
         } 
     }; 
     
@@ -71,8 +73,8 @@ public class AbThread extends Thread {
     public void run() { 
             if(item!=null) { 
             	//定义了回调
-                if (item.listener != null) { 
-                	item.listener.get();
+                if (item.getListener() != null) { 
+                	item.getListener().get();
                 	//交由UI线程处理 
                     Message msg = handler.obtainMessage(); 
                     msg.obj = item; 

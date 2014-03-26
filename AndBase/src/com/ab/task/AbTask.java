@@ -1,5 +1,7 @@
 package com.ab.task;
 
+import java.util.List;
+
 import android.os.AsyncTask;
 /**
  * 
@@ -12,6 +14,8 @@ import android.os.AsyncTask;
  */
 public class AbTask extends AsyncTask<AbTaskItem, Integer, AbTaskItem> {
 	
+	private AbTaskListener listener; 
+	
 	public AbTask() {
 		super();
 	}
@@ -19,8 +23,9 @@ public class AbTask extends AsyncTask<AbTaskItem, Integer, AbTaskItem> {
 	@Override
 	protected AbTaskItem doInBackground(AbTaskItem... items) {
 		AbTaskItem item = items[0];
-		if (item.listener != null) { 
-			item.listener.get();
+		this.listener = item.getListener();
+		if (this.listener != null) { 
+			this.listener.get();
         } 
 		return item;
 	}
@@ -32,8 +37,14 @@ public class AbTask extends AsyncTask<AbTaskItem, Integer, AbTaskItem> {
 
 	@Override
 	protected void onPostExecute(AbTaskItem item) {
-		if (item.listener != null) { 
-		    item.listener.update(); 
+		if (this.listener != null) {
+			if(this.listener instanceof AbTaskListListener){
+        		((AbTaskListListener)this.listener).update((List<?>)item.getResult()); 
+        	}else if(this.listener instanceof AbTaskObjectListener){
+        		((AbTaskObjectListener)this.listener).update(item.getResult()); 
+        	}else{
+        		this.listener.update(); 
+        	}
 		}
 	}
 
@@ -45,6 +56,9 @@ public class AbTask extends AsyncTask<AbTaskItem, Integer, AbTaskItem> {
 	@Override
 	protected void onProgressUpdate(Integer... values) {
 		super.onProgressUpdate(values);
+		if (this.listener != null) { 
+			this.listener.onProgressUpdate(values);
+		}
 	}
 
 }

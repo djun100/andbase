@@ -19,7 +19,7 @@ import java.util.List;
 
 // TODO: Auto-generated Javadoc
 /**
- * 描述：数据执行的接口.
+ * 描述：返回列表的监听器.
  *
  * @author zhaoqp
  * @date 2011-12-10

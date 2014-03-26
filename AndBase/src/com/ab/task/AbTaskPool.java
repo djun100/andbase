@@ -48,8 +48,8 @@ public class AbTaskPool{
 	/** 单例对象 The http pool. */
 	private static AbTaskPool mAbTaskPool = null; 
 	
-	/** 固定5个线程来执行任务. */
-	private static int nThreads  = 10;
+	/** 固定4个线程来执行任务. */
+	private static int nThreads  = 4;
 	
 	/** 线程执行器. */
 	private static ExecutorService executorService = null; 
@@ -60,11 +60,11 @@ public class AbTaskPool{
         public void handleMessage(Message msg) { 
         	AbTaskItem item = (AbTaskItem)msg.obj; 
         	if(item.getListener() instanceof AbTaskListListener){
-        		((AbTaskListListener)item.listener).update((List<?>)item.getResult()); 
+        		((AbTaskListListener)item.getListener()).update((List<?>)item.getResult()); 
         	}else if(item.getListener() instanceof AbTaskObjectListener){
-        		((AbTaskObjectListener)item.listener).update(item.getResult()); 
+        		((AbTaskObjectListener)item.getListener()).update(item.getResult()); 
         	}else{
-        		item.listener.update(); 
+        		item.getListener().update(); 
         	}
         } 
     }; 
@@ -104,8 +104,8 @@ public class AbTaskPool{
     		public void run() {
     			try {
     				//定义了回调
-                    if (item.listener != null) { 
-                    	item.listener.get();
+                    if (item.getListener() != null) { 
+                    	item.getListener().get();
                     	//交由UI线程处理 
                         Message msg = handler.obtainMessage(); 
                         msg.obj = item; 

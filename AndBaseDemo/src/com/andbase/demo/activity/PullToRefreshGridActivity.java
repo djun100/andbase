@@ -33,8 +33,8 @@ public class PullToRefreshGridActivity extends AbActivity {
 	private ImageGridAdapter myGridViewAdapter = null;
 	private ArrayList<String> mPhotoList = new ArrayList<String>();
 	private AbTaskQueue mAbTaskQueue = null;
-	private int total = 150;
-	private int pageSize = 15;
+	private int total = 250;
+	private int pageSize = 28;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,15 +49,9 @@ public class PullToRefreshGridActivity extends AbActivity {
 	    mAbTitleBar.setLogoLine(R.drawable.line);
         
 	    mAbTaskQueue = AbTaskQueue.getInstance();
-	    mPhotoList.add("http://www.418log.org/content/templates/default/images/rand/0.jpg");  
-	    mPhotoList.add("http://www.418log.org/content/templates/default/images/rand/1.jpg");
-		mPhotoList.add("http://www.418log.org/content/templates/default/images/rand/2.jpg");
-		mPhotoList.add("http://www.418log.org/content/templates/default/images/rand/3.jpg");
-		mPhotoList.add("http://www.418log.org/content/templates/default/images/rand/4.jpg");  
-		mPhotoList.add("http://www.418log.org/content/templates/default/images/rand/5.jpg");  
-		mPhotoList.add("http://www.418log.org/content/templates/default/images/rand/6.jpg");  
-		mPhotoList.add("http://www.418log.org/content/templates/default/images/rand/7.jpg"); 
-		mPhotoList.add("http://www.418log.org/content/templates/default/images/rand/8.jpg");   
+	    for (int i = 0; i < 22; i++) {
+        	mPhotoList.add("http://www.amengsoft.org/content/templates/lanye/images/rand/"+i+".jpg");
+		}
 	    
 		application = (MyApplication) this.getApplication();
 		mAbPullGridView = (AbPullGridView)findViewById(R.id.mPhotoGridView);
@@ -105,7 +99,7 @@ public class PullToRefreshGridActivity extends AbActivity {
 		
     	//定义两种查询的事件
     	final AbTaskItem item1 = new AbTaskItem();
-		item1.listener = new AbTaskListener() {
+		item1.setListener(new AbTaskListener() {
 
 			@Override
 			public void update() {
@@ -135,10 +129,10 @@ public class PullToRefreshGridActivity extends AbActivity {
 	   		    	showToastInThread(e.getMessage());
 	   		    }
 		  };
-		};
+		});
 		
 		final AbTaskItem item2 = new AbTaskItem();
-		item2.listener = new AbTaskListener() {
+		item2.setListener(new AbTaskListener() {
 
 			@Override
 			public void update() {
@@ -171,7 +165,7 @@ public class PullToRefreshGridActivity extends AbActivity {
 	   		    }
 	   		   
 		  };
-		};
+		});
 		//设置两种查询的事件
 		mAbPullGridView.setAbOnListViewListener(new AbOnListViewListener() {
 			

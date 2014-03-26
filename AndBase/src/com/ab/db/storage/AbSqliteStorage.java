@@ -96,7 +96,7 @@ public class AbSqliteStorage {
 		 if (entity != null){
 	    	
 	    	AbTaskItem item = new AbTaskItem();
-	    	item.listener = new AbTaskListener() {
+	    	item.setListener(new AbTaskListener() {
 				
 				@Override
 				public void update() {
@@ -121,7 +121,7 @@ public class AbSqliteStorage {
 				    //(3)关闭数据库
 				  	dao.closeDatabase(false);
 				}
-			};
+			});
 			mAbTaskQueue.execute(item);
 	    	
 	    }else{
@@ -145,7 +145,7 @@ public class AbSqliteStorage {
 		 if (entityList != null){
 	    	
 	    	AbTaskItem item = new AbTaskItem();
-	    	item.listener = new AbTaskListener() {
+	    	item.setListener(new AbTaskListener() {
 				
 				@Override
 				public void update() {
@@ -171,7 +171,7 @@ public class AbSqliteStorage {
 				  	dao.closeDatabase(false);
 			    	
 				}
-			};
+			});
 			mAbTaskQueue.execute(item);
 	    	
 	    }else{
@@ -194,7 +194,7 @@ public class AbSqliteStorage {
 	public <T> void findData(final AbStorageQuery storageQuery,final AbDBDaoImpl<T> dao, final AbDataInfoListener paramDataInsertListener){
 		     
 	    	final AbTaskItem item = new AbTaskItem();
-	    	item.listener = new AbTaskListListener() {
+	    	item.setListener(new AbTaskListListener() {
 				
 				@Override
 				public void update(List<?> paramList) {
@@ -222,7 +222,7 @@ public class AbSqliteStorage {
 				  	item.setResult(list);
 			    	
 				}
-			};
+			});
 			mAbTaskQueue.execute(item);
 	    
 	  }
@@ -240,7 +240,7 @@ public class AbSqliteStorage {
 		 if (entity != null){
 	    	
 	    	AbTaskItem item = new AbTaskItem();
-	    	item.listener = new AbTaskListListener() {
+	    	item.setListener(new AbTaskListListener() {
 				
 				@Override
 				public void update(List<?> paramList) {
@@ -266,7 +266,7 @@ public class AbSqliteStorage {
 				  	dao.closeDatabase(false);
 			    	
 				}
-			};
+			});
 			mAbTaskQueue.execute(item);
 	    	
 	    }else{
@@ -290,7 +290,7 @@ public class AbSqliteStorage {
 		 if (entityList != null){
 	    	
 	    	AbTaskItem item = new AbTaskItem();
-	    	item.listener = new AbTaskListener() {
+	    	item.setListener(new AbTaskListener() {
 				
 				@Override
 				public void update() {
@@ -316,7 +316,7 @@ public class AbSqliteStorage {
 				  	dao.closeDatabase(false);
 			    	
 				}
-			};
+			});
 			mAbTaskQueue.execute(item);
 	    	
 	    }else{
@@ -339,7 +339,7 @@ public class AbSqliteStorage {
 		 
 	    	
 	    	AbTaskItem item = new AbTaskItem();
-	    	item.listener = new AbTaskListener() {
+	    	item.setListener(new AbTaskListener() {
 				
 				@Override
 				public void update() {
@@ -365,7 +365,7 @@ public class AbSqliteStorage {
 				  	dao.closeDatabase(false);
 			    	
 				}
-			};
+			});
 			mAbTaskQueue.execute(item);
 	}
 	

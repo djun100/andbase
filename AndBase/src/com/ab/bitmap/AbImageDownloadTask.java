@@ -31,7 +31,7 @@ public class AbImageDownloadTask extends AsyncTask<AbImageDownloadItem, Integer,
         public void handleMessage(Message msg) { 
         	//if(D)Log.d(TAG, "任务callback handleMessage...");
             AbImageDownloadItem item = (AbImageDownloadItem)msg.obj; 
-            item.listener.update(item.bitmap, item.imageUrl); 
+            item.getListener().update(item.bitmap, item.imageUrl); 
         } 
     }; 
 	
@@ -64,14 +64,14 @@ public class AbImageDownloadTask extends AsyncTask<AbImageDownloadItem, Integer,
             //缓存图片路径
             AbImageCache.addBitmapToCache(cacheKey,item.bitmap);                                           
             //需要执行回调来显示图片
-            if (item.listener != null) {
+            if (item.getListener() != null) {
                 Message msg = handler.obtainMessage(); 
                 msg.obj = item; 
                 handler.sendMessage(msg); 
             }
 		}else{
 			if(D) Log.d(TAG, "从内存缓存中得到图片:"+cacheKey+","+item.bitmap);
-			if (item.listener != null) {
+			if (item.getListener() != null) {
                 Message msg = handler.obtainMessage(); 
                 msg.obj = item; 
                 handler.sendMessage(msg); 
@@ -87,8 +87,8 @@ public class AbImageDownloadTask extends AsyncTask<AbImageDownloadItem, Integer,
 
 	@Override
 	protected void onPostExecute(AbImageDownloadItem item) {
-		if (item.listener != null) { 
-        	item.listener.update(item.bitmap, item.imageUrl); 
+		if (item.getListener() != null) { 
+        	item.getListener().update(item.bitmap, item.imageUrl); 
         }
 	}
 

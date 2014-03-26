@@ -102,8 +102,8 @@ public class AbListViewFooter extends LinearLayout {
 		footerTextView.setGravity(Gravity.CENTER_VERTICAL);
 		setTextColor(Color.rgb(107, 107, 107));
 		footerTextView.setTextSize(15);
-		footerTextView.setMinimumHeight(50);
-		footerView.setPadding(0, 10, 0, 10);
+		footerTextView.setMinimumHeight(60);
+		footerView.setPadding(0, 15, 0, 15);
 		
 		footerProgressBar = new ProgressBar(context,null,android.R.attr.progressBarStyle);
 		footerProgressBar.setVisibility(View.GONE);

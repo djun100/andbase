@@ -79,7 +79,7 @@ public class CropImage{
 		mImageView.setCropImage(this);
 		mHandler = handler;
 		//初始化图片保存路径
-		FILE_LOCAL = new File(AbFileUtil.getFullImageDownPathDir());
+		FILE_LOCAL = new File(AbFileUtil.getImageDownFullDir());
 		if(!FILE_LOCAL.exists()){
 			FILE_LOCAL.mkdirs();
 		}

@@ -43,7 +43,16 @@ public class AbImageDownloadItem {
 	public Bitmap bitmap;
 	
 	/** 下载完成的回调接口. */
-	public AbImageDownloadListener listener;
+	private AbImageDownloadListener listener;
+	
+	public AbImageDownloadItem() {
+		super();
+	}
+
+	public AbImageDownloadItem(AbImageDownloadListener listener) {
+		super();
+		this.listener = listener;
+	}
 
 	public String getImageUrl() {
 		return imageUrl;

@@ -110,7 +110,7 @@ public class PHashActivity extends AbActivity {
 	    //要显示图形的View
 	    mChartLinearLayout = (LinearLayout) findViewById(R.id.chart01);
 	    //初始化图片保存路径
-	    String photo_dir = AbFileUtil.getFullImageDownPathDir();
+	    String photo_dir = AbFileUtil.getImageDownFullDir();
 	    if(AbStrUtil.isEmpty(photo_dir)){
 	    	showToast("存储卡不存在");
 	    }else{
@@ -180,7 +180,7 @@ public class PHashActivity extends AbActivity {
 			public void onClick(View v) {
 				showProgressDialog();
 				final AbTaskItem item = new AbTaskItem();
-				item.listener = new AbTaskListener() {
+				item.setListener(new AbTaskListener() {
 
 					@Override
 					public void update() {
@@ -248,7 +248,7 @@ public class PHashActivity extends AbActivity {
 			   		    	showToastInThread(e.getMessage());
 			   		    }
 				  };
-				};
+				});
 				mAbTaskPool.execute(item);
 			}
 			

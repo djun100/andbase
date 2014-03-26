@@ -22,13 +22,14 @@ import java.util.concurrent.ExecutorService;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Process;
+import android.util.Log;
 
 import com.ab.global.AbAppData;
 
 // TODO: Auto-generated Javadoc
 /**
- * 描述： 执行任务线程（按队列执行）.
- * 每个程序只有1个
+ * 线程队列.
+ * 
  * @author zhaoqp
  * @date 2011-11-10
  * @version v1.0
@@ -56,11 +57,11 @@ public class AbTaskQueue extends Thread {
         public void handleMessage(Message msg) { 
         	AbTaskItem item = (AbTaskItem)msg.obj; 
         	if(item.getListener() instanceof AbTaskListListener){
-        		((AbTaskListListener)item.listener).update((List<?>)item.getResult()); 
+        		((AbTaskListListener)item.getListener()).update((List<?>)item.getResult()); 
         	}else if(item.getListener() instanceof AbTaskObjectListener){
-        		((AbTaskObjectListener)item.listener).update(item.getResult()); 
+        		((AbTaskObjectListener)item.getListener()).update(item.getResult()); 
         	}else{
-        		item.listener.update(); 
+        		item.getListener().update(); 
         	}
         } 
     }; 
@@ -144,8 +145,8 @@ public class AbTaskQueue extends Thread {
             
 					AbTaskItem item  = mAbTaskItemList.remove(0);
 					//定义了回调
-				    if (item.listener != null) { 
-				    	item.listener.get();
+				    if (item.getListener() != null) { 
+				    	item.getListener().get();
 				    	//交由UI线程处理 
 				        Message msg = handler.obtainMessage(); 
 				        msg.obj = item; 
@@ -164,6 +165,7 @@ public class AbTaskQueue extends Thread {
 					    this.wait();
 					}
 				} catch (InterruptedException e) {
+					Log.e(TAG, "收到线程中断请求");
 					e.printStackTrace();
 					//被中断的是退出就结束，否则继续
 					if (mQuit) {

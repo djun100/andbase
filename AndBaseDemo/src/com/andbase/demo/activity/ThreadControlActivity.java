@@ -1,6 +1,7 @@
 package com.andbase.demo.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -8,13 +9,19 @@ import com.ab.activity.AbActivity;
 import com.ab.task.AbTask;
 import com.ab.task.AbTaskItem;
 import com.ab.task.AbTaskListener;
+import com.ab.task.AbTaskObjectListener;
 import com.ab.task.AbTaskPool;
 import com.ab.task.AbTaskQueue;
 import com.ab.task.AbThread;
 import com.ab.view.titlebar.AbTitleBar;
 import com.andbase.R;
 import com.andbase.global.MyApplication;
-
+/**
+ * 异步的使用参照
+ * http://www.amengsoft.org/post-133.html
+ * @author zhaoqp
+ *
+ */
 public class ThreadControlActivity extends AbActivity {
 	
 	private MyApplication application;
@@ -38,7 +45,8 @@ public class ThreadControlActivity extends AbActivity {
         Button threadBtn  = (Button)this.findViewById(R.id.threadBtn);
         Button queueBtn  = (Button)this.findViewById(R.id.queueBtn);
         Button poolBtn  = (Button)this.findViewById(R.id.poolBtn);
-        Button taskBtn  = (Button)this.findViewById(R.id.taskBtn);
+        Button taskBtn1  = (Button)this.findViewById(R.id.taskBtn1);
+        Button taskBtn2  = (Button)this.findViewById(R.id.taskBtn2);
         
         //单个线程
         threadBtn.setOnClickListener(new View.OnClickListener() {
@@ -47,10 +55,10 @@ public class ThreadControlActivity extends AbActivity {
 			public void onClick(View arg0) {
 				//显示进度框
 				showProgressDialog();
-				AbThread mAbTaskThread = new AbThread();
+				AbThread mAbThread = new AbThread();
 				//定义异步执行的对象
 		    	final AbTaskItem item = new AbTaskItem();
-				item.listener = new AbTaskListener() {
+				item.setListener(new AbTaskListener() {
 
 					@Override
 					public void update() {
@@ -67,9 +75,9 @@ public class ThreadControlActivity extends AbActivity {
 			   		    } catch (Exception e) {
 			   		    }
 				  };
-				};
+				});
 				//开始执行
-				mAbTaskThread.execute(item);
+				mAbThread.execute(item);
 			}
         	
         });
@@ -85,7 +93,7 @@ public class ThreadControlActivity extends AbActivity {
 				AbTaskQueue mAbTaskQueue = AbTaskQueue.getInstance();
 				//定义异步执行的对象
 		    	AbTaskItem item1 = new AbTaskItem();
-				item1.listener = new AbTaskListener() {
+				item1.setListener(new AbTaskListener() {
 
 					@Override
 					public void update() {
@@ -101,10 +109,10 @@ public class ThreadControlActivity extends AbActivity {
 			   		    } catch (Exception e) {
 			   		    }
 				  };
-				};
+				});
 				
 				AbTaskItem item2 = new AbTaskItem();
-				item2.listener = new AbTaskListener() {
+				item2.setListener(new AbTaskListener() {
 
 					@Override
 					public void update() {
@@ -121,7 +129,7 @@ public class ThreadControlActivity extends AbActivity {
 			   		    } catch (Exception e) {
 			   		    }
 				  };
-				};
+				});
 				
 				//开始执行
 				mAbTaskQueue.execute(item1);
@@ -147,7 +155,7 @@ public class ThreadControlActivity extends AbActivity {
 				AbTaskPool mAbTaskPool = AbTaskPool.getInstance();
 				//定义异步执行的对象
 		    	final AbTaskItem item = new AbTaskItem();
-				item.listener = new AbTaskListener() {
+				item.setListener(new AbTaskListener() {
 
 					@Override
 					public void update() {
@@ -164,7 +172,7 @@ public class ThreadControlActivity extends AbActivity {
 			   		    } catch (Exception e) {
 			   		    }
 				  };
-				};
+				});
 				//开始执行
 				mAbTaskPool.execute(item);
 			}
@@ -172,7 +180,7 @@ public class ThreadControlActivity extends AbActivity {
         });
         
         //异步任务
-        taskBtn.setOnClickListener(new View.OnClickListener() {
+        taskBtn1.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
@@ -180,7 +188,7 @@ public class ThreadControlActivity extends AbActivity {
 				AbTask task = new AbTask();
 				//定义异步执行的对象
 		    	final AbTaskItem item = new AbTaskItem();
-				item.listener = new AbTaskListener() {
+				item.setListener(new AbTaskListener() {
 
 					@Override
 					public void update() {
@@ -197,7 +205,46 @@ public class ThreadControlActivity extends AbActivity {
 			   		    } catch (Exception e) {
 			   		    }
 				  };
-				};
+				});
+		        task.execute(item);
+			}
+        	
+        });
+        
+        //异步任务
+        taskBtn2.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				
+				AbTask task = new AbTask();
+				//定义异步执行的对象
+		    	final AbTaskItem item = new AbTaskItem();
+		    	item.setListener(new AbTaskObjectListener(){
+
+					@Override
+					public <T> void update(T entity) {
+						Log.d("TAG", "执行完成:"+(String)entity);
+						
+					}
+
+					@Override
+					public void get() {
+						try {
+			   		    	Log.d("TAG", "开始执行");
+			   		    	Thread.sleep(3000);
+			   		    	//下面写要执行的代码，如下载数据
+			   		    	String result = "hello andbase";
+			   		    	item.setResult(result);
+			   		    	
+			   		    } catch (Exception e) {
+			   		    	e.printStackTrace();
+			   		    }
+					}
+		    		
+		    	});
+				
+				//执行
 		        task.execute(item);
 			}
         	

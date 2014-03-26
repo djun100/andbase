@@ -26,13 +26,23 @@ package com.ab.task;
 public class AbTaskItem { 
 	
 	/** 记录的当前索引. */
-	public int position;
+	private int position;
 	 
  	/** 执行完成的回调接口. */
-    public AbTaskListener listener; 
+    private AbTaskListener listener; 
     
     /** 执行完成的结果. */
     private Object result;
+    
+
+	public AbTaskItem() {
+		super();
+	}
+
+	public AbTaskItem(AbTaskListener listener) {
+		super();
+		this.listener = listener;
+	}
 
 	public int getPosition() {
 		return position;

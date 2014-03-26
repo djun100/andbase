@@ -92,7 +92,7 @@ public class MainMenuFragment extends Fragment {
 				AbTask task = new AbTask();
 				//定义异步执行的对象
 		    	final AbTaskItem item = new AbTaskItem();
-				item.listener = new AbTaskListener() {
+				item.setListener(new AbTaskListener() {
 
 					@Override
 					public void update() {
@@ -109,7 +109,7 @@ public class MainMenuFragment extends Fragment {
 			   		    	mActivity.showToastInThread(e.getMessage());
 			   		    }
 				  };
-				};
+				});
 		        task.execute(item);
 				
 				

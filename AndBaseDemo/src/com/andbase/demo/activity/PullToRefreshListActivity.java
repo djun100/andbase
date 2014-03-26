@@ -49,14 +49,11 @@ public class PullToRefreshListActivity extends AbActivity {
         mAbTitleBar.setTitleTextMargin(10, 0, 0, 0);
         mAbTitleBar.setLogoLine(R.drawable.line);
         
-        mPhotoList.add("http://img01.taobaocdn.com/bao/uploaded/i3/13215035600700175/T1C2mzXthaXXXXXXXX_!!0-item_pic.jpg_230x230.jpg");  
-		mPhotoList.add("http://img01.taobaocdn.com/bao/uploaded/i2/13215025617307680/T1AQqAXqpeXXXXXXXX_!!0-item_pic.jpg_230x230.jpg");
-		mPhotoList.add("http://img01.taobaocdn.com/bao/uploaded/i1/13215035569460099/T16GuzXs0cXXXXXXXX_!!0-item_pic.jpg_230x230.jpg");
-		mPhotoList.add("http://img01.taobaocdn.com/bao/uploaded/i2/13215023694438773/T1lImmXElhXXXXXXXX_!!0-item_pic.jpg_230x230.jpg");
-		mPhotoList.add("http://img01.taobaocdn.com/bao/uploaded/i3/13215023521330093/T1BWuzXrhcXXXXXXXX_!!0-item_pic.jpg_230x230.jpg");  
-		mPhotoList.add("http://img01.taobaocdn.com/bao/uploaded/i4/13215035563144015/T1Q.eyXsldXXXXXXXX_!!0-item_pic.jpg_230x230.jpg");  
-		mPhotoList.add("http://img01.taobaocdn.com/bao/uploaded/i3/13215023749568975/T1UKWCXvpXXXXXXXXX_!!0-item_pic.jpg_230x230.jpg"); 
-		mAbTaskQueue = AbTaskQueue.getInstance();
+        for (int i = 0; i < 22; i++) {
+        	mPhotoList.add("http://www.amengsoft.org/content/templates/lanye/images/rand/"+i+".jpg");
+		}
+        
+        mAbTaskQueue = AbTaskQueue.getInstance();
 	    //获取ListView对象
         mAbPullListView = (AbPullListView)this.findViewById(R.id.mListView);
         
@@ -90,7 +87,7 @@ public class PullToRefreshListActivity extends AbActivity {
 
     	//定义两种查询的事件
     	final AbTaskItem item1 = new AbTaskItem();
-		item1.listener = new AbTaskListener() {
+		item1.setListener(new AbTaskListener() {
 
 			@Override
 			public void update() {
@@ -112,7 +109,7 @@ public class PullToRefreshListActivity extends AbActivity {
 	   		    	newList = new ArrayList<Map<String, Object>>();
 	   		    	Map<String, Object> map = null;
 	   		    	
-	   		    	for (int i = 0; i < 2; i++) {
+	   		    	for (int i = 0; i < pageSize; i++) {
 	   		    		map = new HashMap<String, Object>();
 	   					map.put("itemsIcon",mPhotoList.get(new Random().nextInt(mPhotoList.size())));
 		   		    	map.put("itemsTitle", "item"+(i+1));
@@ -123,10 +120,10 @@ public class PullToRefreshListActivity extends AbActivity {
 	   		    } catch (Exception e) {
 	   		    }
 		  };
-		};
+		});
 		
 		final AbTaskItem item2 = new AbTaskItem();
-		item2.listener = new AbTaskListener() {
+		item2.setListener(new AbTaskListener() {
 
 			@Override
 			public void update() {
@@ -163,7 +160,7 @@ public class PullToRefreshListActivity extends AbActivity {
 	   		    	showToastInThread(e.getMessage());
 	   		    }
 		  };
-		};
+		});
 		
 		mAbPullListView.setAbOnListViewListener(new AbOnListViewListener(){
 

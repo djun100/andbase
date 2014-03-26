@@ -155,7 +155,7 @@ public class TableDataListActivity2 extends AbActivity {
 		//查询数据
 		showProgressDialog();
 		final AbTaskItem item = new AbTaskItem();
-		item.listener = new AbTaskListener() {
+		item.setListener(new AbTaskListener() {
 
 			@Override
 			public void update() {
@@ -198,7 +198,7 @@ public class TableDataListActivity2 extends AbActivity {
 					showToastInThread(e.getMessage());
 				}
 		  };
-		};
+		});
 		mAbTaskPool.execute(item);
 		
 	}

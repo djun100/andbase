@@ -67,11 +67,11 @@ public class AbImageDownloader {
     /** 图片未找到的图片. */
     private Drawable noImage;
     
-    /** 线程池. */
-    private AbImageDownloadPool mAbImageDownloadPool = null;
-    
     /** 动画控制. */
     private boolean animation;
+    
+    /** 下载用的线程池. */
+    private AbImageDownloadPool mAbImageDownloadPool = null;
     
     /**
      * 构造图片下载器.
@@ -129,7 +129,7 @@ public class AbImageDownloader {
     		}
     		
     		//下载完成后更新界面
-            item.listener = new AbImageDownloadListener() { 
+            item.setListener(new AbImageDownloadListener() { 
                 @Override 
                 public void update(Bitmap bitmap, String imageUrl) { 
                 	//未设置加载中的图片，并且设置了隐藏的View
@@ -158,9 +158,9 @@ public class AbImageDownloader {
                 		
                 	}
                 } 
-            }; 
+            }); 
             
-            mAbImageDownloadPool.download(item);
+            mAbImageDownloadPool.execute(item);
     	}else{
     		if(loadingView != null){
     		    loadingView.setVisibility(View.INVISIBLE);

@@ -31,7 +31,7 @@ import com.ab.util.AbStrUtil;
 /**
  * 
  * Copyright (c) 2012 All rights reserved
- * 名称：AbImageDownload.java 
+ * 名称：AbImageDownloadPool.java 
  * 描述：线程池图片下载
  * @author zhaoqp
  * @date：2013-5-23 上午10:10:53
@@ -50,8 +50,8 @@ public class AbImageDownloadPool{
 	/** The image download. */
 	private static AbImageDownloadPool imageDownload = null; 
 	
-	/** 固定3个线程来执行任务 . */
-	private static int nThreads  = 3;
+	/** 固定4个线程来执行任务 . */
+	private static int nThreads  = 4;
 	
 	/** The executor service. */
 	private ExecutorService executorService = null; 
@@ -61,7 +61,7 @@ public class AbImageDownloadPool{
         @Override 
         public void handleMessage(Message msg) { 
             AbImageDownloadItem item = (AbImageDownloadItem)msg.obj; 
-            item.listener.update(item.bitmap, item.imageUrl); 
+            item.getListener().update(item.bitmap, item.imageUrl); 
         } 
     }; 
 	
@@ -82,7 +82,7 @@ public class AbImageDownloadPool{
     public static AbImageDownloadPool getInstance() { 
         if (imageDownload == null) { 
         	nThreads = AbAppUtil.getNumCores();
-        	imageDownload = new AbImageDownloadPool(nThreads*3); 
+        	imageDownload = new AbImageDownloadPool(nThreads*10); 
         } 
         return imageDownload;
     } 
@@ -92,13 +92,14 @@ public class AbImageDownloadPool{
      *
      * @param item the item
      */
-    public void download(final AbImageDownloadItem item) {    
+    public void execute(final AbImageDownloadItem item) {    
     	String imageUrl = item.imageUrl;
     	if(AbStrUtil.isEmpty(imageUrl)){
     		if(D)Log.d(TAG, "图片URL为空，请先判断");
     	}else{
     		imageUrl = imageUrl.trim();
     	}
+    	
 		//从缓存中获取图片
     	final String cacheKey = AbImageCache.getCacheKey(imageUrl, item.width, item.height, item.type);
 		item.bitmap =  AbImageCache.getBitmapFromCache(cacheKey);
@@ -135,7 +136,7 @@ public class AbImageDownloadPool{
 	    				if(D) Log.d(TAG, "error:"+item.imageUrl);
 	    				e.printStackTrace();
 	    			} finally{ 
-		    			if (item.listener != null) { 
+		    			if (item.getListener() != null) { 
 	    	                Message msg = handler.obtainMessage(); 
 	    	                msg.obj = item; 
 	    	                handler.sendMessage(msg); 
@@ -146,7 +147,7 @@ public class AbImageDownloadPool{
     		
     	}else{
     		if(D) Log.d(TAG, "从内存缓存中得到图片:"+cacheKey+","+item.bitmap);
-    		if (item.listener != null) { 
+    		if (item.getListener() != null) { 
                 Message msg = handler.obtainMessage(); 
                 msg.obj = item; 
                 handler.sendMessage(msg); 
