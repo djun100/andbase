@@ -12,7 +12,7 @@ import com.andbase.global.MyApplication;
 /**
  * 名称：PullToRefreshActivity
  * 描述：下拉刷新分页
- * @author zhaoqp
+ * @author amsoft.cn
  * @date 2011-12-13
  * @version
  */

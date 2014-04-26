@@ -12,7 +12,7 @@ import com.andbase.global.MyApplication;
 /**
  * 名称：DBActivity
  * 描述：本地数据库相关
- * @author zhaoqp
+ * @author amsoft.cn
  * @date 2011-12-13
  * @version
  */

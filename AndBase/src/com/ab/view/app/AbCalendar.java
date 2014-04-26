@@ -22,7 +22,7 @@ import android.view.View;
  * Copyright (c) 2012 All rights reserved
  * 名称：AbCalendar.java 
  * 描述：自定义显示日期的view
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-11-7 下午2:35:05
  * @version v1.0
  */

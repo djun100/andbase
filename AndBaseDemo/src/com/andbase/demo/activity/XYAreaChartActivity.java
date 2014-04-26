@@ -25,7 +25,7 @@ import com.andbase.global.MyApplication;
  * Copyright (c) 2011 All rights reserved。
  * 名称：XYAreaChartActivity
  * 描述：区域图
- * @author zhaoqp
+ * @author amsoft.cn
  * @date 2011-12-13
  * @version
  */

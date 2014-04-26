@@ -13,7 +13,7 @@ import com.ab.util.AbStrUtil;
  * Copyright (c) 2012 All rights reserved
  * 名称：AbImageDownloadTask.java 
  * 描述：AsyncTask实现的下载，单次下载
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-9-2 下午12:47:51
  * @version v1.0
  */

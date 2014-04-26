@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -119,7 +119,7 @@ public abstract class CropViewBase extends ImageView {
 	 * @param right the right
 	 * @param bottom the bottom
 	 * @see android.view.View#onLayout(boolean, int, int, int, int)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-6-17 上午9:04:50
 	 * @version v1.0
 	 */
@@ -147,7 +147,7 @@ public abstract class CropViewBase extends ImageView {
 	 * @param event the event
 	 * @return true, if successful
 	 * @see android.view.View#onKeyDown(int, android.view.KeyEvent)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-6-17 上午9:04:50
 	 * @version v1.0
 	 */
@@ -176,7 +176,7 @@ public abstract class CropViewBase extends ImageView {
 	 *
 	 * @param bitmap the new image bitmap
 	 * @see android.widget.ImageView#setImageBitmap(android.graphics.Bitmap)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-6-17 上午9:04:50
 	 * @version v1.0
 	 */

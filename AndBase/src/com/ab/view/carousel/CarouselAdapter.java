@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -516,7 +516,7 @@ public abstract class  CarouselAdapter <T extends Adapter> extends ViewGroup {
     /**
      * 描述：TODO
      * @see android.view.ViewGroup#onLayout(boolean, int, int, int, int)
-     * @author: zhaoqp
+     * @author: amsoft.cn
      * @date：2013-11-28 上午11:14:33
      * @version v1.0
      */
@@ -680,7 +680,7 @@ public abstract class  CarouselAdapter <T extends Adapter> extends ViewGroup {
     /**
      * 描述：TODO
      * @see android.view.View#setFocusable(boolean)
-     * @author: zhaoqp
+     * @author: amsoft.cn
      * @date：2013-11-28 上午11:14:33
      * @version v1.0
      */
@@ -700,7 +700,7 @@ public abstract class  CarouselAdapter <T extends Adapter> extends ViewGroup {
     /**
      * 描述：TODO
      * @see android.view.View#setFocusableInTouchMode(boolean)
-     * @author: zhaoqp
+     * @author: amsoft.cn
      * @date：2013-11-28 上午11:14:33
      * @version v1.0
      */
@@ -792,7 +792,7 @@ public abstract class  CarouselAdapter <T extends Adapter> extends ViewGroup {
     /**
      * 描述：TODO
      * @see android.view.View#setOnClickListener(android.view.View.OnClickListener)
-     * @author: zhaoqp
+     * @author: amsoft.cn
      * @date：2013-11-28 上午11:14:33
      * @version v1.0
      */
@@ -834,7 +834,7 @@ public abstract class  CarouselAdapter <T extends Adapter> extends ViewGroup {
         /**
          * 描述：TODO
          * @see android.database.DataSetObserver#onChanged()
-         * @author: zhaoqp
+         * @author: amsoft.cn
          * @date：2013-11-28 上午11:14:33
          * @version v1.0
          */
@@ -860,7 +860,7 @@ public abstract class  CarouselAdapter <T extends Adapter> extends ViewGroup {
         /**
          * 描述：TODO
          * @see android.database.DataSetObserver#onInvalidated()
-         * @author: zhaoqp
+         * @author: amsoft.cn
          * @date：2013-11-28 上午11:14:33
          * @version v1.0
          */
@@ -906,7 +906,7 @@ public abstract class  CarouselAdapter <T extends Adapter> extends ViewGroup {
         /**
          * 描述：TODO
          * @see java.lang.Runnable#run()
-         * @author: zhaoqp
+         * @author: amsoft.cn
          * @date：2013-11-28 上午11:14:33
          * @version v1.0
          */
@@ -967,7 +967,7 @@ public abstract class  CarouselAdapter <T extends Adapter> extends ViewGroup {
     /**
      * 描述：TODO
      * @see android.view.ViewGroup#dispatchPopulateAccessibilityEvent(android.view.accessibility.AccessibilityEvent)
-     * @author: zhaoqp
+     * @author: amsoft.cn
      * @date：2013-11-28 上午11:14:33
      * @version v1.0
      */
@@ -1003,7 +1003,7 @@ public abstract class  CarouselAdapter <T extends Adapter> extends ViewGroup {
     /**
      * 描述：TODO
      * @see android.view.ViewGroup#canAnimate()
-     * @author: zhaoqp
+     * @author: amsoft.cn
      * @date：2013-11-28 上午11:14:34
      * @version v1.0
      */

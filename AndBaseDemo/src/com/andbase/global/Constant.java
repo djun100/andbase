@@ -35,7 +35,7 @@ public class Constant {
  	//3表示下载暂停
  	public static final int downLoadPause = 3;
  	
- 	public static final String BASEURL = "http://www.418log.org/";
+ 	public static final String BASEURL = "http://www.amsoft.cn/";
  	
  	//应用的key
  	//1512528

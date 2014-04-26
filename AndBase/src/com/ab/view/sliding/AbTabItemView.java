@@ -11,7 +11,7 @@ import android.widget.TextView;
  * Copyright (c) 2012 All rights reserved
  * 名称：TabView.java 
  * 描述：表示一个TAB
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-11-25 下午6:02:43
  * @version v1.0
  */

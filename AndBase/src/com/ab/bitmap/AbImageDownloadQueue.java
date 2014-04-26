@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ import com.ab.util.AbStrUtil;
 /**
  * 描述：图片下载线程，按队列下载（先检查SD卡是否存在相同文件，不存在则下载，最后再从SD卡中读取）.
  *
- * @author zhaoqp
+ * @author amsoft.cn
  * @date 2011-12-10
  * @version v1.0
  */

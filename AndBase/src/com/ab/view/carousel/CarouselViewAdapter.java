@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +36,7 @@ import com.ab.util.AbViewUtil;
  * Copyright (c) 2012 All rights reserved
  * 名称：CarouselViewAdapter.java 
  * 描述：自定义View适配的Carousel
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-8-22 下午4:05:09
  * @version v1.0
  */
@@ -73,7 +73,7 @@ public class CarouselViewAdapter extends BaseAdapter {
 	 *
 	 * @return the count
 	 * @see android.widget.Adapter#getCount()
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-8-22 下午4:07:39
 	 * @version v1.0
 	 */
@@ -91,7 +91,7 @@ public class CarouselViewAdapter extends BaseAdapter {
 	 * @param position the position
 	 * @return the item
 	 * @see android.widget.Adapter#getItem(int)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-8-22 下午4:07:39
 	 * @version v1.0
 	 */
@@ -105,7 +105,7 @@ public class CarouselViewAdapter extends BaseAdapter {
 	 * @param position the position
 	 * @return the item id
 	 * @see android.widget.Adapter#getItemId(int)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-8-22 下午4:07:39
 	 * @version v1.0
 	 */
@@ -121,7 +121,7 @@ public class CarouselViewAdapter extends BaseAdapter {
 	 * @param parent the parent
 	 * @return the view
 	 * @see android.widget.Adapter#getView(int, android.view.View, android.view.ViewGroup)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-8-22 下午4:07:39
 	 * @version v1.0
 	 */

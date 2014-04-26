@@ -12,7 +12,7 @@ import com.andbase.global.MyApplication;
 /**
  * 名称：SceneActivity
  * 描述：场景化UI
- * @author zhaoqp
+ * @author amsoft.cn
  * @date 2011-12-13
  * @version
  */

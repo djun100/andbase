@@ -15,12 +15,13 @@ import android.widget.ProgressBar;
 import com.ab.activity.AbActivity;
 import com.ab.view.titlebar.AbTitleBar;
 import com.andbase.R;
+import com.andbase.global.Constant;
 import com.andbase.global.MyApplication;
 /**
  * Copyright (c) 2011 All rights reserved 
  * 名称：WebActivity 
  * 描述：网站Wap
- * @author zhaoqp
+ * @author amsoft.cn
  * @date 2011-11-8
  * @version 
  */
@@ -64,7 +65,7 @@ public class WebActivity extends AbActivity {
 		webSettings.setDefaultFontSize(20);
 		
         //访问assets目录下的文件
-        String url = "http://www.amengsoft.org/m";
+        String url = Constant.BASEURL+"m";
         mWebView.loadUrl(url);
         
 		

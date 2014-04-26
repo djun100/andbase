@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,7 +49,7 @@ public class IndexXYMap<K, V> extends TreeMap<K, V> {
    * @param value the value
    * @return the v
    * @see java.util.TreeMap#put(java.lang.Object, java.lang.Object)
-   * @author: zhaoqp
+   * @author: amsoft.cn
    * @date：2013-6-17 上午9:04:48
    * @version v1.0
    */
@@ -87,7 +87,7 @@ public class IndexXYMap<K, V> extends TreeMap<K, V> {
    * 描述：TODO.
    *
    * @see java.util.TreeMap#clear()
-   * @author: zhaoqp
+   * @author: amsoft.cn
    * @date：2013-6-17 上午9:04:48
    * @version v1.0
    */

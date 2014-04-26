@@ -23,7 +23,7 @@ import com.andbase.global.Constant;
  * Copyright (c) 2011 All rights reserved
  * 名称：MyListViewAdapter
  * 描述：在Adapter中释放Bitmap
- * @author zhaoqp
+ * @author amsoft.cn
  * @date 2011-12-10
  * @version
  */

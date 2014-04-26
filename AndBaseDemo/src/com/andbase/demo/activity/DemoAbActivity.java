@@ -16,7 +16,7 @@ import com.andbase.global.MyApplication;
 /**
  * 名称：DemoAbActivity 
  * 描述：AbActivity基本用法
- * @author zhaoqp
+ * @author amsoft.cn
  * @date 2011-12-13
  * @version
  */

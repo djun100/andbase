@@ -22,7 +22,7 @@ import android.widget.RelativeLayout;
  * Copyright (c) 2012 All rights reserved
  * 名称：AbPopoverView.java 
  * 描述：提示框
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-11-18 下午5:02:16
  * @version v1.0
  */

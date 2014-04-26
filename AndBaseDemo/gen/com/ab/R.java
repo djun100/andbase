@@ -7,10 +7,17 @@
 package com.ab;
 
 public final class R {
+	public static final class attr {
+		public static final int borderDrawable = 0x7f010000;
+	}
 	public static final class drawable {
-		public static final int ic_launcher = 0x7f02007f;
+		public static final int ic_launcher = 0x7f020082;
 	}
 	public static final class string {
 		public static final int app_name = 0x7f050000;
+	}
+	public static final class styleable {
+		public static final int[] AbFocusView = { 0x7f010000 };
+		public static final int AbFocusView_borderDrawable = 0;
 	}
 }

@@ -13,6 +13,7 @@ import android.widget.AdapterView.OnItemClickListener;
 
 import com.ab.activity.AbActivity;
 import com.ab.task.AbTaskItem;
+import com.ab.task.AbTaskListListener;
 import com.ab.task.AbTaskListener;
 import com.ab.task.AbTaskQueue;
 import com.ab.view.listener.AbOnListViewListener;
@@ -20,13 +21,13 @@ import com.ab.view.pullview.AbPullListView;
 import com.ab.view.titlebar.AbTitleBar;
 import com.andbase.R;
 import com.andbase.demo.adapter.ImageListAdapter;
+import com.andbase.global.Constant;
 import com.andbase.global.MyApplication;
 
 public class PullToRefreshListActivity extends AbActivity {
 	
 	private MyApplication application;
 	private List<Map<String, Object>> list = null;
-	private List<Map<String, Object>> newList = null;
 	private AbPullListView mAbPullListView = null;
 	private int currentPage = 1;
 	private AbTaskQueue mAbTaskQueue = null;
@@ -50,7 +51,7 @@ public class PullToRefreshListActivity extends AbActivity {
         mAbTitleBar.setLogoLine(R.drawable.line);
         
         for (int i = 0; i < 22; i++) {
-        	mPhotoList.add("http://www.amengsoft.org/content/templates/lanye/images/rand/"+i+".jpg");
+        	mPhotoList.add(Constant.BASEURL+"content/templates/lanye/images/rand/"+i+".jpg");
 		}
         
         mAbTaskQueue = AbTaskQueue.getInstance();
@@ -87,46 +88,63 @@ public class PullToRefreshListActivity extends AbActivity {
 
     	//定义两种查询的事件
     	final AbTaskItem item1 = new AbTaskItem();
-		item1.setListener(new AbTaskListener() {
+		item1.setListener(new AbTaskListListener() {
+		    
+		    
 
 			@Override
+            public List<?> getList(){
+			    List<Map<String, Object>> newList = null;
+			    try {
+                    Thread.sleep(1000);
+                    currentPage = 1;
+                    newList = new ArrayList<Map<String, Object>>();
+                    Map<String, Object> map = null;
+                    
+                    for (int i = 0; i < pageSize; i++) {
+                        map = new HashMap<String, Object>();
+                        map.put("itemsIcon",mPhotoList.get(new Random().nextInt(mPhotoList.size())));
+                        map.put("itemsTitle", "item"+(i+1));
+                        map.put("itemsText", "item..."+(i+1));
+                        newList.add(map);
+                        
+                    }
+                } catch (Exception e) {
+                }
+                return newList;
+            }
+
+            @Override
+            public void update(List<?> paramList){
+                removeProgressDialog();
+                List<Map<String, Object>> newList = (List<Map<String, Object>>)paramList;
+                list.clear();
+                if(newList!=null && newList.size()>0){
+                    list.addAll(newList);
+                    myListViewAdapter.notifyDataSetChanged();
+                    newList.clear();
+                }
+                mAbPullListView.stopRefresh();
+                
+            }
+
+            @Override
 			public void update() {
-				removeProgressDialog();
-				list.clear();
-				if(newList!=null && newList.size()>0){
-	                list.addAll(newList);
-	                myListViewAdapter.notifyDataSetChanged();
-	                newList.clear();
-   		    	}
-				mAbPullListView.stopRefresh();
+				
 			}
 
 			@Override
 			public void get() {
-	   		    try {
-	   		    	Thread.sleep(1000);
-	   		    	currentPage = 1;
-	   		    	newList = new ArrayList<Map<String, Object>>();
-	   		    	Map<String, Object> map = null;
-	   		    	
-	   		    	for (int i = 0; i < pageSize; i++) {
-	   		    		map = new HashMap<String, Object>();
-	   					map.put("itemsIcon",mPhotoList.get(new Random().nextInt(mPhotoList.size())));
-		   		    	map.put("itemsTitle", "item"+(i+1));
-		   		    	map.put("itemsText", "item..."+(i+1));
-		   		    	newList.add(map);
-		   		    	
-	   				}
-	   		    } catch (Exception e) {
-	   		    }
+	   		   
 		  };
 		});
 		
 		final AbTaskItem item2 = new AbTaskItem();
-		item2.setListener(new AbTaskListener() {
+		item2.setListener(new AbTaskListListener() {
 
-			@Override
-			public void update() {
+		    @Override
+            public void update(List<?> paramList){
+		        List<Map<String, Object>> newList = (List<Map<String, Object>>)paramList;
 				if(newList!=null && newList.size()>0){
 					list.addAll(newList);
 					myListViewAdapter.notifyDataSetChanged();
@@ -137,7 +155,8 @@ public class PullToRefreshListActivity extends AbActivity {
 			}
 
 			@Override
-			public void get() {
+			public List<?> getList(){
+			    List<Map<String, Object>> newList = null;
 	   		    try {
 	   		    	currentPage++;
 	   		    	Thread.sleep(1000);
@@ -159,6 +178,7 @@ public class PullToRefreshListActivity extends AbActivity {
 	   		    	newList.clear();
 	   		    	showToastInThread(e.getMessage());
 	   		    }
+	   		    return newList;
 		  };
 		});
 		

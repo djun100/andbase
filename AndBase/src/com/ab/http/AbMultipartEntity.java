@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ import java.util.Random;
  * Copyright (c) 2012 All rights reserved
  * 名称：AbMultipartEntity.java 
  * 描述：用于文件上传
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-11-13 下午1:09:20
  * @version v1.0
  */
@@ -352,7 +352,7 @@ public class AbMultipartEntity implements HttpEntity {
     /**
      * 描述：TODO
      * @see org.apache.http.HttpEntity#getContentType()
-     * @author: zhaoqp
+     * @author: amsoft.cn
      * @date：2013-10-22 下午4:23:15
      * @version v1.0
      */

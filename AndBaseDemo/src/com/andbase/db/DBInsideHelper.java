@@ -12,7 +12,7 @@ import com.andbase.model.User;
  * Copyright (c) 2012 All rights reserved
  * 名称：DBInsideHelper.java 
  * 描述：手机data/data下面的数据库
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-7-31 下午3:50:18
  * @version v1.0
  */

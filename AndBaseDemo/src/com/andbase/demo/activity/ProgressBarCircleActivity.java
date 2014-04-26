@@ -19,7 +19,7 @@ import com.andbase.global.MyApplication;
  * Copyright (c) 2012 All rights reserved
  * 名称：ProgressBarCircleActivity.java 
  * 描述：环形进度条
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-9-22 下午4:52:06
  * @version v1.0
  */

@@ -18,8 +18,8 @@ import com.andbase.R;
 import com.andbase.global.MyApplication;
 /**
  * 异步的使用参照
- * http://www.amengsoft.org/post-133.html
- * @author zhaoqp
+ * http://www.amsoft.cn/post-133.html
+ * @author amsoft.cn
  *
  */
 public class ThreadControlActivity extends AbActivity {
@@ -179,7 +179,7 @@ public class ThreadControlActivity extends AbActivity {
         	
         });
         
-        //异步任务
+        //异步任务(void)
         taskBtn1.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -211,41 +211,14 @@ public class ThreadControlActivity extends AbActivity {
         	
         });
         
-        //异步任务
+        //异步任务(对象)
         taskBtn2.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
-				
-				AbTask task = new AbTask();
-				//定义异步执行的对象
-		    	final AbTaskItem item = new AbTaskItem();
-		    	item.setListener(new AbTaskObjectListener(){
-
-					@Override
-					public <T> void update(T entity) {
-						Log.d("TAG", "执行完成:"+(String)entity);
-						
-					}
-
-					@Override
-					public void get() {
-						try {
-			   		    	Log.d("TAG", "开始执行");
-			   		    	Thread.sleep(3000);
-			   		    	//下面写要执行的代码，如下载数据
-			   		    	String result = "hello andbase";
-			   		    	item.setResult(result);
-			   		    	
-			   		    } catch (Exception e) {
-			   		    	e.printStackTrace();
-			   		    }
-					}
-		    		
-		    	});
-				
-				//执行
-		        task.execute(item);
+			    showProgressDialog();
+			    //执行任务
+			    loadObjectDataTask();
 			}
         	
         });
@@ -266,6 +239,38 @@ public class ThreadControlActivity extends AbActivity {
 	public void onPause() {
 		super.onPause();
 	}
+	
+	public void loadObjectDataTask(){
+        AbTask task = new AbTask();
+        final AbTaskItem item = new AbTaskItem();
+        item.setListener(new AbTaskObjectListener(){
+
+            @Override
+            public <T> void update(T entity) {
+                removeProgressDialog();
+                showToast((String)entity);
+                Log.d("TAG", "执行完成:"+(String)entity);
+            }
+
+            @SuppressWarnings("unchecked")
+            @Override
+            public String getObject() {
+                String result = null;
+                try {
+                    Thread.sleep(3000);
+                    result = "hello andbase";
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return result;
+            }
+            
+        });
+        
+        task.execute(item);
+        
+        //task.cancel(mayInterruptIfRunning)
+    }
    
 }
 

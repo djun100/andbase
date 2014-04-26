@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ package com.ab.download;
 /**
  * 描述：下载线程监听.
  *
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-3-14 下午5:01:44
  * @version v1.0
  */

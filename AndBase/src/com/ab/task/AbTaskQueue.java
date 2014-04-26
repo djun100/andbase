@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package com.ab.task;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 
@@ -30,7 +31,7 @@ import com.ab.global.AbAppData;
 /**
  * 线程队列.
  * 
- * @author zhaoqp
+ * @author amsoft.cn
  * @date 2011-11-10
  * @version v1.0
  */
@@ -46,10 +47,13 @@ public class AbTaskQueue extends Thread {
 	private static List<AbTaskItem> mAbTaskItemList = null;
     
     /**单例对象 */
-  	private static AbTaskQueue mAbTaskQueue = null; 
+  	private static AbTaskQueue abTaskQueue = null; 
   	
   	/** 停止的标记. */
 	private boolean mQuit = false;
+	
+	/** 存放返回的任务结果*/
+    private static HashMap<String,Object> result;
 	
 	/** 执行完成后的消息句柄. */
     private static Handler handler = new Handler() { 
@@ -57,12 +61,13 @@ public class AbTaskQueue extends Thread {
         public void handleMessage(Message msg) { 
         	AbTaskItem item = (AbTaskItem)msg.obj; 
         	if(item.getListener() instanceof AbTaskListListener){
-        		((AbTaskListListener)item.getListener()).update((List<?>)item.getResult()); 
+        		((AbTaskListListener)item.getListener()).update((List<?>)result.get(item.toString())); 
         	}else if(item.getListener() instanceof AbTaskObjectListener){
-        		((AbTaskObjectListener)item.getListener()).update(item.getResult()); 
+        		((AbTaskObjectListener)item.getListener()).update(result.get(item.toString())); 
         	}else{
         		item.getListener().update(); 
         	}
+        	result.remove(item.toString());
         } 
     }; 
     
@@ -70,10 +75,10 @@ public class AbTaskQueue extends Thread {
 	 * 单例构造.
 	 */
     public static AbTaskQueue getInstance() { 
-        if (mAbTaskQueue == null) { 
-        	mAbTaskQueue = new AbTaskQueue();
+        if (abTaskQueue == null) { 
+            abTaskQueue = new AbTaskQueue();
         } 
-        return mAbTaskQueue;
+        return abTaskQueue;
     } 
 	
 	/**
@@ -84,6 +89,7 @@ public class AbTaskQueue extends Thread {
     public AbTaskQueue() {
     	mQuit = false;
     	mAbTaskItemList = new ArrayList<AbTaskItem>();
+    	result = new HashMap<String,Object>();
     	//设置优先级
     	Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);
     	//从线程池中获取
@@ -108,8 +114,8 @@ public class AbTaskQueue extends Thread {
      */
     public void execute(AbTaskItem item,boolean clean) { 
 	    if(clean){
-	    	if(mAbTaskQueue!=null){
-	    		mAbTaskQueue.quit();
+	    	if(abTaskQueue!=null){
+	    	    abTaskQueue.quit();
 	    	}
 	    }
     	addTaskItem(item); 
@@ -121,8 +127,8 @@ public class AbTaskQueue extends Thread {
      * @param item 执行单位
      */
     private synchronized void addTaskItem(AbTaskItem item) { 
-    	if (mAbTaskQueue == null) { 
-        	mAbTaskQueue = new AbTaskQueue();
+    	if (abTaskQueue == null) { 
+    	    abTaskQueue = new AbTaskQueue();
         	mAbTaskItemList.add(item);
         } else{
         	mAbTaskItemList.add(item);
@@ -145,8 +151,14 @@ public class AbTaskQueue extends Thread {
             
 					AbTaskItem item  = mAbTaskItemList.remove(0);
 					//定义了回调
-				    if (item.getListener() != null) { 
-				    	item.getListener().get();
+				    if (item.getListener() != null) {
+				        if(item.getListener() instanceof AbTaskListListener){
+                            result.put(item.toString(), ((AbTaskListListener)item.getListener()).getList());
+                        }else if(item.getListener() instanceof AbTaskObjectListener){
+                            result.put(item.toString(), ((AbTaskObjectListener)item.getListener()).getObject());
+                        }else{
+                            result.put(item.toString(), null);
+                        }
 				    	//交由UI线程处理 
 				        Message msg = handler.obtainMessage(); 
 				        msg.obj = item; 
@@ -186,7 +198,7 @@ public class AbTaskQueue extends Thread {
     public void quit(){
 		mQuit  = true;
 		interrupted();
-		mAbTaskQueue  = null;
+		abTaskQueue  = null;
     }
 
 }

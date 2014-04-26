@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -146,7 +146,7 @@ public class TouchHandler implements ITouchHandler {
    * @param event the event
    * @return true, if successful
    * @see com.ab.view.chart.ITouchHandler#handleTouchControl(android.view.MotionEvent)
-   * @author: zhaoqp
+   * @author: amsoft.cn
    * @date：2013-6-7 上午9:56:06
    * @version v1.0
    */

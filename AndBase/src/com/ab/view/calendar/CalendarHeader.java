@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ import com.ab.util.AbGraphical;
  * Copyright (c) 2012 All rights reserved
  * 名称：CalendarHeader.java 
  * 描述：日历控件头部绘制类
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-7-9 下午2:07:52
  * @version v1.0
  */
@@ -158,7 +158,7 @@ public class CalendarHeader extends View {
 	 *
 	 * @param canvas the canvas
 	 * @see android.view.View#onDraw(android.graphics.Canvas)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-7-19 下午4:30:45
 	 * @version v1.0
 	 */

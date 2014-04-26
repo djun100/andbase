@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ package com.ab.download;
 /**
  * 描述：下载文件.
  *
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2012-6-25 下午4:20:55
  * @version v1.0
  */

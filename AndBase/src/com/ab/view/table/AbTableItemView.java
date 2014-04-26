@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@ import com.ab.view.listener.AbOnItemClickListener;
 /**
  * 描述：表格一行的视图.
  *
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-1-28 下午3:56:29
  * @version v1.0
  */

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ import android.widget.ImageView;
  * Copyright (c) 2012 All rights reserved
  * 名称：CarouselItemImage.java 
  * 描述：旋转木马的图片View
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-8-23 下午2:01:42
  * @version v1.0
  */
@@ -110,7 +110,7 @@ public class CarouselItemImage extends ImageView
 	/**
 	 * 描述：TODO
 	 * @see java.lang.Comparable#compareTo(java.lang.Object)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-11-28 上午11:14:34
 	 * @version v1.0
 	 */

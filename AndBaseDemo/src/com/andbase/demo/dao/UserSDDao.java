@@ -10,7 +10,7 @@ import com.andbase.demo.model.LocalUser;
  * Copyright (c) 2012 All rights reserved
  * 名称：UserDao.java 
  * 描述：本地数据库在sd中
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-7-31 下午4:13:02
  * @version v1.0
  */

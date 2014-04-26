@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ import android.content.Context;
  * Copyright (c) 2012 All rights reserved
  * 名称：AbHttpUtil.java 
  * 描述：Http执行工具类，可处理get，post，以及异步处理文件的上传下载
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-10-22 下午4:15:52
  * @version v1.0
  */

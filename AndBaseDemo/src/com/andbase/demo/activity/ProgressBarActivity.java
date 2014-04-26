@@ -12,7 +12,7 @@ import com.andbase.global.MyApplication;
 /**
  * 名称：ProgressBarActivity
  * 描述：2种漂亮的进度条
- * @author zhaoqp
+ * @author amsoft.cn
  * @date 2011-12-13
  * @version
  */

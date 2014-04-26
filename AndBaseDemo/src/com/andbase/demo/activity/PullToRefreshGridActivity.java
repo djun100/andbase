@@ -19,6 +19,7 @@ import com.ab.view.pullview.AbPullGridView;
 import com.ab.view.titlebar.AbTitleBar;
 import com.andbase.R;
 import com.andbase.demo.adapter.ImageGridAdapter;
+import com.andbase.global.Constant;
 import com.andbase.global.MyApplication;
 import com.andbase.model.User;
 
@@ -50,7 +51,7 @@ public class PullToRefreshGridActivity extends AbActivity {
         
 	    mAbTaskQueue = AbTaskQueue.getInstance();
 	    for (int i = 0; i < 22; i++) {
-        	mPhotoList.add("http://www.amengsoft.org/content/templates/lanye/images/rand/"+i+".jpg");
+        	mPhotoList.add(Constant.BASEURL+"content/templates/lanye/images/rand/"+i+".jpg");
 		}
 	    
 		application = (MyApplication) this.getApplication();

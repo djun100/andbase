@@ -446,7 +446,7 @@ public class AbHttpClient {
      * Copyright (c) 2012 All rights reserved
      * 名称：ResponderHandler.java 
      * 描述：请求返回
-     * @author zhaoqp
+     * @author amsoft.cn
      * @date：2013-11-13 下午3:22:30
      * @version v1.0
      */

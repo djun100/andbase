@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,27 +18,26 @@ package com.ab.task;
 
 // TODO: Auto-generated Javadoc
 /**
- * 描述：通用监听器.
- * 直接子类AbTaskListListener，AbTaskObjectListener
- * @author zhaoqp
+ * 描述：任务执行的控制父类.
+ * @author amsoft.cn
  * @date 2011-12-10
  * @version v1.0
  */
-public abstract class AbTaskListener {
-	
-	/**
-	 * 执行开始后调用.
-	 */
-	public abstract void get(); 
-	
-	/**
-	 * 执行开始后调用.
-	 */
-	public void update(){}; 
-	
+public class AbTaskListener {
+    
+    /**
+     * @return 返回的结果对象
+     */
+    public void get(){};
+    
+    /**
+     * 描述：执行开始后调用.
+     * */
+    public void update(){}; 
+    
 	/**
 	 * 监听进度变化.
 	 */
-	public void onProgressUpdate(Integer... values){}
+	public void onProgressUpdate(Integer... values){};
 
 }

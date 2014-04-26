@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,7 +33,7 @@ import com.ab.util.AbStrUtil;
  * Copyright (c) 2012 All rights reserved
  * 名称：AbImageDownloadPool.java 
  * 描述：线程池图片下载
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-5-23 上午10:10:53
  * @version v1.0
  */

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@ import android.view.View;
  * Copyright (c) 2012 All rights reserved
  * 名称：AbMultiColumnBaseListView.java 
  * 描述：The Class AbMultiColumnBaseListView.
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-10-28 上午9:30:50
  * @version v1.0
  */
@@ -127,7 +127,7 @@ public class AbMultiColumnBaseListView extends AbMultiColumnAbsListView {
 	/**
 	 * 描述：TODO
 	 * @see com.ab.view.pullview.AbMultiColumnBaseAbsListView#onLayout(boolean, int, int, int, int)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-9-4 下午4:06:33
 	 * @version v1.0
 	 */
@@ -152,7 +152,7 @@ public class AbMultiColumnBaseListView extends AbMultiColumnAbsListView {
 	/**
 	 * 描述：TODO
 	 * @see com.ab.view.pullview.AbMultiColumnAbsListView#onMeasure(int, int)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-9-4 下午4:06:33
 	 * @version v1.0
 	 */
@@ -176,7 +176,7 @@ public class AbMultiColumnBaseListView extends AbMultiColumnAbsListView {
 	/**
 	 * 描述：TODO
 	 * @see com.ab.view.pullview.AbMultiColumnAbsListView#onMeasureChild(android.view.View, int, int, int)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-9-4 下午4:06:33
 	 * @version v1.0
 	 */
@@ -193,7 +193,7 @@ public class AbMultiColumnBaseListView extends AbMultiColumnAbsListView {
 	/**
 	 * 描述：TODO
 	 * @see com.ab.view.pullview.AbMultiColumnBaseAbsListView#modifyFlingInitialVelocity(int)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-9-4 下午4:06:33
 	 * @version v1.0
 	 */
@@ -205,7 +205,7 @@ public class AbMultiColumnBaseListView extends AbMultiColumnAbsListView {
 	/**
 	 * 描述：TODO
 	 * @see com.ab.view.pullview.AbMultiColumnAbsListView#onItemAddedToList(int, boolean)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-9-4 下午4:06:33
 	 * @version v1.0
 	 */
@@ -222,7 +222,7 @@ public class AbMultiColumnBaseListView extends AbMultiColumnAbsListView {
 	/**
 	 * 描述：TODO
 	 * @see com.ab.view.pullview.AbMultiColumnBaseAbsListView#onLayoutSync(int)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-9-4 下午4:06:33
 	 * @version v1.0
 	 */
@@ -236,7 +236,7 @@ public class AbMultiColumnBaseListView extends AbMultiColumnAbsListView {
 	/**
 	 * 描述：TODO
 	 * @see com.ab.view.pullview.AbMultiColumnBaseAbsListView#onLayoutSyncFinished(int)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-9-4 下午4:06:33
 	 * @version v1.0
 	 */
@@ -250,7 +250,7 @@ public class AbMultiColumnBaseListView extends AbMultiColumnAbsListView {
 	/**
 	 * 描述：TODO
 	 * @see com.ab.view.pullview.AbMultiColumnAbsListView#onAdjustChildViews(boolean)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-9-4 下午4:06:33
 	 * @version v1.0
 	 */
@@ -272,7 +272,7 @@ public class AbMultiColumnBaseListView extends AbMultiColumnAbsListView {
 	/**
 	 * 描述：TODO
 	 * @see com.ab.view.pullview.AbMultiColumnBaseAbsListView#getFillChildBottom()
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-9-4 下午4:06:33
 	 * @version v1.0
 	 */
@@ -291,7 +291,7 @@ public class AbMultiColumnBaseListView extends AbMultiColumnAbsListView {
 	/**
 	 * 描述：TODO
 	 * @see com.ab.view.pullview.AbMultiColumnBaseAbsListView#getFillChildTop()
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-9-4 下午4:06:33
 	 * @version v1.0
 	 */
@@ -309,7 +309,7 @@ public class AbMultiColumnBaseListView extends AbMultiColumnAbsListView {
 	/**
 	 * 描述：TODO
 	 * @see com.ab.view.pullview.AbMultiColumnBaseAbsListView#getScrollChildBottom()
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-9-4 下午4:06:33
 	 * @version v1.0
 	 */
@@ -328,7 +328,7 @@ public class AbMultiColumnBaseListView extends AbMultiColumnAbsListView {
 	/**
 	 * 描述：TODO
 	 * @see com.ab.view.pullview.AbMultiColumnBaseAbsListView#getScrollChildTop()
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-9-4 下午4:06:33
 	 * @version v1.0
 	 */
@@ -346,7 +346,7 @@ public class AbMultiColumnBaseListView extends AbMultiColumnAbsListView {
 	/**
 	 * 描述：TODO
 	 * @see com.ab.view.pullview.AbMultiColumnAbsListView#getItemLeft(int)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-9-4 下午4:06:33
 	 * @version v1.0
 	 */
@@ -362,7 +362,7 @@ public class AbMultiColumnBaseListView extends AbMultiColumnAbsListView {
 	/**
 	 * 描述：TODO
 	 * @see com.ab.view.pullview.AbMultiColumnAbsListView#getItemTop(int)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-9-4 下午4:06:33
 	 * @version v1.0
 	 */
@@ -383,7 +383,7 @@ public class AbMultiColumnBaseListView extends AbMultiColumnAbsListView {
 	/**
 	 * 描述：TODO
 	 * @see com.ab.view.pullview.AbMultiColumnAbsListView#getItemBottom(int)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-9-4 下午4:06:33
 	 * @version v1.0
 	 */
@@ -678,7 +678,7 @@ public class AbMultiColumnBaseListView extends AbMultiColumnAbsListView {
 		/**
 		 * 描述：TODO
 		 * @see com.ab.view.pullview.AbMultiColumnBaseListView.Column#getBottom()
-		 * @author: zhaoqp
+		 * @author: amsoft.cn
 		 * @date：2013-9-4 下午4:06:34
 		 * @version v1.0
 		 */
@@ -690,7 +690,7 @@ public class AbMultiColumnBaseListView extends AbMultiColumnAbsListView {
 		/**
 		 * 描述：TODO
 		 * @see com.ab.view.pullview.AbMultiColumnBaseListView.Column#getTop()
-		 * @author: zhaoqp
+		 * @author: amsoft.cn
 		 * @date：2013-9-4 下午4:06:34
 		 * @version v1.0
 		 */

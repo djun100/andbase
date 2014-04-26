@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -83,7 +83,7 @@ public class BarChart extends XYChart {
    * @param startIndex the start index
    * @return the clickable area[]
    * @see com.ab.view.chart.XYChart#clickableAreasForPoints(float[], double[], float, int, int)
-   * @author: zhaoqp
+   * @author: amsoft.cn
    * @date：2013-6-17 上午9:04:48
    * @version v1.0
    */

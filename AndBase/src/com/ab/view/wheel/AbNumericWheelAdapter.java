@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -75,7 +75,7 @@ public class AbNumericWheelAdapter implements AbWheelAdapter {
 	 * @param index the index
 	 * @return the item
 	 * @see com.ab.view.wheel.AbWheelAdapter#getItem(int)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-6-17 上午9:04:51
 	 * @version v1.0
 	 */
@@ -93,7 +93,7 @@ public class AbNumericWheelAdapter implements AbWheelAdapter {
 	 *
 	 * @return the items count
 	 * @see com.ab.view.wheel.AbWheelAdapter#getItemsCount()
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-6-17 上午9:04:51
 	 * @version v1.0
 	 */
@@ -107,7 +107,7 @@ public class AbNumericWheelAdapter implements AbWheelAdapter {
 	 *
 	 * @return the maximum length
 	 * @see com.ab.view.wheel.AbWheelAdapter#getMaximumLength()
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-6-17 上午9:04:51
 	 * @version v1.0
 	 */

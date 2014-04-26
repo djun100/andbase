@@ -22,7 +22,7 @@ import com.andbase.global.MyApplication;
 /**
  * 名称：DBSDSampleActivity
  * 描述：数据库演示SD内数据库存储
- * @author zhaoqp
+ * @author amsoft.cn
  * @date 2011-12-13
  * @version
  */

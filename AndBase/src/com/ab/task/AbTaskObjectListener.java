@@ -1,7 +1,5 @@
-package com.ab.task;
-
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,23 +13,31 @@ package com.ab.task;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.ab.task;
+
 
 
 // TODO: Auto-generated Javadoc
 /**
- * 描述：返回对象的监听器.
- *
- * @author zhaoqp
+ * 描述：数据执行的接口.
+ * @author amsoft.cn
  * @date 2011-12-10
  * @version v1.0
  */
 public abstract class AbTaskObjectListener extends AbTaskListener{
-
+	
 	/**
-	 * 描述：执行开始后调用.
-	 * @param <T> 返回的对象	 
-	 * */
-	public abstract <T> void update(T entity); 
+     * @param <T>
+	 * @return 返回的结果对象
+     */
+    public abstract <T> T getObject();
+    
+    /**
+     * 描述：执行开始后调用.
+     * @param <T>
+     * @param entity 返回的对象   
+     * */
+    public abstract <T> void update(T obj); 
     
 	
 }

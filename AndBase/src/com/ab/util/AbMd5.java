@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ import java.security.MessageDigest;
 /**
  * 描述：MD5加密.
  *
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-1-15 下午3:11:18
  * @version v1.0
  */

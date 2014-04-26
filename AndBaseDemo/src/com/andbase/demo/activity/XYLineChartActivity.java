@@ -24,7 +24,7 @@ import com.andbase.global.MyApplication;
  * Copyright (c) 2011 All rights reserved。
  * 名称：XYLineChartActivity
  * 描述：线图
- * @author zhaoqp
+ * @author amsoft.cn
  * @date 2011-12-13
  * @version
  */

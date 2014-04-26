@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ package com.ab.view.table;
 /**
  * 描述：单元格支持的类型.
  *
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-1-28 下午3:54:26
  * @version v1.0
  */

@@ -20,7 +20,7 @@ import com.andbase.R;
  * Copyright (c) 2011 All rights reserved 
  * 名称：MyListViewAdapter 
  * 描述：ListView自定义Adapter例子
- * @author zhaoqp
+ * @author amsoft.cn
  * @date 2011-11-8
  * @version
  */

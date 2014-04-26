@@ -9,6 +9,10 @@ package com.ab;
 
 public final class R {
     public static final class attr {
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static int borderDrawable=0x7f010000;
     }
     public static final class drawable {
         public static int ic_launcher=0x7f020000;
@@ -16,4 +20,29 @@ public final class R {
     public static final class string {
         public static int app_name=0x7f030000;
     }
+    public static final class styleable {
+        /**  focus view 
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #AbFocusView_borderDrawable com.ab:borderDrawable}</code></td><td></td></tr>
+           </table>
+           @see #AbFocusView_borderDrawable
+         */
+        public static final int[] AbFocusView = {
+            0x7f010000
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.ab.R.attr#borderDrawable}
+          attribute's value can be found in the {@link #AbFocusView} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name android:borderDrawable
+        */
+        public static final int AbFocusView_borderDrawable = 0;
+    };
 }

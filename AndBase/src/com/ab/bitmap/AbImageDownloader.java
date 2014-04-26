@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@ import com.ab.util.AbStrUtil;
 /**
  * 描述：下载图片并显示的工具类.
  *
- * @author zhaoqp
+ * @author amsoft.cn
  * @date 2011-12-10
  * @version v1.0
  */

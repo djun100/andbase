@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ import android.widget.ScrollView;
  * Copyright (c) 2012 All rights reserved
  * 名称：AbInnerListView.java 
  * 描述：这个ListView不会与父亲是个ScrollView与List的产生事件冲突
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-10-24 下午1:39:31
  * @version v1.0
  */
@@ -91,7 +91,7 @@ public class AbInnerListView extends ListView {
 	 * @param widthMeasureSpec the width measure spec
 	 * @param heightMeasureSpec the height measure spec
 	 * @see android.widget.ListView#onMeasure(int, int)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-6-17 上午9:04:48
 	 * @version v1.0
 	 */
@@ -111,7 +111,7 @@ public class AbInnerListView extends ListView {
 	 * @param ev the ev
 	 * @return true, if successful
 	 * @see android.widget.AbsListView#onInterceptTouchEvent(android.view.MotionEvent)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-6-17 上午9:04:48
 	 * @version v1.0
 	 */

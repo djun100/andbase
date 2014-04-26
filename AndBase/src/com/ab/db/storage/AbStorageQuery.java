@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@ import com.ab.util.AbStrUtil;
  * Copyright (c) 2012 All rights reserved
  * 名称：AbStorageQuery.java 
  * 描述：条件过滤实体
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-10-16 下午1:33:39
  * @version v1.0
  */

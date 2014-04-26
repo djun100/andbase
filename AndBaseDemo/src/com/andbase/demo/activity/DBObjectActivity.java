@@ -28,7 +28,7 @@ import com.andbase.global.MyApplication;
 /**
  * 名称：DBObjectActivity
  * 描述：数据库演示andbase的对象化存储
- * @author zhaoqp
+ * @author amsoft.cn
  * @date 2011-12-13
  * @version
  */

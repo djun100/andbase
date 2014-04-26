@@ -18,7 +18,7 @@ import com.andbase.global.MyApplication;
  * Copyright (c) 2012 All rights reserved
  * 名称：SlidingLeftActivity.java 
  * 描述：功能简单单一的一个示例
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-11-28 上午11:29:23
  * @version v1.0
  */

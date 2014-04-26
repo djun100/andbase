@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -418,7 +418,7 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
      * @param selectionArgs the selection args
      * @return the list
      * @see com.ab.db.orm.dao.AbDBDao#queryList(java.lang.String, java.lang.String[])
-     * @author: zhaoqp
+     * @author: amsoft.cn
      */
 	@Override
 	public List<T> queryList(String selection, String[] selectionArgs) {

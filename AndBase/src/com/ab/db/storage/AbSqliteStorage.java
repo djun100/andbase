@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ import com.ab.db.storage.AbSqliteStorageListener.AbDataInsertListener;
 import com.ab.db.storage.AbSqliteStorageListener.AbDataOperationListener;
 import com.ab.task.AbTaskItem;
 import com.ab.task.AbTaskListListener;
-import com.ab.task.AbTaskListener;
+import com.ab.task.AbTaskObjectListener;
 import com.ab.task.AbTaskQueue;
 
 // TODO: Auto-generated Javadoc
@@ -54,9 +54,6 @@ public class AbSqliteStorage {
 	
 	/** The error message101. */
 	private String errorMessage101 = "执行时错误";
-	
-	/** The ret value. */
-	private long retValue = -1;
 	
 	/**
 	 * 描述：获取存储实例.
@@ -96,13 +93,14 @@ public class AbSqliteStorage {
 		 if (entity != null){
 	    	
 	    	AbTaskItem item = new AbTaskItem();
-	    	item.setListener(new AbTaskListener() {
+	    	item.setListener(new AbTaskObjectListener() {
 				
 				@Override
-				public void update() {
-					if(retValue>=0){
+				public void update(Object obj) {
+				    long ret = (Long)obj;
+					if(ret >= 0){
 						if (paramDataInsertListener != null){
-				    		paramDataInsertListener.onSuccess(retValue);
+				    		paramDataInsertListener.onSuccess(ret);
 					    }
 					}else{
 						if (paramDataInsertListener != null){
@@ -112,14 +110,15 @@ public class AbSqliteStorage {
 				}
 				
 				@Override
-				public void get() {
+				public Object getObject() {
 					//执行插入 
 					//(1)获取数据库 
 					dao.startWritableDatabase(false);
 				  	//(2)执行
-					retValue = dao.insert(entity);
+					long retValue = dao.insert(entity);
 				    //(3)关闭数据库
 				  	dao.closeDatabase(false);
+				  	return retValue;
 				}
 			});
 			mAbTaskQueue.execute(item);
@@ -145,13 +144,14 @@ public class AbSqliteStorage {
 		 if (entityList != null){
 	    	
 	    	AbTaskItem item = new AbTaskItem();
-	    	item.setListener(new AbTaskListener() {
+	    	item.setListener(new AbTaskObjectListener() {
 				
 				@Override
-				public void update() {
-					if(retValue>=0){
+				public void update(Object obj) {
+				    long ret = (Long)obj;
+					if(ret >= 0){
 						if (paramDataInsertListener != null){
-				    		paramDataInsertListener.onSuccess(retValue);
+				    		paramDataInsertListener.onSuccess(ret);
 					    }
 					}else{
 						if (paramDataInsertListener != null){
@@ -161,14 +161,15 @@ public class AbSqliteStorage {
 				}
 				
 				@Override
-				public void get() {
+				public Object getObject() {
 					//执行插入 
 					//(1)获取数据库 
 					dao.startWritableDatabase(false);
 				  	//(2)执行
-					retValue = dao.insertList(entityList);
+					long retValue = dao.insertList(entityList);
 				    //(3)关闭数据库
 				  	dao.closeDatabase(false);
+				  	return retValue;
 			    	
 				}
 			});
@@ -204,7 +205,7 @@ public class AbSqliteStorage {
 				}
 				
 				@Override
-				public void get() {
+				public List<?> getList() {
 					List<?> list = null;   
 					//执行插入 
 					//(1)获取数据库 
@@ -217,9 +218,7 @@ public class AbSqliteStorage {
 					}
 				    //(3)关闭数据库
 				  	dao.closeDatabase(false);
-				  	
-				  	//设置返回结果
-				  	item.setResult(list);
+				  	return list;
 			    	
 				}
 			});
@@ -240,32 +239,36 @@ public class AbSqliteStorage {
 		 if (entity != null){
 	    	
 	    	AbTaskItem item = new AbTaskItem();
-	    	item.setListener(new AbTaskListListener() {
-				
+	    	item.setListener(new AbTaskObjectListener() {
+	    	    
 				@Override
-				public void update(List<?> paramList) {
-					if(retValue>=0){
-						if (paramDataInsertListener != null){
-				    		paramDataInsertListener.onSuccess(retValue);
-					    }
-					}else{
-						if (paramDataInsertListener != null){
-			    		    paramDataInsertListener.onFailure(errorCode101, errorMessage101);
-				        }
-					}
-				}
-				
-				@Override
-				public void get() {
-					//执行插入 
-					//(1)获取数据库 
-					dao.startWritableDatabase(false);
-				  	//(2)执行
-					retValue = dao.update(entity);
-				    //(3)关闭数据库
-				  	dao.closeDatabase(false);
-			    	
-				}
+                public Object getObject(){
+                    // TODO Auto-generated method stub
+				    //执行插入 
+                    //(1)获取数据库 
+                    dao.startWritableDatabase(false);
+                    //(2)执行
+                    long retValue = dao.update(entity);
+                    //(3)关闭数据库
+                    dao.closeDatabase(false);
+                    return retValue;
+                }
+
+                @Override
+                public void update(Object obj){
+                    long ret = (Long)obj;
+                    if(ret >= 0){
+                        if (paramDataInsertListener != null){
+                            paramDataInsertListener.onSuccess(ret);
+                        }
+                    }else{
+                        if (paramDataInsertListener != null){
+                            paramDataInsertListener.onFailure(errorCode101, errorMessage101);
+                        }
+                    }
+                    
+                }
+               
 			});
 			mAbTaskQueue.execute(item);
 	    	
@@ -290,13 +293,14 @@ public class AbSqliteStorage {
 		 if (entityList != null){
 	    	
 	    	AbTaskItem item = new AbTaskItem();
-	    	item.setListener(new AbTaskListener() {
+	    	item.setListener(new AbTaskObjectListener() {
 				
 				@Override
-				public void update() {
-					if(retValue>=0){
+				public void update(Object obj) {
+				    long ret = (Long)obj;
+					if(ret >= 0){
 						if (paramDataInsertListener != null){
-				    		paramDataInsertListener.onSuccess(retValue);
+				    		paramDataInsertListener.onSuccess(ret);
 					    }
 					}else{
 						if (paramDataInsertListener != null){
@@ -306,14 +310,15 @@ public class AbSqliteStorage {
 				}
 				
 				@Override
-				public void get() {
+				public Object getObject() {
 					//执行插入 
 					//(1)获取数据库 
 					dao.startWritableDatabase(false);
 				  	//(2)执行
-					retValue = dao.updateList(entityList);
+					long retValue = dao.updateList(entityList);
 				    //(3)关闭数据库
 				  	dao.closeDatabase(false);
+				  	return retValue;
 			    	
 				}
 			});
@@ -339,13 +344,14 @@ public class AbSqliteStorage {
 		 
 	    	
 	    	AbTaskItem item = new AbTaskItem();
-	    	item.setListener(new AbTaskListener() {
+	    	item.setListener(new AbTaskObjectListener() {
 				
 				@Override
-				public void update() {
-					if(retValue>=0){
+				public void update(Object obj) {
+				    long ret = (Long)obj;
+					if(ret >= 0){
 						if (paramDataInsertListener != null){
-				    		paramDataInsertListener.onSuccess(retValue);
+				    		paramDataInsertListener.onSuccess(ret);
 					    }
 					}else{
 						if (paramDataInsertListener != null){
@@ -355,14 +361,15 @@ public class AbSqliteStorage {
 				}
 				
 				@Override
-				public void get() {
+				public Object getObject() {
 					//执行插入 
 					//(1)获取数据库 
 					dao.startWritableDatabase(false);
 				  	//(2)执行
-					retValue = dao.delete(storageQuery.getWhereClause(),storageQuery.getWhereArgs());
+					long retValue = dao.delete(storageQuery.getWhereClause(),storageQuery.getWhereArgs());
 				    //(3)关闭数据库
 				  	dao.closeDatabase(false);
+				  	return retValue;
 			    	
 				}
 			});

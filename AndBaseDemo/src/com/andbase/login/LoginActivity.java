@@ -125,7 +125,7 @@ public class LoginActivity extends AbActivity {
 			checkBox.setChecked(false);
 		}
 		
-		//userName.setText("zhaoqp");
+		//userName.setText("amsoft.cn");
         //userPwd.setText("123456");
         
         initTitleRightLayout();

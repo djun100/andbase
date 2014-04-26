@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ package com.ab.global;
 /**
  * 描述：菜单对象.
  *
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-11-21 下午1:30:54
  * @version v1.0
  */

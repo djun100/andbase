@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -146,7 +146,7 @@ public class AbMultiColumnListView extends AbMultiColumnBaseListView implements 
 	/**
 	 * 描述：TODO
 	 * @see com.ab.view.pullview.AbMultiColumnAbsListView#setAdapter(android.widget.ListAdapter)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-9-4 下午4:06:32
 	 * @version v1.0
 	 */
@@ -351,7 +351,7 @@ public class AbMultiColumnListView extends AbMultiColumnBaseListView implements 
 	/**
 	 * 描述：TODO
 	 * @see com.ab.view.pullview.AbMultiColumnBaseAbsListView.OnScrollListener#onScrollStateChanged(com.ab.view.pullview.AbMultiColumnBaseAbsListView, int)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-9-4 下午4:06:32
 	 * @version v1.0
 	 */
@@ -365,7 +365,7 @@ public class AbMultiColumnListView extends AbMultiColumnBaseListView implements 
 	/**
 	 * 描述：TODO
 	 * @see com.ab.view.pullview.AbMultiColumnBaseAbsListView.OnScrollListener#onScroll(com.ab.view.pullview.AbMultiColumnBaseAbsListView, int, int, int)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-9-4 下午4:06:32
 	 * @version v1.0
 	 */

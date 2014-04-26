@@ -93,7 +93,7 @@ public class MainMenuFragment extends Fragment {
 				//定义异步执行的对象
 		    	final AbTaskItem item = new AbTaskItem();
 				item.setListener(new AbTaskListener() {
-
+				    
 					@Override
 					public void update() {
 						mActivity.removeProgressDialog();

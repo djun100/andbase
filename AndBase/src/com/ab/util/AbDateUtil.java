@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ import android.util.Log;
 /**
  * 描述：日期处理类.
  *
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-1-18 上午8:48:25
  * @version v1.0
  */

@@ -23,7 +23,7 @@ import com.andbase.global.MyApplication;
  * Copyright (c) 2012 All rights reserved
  * 名称：DemoMainActivity.java 
  * 描述：Demo主界面
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-12-13 上午11:01:21
  * @version v1.0
  */

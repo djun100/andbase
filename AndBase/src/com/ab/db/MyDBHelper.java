@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 // TODO: Auto-generated Javadoc
 /**
  * 描述：数据库操作类.
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-3-13 下午4:30:10
  * @version v1.0
  */

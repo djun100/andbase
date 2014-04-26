@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ import com.ab.bitmap.AbImageDownloader;
  * Copyright (c) 2012 All rights reserved
  * 名称：AbNetworkImageView.java 
  * 描述：根据url下载图片的网络ImageView
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-11-12 上午10:09:55
  * @version v1.0
  */
@@ -115,7 +115,7 @@ public class AbNetworkImageView extends ImageView {
     /**
      * 描述：TODO
      * @see android.view.View#onLayout(boolean, int, int, int, int)
-     * @author: zhaoqp
+     * @author: amsoft.cn
      * @date：2013-11-12 下午3:12:06
      * @version v1.0
      */
@@ -128,7 +128,7 @@ public class AbNetworkImageView extends ImageView {
     /**
      * 描述：TODO
      * @see android.view.View#onDetachedFromWindow()
-     * @author: zhaoqp
+     * @author: amsoft.cn
      * @date：2013-11-12 下午3:12:06
      * @version v1.0
      */
@@ -140,7 +140,7 @@ public class AbNetworkImageView extends ImageView {
     /**
      * 描述：TODO
      * @see android.widget.ImageView#drawableStateChanged()
-     * @author: zhaoqp
+     * @author: amsoft.cn
      * @date：2013-11-12 下午3:12:06
      * @version v1.0
      */

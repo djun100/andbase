@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,7 +48,7 @@ public class XYEntry<K, V> implements Entry<K, V> {
    *
    * @return the key
    * @see java.util.Map.Entry#getKey()
-   * @author: zhaoqp
+   * @author: amsoft.cn
    * @date：2013-6-17 上午9:04:49
    * @version v1.0
    */
@@ -61,7 +61,7 @@ public class XYEntry<K, V> implements Entry<K, V> {
    *
    * @return the value
    * @see java.util.Map.Entry#getValue()
-   * @author: zhaoqp
+   * @author: amsoft.cn
    * @date：2013-6-17 上午9:04:49
    * @version v1.0
    */
@@ -75,7 +75,7 @@ public class XYEntry<K, V> implements Entry<K, V> {
    * @param object the object
    * @return the v
    * @see java.util.Map.Entry#setValue(java.lang.Object)
-   * @author: zhaoqp
+   * @author: amsoft.cn
    * @date：2013-6-17 上午9:04:49
    * @version v1.0
    */

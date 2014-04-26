@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,7 +34,7 @@ import com.ab.util.AbStrUtil;
  * Copyright (c) 2012 All rights reserved
  * 名称：SDSQLiteOpenHelper.java 
  * 描述：SD卡中保存数据库
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-7-23 上午9:47:10
  * @version v1.0
  */

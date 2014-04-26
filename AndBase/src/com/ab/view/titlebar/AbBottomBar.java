@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,7 +34,7 @@ import com.ab.util.AbViewUtil;
 /**
  * 描述：标题栏实现.
  *
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-4-24 下午3:46:47
  * @version v1.0
  */

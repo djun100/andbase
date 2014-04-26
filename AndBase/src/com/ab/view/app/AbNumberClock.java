@@ -21,7 +21,7 @@ import android.view.View;
  * Copyright (c) 2012 All rights reserved
  * 名称：AbNumberClock.java 
  * 描述：自定义数字时钟的view
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-11-6 上午10:19:42
  * @version v1.0
  */

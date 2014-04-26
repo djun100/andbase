@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,7 @@ import com.ab.global.AbAppData;
 /**
  * 描述：左右简单的侧边栏实现
  * 滑动事件只在一个android:clickable="true"的View上
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-4-24 下午3:46:47
  * @version v1.0
  */

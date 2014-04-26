@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@ import android.os.Message;
 /**
  * 下载线程.
  *
- * @author zhaoqp
+ * @author amsoft.cn
  * @date 2011-11-10
  * @version v1.0
  */
@@ -33,18 +33,22 @@ public class AbThread extends Thread {
 	/** 下载单位. */
 	public AbTaskItem item = null;
 	
+	/** 存放返回的任务结果*/
+    private static Object result;
+	
 	/** 下载完成后的消息句柄. */
     private static Handler handler = new Handler() { 
         @Override 
         public void handleMessage(Message msg) { 
         	AbTaskItem item = (AbTaskItem)msg.obj; 
         	if(item.getListener() instanceof AbTaskListListener){
-        		((AbTaskListListener)item.getListener()).update((List<?>)item.getResult()); 
+        		((AbTaskListListener)item.getListener()).update((List<?>)result); 
         	}else if(item.getListener() instanceof AbTaskObjectListener){
-        		((AbTaskObjectListener)item.getListener()).update(item.getResult()); 
+        		((AbTaskObjectListener)item.getListener()).update(result); 
         	}else{
         		item.getListener().update(); 
         	}
+        	result = null;
         } 
     }; 
     
@@ -74,7 +78,13 @@ public class AbThread extends Thread {
             if(item!=null) { 
             	//定义了回调
                 if (item.getListener() != null) { 
-                	item.getListener().get();
+                    if(item.getListener() instanceof AbTaskListListener){
+                        result = ((AbTaskListListener)item.getListener()).getList();
+                    }else if(item.getListener() instanceof AbTaskObjectListener){
+                        result = ((AbTaskObjectListener)item.getListener()).getObject();
+                    }else{
+                        result = null;
+                    }
                 	//交由UI线程处理 
                     Message msg = handler.obtainMessage(); 
                     msg.obj = item; 

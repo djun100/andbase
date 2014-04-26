@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,7 +37,7 @@ import com.ab.view.listener.AbOnItemClickListener;
  * Copyright (c) 2012 All rights reserved
  * 名称：CalendarCell.java 
  * 描述：日历控件单元格绘制类
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-7-9 下午3:54:16
  * @version v1.0
  */
@@ -329,7 +329,7 @@ public class CalendarCell extends View {
 	 * @param event the event
 	 * @return true, if successful
 	 * @see android.view.View#onTouchEvent(android.view.MotionEvent)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-7-19 下午4:31:18
 	 * @version v1.0
 	 */
@@ -363,7 +363,7 @@ public class CalendarCell extends View {
 	 * @param event the event
 	 * @return true, if successful
 	 * @see android.view.View#onKeyDown(int, android.view.KeyEvent)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-7-19 下午4:31:18
 	 * @version v1.0
 	 */

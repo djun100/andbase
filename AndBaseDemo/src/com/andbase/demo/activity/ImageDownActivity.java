@@ -11,6 +11,7 @@ import com.ab.view.sample.AbNetworkImageView;
 import com.ab.view.sample.AbScaleImageView;
 import com.ab.view.titlebar.AbTitleBar;
 import com.andbase.R;
+import com.andbase.global.Constant;
 import com.andbase.global.MyApplication;
 
 public class ImageDownActivity extends AbActivity {
@@ -59,7 +60,7 @@ public class ImageDownActivity extends AbActivity {
         setView.setImageResource(R.drawable.image_loading);
         netView.setImageResource(R.drawable.image_loading);
         
-        String imageUrl = "http://www.amengsoft.org/content/templates/lanye/images/rand/0.jpg";
+        String imageUrl = Constant.BASEURL+"content/templates/lanye/images/rand/0.jpg";
         
         //图片的下载
         mAbImageDownloader = new AbImageDownloader(this);

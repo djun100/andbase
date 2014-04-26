@@ -21,7 +21,7 @@ import com.ab.global.AbAppData;
  * Copyright (c) 2012 All rights reserved
  * 名称：AbAnalogClock.java 
  * 描述：自定义模拟时钟
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-11-6 上午9:13:49
  * @version v1.0
  */

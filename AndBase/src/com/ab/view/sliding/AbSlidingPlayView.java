@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,7 +51,7 @@ import com.ab.view.sample.AbInnerViewPager;
  * 名称：AbPlayView
  * 描述：可播放显示的View.
  *
- * @author zhaoqp
+ * @author amsoft.cn
  * @date 2011-11-28
  * @version
  */

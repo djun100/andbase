@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,7 +33,7 @@ import com.ab.util.AbGraphical;
 /**
  * 描述：阻塞测试View(显示页面停留时间，测试主界面阻塞情况).
  * 
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-1-15 下午2:50:44
  * @version v1.0
  */
@@ -86,7 +86,7 @@ public class AbMonitorView extends View  {
 	 *
 	 * @param canvas the canvas
 	 * @see android.view.View#onDraw(android.graphics.Canvas)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-6-17 上午9:04:49
 	 * @version v1.0
 	 */

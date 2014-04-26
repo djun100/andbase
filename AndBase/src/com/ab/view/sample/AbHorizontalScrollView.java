@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@ import com.ab.view.listener.AbOnScrollListener;
  * Copyright (c) 2012 All rights reserved
  * 名称：AbHorizontalScrollView1.java 
  * 描述：有滚动事件监听的HorizontalScrollView
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-11-20 下午3:00:53
  * @version v1.0
  */

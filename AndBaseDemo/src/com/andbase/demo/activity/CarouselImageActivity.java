@@ -19,7 +19,7 @@ import com.andbase.R;
  * Copyright (c) 2012 All rights reserved
  * 名称：CarouselImageActivity.java 
  * 描述：图片适配的旋转木马
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-8-23 下午2:06:48
  * @version v1.0
  */

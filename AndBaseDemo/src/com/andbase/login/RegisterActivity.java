@@ -60,10 +60,10 @@ public class RegisterActivity extends AbActivity {
         mClear4 = (ImageButton)findViewById(R.id.clearEmail);
         Button agreementBtn = (Button) findViewById(R.id.agreementBtn);
         
-        //userName.setText("zhaoqp");
+        //userName.setText("amsoft.cn");
         //userPwd.setText("123456");
         //userPwd2.setText("123456");
-        //email.setText("zhaoqp2010@163.com");
+        //email.setText("amsoft.cn2010@163.com");
         
 		agreementBtn.setOnClickListener(new OnClickListener() {
 			

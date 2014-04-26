@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ import android.view.View;
  * 
  * 名称：AbViewPagerAdapter.java 
  * 描述：一个通用的ViewPager适配器
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-11-28 上午10:58:26
  * @version v1.0
  */

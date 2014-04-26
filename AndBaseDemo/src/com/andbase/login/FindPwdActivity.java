@@ -14,7 +14,7 @@ import com.ab.activity.AbActivity;
 import com.ab.global.AbConstant;
 import com.ab.global.AbResult;
 import com.ab.task.AbTaskItem;
-import com.ab.task.AbTaskListener;
+import com.ab.task.AbTaskObjectListener;
 import com.ab.task.AbTaskPool;
 import com.ab.util.AbStrUtil;
 import com.ab.view.titlebar.AbTitleBar;
@@ -31,7 +31,6 @@ public class FindPwdActivity extends AbActivity {
 	private ImageButton mClear2;
 	private String mStr_name = null;
 	private String mStr_email = null;
-	private AbResult mAbResult = null;
 	private AbTaskPool mAbTaskPool = null;
 	private AbTitleBar mAbTitleBar = null;
 	
@@ -200,11 +199,12 @@ public class FindPwdActivity extends AbActivity {
 			
 			showProgressDialog();
 			final AbTaskItem item = new AbTaskItem();
-			item.setListener(new AbTaskListener() {
+			item.setListener(new AbTaskObjectListener() {
 
 				@Override
-				public void update() {
+				public void update(Object obj) {
 					removeProgressDialog();
+					AbResult mAbResult = (AbResult)obj;
 					if(mAbResult != null){
 						showToast(mAbResult.getResultMsg());
 						if(mAbResult.getResultCode()==AbConstant.RESULRCODE_OK){
@@ -214,13 +214,16 @@ public class FindPwdActivity extends AbActivity {
 				}
 
 				@Override
-				public void get() {
+				public Object getObject() {
+				    AbResult mAbResult = null;
 		   		    try {
 		   		    	mAbResult = new AbResult();
 		   		    	mAbResult.setResultMsg("ok");
+		   		    	
 		   		    } catch (Exception e){
 		   		    	showToastInThread(e.getMessage());
 		   		    }
+		   		    return mAbResult;
 			  };
 			});
 			mAbTaskPool.execute(item);

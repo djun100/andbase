@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,7 +43,7 @@ import android.view.animation.Transformation;
  * Copyright (c) 2012 All rights reserved
  * 名称：CarouselImageView.java 
  * 描述：图片适配
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-11-28 上午11:15:11
  * @version v1.0
  */
@@ -357,7 +357,7 @@ public class CarouselImageView extends CarouselSpinner implements GestureDetecto
     /**
      * 描述：TODO
      * @see android.view.View#onKeyUp(int, android.view.KeyEvent)
-     * @author: zhaoqp
+     * @author: amsoft.cn
      * @date：2013-11-28 上午11:14:34
      * @version v1.0
      */
@@ -396,7 +396,7 @@ public class CarouselImageView extends CarouselSpinner implements GestureDetecto
     /**
      * 描述：TODO
      * @see android.view.View#onFocusChanged(boolean, int, android.graphics.Rect)
-     * @author: zhaoqp
+     * @author: amsoft.cn
      * @date：2013-11-28 上午11:14:34
      * @version v1.0
      */
@@ -420,7 +420,7 @@ public class CarouselImageView extends CarouselSpinner implements GestureDetecto
     /**
      * 描述：TODO
      * @see android.view.ViewGroup#checkLayoutParams(android.view.ViewGroup.LayoutParams)
-     * @author: zhaoqp
+     * @author: amsoft.cn
      * @date：2013-11-28 上午11:14:34
      * @version v1.0
      */
@@ -432,7 +432,7 @@ public class CarouselImageView extends CarouselSpinner implements GestureDetecto
     /**
      * 描述：TODO
      * @see android.view.ViewGroup#generateLayoutParams(android.view.ViewGroup.LayoutParams)
-     * @author: zhaoqp
+     * @author: amsoft.cn
      * @date：2013-11-28 上午11:14:34
      * @version v1.0
      */
@@ -444,7 +444,7 @@ public class CarouselImageView extends CarouselSpinner implements GestureDetecto
     /**
      * 描述：TODO
      * @see android.view.ViewGroup#generateLayoutParams(android.util.AttributeSet)
-     * @author: zhaoqp
+     * @author: amsoft.cn
      * @date：2013-11-28 上午11:14:34
      * @version v1.0
      */
@@ -456,7 +456,7 @@ public class CarouselImageView extends CarouselSpinner implements GestureDetecto
     /**
      * 描述：TODO
      * @see android.view.ViewGroup#dispatchSetSelected(boolean)
-     * @author: zhaoqp
+     * @author: amsoft.cn
      * @date：2013-11-28 上午11:14:34
      * @version v1.0
      */
@@ -472,7 +472,7 @@ public class CarouselImageView extends CarouselSpinner implements GestureDetecto
     /**
      * 描述：TODO
      * @see android.view.ViewGroup#dispatchSetPressed(boolean)
-     * @author: zhaoqp
+     * @author: amsoft.cn
      * @date：2013-11-28 上午11:14:34
      * @version v1.0
      */
@@ -488,7 +488,7 @@ public class CarouselImageView extends CarouselSpinner implements GestureDetecto
     /**
      * 描述：TODO
      * @see android.view.ViewGroup#showContextMenuForChild(android.view.View)
-     * @author: zhaoqp
+     * @author: amsoft.cn
      * @date：2013-11-28 上午11:14:34
      * @version v1.0
      */
@@ -508,7 +508,7 @@ public class CarouselImageView extends CarouselSpinner implements GestureDetecto
     /**
      * 描述：TODO
      * @see android.view.ViewGroup#dispatchKeyEvent(android.view.KeyEvent)
-     * @author: zhaoqp
+     * @author: amsoft.cn
      * @date：2013-11-28 上午11:14:34
      * @version v1.0
      */
@@ -687,7 +687,7 @@ public class CarouselImageView extends CarouselSpinner implements GestureDetecto
     /**
      * 描述：TODO
      * @see com.ab.view.carousel.CarouselAdapter#selectionChanged()
-     * @author: zhaoqp
+     * @author: amsoft.cn
      * @date：2013-11-28 上午11:14:34
      * @version v1.0
      */
@@ -701,7 +701,7 @@ public class CarouselImageView extends CarouselSpinner implements GestureDetecto
     /**
      * 描述：TODO
      * @see com.ab.view.carousel.CarouselAdapter#setSelectedPositionInt(int)
-     * @author: zhaoqp
+     * @author: amsoft.cn
      * @date：2013-11-28 上午11:14:34
      * @version v1.0
      */
@@ -809,7 +809,7 @@ public class CarouselImageView extends CarouselSpinner implements GestureDetecto
 		/**
 		 * 描述：TODO
 		 * @see java.lang.Runnable#run()
-		 * @author: zhaoqp
+		 * @author: amsoft.cn
 		 * @date：2013-11-28 上午11:14:34
 		 * @version v1.0
 		 */
@@ -855,7 +855,7 @@ public class CarouselImageView extends CarouselSpinner implements GestureDetecto
 	/**
 	 * 描述：TODO
 	 * @see android.view.GestureDetector.OnGestureListener#onDown(android.view.MotionEvent)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-11-28 上午11:14:34
 	 * @version v1.0
 	 */
@@ -882,7 +882,7 @@ public class CarouselImageView extends CarouselSpinner implements GestureDetecto
     /**
      * 描述：TODO
      * @see android.view.GestureDetector.OnGestureListener#onFling(android.view.MotionEvent, android.view.MotionEvent, float, float)
-     * @author: zhaoqp
+     * @author: amsoft.cn
      * @date：2013-11-28 上午11:14:34
      * @version v1.0
      */
@@ -910,7 +910,7 @@ public class CarouselImageView extends CarouselSpinner implements GestureDetecto
 	/**
 	 * 描述：TODO
 	 * @see android.view.GestureDetector.OnGestureListener#onLongPress(android.view.MotionEvent)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-11-28 上午11:14:34
 	 * @version v1.0
 	 */
@@ -930,7 +930,7 @@ public class CarouselImageView extends CarouselSpinner implements GestureDetecto
 	/**
 	 * 描述：TODO
 	 * @see android.view.GestureDetector.OnGestureListener#onScroll(android.view.MotionEvent, android.view.MotionEvent, float, float)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-11-28 上午11:14:34
 	 * @version v1.0
 	 */
@@ -979,7 +979,7 @@ public class CarouselImageView extends CarouselSpinner implements GestureDetecto
 	/**
 	 * 描述：TODO
 	 * @see android.view.GestureDetector.OnGestureListener#onSingleTapUp(android.view.MotionEvent)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-11-28 上午11:14:34
 	 * @version v1.0
 	 */
@@ -1003,7 +1003,7 @@ public class CarouselImageView extends CarouselSpinner implements GestureDetecto
 	/**
 	 * 描述：TODO
 	 * @see android.view.GestureDetector.OnGestureListener#onShowPress(android.view.MotionEvent)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-11-28 上午11:14:34
 	 * @version v1.0
 	 */

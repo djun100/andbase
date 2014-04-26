@@ -18,7 +18,7 @@ import com.ab.view.listener.AbOnProgressListener;
  * Copyright (c) 2012 All rights reserved
  * 名称：AbCircleProgressBar.java 
  * 描述：环形的ProgressBar
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-9-22 下午2:44:17
  * @version v1.0
  */

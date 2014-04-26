@@ -4,7 +4,7 @@ package com.ab.db.orm.annotation;
  * Copyright (c) 2012 All rights reserved
  * 名称：RelationsType.java 
  * 描述：关联关系类型
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-10-15 上午9:55:13
  * @version v1.0
  */

@@ -17,7 +17,7 @@ import com.andbase.global.MyApplication;
 /**
  * 名称：DBOne2OneActivity
  * 描述：一对一关联
- * @author zhaoqp
+ * @author amsoft.cn
  * @date 2011-12-13
  * @version
  */

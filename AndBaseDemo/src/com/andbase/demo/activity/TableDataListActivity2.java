@@ -13,7 +13,7 @@ import android.widget.ListView;
 
 import com.ab.activity.AbActivity;
 import com.ab.task.AbTaskItem;
-import com.ab.task.AbTaskListener;
+import com.ab.task.AbTaskListListener;
 import com.ab.task.AbTaskPool;
 import com.ab.view.listener.AbOnItemClickListener;
 import com.ab.view.table.AbCellType;
@@ -51,7 +51,6 @@ public class TableDataListActivity2 extends AbActivity {
 	///////////////////////////////////////////////
 	
 	private View noView = null;
-	private ArrayList<Stock> mStockList = null;
 	private com.ab.task.AbTaskPool mAbTaskPool = null;
 
 	@Override
@@ -155,12 +154,13 @@ public class TableDataListActivity2 extends AbActivity {
 		//查询数据
 		showProgressDialog();
 		final AbTaskItem item = new AbTaskItem();
-		item.setListener(new AbTaskListener() {
+		item.setListener(new AbTaskListListener() {
+		    
 
-			@Override
-			public void update() {
+            @Override
+            public void update(List<?> paramList){
 				removeProgressDialog();
-				
+				ArrayList<Stock> mStockList = (ArrayList<Stock>)paramList;
 				if (mStockList != null && mStockList.size() > 0) {
 					contents.clear();
 					Stock mStock = null;
@@ -177,9 +177,9 @@ public class TableDataListActivity2 extends AbActivity {
 			}
 
 			@Override
-			public void get() {
+			public List<?> getList() {
+			    ArrayList<Stock> mStockList = new ArrayList<Stock> ();
 				try {
-					mStockList = new ArrayList<Stock> ();
 					Stock mStock1 = null;
 					for(int i=0;i<20;i++){
 						mStock1 = new Stock();
@@ -197,6 +197,7 @@ public class TableDataListActivity2 extends AbActivity {
 					e.printStackTrace();
 					showToastInThread(e.getMessage());
 				}
+				return mStockList;
 		  };
 		});
 		mAbTaskPool.execute(item);

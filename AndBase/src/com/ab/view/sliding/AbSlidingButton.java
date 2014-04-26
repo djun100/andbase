@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,7 +40,7 @@ import com.ab.global.AbAppData;
  * Copyright (c) 2012 All rights reserved
  * 名称：AbSlidingButton.java 
  * 描述：滑动按钮
- * @author zhaoqp
+ * @author amsoft.cn
  * @date：2013-11-14 上午11:31:21
  * @version v1.0
  */
@@ -198,7 +198,7 @@ public class AbSlidingButton extends CheckBox  {
 	 * 
 	 * 描述：获得当前
 	 * @see android.widget.CompoundButton#isChecked()
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-11-29 下午3:54:47
 	 * @version v1.0
 	 */
@@ -210,7 +210,7 @@ public class AbSlidingButton extends CheckBox  {
 	 * 
 	 * 描述：设置选中
 	 * @see android.widget.CompoundButton#setChecked(boolean)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-11-29 下午3:54:33
 	 * @version v1.0
 	 */
@@ -222,7 +222,7 @@ public class AbSlidingButton extends CheckBox  {
 	 * 
 	 * 描述：设置选中
 	 * @see android.widget.CompoundButton#setChecked(boolean)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-11-29 下午3:54:33
 	 * @version v1.0
 	 */
@@ -245,7 +245,7 @@ public class AbSlidingButton extends CheckBox  {
 	 * 
 	 * 描述：设置监听器
 	 * @see android.widget.CompoundButton#setOnCheckedChangeListener(android.widget.CompoundButton.OnCheckedChangeListener)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-11-29 下午3:54:20
 	 * @version v1.0
 	 */
@@ -257,7 +257,7 @@ public class AbSlidingButton extends CheckBox  {
 	 * 
 	 * 描述：滑动事件
 	 * @see android.widget.TextView#onTouchEvent(android.view.MotionEvent)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-12-5 上午11:22:12
 	 * @version v1.0
 	 */

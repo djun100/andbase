@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amengsoft.org
+ * Copyright (C) 2015 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -114,7 +114,7 @@ public abstract class CarouselSpinner extends CarouselAdapter<SpinnerAdapter> {
 	/**
 	 * 描述：TODO
 	 * @see com.ab.view.carousel.CarouselAdapter#getAdapter()
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-11-28 上午11:14:34
 	 * @version v1.0
 	 */
@@ -125,7 +125,7 @@ public abstract class CarouselSpinner extends CarouselAdapter<SpinnerAdapter> {
 	/**
 	 * 描述：TODO
 	 * @see com.ab.view.carousel.CarouselAdapter#setAdapter(android.widget.Adapter)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-11-28 上午11:14:34
 	 * @version v1.0
 	 */
@@ -172,7 +172,7 @@ public abstract class CarouselSpinner extends CarouselAdapter<SpinnerAdapter> {
     /**
      * 描述：TODO
      * @see com.ab.view.carousel.CarouselAdapter#getSelectedView()
-     * @author: zhaoqp
+     * @author: amsoft.cn
      * @date：2013-11-28 上午11:14:34
      * @version v1.0
      */
@@ -226,7 +226,7 @@ public abstract class CarouselSpinner extends CarouselAdapter<SpinnerAdapter> {
 	/**
 	 * 描述：TODO
 	 * @see com.ab.view.carousel.CarouselAdapter#setSelection(int)
-	 * @author: zhaoqp
+	 * @author: amsoft.cn
 	 * @date：2013-11-28 上午11:14:34
 	 * @version v1.0
 	 */
@@ -355,7 +355,7 @@ public abstract class CarouselSpinner extends CarouselAdapter<SpinnerAdapter> {
     /**
      * 描述：TODO
      * @see android.view.ViewGroup#generateDefaultLayoutParams()
-     * @author: zhaoqp
+     * @author: amsoft.cn
      * @date：2013-11-28 上午11:14:34
      * @version v1.0
      */
@@ -401,7 +401,7 @@ public abstract class CarouselSpinner extends CarouselAdapter<SpinnerAdapter> {
     /**
      * 描述：TODO
      * @see com.ab.view.carousel.CarouselAdapter#getCount()
-     * @author: zhaoqp
+     * @author: amsoft.cn
      * @date：2013-11-28 上午11:14:34
      * @version v1.0
      */
@@ -544,7 +544,7 @@ public abstract class CarouselSpinner extends CarouselAdapter<SpinnerAdapter> {
         /**
          * 描述：TODO
          * @see android.view.AbsSavedState#writeToParcel(android.os.Parcel, int)
-         * @author: zhaoqp
+         * @author: amsoft.cn
          * @date：2013-11-28 上午11:14:34
          * @version v1.0
          */
@@ -558,7 +558,7 @@ public abstract class CarouselSpinner extends CarouselAdapter<SpinnerAdapter> {
         /**
          * 描述：TODO
          * @see java.lang.Object#toString()
-         * @author: zhaoqp
+         * @author: amsoft.cn
          * @date：2013-11-28 上午11:14:34
          * @version v1.0
          */
@@ -586,7 +586,7 @@ public abstract class CarouselSpinner extends CarouselAdapter<SpinnerAdapter> {
     /**
      * 描述：TODO
      * @see android.view.View#onSaveInstanceState()
-     * @author: zhaoqp
+     * @author: amsoft.cn
      * @date：2013-11-28 上午11:14:34
      * @version v1.0
      */
@@ -606,7 +606,7 @@ public abstract class CarouselSpinner extends CarouselAdapter<SpinnerAdapter> {
     /**
      * 描述：TODO
      * @see android.view.View#onRestoreInstanceState(android.os.Parcelable)
-     * @author: zhaoqp
+     * @author: amsoft.cn
      * @date：2013-11-28 上午11:14:34
      * @version v1.0
      */
