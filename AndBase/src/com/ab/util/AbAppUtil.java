@@ -33,9 +33,13 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.telephony.TelephonyManager;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
+import android.view.WindowManager;
 
 import com.ab.global.AbAppData;
+import com.ab.model.AbDisplayMetrics;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -246,22 +250,21 @@ public class AbAppUtil {
      * 描述：记录当前时间毫秒
      * @throws 
      */
-	public static void prepareStartTime() {
+	public static void prepareLog() {
 		Calendar current = Calendar.getInstance();
 		AbAppData.startLogTimeInMillis = current.getTimeInMillis();
 	}
 	
 	/**
 	 * 
-	 * 描述：打印这次的执行时间毫秒，需要首先调用logStartTime()
-	 * @param D  日志开关标记
+	 * 描述：打印这次的执行时间毫秒，需要首先调用prepareLog()
 	 * @param tag 标记
 	 * @param msg 描述
 	 */
-	public static void logEndTime(boolean D,String tag, String msg) {
+	public static void logD(String tag, String msg) {
 		Calendar current = Calendar.getInstance();
 		long endLogTimeInMillis = current.getTimeInMillis();
-		if(D) Log.d(tag,msg+":"+(endLogTimeInMillis-AbAppData.startLogTimeInMillis)+"ms");
+		Log.d(tag,msg+":"+(endLogTimeInMillis-AbAppData.startLogTimeInMillis)+"ms");
 	}
 	
 	/**
@@ -314,5 +317,26 @@ public class AbAppUtil {
 		}
 		return flag;
 	}
+    
+    /**
+     * 获取屏幕尺寸与密度.
+     *
+     * @param context the context
+     * @return mDisplayMetrics
+     */
+    public static AbDisplayMetrics getDisplayMetrics(Context context) {
+    	AbDisplayMetrics mDisplayMetrics = new AbDisplayMetrics();
+    	WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display d = windowManager.getDefaultDisplay();
+        mDisplayMetrics.displayWidth = d.getWidth();
+        mDisplayMetrics.displayHeight = d.getHeight();
+        DisplayMetrics dm = context.getResources().getDisplayMetrics();
+        mDisplayMetrics.density = dm.density;
+        mDisplayMetrics.widthPixels = dm.widthPixels;
+        mDisplayMetrics.heightPixels = dm.heightPixels;
+        mDisplayMetrics.scaledDensity = dm.scaledDensity;
+        
+        return mDisplayMetrics;
+    }
 
 }

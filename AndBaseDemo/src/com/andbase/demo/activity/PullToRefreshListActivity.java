@@ -51,7 +51,7 @@ public class PullToRefreshListActivity extends AbActivity {
         mAbTitleBar.setLogoLine(R.drawable.line);
         
         for (int i = 0; i < 22; i++) {
-        	mPhotoList.add(Constant.BASEURL+"content/templates/lanye/images/rand/"+i+".jpg");
+        	mPhotoList.add(Constant.BASEURL+"content/templates/amsoft/images/rand/"+i+".jpg");
 		}
         
         mAbTaskQueue = AbTaskQueue.getInstance();

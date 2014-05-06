@@ -151,7 +151,7 @@ public class AbLevelChart extends AbLevelAbstractChart {
 		textlevelIndex = mRenderer.getTextlevelIndex();
 		//当前值文字大小
 		textLevelSize = mRenderer.getTextLevelSize();
-		textLevelSize = AbViewUtil.resizeTextSize(screenWidth,screenHeight, textLevelSize);
+		textLevelSize = AbViewUtil.resize(screenWidth,screenHeight, textLevelSize);
 		//当前值文字与顶部的距离
 		marginTop = mRenderer.getMarginTop();
 		//指示三角形的宽度

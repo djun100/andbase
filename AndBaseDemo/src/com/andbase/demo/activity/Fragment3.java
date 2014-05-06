@@ -56,7 +56,7 @@ public class Fragment3 extends Fragment {
 		 
 		 View view = inflater.inflate(R.layout.pull_list, null);
 		 for (int i = 0; i < 22; i++) {
-	        	mPhotoList.add(Constant.BASEURL+"content/templates/lanye/images/rand/"+i+".jpg");
+	        	mPhotoList.add(Constant.BASEURL+"content/templates/amsoft/images/rand/"+i+".jpg");
 		 }
 		 mAbTaskQueue = AbTaskQueue.getInstance();
 	     //获取ListView对象

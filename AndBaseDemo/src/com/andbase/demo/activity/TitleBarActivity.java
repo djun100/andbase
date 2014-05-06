@@ -14,6 +14,7 @@ import android.widget.PopupWindow;
 
 import com.ab.activity.AbActivity;
 import com.ab.global.AbMenuItem;
+import com.ab.view.titlebar.AbBottomBar;
 import com.ab.view.titlebar.AbTitleBar;
 import com.andbase.R;
 import com.andbase.demo.adapter.ListPopAdapter;
@@ -25,6 +26,7 @@ public class TitleBarActivity extends AbActivity {
 	
 	//标题栏
 	private AbTitleBar mAbTitleBar = null;
+	private AbBottomBar mAbBottomBar = null;
 	
 	private PopupWindow popupWindow;
 	
@@ -36,11 +38,14 @@ public class TitleBarActivity extends AbActivity {
         application = (MyApplication)abApplication;
         
         mAbTitleBar = this.getTitleBar();
+        mAbBottomBar = this.getBottomBar(); 
         mAbTitleBar.setTitleText("多功能标题栏");
         mAbTitleBar.setLogo(R.drawable.button_selector_back);
         mAbTitleBar.setTitleBarBackground(R.drawable.top_bg);
         mAbTitleBar.setTitleTextMargin(20, 0, 0, 0);
         mAbTitleBar.setLogoLine(R.drawable.line);
+        
+        
         
         mAbTitleBar.setLogoOnClickListener(new View.OnClickListener() {
 			

@@ -47,7 +47,7 @@ public class Fragment1 extends Fragment {
 		 
 		 View view = inflater.inflate(R.layout.pull_list, null);
 		 for (int i = 0; i < 22; i++) {
-	        	mPhotoList.add(Constant.BASEURL+"content/templates/lanye/images/rand/"+i+".jpg");
+	        	mPhotoList.add(Constant.BASEURL+"content/templates/amsoft/images/rand/"+i+".jpg");
 		 }
 		 mAbTaskQueue = AbTaskQueue.getInstance();
 	     //获取ListView对象
@@ -82,8 +82,6 @@ public class Fragment1 extends Fragment {
 		//定义两种查询的事件
         final AbTaskItem item1 = new AbTaskItem();
         item1.setListener(new AbTaskListListener() {
-            
-            
 
             @Override
             public List<?> getList(){

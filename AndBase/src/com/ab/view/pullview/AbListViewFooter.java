@@ -27,6 +27,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.ab.util.AbAppUtil;
 import com.ab.util.AbViewUtil;
 
 // TODO: Auto-generated Javadoc
@@ -61,7 +62,7 @@ public class AbListViewFooter extends LinearLayout {
 	
 	/** The footer content height. */
 	private int footerHeight;
-
+	
 	/**
 	 * Instantiates a new ab list view footer.
 	 *
@@ -97,22 +98,22 @@ public class AbListViewFooter extends LinearLayout {
 		//设置布局 水平方向  
 		footerView.setOrientation(LinearLayout.HORIZONTAL);
 		footerView.setGravity(Gravity.CENTER); 
-		//setBackgroundColor(Color.rgb(225, 225,225));
+		footerView.setMinimumHeight(AbViewUtil.resize(mContext,60));
 		footerTextView = new TextView(context);  
 		footerTextView.setGravity(Gravity.CENTER_VERTICAL);
 		setTextColor(Color.rgb(107, 107, 107));
-		footerTextView.setTextSize(15);
-		footerTextView.setMinimumHeight(60);
-		footerView.setPadding(0, 15, 0, 15);
+		footerTextView.setTextSize(AbViewUtil.resize(mContext, 10));
+		
+		AbViewUtil.setPadding(mContext, footerView, 0, 10, 0, 10);
 		
 		footerProgressBar = new ProgressBar(context,null,android.R.attr.progressBarStyle);
 		footerProgressBar.setVisibility(View.GONE);
 		
 		LinearLayout.LayoutParams layoutParamsWW = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 		layoutParamsWW.gravity = Gravity.CENTER;
-		layoutParamsWW.width = 50;
-		layoutParamsWW.height = 50;
-		layoutParamsWW.rightMargin = 10;
+		layoutParamsWW.width = AbViewUtil.resize(mContext, 30);
+		layoutParamsWW.height = AbViewUtil.resize(mContext, 30);
+		layoutParamsWW.rightMargin = AbViewUtil.resize(mContext, 10);
 		footerView.addView(footerProgressBar,layoutParamsWW);
 		
 		LinearLayout.LayoutParams layoutParamsWW1 = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);

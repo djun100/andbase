@@ -65,7 +65,7 @@ public class PullToRefreshViewActivity extends AbActivity {
 			@Override
 			public void get() {
 	   		    try {
-	   		    	Thread.sleep(1000);
+	   		    	Thread.sleep(2000);
 	   		    	
 	   		    } catch (Exception e) {
 	   		    }

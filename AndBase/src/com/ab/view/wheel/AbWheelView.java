@@ -1139,7 +1139,7 @@ public class AbWheelView extends View {
 	 * @param textSize the new value text size
 	 */
 	public void setValueTextSize(int textSize) {
-		this.valueTextSize = AbViewUtil.resizeTextSize(screenWidth,screenHeight, textSize);
+		this.valueTextSize = AbViewUtil.resize(mContext, textSize);
 		this.itemOffset = valueTextSize/5;
 	}
 
@@ -1230,7 +1230,7 @@ public class AbWheelView extends View {
 	 * @param labelTextSize the new label text size
 	 */
 	public void setLabelTextSize(int labelTextSize) {
-		this.labelTextSize = AbViewUtil.resizeTextSize(screenWidth,screenHeight, labelTextSize);
+		this.labelTextSize = AbViewUtil.resize(mContext, labelTextSize);
 	}
 
 	/**

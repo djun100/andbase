@@ -63,7 +63,6 @@ public class WebActivity extends AbActivity {
 		//设置出现缩放工具
 		webSettings .setBuiltInZoomControls(true);
 		webSettings.setDefaultFontSize(20);
-		
         //访问assets目录下的文件
         String url = Constant.BASEURL+"m";
         mWebView.loadUrl(url);

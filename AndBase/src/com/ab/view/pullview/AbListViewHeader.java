@@ -121,9 +121,9 @@ public class AbListViewHeader extends LinearLayout {
 		//顶部刷新栏整体内容
 		headerView = new LinearLayout(context);
 		headerView.setOrientation(LinearLayout.HORIZONTAL);
-		//setBackgroundColor(Color.rgb(225, 225,225));
 		headerView.setGravity(Gravity.CENTER); 
-		headerView.setPadding(0, 5, 0, 5);
+		
+		AbViewUtil.setPadding(mContext, headerView, 0, 10, 0, 10);
 		
 		//显示箭头与进度
 		FrameLayout headImage =  new FrameLayout(context);
@@ -138,8 +138,8 @@ public class AbListViewHeader extends LinearLayout {
 		
 		LinearLayout.LayoutParams layoutParamsWW = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 		layoutParamsWW.gravity = Gravity.CENTER;
-		layoutParamsWW.width = 50;
-		layoutParamsWW.height = 50;
+		layoutParamsWW.width = AbViewUtil.resize(mContext, 30);
+		layoutParamsWW.height = AbViewUtil.resize(mContext, 30);
 		headImage.addView(arrowImageView,layoutParamsWW);
 		headImage.addView(headerProgressBar,layoutParamsWW);
 		
@@ -149,19 +149,18 @@ public class AbListViewHeader extends LinearLayout {
 		headerTimeView = new TextView(context);
 		headTextLayout.setOrientation(LinearLayout.VERTICAL);
 		headTextLayout.setGravity(Gravity.CENTER_VERTICAL);
-		headTextLayout.setPadding(12,0,0,0);
+		AbViewUtil.setPadding(mContext, headTextLayout,0, 0, 0, 0);
 		LinearLayout.LayoutParams layoutParamsWW2 = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 		headTextLayout.addView(tipsTextview,layoutParamsWW2);
 		headTextLayout.addView(headerTimeView,layoutParamsWW2);
 		tipsTextview.setTextColor(Color.rgb(107, 107, 107));
 		headerTimeView.setTextColor(Color.rgb(107, 107, 107));
-		tipsTextview.setTextSize(15);
-		headerTimeView.setTextSize(14);
+		tipsTextview.setTextSize(AbViewUtil.resize(mContext, 10));
+		headerTimeView.setTextSize(AbViewUtil.resize(mContext, 9));
 		
 		LinearLayout.LayoutParams layoutParamsWW3 = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 		layoutParamsWW3.gravity = Gravity.CENTER;
-		layoutParamsWW3.bottomMargin = 5;
-		layoutParamsWW3.topMargin = 5;
+		layoutParamsWW3.rightMargin = AbViewUtil.resize(mContext, 10);
 		
 		LinearLayout headerLayout = new LinearLayout(context);
 		headerLayout.setOrientation(LinearLayout.HORIZONTAL);
@@ -197,7 +196,7 @@ public class AbListViewHeader extends LinearLayout {
 	}
 
 	/**
-	 * Sets the state.
+	 * 设置状态
 	 *
 	 * @param state the new state
 	 */
@@ -252,7 +251,7 @@ public class AbListViewHeader extends LinearLayout {
 	}
 	
 	/**
-	 * Sets the visiable height.
+	 * 设置header可见的高度.
 	 *
 	 * @param height the new visiable height
 	 */
@@ -264,7 +263,7 @@ public class AbListViewHeader extends LinearLayout {
 	}
 
 	/**
-	 * Gets the visiable height.
+	 * 获取header可见的高度.
 	 *
 	 * @return the visiable height
 	 */
@@ -283,7 +282,7 @@ public class AbListViewHeader extends LinearLayout {
 	}
 	
 	/**
-	 * set last refresh time.
+	 * 设置上一次刷新时间.
 	 *
 	 * @param time the new refresh time
 	 */
@@ -292,7 +291,7 @@ public class AbListViewHeader extends LinearLayout {
 	}
 
 	/**
-	 * Gets the header height.
+	 * 获取header的高度.
 	 *
 	 * @return the header height
 	 */

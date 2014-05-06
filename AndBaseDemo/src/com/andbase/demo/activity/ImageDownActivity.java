@@ -60,7 +60,7 @@ public class ImageDownActivity extends AbActivity {
         setView.setImageResource(R.drawable.image_loading);
         netView.setImageResource(R.drawable.image_loading);
         
-        String imageUrl = Constant.BASEURL+"content/templates/lanye/images/rand/0.jpg";
+        String imageUrl = Constant.BASEURL+"content/templates/amsoft/images/rand/0.jpg";
         
         //图片的下载
         mAbImageDownloader = new AbImageDownloader(this);

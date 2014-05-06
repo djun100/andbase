@@ -16,6 +16,7 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 import com.andbase.R;
+import com.andbase.global.Constant;
 import com.andbase.global.MyApplication;
 
 public class MainContentFragment extends Fragment {
@@ -49,7 +50,7 @@ public class MainContentFragment extends Fragment {
 		webSettings.setDefaultFontSize(20);
 
 		// 访问assets目录下的文件
-		String url = "http://www.418log.org/m";
+		String url = Constant.BASEURL+"m";
 		mWebView.loadUrl(url);
 
 		// 设置WebViewClient

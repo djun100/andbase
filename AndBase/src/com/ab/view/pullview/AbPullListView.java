@@ -33,7 +33,7 @@ import com.ab.view.listener.AbOnListViewListener;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class AbPullListView.
+ * 下拉刷新与加载更多ListView.
  */
 public class AbPullListView extends ListView implements OnScrollListener {
 
@@ -330,7 +330,7 @@ public class AbPullListView extends ListView implements OnScrollListener {
 	}
 
 	/**
-	 * 描述：TODO
+	 * 描述：执行滚动 mScroller.startScroll之后
 	 * @see android.view.View#computeScroll()
 	 */
 	@Override
@@ -354,14 +354,14 @@ public class AbPullListView extends ListView implements OnScrollListener {
 	}
 
 	/**
-	 * 描述：TODO
+	 * 描述：滚动状态改变
 	 */
 	@Override
 	public void onScrollStateChanged(AbsListView view, int scrollState) {
 	}
 
 	/**
-	 * 描述：TODO
+	 * 描述：监听到滚动
 	 */
 	@Override
 	public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {

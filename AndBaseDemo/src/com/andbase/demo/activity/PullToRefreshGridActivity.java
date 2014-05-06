@@ -51,7 +51,7 @@ public class PullToRefreshGridActivity extends AbActivity {
         
 	    mAbTaskQueue = AbTaskQueue.getInstance();
 	    for (int i = 0; i < 22; i++) {
-        	mPhotoList.add(Constant.BASEURL+"content/templates/lanye/images/rand/"+i+".jpg");
+        	mPhotoList.add(Constant.BASEURL+"content/templates/amsoft/images/rand/"+i+".jpg");
 		}
 	    
 		application = (MyApplication) this.getApplication();

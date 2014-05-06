@@ -13,30 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.ab.global;
-
-
+package com.ab.model;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class AbAppData.
+ * A structure describing general information about a display such as its size,
+ * density, and font scaling
  */
-public class AbAppData {
-	
-	/** 日志开关. */
-	public static  boolean DEBUG = true;
-	
-	/** 性能测试. */
-	public static boolean mMonitorOpened = false;
-	
-	/** 起始执行时间. */
-	public static long startLogTimeInMillis = 0;
-	
-	
-	/** UI设计的基准宽度*/
-	public static int uiWidth = 480;
-	
-	/** UI设计的基准高度*/
-	public static int uiHeight = 800;
+public class AbDisplayMetrics {
+
+	/** 屏幕的宽度 */
+	public int displayWidth;
+
+	/** 屏幕的高度 */
+	public int displayHeight;
+
+	/** 屏幕的像素宽度 */
+	public int widthPixels;
+
+	/** 屏幕的像素高度 */
+	public int heightPixels;
+
+	/** 屏幕的密度 */
+	public float density;
+
+	/** 字体缩放的比例 */
+	public float scaledDensity;
 
 }

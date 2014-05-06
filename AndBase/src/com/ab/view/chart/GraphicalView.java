@@ -83,12 +83,6 @@ public class GraphicalView extends View {
   /** The old y coordinate. */
   private float oldY;
   
-  /** 屏幕宽度. */
-  private int screenWidth = 0;
-	
-  /** 屏幕高度. */
-  private int screenHeight = 0;
-  
   /**
    * Creates a new graphical view.
    * @param context the context
@@ -122,11 +116,6 @@ public class GraphicalView extends View {
     }
     mTouchHandler = new TouchHandler(this, mChart);
     
-    DisplayMetrics displayMetrics = new DisplayMetrics(); 
-	((Activity)context).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-	screenWidth = displayMetrics.widthPixels; 
-	screenHeight = displayMetrics.heightPixels; 
-    
     if (mChart instanceof XYChart) {
     	XYMultipleSeriesRenderer  mXYMultipleSeriesRenderer  = ((XYChart) mChart).getRenderer();
     	
@@ -137,30 +126,30 @@ public class GraphicalView extends View {
         int scaleRectWidth = mXYMultipleSeriesRenderer.getScaleRectWidth();
         int scaleRectHeight = mXYMultipleSeriesRenderer.getScaleRectHeight();
         //按分辨率转换
-        mXYMultipleSeriesRenderer.setExplainTextSize1(AbViewUtil.resizeTextSize(screenWidth, screenHeight, explainTextSize1));
-        mXYMultipleSeriesRenderer.setExplainTextSize2(AbViewUtil.resizeTextSize(screenWidth, screenHeight, explainTextSize2));
-        mXYMultipleSeriesRenderer.setScaleCircleRadius(AbViewUtil.resizeTextSize(screenWidth, screenHeight, scaleCircleRadius));
-        mXYMultipleSeriesRenderer.setScaleRectWidth(AbViewUtil.resizeTextSize(screenWidth, screenHeight, scaleRectWidth));
-        mXYMultipleSeriesRenderer.setScaleRectHeight(AbViewUtil.resizeTextSize(screenWidth, screenHeight, scaleRectHeight));
+        mXYMultipleSeriesRenderer.setExplainTextSize1(AbViewUtil.resize(mContext, explainTextSize1));
+        mXYMultipleSeriesRenderer.setExplainTextSize2(AbViewUtil.resize(mContext, explainTextSize2));
+        mXYMultipleSeriesRenderer.setScaleCircleRadius(AbViewUtil.resize(mContext, scaleCircleRadius));
+        mXYMultipleSeriesRenderer.setScaleRectWidth(AbViewUtil.resize(mContext, scaleRectWidth));
+        mXYMultipleSeriesRenderer.setScaleRectHeight(AbViewUtil.resize(mContext, scaleRectHeight));
         
         SimpleSeriesRenderer[]  mSimpleSeriesRenderers = mRenderer.getSeriesRenderers();
         if(mSimpleSeriesRenderers!=null && mSimpleSeriesRenderers.length>0){
         	for(int i=0;i<mSimpleSeriesRenderers.length;i++){
         		SimpleSeriesRenderer mSimpleSeriesRenderer = mSimpleSeriesRenderers[i];
         		int mChartValuesTextSize  = (int)mSimpleSeriesRenderer.getChartValuesTextSize();
-        		mSimpleSeriesRenderer.setChartValuesTextSize(AbViewUtil.resizeTextSize(screenWidth, screenHeight, mChartValuesTextSize));
+        		mSimpleSeriesRenderer.setChartValuesTextSize(AbViewUtil.resize(mContext, mChartValuesTextSize));
         	}
         }
     }
     
     int chartTitleTextSize = (int)mRenderer.getChartTitleTextSize();
-    mRenderer.setChartTitleTextSize(AbViewUtil.resizeTextSize(screenWidth, screenHeight, chartTitleTextSize));
+    mRenderer.setChartTitleTextSize(AbViewUtil.resize(mContext, chartTitleTextSize));
     //轴线上标签文字大小
     int mLabelsTextSize  = (int)mRenderer.getLabelsTextSize();
-    mRenderer.setLabelsTextSize(AbViewUtil.resizeTextSize(screenWidth, screenHeight, mLabelsTextSize));
+    mRenderer.setLabelsTextSize(AbViewUtil.resize(mContext, mLabelsTextSize));
   	//说明文字大小
     int mLegendTextSize  =  (int)mRenderer.getLegendTextSize();
-    mRenderer.setLabelsTextSize(AbViewUtil.resizeTextSize(screenWidth, screenHeight, mLegendTextSize));
+    mRenderer.setLabelsTextSize(AbViewUtil.resize(mContext, mLegendTextSize));
     
   }
 
@@ -236,8 +225,8 @@ public class GraphicalView extends View {
 	        int explainTextSize2 = mXYMultipleSeriesRenderer.getExplainTextSize2();
 	        int scaleCircleRadius = mXYMultipleSeriesRenderer.getScaleCircleRadius();
 	        //按分辨率转换
-	        scaleTopPadding = AbViewUtil.resizeTextSize(width, height, scaleTopPadding);
-	        scaleBottomPadding = AbViewUtil.resizeTextSize(width, height, scaleBottomPadding);
+	        scaleTopPadding = AbViewUtil.resize(mContext, scaleTopPadding);
+	        scaleBottomPadding = AbViewUtil.resize(mContext, scaleBottomPadding);
 	        
 	        
 	        //Y轴位置
@@ -389,7 +378,7 @@ public class GraphicalView extends View {
 	                  canvas.drawRoundRect(mRectF, 5, 5, mPaint);
 	                  
 	                  int textTopPadding = 15;
-	                  textTopPadding = AbViewUtil.resizeTextSize(screenWidth, screenHeight, textTopPadding);
+	                  textTopPadding = AbViewUtil.resize(mContext, textTopPadding);
 	                  
 	                  AbGraphical.drawText(canvas,showValue,mXYMultipleSeriesRenderer.getScaleRectWidth()-10,mTextPaint1,mRectLeft+5, mRectTop+textTopPadding);
 	                  AbGraphical.drawText(canvas,showExplain,mXYMultipleSeriesRenderer.getScaleRectWidth()-10,mTextPaint2,mRectLeft+5, mRectTop+textTopPadding+row1*hSize1);

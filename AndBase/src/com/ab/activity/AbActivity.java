@@ -134,10 +134,10 @@ public abstract class AbActivity extends FragmentActivity {
 	public RelativeLayout ab_base = null;
 	
 	/** 标题栏布局. */
-	protected AbTitleBar mAbTitleBar = null;
+	private AbTitleBar mAbTitleBar = null;
 	
 	/** 副标题栏布局. */
-	protected AbBottomBar mAbBottomBar = null;
+	private AbBottomBar mAbBottomBar = null;
 	
 	/** 主内容布局. */
 	protected RelativeLayout contentLayout = null;
@@ -547,7 +547,7 @@ public abstract class AbActivity extends FragmentActivity {
 	 * 获取副标题栏布局.
 	 * @return the bottom layout
 	 */
-	public AbBottomBar getAbBottomBar() {
+	public AbBottomBar getBottomBar() {
 		return mAbBottomBar;
 	}
 

@@ -196,7 +196,7 @@ public class PHashActivity extends AbActivity {
 			   		    	hashCodesAndDis.clear();
 			   		    	files.clear();
 			   		    	colorHistogram.clear();
-							AbAppUtil.prepareStartTime();
+							AbAppUtil.prepareLog();
 							//查询手机中所有图片
 							if(!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())){
 							   //无sd卡
@@ -243,7 +243,7 @@ public class PHashActivity extends AbActivity {
 									AbImageUtil.releaseBitmap(bitmap);
 								}
 							}
-							AbAppUtil.logEndTime(D, TAG, "创建索引");
+							AbAppUtil.logD(TAG, "创建索引");
 			   		    } catch (Exception e) {
 			   		    	showToastInThread(e.getMessage());
 			   		    }
