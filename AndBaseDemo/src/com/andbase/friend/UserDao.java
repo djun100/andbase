@@ -3,7 +3,7 @@ package com.andbase.friend;
 import android.content.Context;
 
 import com.ab.db.orm.dao.AbDBDaoImpl;
-import com.andbase.db.DBInsideHelper;
+import com.andbase.db.DBSDHelper;
 import com.andbase.model.User;
 /**
  * 
@@ -16,6 +16,6 @@ import com.andbase.model.User;
  */
 public class UserDao extends AbDBDaoImpl<User> {
 	public UserDao(Context context) {
-		super(new DBInsideHelper(context),User.class);
+		super(new DBSDHelper(context),User.class);
 	}
 }

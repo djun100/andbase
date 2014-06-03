@@ -42,9 +42,7 @@ import android.os.StatFs;
 import android.util.Log;
 
 import com.ab.bitmap.AbFileCache;
-import com.ab.bitmap.AbImageCache;
 import com.ab.global.AbAppData;
-import com.ab.global.AbConstant;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -70,7 +68,7 @@ public class AbFileUtil {
     
     /** 默认下载文件地址. */
 	private static  String downPathFileDir = downPathRootDir + "cache_files" + File.separator;
-    
+	
 	/**MB  单位B*/
 	private static int MB = 1024*1024;
 	
@@ -93,28 +91,44 @@ public class AbFileUtil {
 	 * @param url 要下载文件的网络地址
 	 * @return 下载好的本地文件地址
 	 */
-	 public static String downFileToSD(String url,String fullPath){
+	 public static String downFileToSD(String url,String dirPath){
 		 InputStream in = null;
 		 FileOutputStream fileOutputStream = null;
-		 HttpURLConnection con = null;
+		 HttpURLConnection connection = null;
 		 String downFilePath = null;
 		 File file = null;
 		 try {
 	    	if(!isCanUseSD()){
 	    		return null;
 	    	}
-			
-			file = new File(fullPath);
-			if(!file.exists()){
-				file.createNewFile();
-			}else{
-				return file.getPath();
-			}
-			downFilePath = file.getPath();
+            //先判断SD卡中有没有这个文件，不比较后缀部分比较
+            String fileNameNoMIME  = getCacheFileNameFromUrl(url);
+            File parentFile = new File(imageDownFullDir);
+            File[] files = parentFile.listFiles();
+            for(int i = 0; i < files.length; ++i){
+                 String fileName = files[i].getName();
+                 String name = fileName.substring(0,fileName.lastIndexOf("."));
+                 if(name.equals(fileNameNoMIME)){
+                     //文件已存在
+                     return files[i].getPath();
+                 }
+            } 
+            
 			URL mUrl = new URL(url);
-			con = (HttpURLConnection)mUrl.openConnection();
-			con.connect();
-			in = con.getInputStream();
+			connection = (HttpURLConnection)mUrl.openConnection();
+			connection.connect();
+            //获取文件名，下载文件
+            String fileName  = getCacheFileNameFromUrl(url,connection);
+            
+            file = new File(imageDownFullDir,fileName);
+            downFilePath = file.getPath();
+            if(!file.exists()){
+                file.createNewFile();
+            }else{
+                //文件已存在
+                return file.getPath();
+            }
+			in = connection.getInputStream();
 			fileOutputStream = new FileOutputStream(file);
 			byte[] b = new byte[1024];
 			int temp = 0;
@@ -123,8 +137,10 @@ public class AbFileUtil {
 			}
 		}catch(Exception e){
 			e.printStackTrace();
-			Log.e(TAG, "文件下载出错了");
-			return null;
+			Log.e(TAG, "有文件下载出错了");
+			//检查文件大小,如果文件为0B说明网络不好没有下载成功，要将建立的空文件删除
+			file.delete();
+			downFilePath = null;
 		}finally{
 			try {
 				if(in!=null){
@@ -141,24 +157,15 @@ public class AbFileUtil {
 				e.printStackTrace();
 			}
 			try {
-				if(con!=null){
-					con.disconnect();
+				if(connection!=null){
+				    connection.disconnect();
 				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-			try {
-				//检查文件大小,如果文件为0B说明网络不好没有下载成功，要将建立的空文件删除
-				if(file.length() == 0){
-					Log.e(TAG, "下载出错了，文件大小为0");
-					file.delete();
-				}
-				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
+		//加到缓存
+		AbFileCache.addFileToCache(file.getName(), file);
 		return downFilePath;
 	 }
 	 
@@ -184,42 +191,18 @@ public class AbFileUtil {
 				 return bitmap;
 		     }
 			 
-			 if(type != AbConstant.ORIGINALIMG && ( width<=0 || height<=0)){
+			 if(type != AbImageUtil.ORIGINALIMG && ( width<=0 || height<=0)){
 				 throw new IllegalArgumentException("缩放和裁剪图片的宽高设置不能小于0");
 			 }
-			 
-			 initImageDownFullDir();
-			 
-			 //缓存的key，也是文件名
-			 String key =  AbImageCache.getCacheKey(url, width, height, type);
-			 
-			 //获取后缀
-			 String suffix = getSuffixFromNetUrl(url);
-			 
-			 //缓存的图片文件名
-			 String fileName = key+suffix;
-			 
-			 File file = new File(imageDownFullDir,fileName);
-			 
-			 //检查文件缓存中是否存在文件
-			 File fileCache = AbFileCache.getFileFromCache(fileName);
-			 if(fileCache == null){
-				 String downFilePath = downFileToSD(url,file.getPath());
-				 if(downFilePath != null){
-					 //下载成功后存入缓存
-					 AbFileCache.addFileToCache(fileName, file);
-					 //获取
-					 return getBitmapFromSD(file,type,width,height);
-				 }else{
-					 return null;
-				 }
+			 //下载文件，如果不存在就下载，存在直接返回地址
+			 String downFilePath = downFileToSD(url,imageDownFullDir);
+			 if(downFilePath != null){
+				 //获取图片
+				 return getBitmapFromSD(new File(downFilePath),type,width,height);
 			 }else{
-				 bitmap = getBitmapFromSD(file,type,width,height);
-				 if(D) Log.d(TAG, "从SD缓存中得到图片:"+key+","+bitmap);
-				 //获取
-				 return bitmap;
+				 return null;
 			 }
-			 
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -227,47 +210,6 @@ public class AbFileUtil {
 		
 	 }
 	 
-	 /**
-	  * 描述：通过文件的网络地址从SD卡中读取图片.
-	  * @param url 文件的网络地址
-	  * @param type 图片的处理类型（剪切或者缩放到指定大小，参考AbConstant类）
-	  * 如果设置为原图，则后边参数无效，得到原图
-	  * @param width 新图片的宽
-	  * @param height 新图片的高
-	  * @return Bitmap 新图片
-	  */
-	 public static Bitmap getBitmapFromSD(String url,int type,int width, int height){
-		 Bitmap bit = null;
-		 try {
-			 //SD卡是否存在
-			 if(!isCanUseSD()){
-				 return null;
-		     }
-			 
-			 if(type != AbConstant.ORIGINALIMG && ( width<=0 || height<=0)){
-				 throw new IllegalArgumentException("缩放和裁剪图片的宽高设置不能小于0");
-			 }
-			 
-			 //缓存的key，也是文件名
-			 String key =  AbImageCache.getCacheKey(url, width, height, type);
-			 
-			 //获取后缀
-			 String suffix = getSuffixFromNetUrl(url);
-			 //缓存的图片文件名
-			 String fileName = key+suffix;
-			 File file = new File(imageDownFullDir,fileName);
-			 if(!file.exists()){
-				 return null;
-			 }else{
-				 //获取
-				 return getBitmapFromSD(file,type,width,height);
-			 }
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return bit;
-		
-	 }
 	 
 	 /**
  	 * 描述：通过文件的本地地址从SD卡读取图片.
@@ -287,7 +229,7 @@ public class AbFileUtil {
 		    	return null;
 		     }
 			 
-			 if(type != AbConstant.ORIGINALIMG && ( newWidth<=0 || newHeight<=0)){
+			 if(type != AbImageUtil.ORIGINALIMG && ( newWidth<=0 || newHeight<=0)){
 				 throw new IllegalArgumentException("缩放和裁剪图片的宽高设置不能小于0");
 			 }
 			 
@@ -297,9 +239,9 @@ public class AbFileUtil {
 			 }
 			 
 			 //文件存在
-			 if(type==AbConstant.CUTIMG){
+			 if(type == AbImageUtil.CUTIMG){
 		 		bit = AbImageUtil.cutImg(file,newWidth,newHeight);
-		 	 }else if(type == AbConstant.SCALEIMG){
+		 	 }else if(type == AbImageUtil.SCALEIMG){
 			 	bit = AbImageUtil.scaleImg(file,newWidth,newHeight);
 		 	 }else{
 		 		bit = AbImageUtil.originalImg(file);
@@ -310,31 +252,6 @@ public class AbFileUtil {
 		return bit;
 	 }
 	 
-	 /**
- 	 * 描述：通过文件的本地地址从SD卡读取图片.
- 	 *
- 	 * @param file the file
- 	 * @return Bitmap 图片
- 	 */
-	 public static Bitmap getBitmapFromSD(File file){
-		 Bitmap bitmap = null;
-		 try {
-			 //SD卡是否存在
-			 if(!isCanUseSD()){
-		    	return null;
-		     }
-			 //文件是否存在
-			 if(!file.exists()){
-				 return null;
-			 }
-			 //文件存在
-			 bitmap = AbImageUtil.originalImg(file);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return bitmap;
-	 }
 	 
 	 /**
 	  * 描述：将图片的byte[]写入本地文件.
@@ -436,6 +353,32 @@ public class AbFileUtil {
 	}
 	
 	/**
+     * 描述：通过文件的本地地址从SD卡读取图片.
+     *
+     * @param file the file
+     * @return Bitmap 图片
+     */
+     public static Bitmap getBitmapFromSD(File file){
+         Bitmap bitmap = null;
+         try {
+             //SD卡是否存在
+             if(!isCanUseSD()){
+                return null;
+             }
+             //文件是否存在
+             if(!file.exists()){
+                 return null;
+             }
+             //文件存在
+             bitmap = AbImageUtil.originalImg(file);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return bitmap;
+     }
+	
+	/**
 	 * 描述：获取网络文件的大小.
 	 *
 	 * @param Url 图片的网络路径
@@ -466,82 +409,168 @@ public class AbFileUtil {
 		return mContentLength;
 	}
 	
+	/**
+     * 获取文件名，通过网络获取.
+     * @param url 文件地址
+     * @return 文件名
+     */
+    public static String getRealFileNameFromUrl(String url){
+        String name = null;
+        try {
+            if(AbStrUtil.isEmpty(url)){
+                return name;
+            }
+            
+            URL mUrl = new URL(url);
+            HttpURLConnection mHttpURLConnection = (HttpURLConnection) mUrl.openConnection();
+            mHttpURLConnection.setConnectTimeout(5 * 1000);
+            mHttpURLConnection.setRequestMethod("GET");
+            mHttpURLConnection.setRequestProperty("Accept","image/gif, image/jpeg, image/pjpeg, image/pjpeg, application/x-shockwave-flash, application/xaml+xml, application/vnd.ms-xpsdocument, application/x-ms-xbap, application/x-ms-application, application/vnd.ms-excel, application/vnd.ms-powerpoint, application/msword, */*");
+            mHttpURLConnection.setRequestProperty("Accept-Language", "zh-CN");
+            mHttpURLConnection.setRequestProperty("Referer", url);
+            mHttpURLConnection.setRequestProperty("Charset", "UTF-8");
+            mHttpURLConnection.setRequestProperty("User-Agent","");
+            mHttpURLConnection.setRequestProperty("Connection", "Keep-Alive");
+            mHttpURLConnection.connect();
+            if (mHttpURLConnection.getResponseCode() == 200){
+                for (int i = 0;; i++) {
+                        String mine = mHttpURLConnection.getHeaderField(i);
+                        if (mine == null){
+                            break;
+                        }
+                        if ("content-disposition".equals(mHttpURLConnection.getHeaderFieldKey(i).toLowerCase())) {
+                            Matcher m = Pattern.compile(".*filename=(.*)").matcher(mine.toLowerCase());
+                            if (m.find())
+                                return m.group(1).replace("\"", "");
+                        }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e(TAG, "网络上获取文件名失败");
+        }
+        return name;
+    }
+	
 	 
 	/**
-	 * 获取文件名，通过网络获取.
-	 * @param url 文件地址
+	 * 获取真实文件名（xx.后缀），通过网络获取.
+	 * @param connection 连接
 	 * @return 文件名
 	 */
-	public static String getRealFileNameFromUrl(String url){
+	public static String getRealFileName(HttpURLConnection connection){
 		String name = null;
 		try {
-			if(AbStrUtil.isEmpty(url)){
+			if(connection == null){
 				return name;
 			}
-			
-			URL mUrl = new URL(url);
-			HttpURLConnection mHttpURLConnection = (HttpURLConnection) mUrl.openConnection();
-			mHttpURLConnection.setConnectTimeout(5 * 1000);
-			mHttpURLConnection.setRequestMethod("GET");
-			mHttpURLConnection.setRequestProperty("Accept","image/gif, image/jpeg, image/pjpeg, image/pjpeg, application/x-shockwave-flash, application/xaml+xml, application/vnd.ms-xpsdocument, application/x-ms-xbap, application/x-ms-application, application/vnd.ms-excel, application/vnd.ms-powerpoint, application/msword, */*");
-			mHttpURLConnection.setRequestProperty("Accept-Language", "zh-CN");
-			mHttpURLConnection.setRequestProperty("Referer", url);
-			mHttpURLConnection.setRequestProperty("Charset", "UTF-8");
-			mHttpURLConnection.setRequestProperty("User-Agent","Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.2; Trident/4.0; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)");
-			mHttpURLConnection.setRequestProperty("Connection", "Keep-Alive");
-			mHttpURLConnection.connect();
-			if (mHttpURLConnection.getResponseCode() == 200){
+			if (connection.getResponseCode() == 200){
 				for (int i = 0;; i++) {
-						String mine = mHttpURLConnection.getHeaderField(i);
-						if (mine == null){
+						String mime = connection.getHeaderField(i);
+						if (mime == null){
 							break;
 						}
-						if ("content-disposition".equals(mHttpURLConnection.getHeaderFieldKey(i).toLowerCase())) {
-							Matcher m = Pattern.compile(".*filename=(.*)").matcher(mine.toLowerCase());
-							if (m.find())
+						// "Content-Disposition","attachment; filename=1.txt"
+						// Content-Length
+						if ("content-disposition".equals(connection.getHeaderFieldKey(i).toLowerCase())) {
+							Matcher m = Pattern.compile(".*filename=(.*)").matcher(mime.toLowerCase());
+							if (m.find()){
 								return m.group(1).replace("\"", "");
+							}
 						}
 				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			Log.e(TAG, "网络上获取文件名失败");
 		}
 		return name;
     }
 	
+	/**
+     * 获取真实文件名（xx.后缀），通过网络获取.
+     * @param connection 连接
+     * @return 文件名
+     */
+    public static String getRealFileName(HttpResponse response){
+        String name = null;
+        try {
+            if(response == null){
+                return name;
+            }
+            //获取文件名
+            Header[] headers = response.getHeaders("content-disposition");
+            for(int i=0;i<headers.length;i++){
+                 Matcher m = Pattern.compile(".*filename=(.*)").matcher(headers[i].getValue());
+                 if (m.find()){
+                     name =  m.group(1).replace("\"", "");
+                 }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e(TAG, "网络上获取文件名失败");
+        }
+        return name;
+    }
+    
+    /**
+     * 获取文件名（不含后缀）
+     * @param url 文件地址
+     * @return 文件名
+     */
+    public static String getCacheFileNameFromUrl(String url){
+        if(AbStrUtil.isEmpty(url)){
+            return null;
+        }
+        String name = null;
+        try {
+            name = AbMd5.MD5(url);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return name;
+    }
+    
 	
 	/**
-	 * 获取文件名，外链模式和通过网络获取.
+     * 获取文件名（.后缀），外链模式和通过网络获取.
+     * @param url 文件地址
+     * @return 文件名
+     */
+    public static String getCacheFileNameFromUrl(String url,HttpResponse response){
+        if(AbStrUtil.isEmpty(url)){
+            return null;
+        }
+        String name = null;
+        try {
+            //获取后缀
+            String suffix = getMIMEFromUrl(url,response);
+            if(AbStrUtil.isEmpty(suffix)){
+                suffix = ".ab";
+            }
+            name = AbMd5.MD5(url)+suffix;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return name;
+    }
+	
+	
+	/**
+	 * 获取文件名（.后缀），外链模式和通过网络获取.
 	 * @param url 文件地址
 	 * @return 文件名
 	 */
-	public static String getFileNameFromUrl(String url,HttpResponse response){
+	public static String getCacheFileNameFromUrl(String url,HttpURLConnection connection){
 		if(AbStrUtil.isEmpty(url)){
 			return null;
 		}
 		String name = null;
 		try {
-			String suffix = null;
 			//获取后缀
-			if(url.lastIndexOf(".")!=-1){
-				 suffix = url.substring(url.lastIndexOf("."));
-				 if(suffix.indexOf("/")!=-1 || suffix.indexOf("?")!=-1 || suffix.indexOf("&")!=-1){
-					 suffix = null;
-				 }
-			}
-			if(suffix == null){
-				 //获取文件名
-				 String fileName = "unknow.tmp";
-				 Header[] headers = response.getHeaders("content-disposition");
-				 for(int i=0;i<headers.length;i++){
-					  Matcher m = Pattern.compile(".*filename=(.*)").matcher(headers[i].getValue());
-					  if (m.find()){
-						  fileName =  m.group(1).replace("\"", "");
-					  }
-				 }
-				 if(fileName!=null && fileName.lastIndexOf(".")!=-1){
-					 suffix = fileName.substring(fileName.lastIndexOf("."));
-				 }
+			String suffix = getMIMEFromUrl(url,connection);
+			if(AbStrUtil.isEmpty(suffix)){
+				suffix = ".ab";
 			}
 			name = AbMd5.MD5(url)+suffix;
 		} catch (Exception e) {
@@ -550,47 +579,18 @@ public class AbFileUtil {
 		return name;
     }
 	
-	/**
-	 * 获取文件名，外链模式和通过网络获取.
-	 * @param url 文件地址
-	 * @return 文件名
-	 */
-	public static String getFileNameFromUrl(String url){
-		if(AbStrUtil.isEmpty(url)){
-			return null;
-		}
-		String name = null;
-		try {
-			String suffix = null;
-			//获取后缀
-			if(url.lastIndexOf(".")!=-1){
-				 suffix = url.substring(url.lastIndexOf("."));
-				 if(suffix.indexOf("/")!=-1){
-					 suffix = null;
-				 }
-			}
-			if(suffix == null){
-				 //获取后缀
-				 suffix = getSuffixFromNetUrl(url);
-			}
-			name = AbMd5.MD5(url)+suffix;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return name;
-    }
 	
 	/**
-	 * 获取文件后缀.
+	 * 获取文件后缀，本地.
 	 * @param url 文件地址
 	 * @return 文件后缀
 	 */
-	public static String getSuffixFromNetUrl(String url){
+	public static String getMIMEFromUrl(String url,HttpURLConnection connection){
 		
 		if(AbStrUtil.isEmpty(url)){
 			return null;
 		}
-		String suffix = ".tmp";
+		String suffix = null;
 		try {
 			//获取后缀
 			if(url.lastIndexOf(".")!=-1){
@@ -599,9 +599,9 @@ public class AbFileUtil {
 					 suffix = null;
 				 }
 			}
-			if(suffix == null){
-				 //获取文件名
-				 String fileName = getRealFileNameFromUrl(url);
+			if(AbStrUtil.isEmpty(suffix)){
+				 //获取文件名  这个效率不高
+				 String fileName = getRealFileName(connection);
 				 if(fileName!=null && fileName.lastIndexOf(".")!=-1){
 					 suffix = fileName.substring(fileName.lastIndexOf("."));
 				 }
@@ -610,6 +610,38 @@ public class AbFileUtil {
 			e.printStackTrace();
 		}
 		return suffix;
+    }
+	
+	/**
+     * 获取文件后缀，本地和网络.
+     * @param url 文件地址
+     * @return 文件后缀
+     */
+    public static String getMIMEFromUrl(String url,HttpResponse response){
+        
+        if(AbStrUtil.isEmpty(url)){
+            return null;
+        }
+        String mime = null;
+        try {
+            //获取后缀
+            if(url.lastIndexOf(".")!=-1){
+                mime = url.substring(url.lastIndexOf("."));
+                 if(mime.indexOf("/")!=-1 || mime.indexOf("?")!=-1 || mime.indexOf("&")!=-1){
+                     mime = null;
+                 }
+            }
+            if(AbStrUtil.isEmpty(mime)){
+                 //获取文件名  这个效率不高
+                 String fileName = getRealFileName(response);
+                 if(fileName!=null && fileName.lastIndexOf(".")!=-1){
+                     mime = fileName.substring(fileName.lastIndexOf("."));
+                 }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mime;
     }
 	
 	/**

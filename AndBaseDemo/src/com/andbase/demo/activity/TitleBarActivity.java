@@ -13,12 +13,13 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 
 import com.ab.activity.AbActivity;
-import com.ab.global.AbMenuItem;
+import com.ab.model.AbMenuItem;
 import com.ab.view.titlebar.AbBottomBar;
 import com.ab.view.titlebar.AbTitleBar;
 import com.andbase.R;
 import com.andbase.demo.adapter.ListPopAdapter;
 import com.andbase.global.MyApplication;
+import com.andbase.login.AboutActivity;
 
 public class TitleBarActivity extends AbActivity {
 	
@@ -185,7 +186,7 @@ public class TitleBarActivity extends AbActivity {
 				 list.add(new AbMenuItem("貂蝉"));
 				 list.add(new AbMenuItem("紫罂粟"));
 				 list.add(new AbMenuItem("孙尚香"));
-				 ListPopAdapter mListPopAdapter = new ListPopAdapter(TitleBarActivity.this, list,R.layout.list_pop_item);
+				 ListPopAdapter mListPopAdapter = new ListPopAdapter(TitleBarActivity.this, list,R.layout.item_list_pop);
 				 popListView.setAdapter(mListPopAdapter);
 				 
 				 mAbTitleBar.setTitleTextDropDown(popView);
@@ -218,7 +219,7 @@ public class TitleBarActivity extends AbActivity {
 				list.add(new AbMenuItem("收藏"));
 				list.add(new AbMenuItem("好评"));
 				list.add(new AbMenuItem("搜索"));
-				ListPopAdapter mListPopAdapter = new ListPopAdapter(TitleBarActivity.this, list,R.layout.list_pop_item2);
+				ListPopAdapter mListPopAdapter = new ListPopAdapter(TitleBarActivity.this, list,R.layout.item2_list_pop);
 				popListView.setAdapter(mListPopAdapter);
 				mAbBottomBar.setDropDown(moreBtn,popView);
 				mAbBottomBar.setDropDown(selectBtn,popView);

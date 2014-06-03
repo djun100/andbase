@@ -16,8 +16,11 @@
 package com.ab.util;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.MeasureSpec;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.AbsListView;
 import android.widget.GridView;
@@ -37,9 +40,12 @@ public class AbViewUtil {
 	 * 描述：重置AbsListView的高度. item 的最外层布局要用
 	 * RelativeLayout,如果计算的不准，就为RelativeLayout指定一个高度
 	 * 
-	 * @param absListView the abs list view
-	 * @param lineNumber 每行几个 ListView一行一个item
-	 * @param verticalSpace the vertical space
+	 * @param absListView
+	 *            the abs list view
+	 * @param lineNumber
+	 *            每行几个 ListView一行一个item
+	 * @param verticalSpace
+	 *            the vertical space
 	 */
 	public static void setAbsListViewHeight(AbsListView absListView,
 			int lineNumber, int verticalSpace) {
@@ -55,9 +61,12 @@ public class AbViewUtil {
 	/**
 	 * 描述：获取AbsListView的高度.
 	 * 
-	 * @param absListView the abs list view
-	 * @param lineNumber 每行几个 ListView一行一个item
-	 * @param verticalSpace the vertical space
+	 * @param absListView
+	 *            the abs list view
+	 * @param lineNumber
+	 *            每行几个 ListView一行一个item
+	 * @param verticalSpace
+	 *            the vertical space
 	 */
 	public static int getAbsListViewHeight(AbsListView absListView,
 			int lineNumber, int verticalSpace) {
@@ -109,18 +118,28 @@ public class AbViewUtil {
 	/**
 	 * 测量这个view，最后通过getMeasuredWidth()获取宽度和高度.
 	 * 
-	 * @param v 要测量的view
+	 * @param v
+	 *            要测量的view
 	 * @return 测量过的view
 	 */
 	public static void measureView(View v) {
-		if (v == null) {
-			return;
+		ViewGroup.LayoutParams p = v.getLayoutParams();
+		if (p == null) {
+			p = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,
+					ViewGroup.LayoutParams.WRAP_CONTENT);
 		}
-		int w = View.MeasureSpec.makeMeasureSpec(0,
-				View.MeasureSpec.UNSPECIFIED);
-		int h = View.MeasureSpec.makeMeasureSpec(0,
-				View.MeasureSpec.UNSPECIFIED);
-		v.measure(w, h);
+
+		int childWidthSpec = ViewGroup.getChildMeasureSpec(0, 0 + 0, p.width);
+		int lpHeight = p.height;
+		int childHeightSpec;
+		if (lpHeight > 0) {
+			childHeightSpec = MeasureSpec.makeMeasureSpec(lpHeight,
+					MeasureSpec.EXACTLY);
+		} else {
+			childHeightSpec = MeasureSpec.makeMeasureSpec(0,
+					MeasureSpec.UNSPECIFIED);
+		}
+		v.measure(childWidthSpec, childHeightSpec);
 	}
 
 	/**
@@ -146,11 +165,11 @@ public class AbViewUtil {
 	 * @return
 	 * @throws
 	 */
-	public static int px2dip1(Context context, float pxValue) {
+	public static int px2dip(Context context, float pxValue) {
 		final float scale = context.getResources().getDisplayMetrics().density;
 		return (int) (pxValue / scale + 0.5f);
 	}
-	
+
 	/**
 	 * 描述：根据屏幕大小缩放.
 	 * 
@@ -161,9 +180,10 @@ public class AbViewUtil {
 	 */
 	public static int resize(Context context, float pxValue) {
 		AbDisplayMetrics mDisplayMetrics = AbAppUtil.getDisplayMetrics(context);
-		return resize(mDisplayMetrics.displayWidth,mDisplayMetrics.displayHeight,pxValue);
+		return resize(mDisplayMetrics.displayWidth,
+				mDisplayMetrics.displayHeight, pxValue);
 	}
-	
+
 	/**
 	 * 描述：根据屏幕大小缩放.
 	 * 
@@ -183,17 +203,35 @@ public class AbViewUtil {
 		return Math.round(pxValue * scale);
 	}
 
+	/**
+	 * 适配大小
+	 */
+	public static float getDipSize(Context context, float pxSize) {
+		Resources mResources = context.getResources();
+		return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, pxSize,
+				mResources.getDisplayMetrics());
+	}
+
+	/**
+	 * 适配大小
+	 */
+	public static float getDipSize(float pxSize) {
+		Resources mResources = Resources.getSystem();
+		return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, pxSize,
+				mResources.getDisplayMetrics());
+	}
+
 	public static void setPadding(Context context, View view, int left,
 			int top, int right, int bottom) {
 		int paramLeft = resize(context, left);
 		int paramTop = resize(context, top);
 		int paramRight = resize(context, right);
 		int paramBottom = resize(context, bottom);
-		view.setPadding(paramLeft,paramTop,paramRight,paramBottom);
+		view.setPadding(paramLeft, paramTop, paramRight, paramBottom);
 	}
 
-	public static void setMargin(Context context, View view, int left, int top, int right,
-			int bottom) {
+	public static void setMargin(Context context, View view, int left, int top,
+			int right, int bottom) {
 		int paramLeft = resize(context, left);
 		int paramTop = resize(context, top);
 		int paramRight = resize(context, right);

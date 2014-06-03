@@ -10,27 +10,28 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
 
 import com.ab.activity.AbActivity;
+import com.ab.task.AbTask;
 import com.ab.task.AbTaskItem;
 import com.ab.task.AbTaskListListener;
-import com.ab.task.AbTaskListener;
-import com.ab.task.AbTaskQueue;
-import com.ab.view.listener.AbOnListViewListener;
-import com.ab.view.pullview.AbPullListView;
+import com.ab.view.pullview.AbPullToRefreshView;
+import com.ab.view.pullview.AbPullToRefreshView.OnFooterLoadListener;
+import com.ab.view.pullview.AbPullToRefreshView.OnHeaderRefreshListener;
 import com.ab.view.titlebar.AbTitleBar;
 import com.andbase.R;
 import com.andbase.demo.adapter.ImageListAdapter;
 import com.andbase.global.Constant;
 import com.andbase.global.MyApplication;
 
-public class PullToRefreshListActivity extends AbActivity {
+public class PullToRefreshListActivity extends AbActivity implements OnHeaderRefreshListener,OnFooterLoadListener{
 	
 	private MyApplication application;
 	private List<Map<String, Object>> list = null;
-	private AbPullListView mAbPullListView = null;
+	private AbPullToRefreshView mAbPullToRefreshView = null;
+	private ListView mListView = null;
 	private int currentPage = 1;
-	private AbTaskQueue mAbTaskQueue = null;
 	private ArrayList<String> mPhotoList = new ArrayList<String>();
 	private AbTitleBar mAbTitleBar = null;
 	private ImageListAdapter myListViewAdapter = null;
@@ -40,7 +41,7 @@ public class PullToRefreshListActivity extends AbActivity {
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setAbContentView(R.layout.pull_list);
+        setAbContentView(R.layout.pull_to_refresh_list);
         application = (MyApplication)abApplication;
         
         mAbTitleBar = this.getTitleBar();
@@ -50,21 +51,21 @@ public class PullToRefreshListActivity extends AbActivity {
         mAbTitleBar.setTitleTextMargin(10, 0, 0, 0);
         mAbTitleBar.setLogoLine(R.drawable.line);
         
-        for (int i = 0; i < 22; i++) {
+        for (int i = 0; i < 23; i++) {
         	mPhotoList.add(Constant.BASEURL+"content/templates/amsoft/images/rand/"+i+".jpg");
 		}
         
-        mAbTaskQueue = AbTaskQueue.getInstance();
 	    //获取ListView对象
-        mAbPullListView = (AbPullListView)this.findViewById(R.id.mListView);
+        mAbPullToRefreshView = (AbPullToRefreshView)this.findViewById(R.id.mPullRefreshView);
+        mListView = (ListView)this.findViewById(R.id.mListView);
         
-        //打开关闭下拉刷新加载更多功能
-        mAbPullListView.setPullRefreshEnable(true); 
-        mAbPullListView.setPullLoadEnable(true);
+        //设置监听器
+        mAbPullToRefreshView.setOnHeaderRefreshListener(this);
+        mAbPullToRefreshView.setOnFooterLoadListener(this);
         
         //设置进度条的样式
-        mAbPullListView.getHeaderView().setHeaderProgressBarDrawable(this.getResources().getDrawable(R.drawable.progress_circular));
-        mAbPullListView.getFooterView().setFooterProgressBarDrawable(this.getResources().getDrawable(R.drawable.progress_circular));
+        mAbPullToRefreshView.getHeaderView().setHeaderProgressBarDrawable(this.getResources().getDrawable(R.drawable.progress_circular));
+        mAbPullToRefreshView.getFooterView().setFooterProgressBarDrawable(this.getResources().getDrawable(R.drawable.progress_circular));
         //mAbPullListView.getHeaderView().setHeaderProgressBarDrawable(this.getResources().getDrawable(R.drawable.progress_circular2));
         //mAbPullListView.getFooterView().setFooterProgressBarDrawable(this.getResources().getDrawable(R.drawable.progress_circular2));
          
@@ -72,12 +73,13 @@ public class PullToRefreshListActivity extends AbActivity {
     	list = new ArrayList<Map<String, Object>>();
     	
     	//使用自定义的Adapter
-    	myListViewAdapter = new ImageListAdapter(this, list,R.layout.list_items,
+    	myListViewAdapter = new ImageListAdapter(this, list,R.layout.item_list,
 				new String[] { "itemsIcon", "itemsTitle","itemsText" }, new int[] { R.id.itemsIcon,
 						R.id.itemsTitle,R.id.itemsText });
-    	mAbPullListView.setAdapter(myListViewAdapter);
+    	mListView.setAdapter(myListViewAdapter);
+    	
     	//item被点击事件
-    	mAbPullListView.setOnItemClickListener(new OnItemClickListener(){
+    	mListView.setOnItemClickListener(new OnItemClickListener(){
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
@@ -85,17 +87,42 @@ public class PullToRefreshListActivity extends AbActivity {
     	});
     	
     	showProgressDialog();
+		
+    	//第一次下载数据
+		refreshTask();
+		
+    }
+    
 
-    	//定义两种查询的事件
-    	final AbTaskItem item1 = new AbTaskItem();
-		item1.setListener(new AbTaskListListener() {
-		    
-		    
-
-			@Override
+	@Override
+	protected void onResume() {
+		super.onResume();
+	}
+	
+	public void onPause() {
+		super.onPause();
+	}
+	
+	@Override
+    public void onFooterLoad(AbPullToRefreshView view) {
+	    loadMoreTask();
+    }
+	
+    @Override
+    public void onHeaderRefresh(AbPullToRefreshView view) {
+        refreshTask();
+        
+    }
+	
+	
+	public void refreshTask(){
+        AbTask mAbTask = new AbTask();
+        final AbTaskItem item = new AbTaskItem();
+        item.setListener(new AbTaskListListener() {
+            @Override
             public List<?> getList(){
-			    List<Map<String, Object>> newList = null;
-			    try {
+                List<Map<String, Object>> newList = null;
+                try {
                     Thread.sleep(1000);
                     currentPage = 1;
                     newList = new ArrayList<Map<String, Object>>();
@@ -103,7 +130,12 @@ public class PullToRefreshListActivity extends AbActivity {
                     
                     for (int i = 0; i < pageSize; i++) {
                         map = new HashMap<String, Object>();
-                        map.put("itemsIcon",mPhotoList.get(new Random().nextInt(mPhotoList.size())));
+                        if(i>=mPhotoList.size()){
+                            map.put("itemsIcon",mPhotoList.get(mPhotoList.size()-1));
+                        }else{
+                            map.put("itemsIcon",mPhotoList.get(new Random().nextInt(mPhotoList.size())));
+                        }
+                        
                         map.put("itemsTitle", "item"+(i+1));
                         map.put("itemsText", "item..."+(i+1));
                         newList.add(map);
@@ -124,93 +156,63 @@ public class PullToRefreshListActivity extends AbActivity {
                     myListViewAdapter.notifyDataSetChanged();
                     newList.clear();
                 }
-                mAbPullListView.stopRefresh();
+                mAbPullToRefreshView.onHeaderRefreshFinish();
+            }
+            
+        });
+        
+        mAbTask.execute(item);
+    }
+    
+    public void loadMoreTask(){
+        AbTask mAbTask = new AbTask();
+        final AbTaskItem item = new AbTaskItem();
+        item.setListener(new AbTaskListListener() {
+
+            @Override
+            public void update(List<?> paramList){
+                List<Map<String, Object>> newList = (List<Map<String, Object>>)paramList;
+                if(newList!=null && newList.size()>0){
+                    list.addAll(newList);
+                    myListViewAdapter.notifyDataSetChanged();
+                    newList.clear();
+                }
+                mAbPullToRefreshView.onFooterLoadFinish();
                 
             }
 
             @Override
-			public void update() {
-				
-			}
-
-			@Override
-			public void get() {
-	   		   
-		  };
-		});
-		
-		final AbTaskItem item2 = new AbTaskItem();
-		item2.setListener(new AbTaskListListener() {
-
-		    @Override
-            public void update(List<?> paramList){
-		        List<Map<String, Object>> newList = (List<Map<String, Object>>)paramList;
-				if(newList!=null && newList.size()>0){
-					list.addAll(newList);
-					myListViewAdapter.notifyDataSetChanged();
-					newList.clear();
+            public List<?> getList(){
+                List<Map<String, Object>> newList = null;
+                try {
+                    currentPage++;
+                    Thread.sleep(1000);
+                    newList = new ArrayList<Map<String, Object>>();
+                    Map<String, Object> map = null;
+                    
+                    for (int i = 0; i < pageSize; i++) {
+                        map = new HashMap<String, Object>();
+                        map.put("itemsIcon",mPhotoList.get(new Random().nextInt(mPhotoList.size())));
+                        map.put("itemsTitle", "item上拉"+((currentPage-1)*pageSize+(i+1)));
+                        map.put("itemsText", "item上拉..."+((currentPage-1)*pageSize+(i+1)));
+                        if((list.size()+newList.size()) < total){
+                            newList.add(map);
+                        }
+                    }
+                    
+                } catch (Exception e) {
+                    currentPage--;
+                    newList.clear();
+                    showToastInThread(e.getMessage());
                 }
-				mAbPullListView.stopLoadMore();
-				
-			}
-
-			@Override
-			public List<?> getList(){
-			    List<Map<String, Object>> newList = null;
-	   		    try {
-	   		    	currentPage++;
-	   		    	Thread.sleep(1000);
-	   		    	newList = new ArrayList<Map<String, Object>>();
-	   		    	Map<String, Object> map = null;
-	   		    	
-	   		    	for (int i = 0; i < pageSize; i++) {
-	   		    		map = new HashMap<String, Object>();
-	   					map.put("itemsIcon",mPhotoList.get(new Random().nextInt(mPhotoList.size())));
-		   		    	map.put("itemsTitle", "item上拉"+((currentPage-1)*pageSize+(i+1)));
-		   		    	map.put("itemsText", "item上拉..."+((currentPage-1)*pageSize+(i+1)));
-		   		    	if((list.size()+newList.size()) < total){
-		   		    		newList.add(map);
-		   		    	}
-	   				}
-	   		    	
-	   		    } catch (Exception e) {
-	   		    	currentPage--;
-	   		    	newList.clear();
-	   		    	showToastInThread(e.getMessage());
-	   		    }
-	   		    return newList;
-		  };
-		});
-		
-		mAbPullListView.setAbOnListViewListener(new AbOnListViewListener(){
-
-			@Override
-			public void onRefresh() {
-				mAbTaskQueue.execute(item1);
-			}
-
-			@Override
-			public void onLoadMore() {
-				mAbTaskQueue.execute(item2);
-			}
-			
-		});
-		
-    	//第一次下载数据
-		mAbTaskQueue.execute(item1);
-		
+                return newList;
+          };
+        });
+        
+        mAbTask.execute(item);
     }
+	
     
-
-	@Override
-	protected void onResume() {
-		super.onResume();
-	}
-	
-	public void onPause() {
-		super.onPause();
-	}
-	
    
 }
 

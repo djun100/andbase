@@ -523,6 +523,7 @@ public abstract class AbActivity extends FragmentActivity {
 	 */
 	public void removeProgressDialog() {
 		removeDialog(AbConstant.DIALOGPROGRESS);
+		mProgressMessage = "请稍候...";
     }
 	
 	/**

@@ -17,22 +17,19 @@ package com.ab.task;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.Executor;
 
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
+import android.os.Process;
 
 import com.ab.global.AbAppData;
-import com.ab.util.AbAppUtil;
 // TODO: Auto-generated Javadoc
 /**
  * 
  * Copyright (c) 2012 All rights reserved
  * 名称：AbTaskPool.java 
- * 描述：线程池,程序中只有1个
+ * 描述：用andbase线程池
  * @author amsoft.cn
  * @date：2013-5-23 上午10:10:53
  * @version v1.0
@@ -49,11 +46,8 @@ public class AbTaskPool{
 	/** 单例对象 The http pool. */
 	private static AbTaskPool abTaskPool = null; 
 	
-	/** 固定4个线程来执行任务. */
-	private static int nThreads  = 4;
-	
 	/** 线程执行器. */
-	private static ExecutorService executorService = null;
+	public static Executor mExecutorService = null;
 	
 	/** 存放返回的任务结果*/
     private static HashMap<String,Object> result;
@@ -74,22 +68,13 @@ public class AbTaskPool{
         } 
     }; 
     
-    /**
-     * 初始化线程池
-     */
-    static{
-    	nThreads = AbAppUtil.getNumCores();
-    	abTaskPool = new AbTaskPool(nThreads*10); 
-    }
 	
 	/**
 	 * 构造线程池.
-	 *
-	 * @param nThreads 初始的线程数
 	 */
-    protected AbTaskPool(int nThreads) {
+    protected AbTaskPool() {
         result = new HashMap<String,Object>();
-    	executorService = Executors.newFixedThreadPool(nThreads); 
+        mExecutorService = AbThreadFactory.getExecutorService();
     } 
 	
 	/**
@@ -98,6 +83,9 @@ public class AbTaskPool{
 	 * @return single instance of AbHttpPool
 	 */
     public static AbTaskPool getInstance() { 
+    	if (abTaskPool == null) { 
+    		abTaskPool = new AbTaskPool(); 
+        } 
         return abTaskPool;
     } 
     
@@ -106,7 +94,7 @@ public class AbTaskPool{
      * @param item the item
      */
     public void execute(final AbTaskItem item) {   
-    	executorService.submit(new Runnable() { 
+    	mExecutorService.execute(new Runnable() { 
     		public void run() {
     			try {
     				//定义了回调
@@ -116,6 +104,7 @@ public class AbTaskPool{
                         }else if(item.getListener() instanceof AbTaskObjectListener){
                             result.put(item.toString(), ((AbTaskObjectListener)item.getListener()).getObject());
                         }else{
+                        	item.getListener().get();
                             result.put(item.toString(), null);
                         }
                         
@@ -131,51 +120,5 @@ public class AbTaskPool{
     	});                 
     	
     }
-    
-    
-    /**
-     * 
-     * 描述：获取线程池的执行器
-     * @return executorService
-     * @throws 
-     */
-    public static ExecutorService getExecutorService() {
-		return executorService;
-	}
-
-
-	/**
-     * 描述：立即关闭.
-     */
-    public void shutdownNow(){
-    	if(!executorService.isTerminated()){
-    		executorService.shutdownNow();
-    		listenShutdown();
-    	}
-    	
-    }
-    
-    /**
-     * 描述：平滑关闭.
-     */
-    public void shutdown(){
-    	if(!executorService.isTerminated()){
-    	   executorService.shutdown();
-    	   listenShutdown();
-    	}
-    }
-    
-    /**
-     * 描述：关闭监听.
-     */
-    public void listenShutdown(){
-    	try {
-			while(!executorService.awaitTermination(1, TimeUnit.MILLISECONDS)) { 
-				if(D) Log.d(TAG, "线程池未关闭");
-			}  
-			if(D) Log.d(TAG, "线程池已关闭");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-    }
+	
 }

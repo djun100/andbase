@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.ab.bitmap.AbImageDownloader;
-import com.ab.global.AbConstant;
+import com.ab.util.AbImageUtil;
 import com.ab.view.sample.AbScaleImageView;
 import com.andbase.R;
 import com.andbase.demo.model.ImageInfo;
@@ -51,7 +51,7 @@ public class MultiColumnImageListAdapter extends BaseAdapter{
     	this.mImageList = imageList;
     	//图片下载器
         mAbImageDownloader = new AbImageDownloader(mContext);
-        mAbImageDownloader.setType(AbConstant.SCALEIMG);
+        mAbImageDownloader.setType(AbImageUtil.SCALEIMG);
 	    //mAbImageDownloader.setAnimation(true);
     }   
     

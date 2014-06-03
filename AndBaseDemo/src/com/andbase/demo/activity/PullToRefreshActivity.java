@@ -37,7 +37,6 @@ public class PullToRefreshActivity extends AbActivity {
         Button mListView  = (Button)this.findViewById(R.id.mListView);
         Button mSampleView  = (Button)this.findViewById(R.id.mSampleView);
         Button mGridView  = (Button)this.findViewById(R.id.mGridView);
-        Button mMultiListView  = (Button)this.findViewById(R.id.mMultiListView);
         
         mSampleView.setOnClickListener(new View.OnClickListener() {
 			
@@ -67,14 +66,6 @@ public class PullToRefreshActivity extends AbActivity {
 			}
 		});
         
-        mMultiListView.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(PullToRefreshActivity.this,PullToRefreshMultiColumnListActivity.class); 
- 				startActivity(intent);
-			}
-		});
        
       } 
     

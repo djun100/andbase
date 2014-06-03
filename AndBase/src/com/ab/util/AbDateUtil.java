@@ -43,25 +43,32 @@ public class AbDateUtil {
 	private static final boolean D = AbAppData.DEBUG;
 	
 	/** 时间日期格式化到年月日时分秒. */
-	public static String dateFormatYMDHMS = "yyyy-MM-dd HH:mm:ss";
+	public static final String dateFormatYMDHMS = "yyyy-MM-dd HH:mm:ss";
 	
 	/** 时间日期格式化到年月日. */
-	public static String dateFormatYMD = "yyyy-MM-dd";
+	public static final String dateFormatYMD = "yyyy-MM-dd";
 	
 	/** 时间日期格式化到年月. */
-	public static String dateFormatYM = "yyyy-MM";
+	public static final String dateFormatYM = "yyyy-MM";
 	
 	/** 时间日期格式化到年月日时分. */
-	public static String dateFormatYMDHM = "yyyy-MM-dd HH:mm";
+	public static final String dateFormatYMDHM = "yyyy-MM-dd HH:mm";
 	
 	/** 时间日期格式化到月日. */
-	public static String dateFormatMD = "MM/dd";
+	public static final String dateFormatMD = "MM/dd";
 	
 	/** 时分秒. */
-	public static String dateFormatHMS = "HH:mm:ss";
+	public static final String dateFormatHMS = "HH:mm:ss";
 	
 	/** 时分. */
-	public static String dateFormatHM = "HH:mm";
+	public static final String dateFormatHM = "HH:mm";
+	
+	/** 上午. */
+    public static final String AM = "AM";
+
+    /** 下午. */
+    public static final String PM = "PM";
+
 
 	/**
 	 * 描述：String类型的日期时间转化为Date类型.
@@ -252,11 +259,11 @@ public class AbDateUtil {
 	 * @param date2 第二个时间的毫秒表示
 	 * @return int 所差的天数
 	 */
-	public static int getOffectDay(long date1, long date2) {
+	public static int getOffectDay(long milliseconds1, long milliseconds2) {
 		Calendar calendar1 = Calendar.getInstance();
-		calendar1.setTimeInMillis(date1);
+		calendar1.setTimeInMillis(milliseconds1);
 		Calendar calendar2 = Calendar.getInstance();
-		calendar2.setTimeInMillis(date2);
+		calendar2.setTimeInMillis(milliseconds2);
 		//先判断是否同年
 		int y1 = calendar1.get(Calendar.YEAR);
 		int y2 = calendar2.get(Calendar.YEAR);
@@ -559,6 +566,42 @@ public class AbDateUtil {
           break;
       }
       return week;
+    }
+    
+    /**
+     * 根据给定的日期判断是否为上下午
+     * @param strDate
+     * @param format
+     * @return
+     */
+    public static String getTimeQuantum(String strDate, String format) {
+        Date mDate = getDateByFormat(strDate, format);
+        int hour  = mDate.getHours();
+        if(hour >=12)
+           return "PM";
+        else
+           return "AM";
+    }
+    
+    /**
+     * 根据给定的毫秒数算得时间的描述
+     * @param milliseconds
+     * @return
+     */
+    public static String getTimeDescription(long milliseconds) {
+        if(milliseconds > 1000){
+            //大于一分
+            if(milliseconds/1000/60>1){
+                long minute = milliseconds/1000/60;
+                long second = milliseconds/1000%60;
+                return minute+"分"+second+"秒";
+            }else{
+                //显示秒
+                return milliseconds/1000+"秒";
+            }
+        }else{
+            return milliseconds+"毫秒";
+        }
     }
 	
 	/**

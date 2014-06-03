@@ -12,19 +12,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ab.bitmap.AbImageDownloader;
-import com.ab.global.AbConstant;
+import com.ab.util.AbImageUtil;
 import com.andbase.R;
-import com.baidu.frontia.FrontiaUser;
 
 public class FriendAdapter extends BaseAdapter {
 	
-	private List<FrontiaUser.FrontiaUserDetail> mList;
+	private List<Friend> mList;
 	private Context mContext;
 	public  int pageSize = 48;
 	//图片下载器
     private AbImageDownloader mAbImageDownloader = null;
 	
-	public FriendAdapter(Context context, List<FrontiaUser.FrontiaUserDetail> list, int page) {
+	public FriendAdapter(Context context, List<Friend> list, int page) {
 		mContext = context;
 		//图片下载器
         mAbImageDownloader = new AbImageDownloader(mContext);
@@ -34,7 +33,7 @@ public class FriendAdapter extends BaseAdapter {
         mAbImageDownloader.setErrorImage(R.drawable.image_error);
         mAbImageDownloader.setNoImage(R.drawable.image_no);
 		
-		mList = new ArrayList<FrontiaUser.FrontiaUserDetail>();
+		mList = new ArrayList<Friend>();
 		int i = page * pageSize;
 		int iEnd = i+pageSize;
 		while ((i<list.size()) && (i<iEnd)) {
@@ -68,14 +67,14 @@ public class FriendAdapter extends BaseAdapter {
 			holder = (ViewHolder)convertView.getTag();
 		}
 		
-		FrontiaUser.FrontiaUserDetail userInfo = mList.get(position);
+		Friend userInfo = mList.get(position);
 		
 		holder.itemText.setText(userInfo.getName());
 		
-		String imageUrl = userInfo.getHeadUrl();
+		String imageUrl = userInfo.getPhotoUrl();
 		
 		//图片的下载
-        mAbImageDownloader.setType(AbConstant.SCALEIMG);
+        mAbImageDownloader.setType(AbImageUtil.SCALEIMG);
         mAbImageDownloader.display(holder.itemIcon,imageUrl);
 		
 		return convertView;

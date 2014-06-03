@@ -83,8 +83,8 @@ public class HttpActivity extends AbActivity {
 			@Override
 			public void onClick(View v) {
 				
-				// 一个菜谱的url地址
-				String urlString = "http://client.azrj.cn/json/cook/cook_list.jsp?type=1&p=2&size=10"; 
+				// 一个url地址
+				String urlString = "http://www.amsoft.cn/rss.php"; 
 				mAbHttpUtil.get(urlString, new AbStringHttpResponseListener() {
 					
 					//获取数据成功会调用这里
@@ -140,7 +140,7 @@ public class HttpActivity extends AbActivity {
 			@Override
 			public void onClick(View v) {
 				
-				String url = "http://client.azrj.cn/json/cook/cook_list.jsp?";
+				String url = "http://www.amsoft.cn/xxx.jsp?";
 				// 绑定参数
 		        AbRequestParams params = new AbRequestParams(); 
 		        params.put("type", "1");
@@ -194,7 +194,7 @@ public class HttpActivity extends AbActivity {
 			@Override
 			public void onClick(View v) {
 				
-				String url = "http://www.418log.org/content/templates/default/images/rand/8.jpg";
+				String url = "http://www.amsoft.cn/content/templates/amsoft/images/rand/8.jpg";
 				mAbHttpUtil.get(url, new AbBinaryHttpResponseListener() {
 		        	
 					// 获取数据成功会调用这里
@@ -247,7 +247,7 @@ public class HttpActivity extends AbActivity {
 			@Override
 			public void onClick(View v) {
 				
-				String url = "http://www.418log.org/content/uploadfile/201311/38ed1385599018.jpg";
+				String url = "http://www.amsoft.cn/content/uploadfile/201311/38ed1385599018.jpg";
 				
 				mAbHttpUtil.get(url, new AbFileHttpResponseListener(url) {
 		        	
@@ -336,6 +336,7 @@ public class HttpActivity extends AbActivity {
 					String path = pathRoot.getAbsolutePath();
 					params.put("data1",URLEncoder.encode("中文可处理",HTTP.UTF_8));
 					params.put("data2","100");
+					//参数随便加
 					File file1 = new File(path+"/download/cache_files/1.jpg");
 					File file2 = new File(path+"/download/cache_files/3.wmv");
 					params.put(file1.getName(),file1);

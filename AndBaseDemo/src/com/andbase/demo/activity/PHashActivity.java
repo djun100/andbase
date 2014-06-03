@@ -31,7 +31,7 @@ import android.widget.LinearLayout;
 
 import com.ab.activity.AbActivity;
 import com.ab.global.AbConstant;
-import com.ab.global.AbResult;
+import com.ab.model.AbResult;
 import com.ab.task.AbTaskItem;
 import com.ab.task.AbTaskListener;
 import com.ab.task.AbTaskPool;

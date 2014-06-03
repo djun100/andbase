@@ -67,151 +67,151 @@ public class DemoMainFragment extends Fragment {
 	     Map<String, Object> map = new HashMap<String, Object>();
 	    	
 	    	map = new HashMap<String, Object>();
-	    	map.put("itemsIcon",R.drawable.image_bg);
+	    	map.put("itemsIcon",R.drawable.default_pic);
 	    	map.put("itemsTitle", "1.AbActivity基本用法");
 	    	map.put("itemsText", "AbActivity使用示例");
 	    	list.add(map);
 	    	
 	    	map = new HashMap<String, Object>();
-	    	map.put("itemsIcon",R.drawable.image_bg);
+	    	map.put("itemsIcon",R.drawable.default_pic);
 	    	map.put("itemsTitle", "2.数据库ORM");
 	    	map.put("itemsText", "注解，数据库对象映射");
 	    	list.add(map);
 
 	    	map = new HashMap<String, Object>();
-	    	map.put("itemsIcon",R.drawable.image_bg);
+	    	map.put("itemsIcon",R.drawable.default_pic);
 	    	map.put("itemsTitle", "3.IOC 适配View");
 	    	map.put("itemsText", "像findViewById说no");
 	    	list.add(map);
 	    	
 	    	map = new HashMap<String, Object>();
-	    	map.put("itemsIcon",R.drawable.image_bg);
+	    	map.put("itemsIcon",R.drawable.default_pic);
 	    	map.put("itemsTitle", "4.Http工具类");
 	    	map.put("itemsText", "网络通信首选");
 	    	list.add(map);
 	    	
 	    	map = new HashMap<String, Object>();
-	    	map.put("itemsIcon",R.drawable.image_bg);
+	    	map.put("itemsIcon",R.drawable.default_pic);
 	    	map.put("itemsTitle", "5.线程池与线程队列");
 	    	map.put("itemsText", "适应于Http工具类管理范围外，更灵活的应用");
 	    	list.add(map);
 	    	
 	    	map = new HashMap<String, Object>();
-	    	map.put("itemsIcon",R.drawable.image_bg);
+	    	map.put("itemsIcon",R.drawable.default_pic);
 	    	map.put("itemsTitle", "6.图片下载与处理");
 	    	map.put("itemsText", "图片下载,裁剪,缩放");
 	    	list.add(map);
 	    	
 	    	map = new HashMap<String, Object>();
-	    	map.put("itemsIcon",R.drawable.image_bg);
+	    	map.put("itemsIcon",R.drawable.default_pic);
 	    	map.put("itemsTitle", "7.下拉刷新与分页查询");
 	    	map.put("itemsText", "支持下拉刷新，上拉加载下一页");
 	    	list.add(map);
 	    	
 	    	map = new HashMap<String, Object>();
-	    	map.put("itemsIcon",R.drawable.image_bg);
+	    	map.put("itemsIcon",R.drawable.default_pic);
 	    	map.put("itemsTitle", "8.常规表格");
 	    	map.put("itemsText", "多能适配的表格（支持文本，图片，复选框）");
 	    	list.add(map);
 	    	
 	    	map = new HashMap<String, Object>();
-	    	map.put("itemsIcon",R.drawable.image_bg);
+	    	map.put("itemsIcon",R.drawable.default_pic);
 	    	map.put("itemsTitle", "9.滑动按钮");
 	    	map.put("itemsText", "滑动按钮");
 	    	list.add(map);
 	    	
 	    	map = new HashMap<String, Object>();
-	    	map.put("itemsIcon",R.drawable.image_bg);
+	    	map.put("itemsIcon",R.drawable.default_pic);
 	    	map.put("itemsTitle", "10.图片联播");
 	    	map.put("itemsText", "图片联播,View播放");
 	    	list.add(map);
 	    	
 	    	map = new HashMap<String, Object>();
-	    	map.put("itemsIcon",R.drawable.image_bg);
+	    	map.put("itemsIcon",R.drawable.default_pic);
 	    	map.put("itemsTitle", "11.下载器");
 	    	map.put("itemsText", "多线程，断点续传");
 	    	list.add(map);
 	    	
 	    	map = new HashMap<String, Object>();
-	    	map.put("itemsIcon",R.drawable.image_bg);
+	    	map.put("itemsIcon",R.drawable.default_pic);
 	    	map.put("itemsTitle", "12.动画欢迎页面");
 	    	map.put("itemsText", "从远到近的显示的图片切换");
 	    	list.add(map);
 	    	
 	    	map = new HashMap<String, Object>();
-	    	map.put("itemsIcon",R.drawable.image_bg);
+	    	map.put("itemsIcon",R.drawable.default_pic);
 	    	map.put("itemsTitle", "13.侧边栏");
 	    	map.put("itemsText", "左右侧边栏");
 	    	list.add(map);
 	    	
 	    	map = new HashMap<String, Object>();
-	    	map.put("itemsIcon",R.drawable.image_bg);
+	    	map.put("itemsIcon",R.drawable.default_pic);
 	    	map.put("itemsTitle", "14.sliding Tab");
 	    	map.put("itemsText", "可滑动的tab标签");
 	    	list.add(map);
 	    	
 	    	map = new HashMap<String, Object>();
-	    	map.put("itemsIcon",R.drawable.image_bg);
+	    	map.put("itemsIcon",R.drawable.default_pic);
 	    	map.put("itemsTitle", "15.仿Iphone轮子选择控件");
 	    	map.put("itemsText", "仿Iphone轮子选择控件");
 	    	list.add(map);
 	    	
 	    	map = new HashMap<String, Object>();
-	    	map.put("itemsIcon",R.drawable.image_bg);
+	    	map.put("itemsIcon",R.drawable.default_pic);
 	    	map.put("itemsTitle", "16.拍照和相册选取图片");
 	    	map.put("itemsText", "拍照和相册选取图片");
 	    	list.add(map);
 	    	
 	    	map = new HashMap<String, Object>();
-	    	map.put("itemsIcon",R.drawable.image_bg);
+	    	map.put("itemsIcon",R.drawable.default_pic);
 	    	map.put("itemsTitle", "17.图表");
 	    	map.put("itemsText", "线状图，柱状图，饼状图，等级条图");
 	    	list.add(map);
 	    	
 	    	map = new HashMap<String, Object>();
-	    	map.put("itemsIcon",R.drawable.image_bg);
+	    	map.put("itemsIcon",R.drawable.default_pic);
 	    	map.put("itemsTitle", "18.日历选择器");
 	    	map.put("itemsText", "日历选择器哦");
 	    	list.add(map);
 	    	
 	    	map = new HashMap<String, Object>();
-	    	map.put("itemsIcon",R.drawable.image_bg);
+	    	map.put("itemsIcon",R.drawable.default_pic);
 	    	map.put("itemsTitle", "19.图片相近搜索");
 	    	map.put("itemsText", "phash算法");
 	    	list.add(map);
 	    	
 	    	map = new HashMap<String, Object>();
-	    	map.put("itemsIcon",R.drawable.image_bg);
+	    	map.put("itemsIcon",R.drawable.default_pic);
 	    	map.put("itemsTitle", "20.旋转木马");
 	    	map.put("itemsText", "旋转木马");
 	    	list.add(map);
 	    	
 	    	map = new HashMap<String, Object>();
-	    	map.put("itemsIcon",R.drawable.image_bg);
+	    	map.put("itemsIcon",R.drawable.default_pic);
 	    	map.put("itemsTitle", "21.水平，环形进度条");
 	    	map.put("itemsText", "漂亮的水平，环形进度条控件");
 	    	list.add(map);
 	    	
 	    	map = new HashMap<String, Object>();
-	    	map.put("itemsIcon",R.drawable.image_bg);
+	    	map.put("itemsIcon",R.drawable.default_pic);
 	    	map.put("itemsTitle", "22.3D翻转效果");
 	    	map.put("itemsText", "2013纪念币,3D切换界面");
 	    	list.add(map);
 	    	
 	    	map = new HashMap<String, Object>();
-	    	map.put("itemsIcon",R.drawable.image_bg);
+	    	map.put("itemsIcon",R.drawable.default_pic);
 	    	map.put("itemsTitle", "23.各种滑动嵌套问题");
 	    	map.put("itemsText", "各种滑动嵌套问题的解决例子");
 	    	list.add(map);
 	    	
 	    	map = new HashMap<String, Object>();
-	    	map.put("itemsIcon",R.drawable.image_bg);
+	    	map.put("itemsIcon",R.drawable.default_pic);
 	    	map.put("itemsTitle", "24.场景化UI");
 	    	map.put("itemsText", "这玩意很流行");
 	    	list.add(map);
 	    	
 	    	map = new HashMap<String, Object>();
-	    	map.put("itemsIcon",R.drawable.image_bg);
+	    	map.put("itemsIcon",R.drawable.default_pic);
 	    	map.put("itemsTitle", "25.Pop提示框");
 	    	map.put("itemsText", "挺实用，小提示");
 	    	list.add(map);
@@ -219,7 +219,7 @@ public class DemoMainFragment extends Fragment {
 	    	
 	    	
 	     //使用自定义的Adapter
-	     myListViewAdapter = new MyListViewAdapter(mActivity, list,R.layout.list_items,
+	     myListViewAdapter = new MyListViewAdapter(mActivity, list,R.layout.item_list,
 					new String[] { "itemsIcon", "itemsTitle","itemsText" }, new int[] { R.id.itemsIcon,
 							R.id.itemsTitle,R.id.itemsText });
 	     mListView.setAdapter(myListViewAdapter);

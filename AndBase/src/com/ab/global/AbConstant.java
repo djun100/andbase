@@ -27,15 +27,6 @@ public class AbConstant {
 	
 	/** SharePreferences文件名. */
 	public static final String SHAREPATH = "app_share";
-	
-    /** 图片处理：裁剪. */
-	public static final int CUTIMG = 0;
-	
-	/** 图片处理：缩放. */
-    public static final int SCALEIMG = 1;
-    
-    /** 图片处理：不处理. */
-    public static final int ORIGINALIMG = 2;
     
     /** 返回码：成功. */
     public static final int RESULRCODE_OK = 0;
@@ -76,13 +67,13 @@ public class AbConstant {
 	/** Dialog的类型. */
 	public static final int DIALOGPROGRESS = 0;
 	
-	/** The Constant DIALOGBOTTOM. */
+	/** 常量底部Dialog. */
 	public static final int DIALOGBOTTOM = 1;
 	
-	/** The Constant DIALOGCENTER. */
+	/** 常量中间Dialog. */
 	public static final int DIALOGCENTER = 2;
 	
-	/** The Constant DIALOGTOP. */
+	/** 常量顶部Dialog. */
 	public static final int DIALOGTOP = 3;
 	
 	/** 连接失败的HTTP返回码. */

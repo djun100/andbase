@@ -163,7 +163,7 @@ public class TableDataListActivity1 extends AbActivity {
 						mStock1.setId(String.valueOf(i));
 						mStock1.setText1("Text1");
 						mStock1.setText2("Text2");
-						mStock1.setText3(String.valueOf(R.drawable.logo_418));
+						mStock1.setText3(String.valueOf(R.drawable.ic_level));
 						mStock1.setText4("Text4");
 						mStock1.setText5("Text5");
 						mStockList.add(mStock1);

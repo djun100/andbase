@@ -69,12 +69,12 @@ public class DBSDSampleActivity extends AbActivity {
 	    userDao = new UserSDDao(DBSDSampleActivity.this);
 	    
 	    //(1)获取数据库 
-	  	userDao.startReadableDatabase(false);
+	  	userDao.startReadableDatabase();
 	  	//(2)执行查询
 	    userList = userDao.queryList(null, null, null, null, null, "create_time desc limit "+String.valueOf(pageSize)+ " offset " +0, null);
 	    totalCount = userDao.queryCount(null, null);
 	    //(3)关闭数据库
-	  	userDao.closeDatabase(false);
+	  	userDao.closeDatabase();
 	  	
         //获取ListView对象
         mListView = (ListView)this.findViewById(R.id.mListView);
@@ -240,11 +240,11 @@ public class DBSDSampleActivity extends AbActivity {
 	 */
 	public void queryData(){
 		//(1)获取数据库
-		userDao.startReadableDatabase(false);
+		userDao.startReadableDatabase();
 		//(2)执行查询
 		List<LocalUser> userListNew = userDao.queryList(null, null, null, null, null, "create_time desc limit "+String.valueOf(pageSize)+ " offset " +String.valueOf((pageNum-1)*pageSize), null);
 		//(3)关闭数据库
-		userDao.closeDatabase(false);
+		userDao.closeDatabase();
 		
 		userList.clear();
 		if(userListNew!=null){
@@ -262,11 +262,11 @@ public class DBSDSampleActivity extends AbActivity {
 	 */
 	public void queryDataCount(){
 		//(1)获取数据库
-		userDao.startReadableDatabase(false);
+		userDao.startReadableDatabase();
 		//(2)执行查询
 		totalCount = userDao.queryCount(null, null);
 		//(3)关闭数据库
-		userDao.closeDatabase(false);
+		userDao.closeDatabase();
 		
 		total.setText("总条数:" +String.valueOf(totalCount));
 		current.setText("当前页:" + String.valueOf(pageNum));
@@ -287,7 +287,7 @@ public class DBSDSampleActivity extends AbActivity {
 		//(2)执行查询
 		long id = userDao.insert(u);
 		//(3)关闭数据库
-		userDao.closeDatabase(false);
+		userDao.closeDatabase();
 		
 		//showToast("插入数据成功,ID:"+id);
 		//插入数据成功
@@ -306,7 +306,7 @@ public class DBSDSampleActivity extends AbActivity {
 		//(1)获取数据库
 		userDao.startWritableDatabase(false);
 		userDao.update(u);
-		userDao.closeDatabase(false);
+		userDao.closeDatabase();
 	}
 	
 	/**
@@ -317,9 +317,9 @@ public class DBSDSampleActivity extends AbActivity {
 	 */
 	public LocalUser queryDataById(int id){
 		//(1)获取数据库
-		userDao.startReadableDatabase(false);
+		userDao.startReadableDatabase();
 		LocalUser u =  (LocalUser)userDao.queryOne(id);
-		userDao.closeDatabase(false);
+		userDao.closeDatabase();
 		return u;
 	}
 	
@@ -335,7 +335,7 @@ public class DBSDSampleActivity extends AbActivity {
 		//(2)执行查询
 		userDao.delete(id);
 		//(3)关闭数据库
-		userDao.closeDatabase(false);
+		userDao.closeDatabase();
 		
 		queryData();
 	}

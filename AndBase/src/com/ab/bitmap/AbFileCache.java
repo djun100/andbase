@@ -25,7 +25,7 @@ import com.ab.util.AbStrUtil;
 
 // TODO: Auto-generated Javadoc
 /**
- * 描述：图片SD卡缓存管理.
+ * 描述：文件SD卡缓存管理.
  *
  * @author amsoft.cn
  * @date：2013-5-23 上午10:10:53

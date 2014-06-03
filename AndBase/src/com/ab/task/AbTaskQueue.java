@@ -15,10 +15,10 @@
  */
 package com.ab.task;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executor;
 
 import android.os.Handler;
 import android.os.Message;
@@ -31,7 +31,7 @@ import com.ab.global.AbAppData;
 /**
  * 线程队列.
  * 
- * @author amsoft.cn
+ * @author amsoft.cn 
  * @date 2011-11-10
  * @version v1.0
  */
@@ -43,8 +43,8 @@ public class AbTaskQueue extends Thread {
 	/** The Constant D. */
 	private static final boolean D = AbAppData.DEBUG;
 	
-	/** 等待执行的任务. */
-	private static List<AbTaskItem> mAbTaskItemList = null;
+	/** 等待执行的任务. 用 LinkedList增删效率高*/
+	private static LinkedList<AbTaskItem> mAbTaskItemList = null;
     
     /**单例对象 */
   	private static AbTaskQueue abTaskQueue = null; 
@@ -88,13 +88,11 @@ public class AbTaskQueue extends Thread {
 	 */
     public AbTaskQueue() {
     	mQuit = false;
-    	mAbTaskItemList = new ArrayList<AbTaskItem>();
+    	mAbTaskItemList = new LinkedList<AbTaskItem>();
     	result = new HashMap<String,Object>();
-    	//设置优先级
-    	Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);
     	//从线程池中获取
-    	ExecutorService mExecutorService  = AbTaskPool.getExecutorService();
-    	mExecutorService.submit(this); 
+    	Executor mExecutorService  = AbThreadFactory.getExecutorService();
+    	mExecutorService.execute(this); 
     }
     
     /**
@@ -110,13 +108,11 @@ public class AbTaskQueue extends Thread {
     /**
      * 开始一个执行任务并清除原来队列.
      * @param item 执行单位
-     * @param clean 清空之前的任务
+     * @param cancel 清空之前的任务
      */
-    public void execute(AbTaskItem item,boolean clean) { 
-	    if(clean){
-	    	if(abTaskQueue!=null){
-	    	    abTaskQueue.quit();
-	    	}
+    public void execute(AbTaskItem item,boolean cancel) { 
+	    if(cancel){
+	    	 cancel(true);
 	    }
     	addTaskItem(item); 
     } 
@@ -157,6 +153,7 @@ public class AbTaskQueue extends Thread {
                         }else if(item.getListener() instanceof AbTaskObjectListener){
                             result.put(item.toString(), ((AbTaskObjectListener)item.getListener()).getObject());
                         }else{
+                        	item.getListener().get();
                             result.put(item.toString(), null);
                         }
 				    	//交由UI线程处理 
@@ -195,9 +192,11 @@ public class AbTaskQueue extends Thread {
     /**
      * 描述：终止队列释放线程.
      */
-    public void quit(){
+    public void cancel(boolean mayInterruptIfRunning){
 		mQuit  = true;
-		interrupted();
+		if(mayInterruptIfRunning){
+			interrupted();
+		}
 		abTaskQueue  = null;
     }
 

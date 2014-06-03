@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.ab.activity.AbActivity;
 import com.ab.bitmap.AbImageDownloader;
-import com.ab.global.AbConstant;
+import com.ab.util.AbImageUtil;
 import com.ab.view.sample.AbNetworkImageView;
 import com.ab.view.sample.AbScaleImageView;
 import com.ab.view.titlebar.AbTitleBar;
@@ -64,38 +64,38 @@ public class ImageDownActivity extends AbActivity {
         
         //图片的下载
         mAbImageDownloader = new AbImageDownloader(this);
-        mAbImageDownloader.setWidth(150);
-        mAbImageDownloader.setHeight(150);
         mAbImageDownloader.setLoadingImage(R.drawable.image_loading);
         mAbImageDownloader.setErrorImage(R.drawable.image_error);
         mAbImageDownloader.setNoImage(R.drawable.image_no);
         
+        //原图片的下载
+        mAbImageDownloader.setType(AbImageUtil.ORIGINALIMG);
+        mAbImageDownloader.display(originalView,imageUrl);
         
-        //裁剪图片的下载
-        mAbImageDownloader.setType(AbConstant.CUTIMG);
-        mAbImageDownloader.display(cutView,imageUrl);
         
-        
-        //缩放图片的下载
-        mAbImageDownloader.setType(AbConstant.SCALEIMG);
+        //缩放图片的下载（保持宽高比，计算缩放比例，使一个方向缩放后，另一方向不小与显示的大小的最合适比例）
+        mAbImageDownloader.setWidth(150);
+        mAbImageDownloader.setHeight(150);
+        mAbImageDownloader.setType(AbImageUtil.SCALEIMG);
         mAbImageDownloader.display(scaleView,imageUrl);
         
-        //原图片的下载
-        mAbImageDownloader.setType(AbConstant.ORIGINALIMG);
-        mAbImageDownloader.display(originalView,imageUrl);
+        //裁剪图片的下载
+        mAbImageDownloader.setWidth(150);
+        mAbImageDownloader.setHeight(150);
+        mAbImageDownloader.setType(AbImageUtil.CUTIMG);
+        mAbImageDownloader.display(cutView,imageUrl);
         
         //显示为设置的大小px
         setView.setImageWidth(120);
         setView.setImageHeight(120);
-        mAbImageDownloader.setWidth(120);
-        mAbImageDownloader.setHeight(120);
-        mAbImageDownloader.setType(AbConstant.ORIGINALIMG);
+        //下载原图缩放显示
+        mAbImageDownloader.setType(AbImageUtil.ORIGINALIMG);
         mAbImageDownloader.display(setView,imageUrl);
         
-        //自动获取
+        //自动获取 （保持宽高比，计算缩放比例，使一个方向缩放后，另一方向不小与显示的大小的最合适比例）
         mAbImageDownloader.setWidth(150);
         mAbImageDownloader.setHeight(150);
-        mAbImageDownloader.setType(AbConstant.SCALEIMG);
+        mAbImageDownloader.setType(AbImageUtil.SCALEIMG);
         netView.setImageUrl(imageUrl, mAbImageDownloader);
        
     }

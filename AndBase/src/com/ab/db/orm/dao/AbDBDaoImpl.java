@@ -185,6 +185,9 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 		Cursor cursor = null;
 		try {
 			lock.lock();
+			if(db == null){
+                throw new RuntimeException("先调用 startReadableDatabase()或者startWritableDatabase(boolean transaction)初始化数据库。");
+            }
 			Log.d(TAG, "[rawQuery]: " + getLogSql(sql, selectionArgs));
 			cursor = db.rawQuery(sql, selectionArgs);
 			getListFromCursor(clazz,list, cursor);
@@ -212,6 +215,9 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 		Cursor cursor = null;
 		try {
 			lock.lock();
+			if(db == null){
+                throw new RuntimeException("先调用 startReadableDatabase()或者startWritableDatabase(boolean transaction)初始化数据库。");
+            }
 			Log.d(TAG, "[isExist]: " + getLogSql(sql, selectionArgs));
 			cursor = db.rawQuery(sql, selectionArgs);
 			if (cursor.getCount() > 0) {
@@ -260,7 +266,7 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 			Cursor cursor = null;
 			try {
 				lock.lock();
-				Log.d(TAG, "[queryList] from"+this.tableName+" where "+selection+"("+selectionArgs+")"+" group by "+groupBy+" having "+having+" order by "+orderBy+" limit "+limit);
+				Log.d(TAG, "[queryList] from "+this.tableName+" where "+selection+"("+selectionArgs+")"+" group by "+groupBy+" having "+having+" order by "+orderBy+" limit "+limit);
 				cursor = db.query(this.tableName, columns, selection,
 						selectionArgs, groupBy, having, orderBy, limit);
 	
@@ -520,8 +526,11 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 	@Override
 	public long insert(T entity, boolean flag) {
 			String sql = null;
-			long row = 0L;
+			long rowId = -1;
 			try {
+			    if(db == null){
+			        throw new RuntimeException("先调用 startReadableDatabase()或者startWritableDatabase(boolean transaction)初始化数据库。");
+			    }
 				lock.lock();
 				ContentValues cv = new ContentValues();
 				if (flag) {
@@ -532,7 +541,7 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 					sql = setContentValues(entity, cv, TYPE_NOT_INCREMENT,METHOD_INSERT);
 				}
 				Log.d(TAG, "[insert]: insert into " + this.tableName + " " + sql);
-				row = db.insert(this.tableName, null, cv);
+				rowId = db.insert(this.tableName, null, cv);
 				
 				//获取关联域的操作类型和关系类型
 				String foreignKey = null;
@@ -555,7 +564,7 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 					relationsField.setAccessible(true);
 					
 					if(!(action.indexOf(ActionType.insert)!=-1)){
-						return row;
+						return rowId;
 					}
 					
 					if(RelationsType.one2one.equals(type)){
@@ -578,7 +587,7 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 							}
 							
 							Log.d(TAG, "[insert]: insert into " + relationsTableName + " " + sql);
-							row += db.insert(relationsTableName, null, relationsCv);
+							db.insert(relationsTableName, null, relationsCv);
 						}
 						
 					}else if(RelationsType.one2many.equals(type) || RelationsType.many2many.equals(type)){
@@ -603,7 +612,7 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 								}
 								
 								Log.d(TAG, "[insert]: insert into " + relationsTableName + " " + sql);
-								row += db.insert(relationsTableName, null, relationsCv);
+								db.insert(relationsTableName, null, relationsCv);
 							}
 						}
 						
@@ -613,11 +622,10 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 			} catch (Exception e) {
 				Log.d(this.TAG, "[insert] into DB Exception.");
 				e.printStackTrace();
-				row = -1;
 			}finally {
 				lock.unlock();
 			}
-			return row;
+			return rowId;
 	}
 	
 	
@@ -637,9 +645,12 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 	@Override
 	public long insertList(List<T> entityList,boolean flag) {
 			String sql = null;
-			long rows = 0;
+			long rowId = -1;
 			try {
 				lock.lock();
+				if(db == null){
+                    throw new RuntimeException("先调用 startReadableDatabase()或者startWritableDatabase(boolean transaction)初始化数据库。");
+                }
 				for(T entity : entityList){
 					ContentValues cv = new ContentValues();
 					if (flag) {
@@ -651,7 +662,7 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 					}
 					
 					Log.d(TAG, "[insertList]: insert into " + this.tableName + " " + sql);
-					rows += db.insert(this.tableName, null, cv);
+					rowId = db.insert(this.tableName, null, cv);
 					
 					
 					//获取关联域的操作类型和关系类型
@@ -705,7 +716,7 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 							}
 							
 							Log.d(TAG, "[insertList]: insert into " + relationsTableName + " " + sql);
-							rows += db.insert(relationsTableName, null, relationsCv);
+							db.insert(relationsTableName, null, relationsCv);
 						}
 						
 					}else if(RelationsType.one2many.equals(type) || RelationsType.many2many.equals(type)){
@@ -729,7 +740,7 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 								}
 								
 								Log.d(TAG, "[insertList]: insert into " + relationsTableName + " " + sql);
-								rows += db.insert(relationsTableName, null, relationsCv);
+							    db.insert(relationsTableName, null, relationsCv);
 							}
 						}
 						
@@ -742,7 +753,7 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 				lock.unlock();
 			}
 	
-			return rows;
+			return rowId;
 	}
 
 	
@@ -758,6 +769,9 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 	    long rows = -1;
 		try {
 			lock.lock();
+			if(db == null){
+                throw new RuntimeException("先调用 startReadableDatabase()或者startWritableDatabase(boolean transaction)初始化数据库。");
+            }
 			String where = this.idColumn + " = ?";
 		    String[] whereValue = { Integer.toString(id) };
 			Log.d(TAG, "[delete]: delelte from " + this.tableName + " where "
@@ -798,6 +812,9 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 		long rows = -1;
 		try {
 			lock.lock();
+			if(db == null){
+                throw new RuntimeException("先调用 startReadableDatabase()或者startWritableDatabase(boolean transaction)初始化数据库。");
+            }
 			String mLogSql = getLogSql(whereClause,whereArgs);
 			if(!AbStrUtil.isEmpty(mLogSql)){
 				mLogSql +=" where ";
@@ -821,6 +838,9 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 		long rows = -1;
 		try {
 			lock.lock();
+			if(db == null){
+                throw new RuntimeException("先调用 startReadableDatabase()或者startWritableDatabase(boolean transaction)初始化数据库。");
+            }
 			Log.d(TAG, "[delete]: delete from " + this.tableName );
 			rows = db.delete(this.tableName,null,null);
 		} catch (Exception e) {
@@ -839,9 +859,12 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 	 */
 	@Override
 	public long update(T entity) {
-			long row = 0;
+			long rowId = -1;
 			try {
 				lock.lock();
+				if(db == null){
+                    throw new RuntimeException("先调用 startReadableDatabase()或者startWritableDatabase(boolean transaction)初始化数据库。");
+                }
 				ContentValues cv = new ContentValues();
 	
 				//注意返回的sql中包含主键列
@@ -856,14 +879,14 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 						+ " where " + where.replace("?", String.valueOf(id)));
 	
 				String[] whereValue = { Integer.toString(id) };
-				row = db.update(this.tableName, cv, where, whereValue);
+				rowId = db.update(this.tableName, cv, where, whereValue);
 			} catch (Exception e) {
 				Log.d(this.TAG, "[update] DB Exception.");
 				e.printStackTrace();
 			} finally {
 				lock.unlock();
 			}
-		    return row;
+		    return rowId;
 	}
 	
 
@@ -874,9 +897,12 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 	@Override
 	public long updateList(List<T> entityList) {
 			String sql = null;
-			long row = 0;
+			long rowId = -1;
 			try {
 				lock.lock();
+				if(db == null){
+                    throw new RuntimeException("先调用 startReadableDatabase()或者startWritableDatabase(boolean transaction)初始化数据库。");
+                }
 				for(T entity:entityList){
 					ContentValues cv = new ContentValues();
 	
@@ -891,7 +917,7 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 							+ " where " + where.replace("?", String.valueOf(id)));
 	
 					String[] whereValue = { Integer.toString(id) };
-					db.update(this.tableName, cv, where, whereValue);
+					rowId = db.update(this.tableName, cv, where, whereValue);
 				}
 			} catch (Exception e) {
 				Log.d(this.TAG, "[update] DB Exception.");
@@ -900,7 +926,7 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 				lock.unlock();
 			}
 	
-			return row;
+			return rowId;
 	}
 
 	/**
@@ -975,6 +1001,9 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 		List<Map<String, String>> retList = new ArrayList<Map<String, String>>();
 		try {
 			lock.lock();
+			if(db == null){
+                throw new RuntimeException("先调用 startReadableDatabase()或者startWritableDatabase(boolean transaction)初始化数据库。");
+            }
 			Log.d(TAG, "[queryMapList]: " + getLogSql(sql, selectionArgs));
 			cursor = db.rawQuery(sql, selectionArgs);
 			while (cursor.moveToNext()) {
@@ -1014,6 +1043,9 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
        int count = 0;
        try{
     	   lock.lock();
+    	   if(db == null){
+               throw new RuntimeException("先调用 startReadableDatabase()或者startWritableDatabase(boolean transaction)初始化数据库。");
+           }
     	   Log.d(TAG, "[queryCount]: " + getLogSql(sql, selectionArgs));
            cursor = db.query(this.tableName, null, sql, selectionArgs, null, null,null);
            if(cursor != null){
@@ -1040,6 +1072,9 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 	public void execSql(String sql, Object[] selectionArgs) {
 		try {
 			lock.lock();
+			if(db == null){
+                throw new RuntimeException("先调用 startReadableDatabase()或者startWritableDatabase(boolean transaction)初始化数据库。");
+            }
 			Log.d(TAG, "[execSql]: " + getLogSql(sql, selectionArgs));
 			if (selectionArgs == null) {
 				db.execSQL(sql);
@@ -1080,39 +1115,15 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 	/**
 	 * 
 	 * 描述：获取读数据库，数据操作前必须调用
-	 * @param transaction 是否开启事务
 	 * @throws 
 	 */
-	public void startReadableDatabase(boolean transaction){
+	public void startReadableDatabase(){
 		try {
 			lock.lock();
 			if(db == null || !db.isOpen()){
 				db = this.dbHelper.getReadableDatabase();
 			}
 			
-			if(db!=null && transaction){
-				db.beginTransaction();
-			}
-		}catch (Exception e) {
-			e.printStackTrace();
-		}finally{
-			lock.unlock();
-		}
-		
-	}
-	
-	
-	/**
-	 * 
-	 * 描述：操作完成后设置事务成功后才能调用closeDatabase(true);
-	 * @throws 
-	 */
-	public void setTransactionSuccessful(){
-		try {
-			lock.lock();
-			if(db!=null){
-				db.setTransactionSuccessful();
-			}
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally{
@@ -1127,11 +1138,12 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 	 * @param transaction  关闭事务
 	 * @throws 
 	 */
-	public void closeDatabase(boolean transaction){
+	public void closeDatabase(){
 		try {
 			lock.lock();
 			if(db!=null){
-				if(transaction){
+				if(db.inTransaction()){
+					db.setTransactionSuccessful();
 					db.endTransaction();
 				}
 				if(db.isOpen()){

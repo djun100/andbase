@@ -41,7 +41,7 @@ public class AbSqliteStorage {
 	private static AbSqliteStorage mSqliteStorage = null;
 	
 	/** The m ab task queue. */
-	private static AbTaskQueue mAbTaskQueue = null;
+	private static AbTaskQueue mAbTask = null;
 	
 	/** The error code100. */
 	private int errorCode100 = 100;
@@ -66,8 +66,11 @@ public class AbSqliteStorage {
 	    if (null == mSqliteStorage){
 	    	mSqliteStorage = new AbSqliteStorage(context);
 	    }
-	    //用队列避免并发访问数据库问题
-	    mAbTaskQueue = AbTaskQueue.getInstance();
+	    if(mAbTask == null){
+	        //用队列避免并发访问数据库问题
+	        mAbTask = new AbTaskQueue();
+	    }
+	    
 	    return mSqliteStorage;
 	}
 	
@@ -117,11 +120,11 @@ public class AbSqliteStorage {
 				  	//(2)执行
 					long retValue = dao.insert(entity);
 				    //(3)关闭数据库
-				  	dao.closeDatabase(false);
+				  	dao.closeDatabase();
 				  	return retValue;
 				}
 			});
-			mAbTaskQueue.execute(item);
+	    	mAbTask.execute(item);
 	    	
 	    }else{
 	    	if (paramDataInsertListener != null){
@@ -168,12 +171,12 @@ public class AbSqliteStorage {
 				  	//(2)执行
 					long retValue = dao.insertList(entityList);
 				    //(3)关闭数据库
-				  	dao.closeDatabase(false);
+				  	dao.closeDatabase();
 				  	return retValue;
 			    	
 				}
 			});
-			mAbTaskQueue.execute(item);
+	    	mAbTask.execute(item);
 	    	
 	    }else{
 	    	if (paramDataInsertListener != null){
@@ -209,7 +212,7 @@ public class AbSqliteStorage {
 					List<?> list = null;   
 					//执行插入 
 					//(1)获取数据库 
-					dao.startReadableDatabase(false);
+					dao.startReadableDatabase();
 				  	//(2)执行
 					if(storageQuery.getLimit()!=-1 && storageQuery.getOffset()!=-1){
 						list = dao.queryList(null, storageQuery.getWhereClause(),storageQuery.getWhereArgs(), storageQuery.getGroupBy(), storageQuery.getHaving(), storageQuery.getOrderBy()+" limit "+storageQuery.getLimit()+ " offset " +storageQuery.getOffset(), null);
@@ -217,12 +220,12 @@ public class AbSqliteStorage {
 						list = dao.queryList(null, storageQuery.getWhereClause(),storageQuery.getWhereArgs(), storageQuery.getGroupBy(), storageQuery.getHaving(), storageQuery.getOrderBy(), null);
 					}
 				    //(3)关闭数据库
-				  	dao.closeDatabase(false);
+				  	dao.closeDatabase();
 				  	return list;
 			    	
 				}
 			});
-			mAbTaskQueue.execute(item);
+	    	mAbTask.execute(item);
 	    
 	  }
 	
@@ -250,7 +253,7 @@ public class AbSqliteStorage {
                     //(2)执行
                     long retValue = dao.update(entity);
                     //(3)关闭数据库
-                    dao.closeDatabase(false);
+                    dao.closeDatabase();
                     return retValue;
                 }
 
@@ -270,7 +273,7 @@ public class AbSqliteStorage {
                 }
                
 			});
-			mAbTaskQueue.execute(item);
+	    	mAbTask.execute(item);
 	    	
 	    }else{
 	    	if (paramDataInsertListener != null){
@@ -317,12 +320,12 @@ public class AbSqliteStorage {
 				  	//(2)执行
 					long retValue = dao.updateList(entityList);
 				    //(3)关闭数据库
-				  	dao.closeDatabase(false);
+				  	dao.closeDatabase();
 				  	return retValue;
 			    	
 				}
 			});
-			mAbTaskQueue.execute(item);
+	    	mAbTask.execute(item);
 	    	
 	    }else{
 	    	if (paramDataInsertListener != null){
@@ -368,20 +371,21 @@ public class AbSqliteStorage {
 				  	//(2)执行
 					long retValue = dao.delete(storageQuery.getWhereClause(),storageQuery.getWhereArgs());
 				    //(3)关闭数据库
-				  	dao.closeDatabase(false);
+				  	dao.closeDatabase();
 				  	return retValue;
 			    	
 				}
 			});
-			mAbTaskQueue.execute(item);
+	    	mAbTask.execute(item);
 	}
 	
 	/**
 	 * 描述：释放存储实例.
 	 */
 	public void release(){
-		if(mAbTaskQueue!=null){
-			mAbTaskQueue.quit();
+		if(mAbTask!=null){
+			mAbTask.cancel(true);
+			mAbTask = null;
 		}
 	}
 	

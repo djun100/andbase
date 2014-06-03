@@ -15,7 +15,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.ab.activity.AbActivity;
-import com.ab.global.AbConstant;
 import com.ab.util.AbStrUtil;
 import com.ab.view.titlebar.AbTitleBar;
 import com.andbase.R;
@@ -48,7 +47,8 @@ public class RegisterActivity extends AbActivity {
 		mAbTitleBar.setTitleBarBackground(R.drawable.top_bg);
 		mAbTitleBar.setTitleTextMargin(10, 0, 0, 0);
 		mAbTitleBar.setLogoLine(R.drawable.line);
-        
+		//设置AbTitleBar在最上
+        this.setTitleBarAbove(true);
         userName = (EditText)this.findViewById(R.id.userName);
 		userPwd = (EditText)this.findViewById(R.id.userPwd);
 		userPwd2 = (EditText)this.findViewById(R.id.userPwd2);

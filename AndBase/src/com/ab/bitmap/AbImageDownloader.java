@@ -44,7 +44,7 @@ public class AbImageDownloader {
 	private static final boolean D = AbAppData.DEBUG;
 	
     /** Context. */
-    private static Context context = null;
+    private static Context mContext = null;
     
     /** 显示的图片的宽. */
     private int width;
@@ -53,7 +53,7 @@ public class AbImageDownloader {
     private int height;
 	
 	/** 图片的处理类型（剪切或者缩放到指定大小，参考AbConstant类）. */
-    private int type  = AbConstant.ORIGINALIMG;
+    private int type  = AbImageUtil.ORIGINALIMG;
     
     /** 显示为下载中的图片. */
     private Drawable loadingImage;
@@ -70,14 +70,14 @@ public class AbImageDownloader {
     /** 动画控制. */
     private boolean animation;
     
-    /** 下载用的线程池. */
+    /** 下载用的线程池. 可以根据实际需求改变下载策略*/
     private AbImageDownloadPool mAbImageDownloadPool = null;
     
     /**
      * 构造图片下载器.
      */
     public AbImageDownloader(Context context) {
-    	this.context = context;
+    	this.mContext = context;
     	this.mAbImageDownloadPool = AbImageDownloadPool.getInstance();
     } 
      
@@ -178,7 +178,7 @@ public class AbImageDownloader {
 	 * @throws 
 	 */
 	public void setLoadingImage(int resID) {
-		this.loadingImage = context.getResources().getDrawable(resID);
+		this.loadingImage = mContext.getResources().getDrawable(resID);
 	}
 	
 	/**
@@ -198,7 +198,7 @@ public class AbImageDownloader {
 	 * @throws 
 	 */
 	public void setErrorImage(int resID) {
-		this.errorImage = context.getResources().getDrawable(resID);
+		this.errorImage = mContext.getResources().getDrawable(resID);
 	}
 
 	/**
@@ -208,7 +208,7 @@ public class AbImageDownloader {
 	 * @throws 
 	 */
 	public void setNoImage(int resID) {
-		this.noImage = context.getResources().getDrawable(resID);
+		this.noImage = mContext.getResources().getDrawable(resID);
 	}
 
 	public int getWidth() {

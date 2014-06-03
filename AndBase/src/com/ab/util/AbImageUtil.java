@@ -63,6 +63,15 @@ public class AbImageUtil {
 	/** The Constant D. */
 	private static final boolean D = AbAppData.DEBUG;
 	
+	/** 图片处理：裁剪. */
+    public static final int CUTIMG = 0;
+    
+    /** 图片处理：缩放. */
+    public static final int SCALEIMG = 1;
+    
+    /** 图片处理：不处理. */
+    public static final int ORIGINALIMG = 2;
+	
 	
 	/**
 	 * 直接获取互联网上的图片.
@@ -84,9 +93,9 @@ public class AbImageUtil {
 			is = con.getInputStream();
 			//获取资源图片
 			Bitmap wholeBm =  BitmapFactory.decodeStream(is,null,null); 
-			if(type==AbConstant.CUTIMG){
+			if(type == CUTIMG){
 				bm = cutImg(wholeBm,newWidth,newHeight);
-		 	}else if(type==AbConstant.SCALEIMG){
+		 	}else if(type == SCALEIMG){
 		 		bm = scaleImg(wholeBm,newWidth,newHeight);
 		 	}else{
 		 		bm = wholeBm;
@@ -146,7 +155,7 @@ public class AbImageUtil {
 		
 		// 缩放的比例
 		float scale = 0;
-		// 计算缩放比例
+		// 计算缩放比例，使一个方向缩放后，另一方向不小与显示的大小的最合适比例
         float scaleWidth = (float)newWidth/srcWidth;
         float scaleHeight = (float)newHeight/srcHeight;
         if(scaleWidth > scaleHeight){

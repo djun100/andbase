@@ -3,6 +3,10 @@ package com.andbase.demo.adapter;
 import java.util.List;
 import java.util.Map;
 
+import com.ab.bitmap.AbImageDownloader;
+import com.ab.util.AbImageUtil;
+import com.andbase.R;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +35,9 @@ public class MyListViewAdapter extends BaseAdapter{
     //view的id
     private int[] mTo;
     
+    //图片下载器
+    private AbImageDownloader mAbImageDownloader = null;
+    
    /**
     * 构造方法
     * @param context
@@ -46,6 +53,14 @@ public class MyListViewAdapter extends BaseAdapter{
          mResource = resource;
          mFrom = from;
          mTo = to;
+         //图片下载器
+         mAbImageDownloader = new AbImageDownloader(mContext);
+         mAbImageDownloader.setWidth(100);
+         mAbImageDownloader.setHeight(100);
+         mAbImageDownloader.setLoadingImage(R.drawable.image_loading);
+         mAbImageDownloader.setErrorImage(R.drawable.image_error);
+         mAbImageDownloader.setNoImage(R.drawable.image_no);
+         mAbImageDownloader.setType(AbImageUtil.SCALEIMG);
     }   
     
     @Override
@@ -89,7 +104,12 @@ public class MyListViewAdapter extends BaseAdapter{
           final Object data1 = dataSet.get(mFrom[1]);
           final Object data2 = dataSet.get(mFrom[2]);
           //设置数据到View
-          holder.itemsIcon.setImageResource((Integer)data0);
+          //holder.itemsIcon.setImageResource((Integer)data0);
+          String imageUrl = (String)data0;
+          //设置加载中的View
+          mAbImageDownloader.setLoadingView(convertView.findViewById(R.id.progressBar));
+          //图片的下载
+          mAbImageDownloader.display(holder.itemsIcon,imageUrl);
           holder.itemsTitle.setText(data1.toString());
           holder.itemsText.setText(data2.toString());
           return convertView;

@@ -24,6 +24,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningServiceInfo;
 import android.content.Context;
@@ -37,6 +38,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 
 import com.ab.global.AbAppData;
 import com.ab.model.AbDisplayMetrics;
@@ -338,5 +340,29 @@ public class AbAppUtil {
         
         return mDisplayMetrics;
     }
+    
+    /**
+     * 打开键盘
+     * 
+     */
+    public void showSoftInput(Context context){
+        InputMethodManager inputMethodManager = (InputMethodManager) context
+                .getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputMethodManager.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+    }
+    
+    /**
+     * 关闭键盘事件
+     * 
+     */
+    public void closeSoftInput(Context context) {
+        InputMethodManager inputMethodManager = (InputMethodManager)context
+                .getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (inputMethodManager != null && ((Activity)context).getCurrentFocus() != null) {
+            inputMethodManager.hideSoftInputFromWindow(((Activity)context).getCurrentFocus()
+                    .getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        }
+    }
+    
 
 }

@@ -21,13 +21,10 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.ab.util.AbAppUtil;
 import com.ab.util.AbViewUtil;
 
 // TODO: Auto-generated Javadoc
@@ -38,6 +35,9 @@ public class AbListViewFooter extends LinearLayout {
 	
 	/** The m context. */
 	private Context mContext;
+	
+	/** The m state. */
+    private int mState = -1;
 	
 	/** The Constant STATE_READY. */
 	public final static int STATE_READY = 1;
@@ -148,13 +148,14 @@ public class AbListViewFooter extends LinearLayout {
 			footerView.setVisibility(View.GONE);
 			footerTextView.setVisibility(View.VISIBLE);
 			footerProgressBar.setVisibility(View.GONE);
-			footerTextView.setText("已是全部");
+			footerTextView.setText("没有了！");
 		}else if(state == STATE_EMPTY){
 			footerView.setVisibility(View.GONE);
 			footerTextView.setVisibility(View.GONE);
 			footerProgressBar.setVisibility(View.GONE);
 			footerTextView.setText("没有数据");
 		}
+		mState = state;
 	}
 	
 	/**
@@ -247,6 +248,10 @@ public class AbListViewFooter extends LinearLayout {
 		LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) footerView.getLayoutParams();
 		lp.height = height;
 		footerView.setLayoutParams(lp);
+	}
+	
+	public int getState(){
+	        return mState;
 	}
 	
 

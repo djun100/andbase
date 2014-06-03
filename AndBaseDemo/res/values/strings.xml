@@ -56,6 +56,8 @@
     <string name="register_name">新用户注册</string>
     <string name="blog_name">博客空间</string>
     <string name="friend_name">朋友圈</string>
+    <string name="contact_name">我的联系人</string>
+    <string name="message_name">系统通知</string>
     <string name="total">总条数:0</string>
     <string name="current">当前页:1</string>
     <string name="okBtn">确定</string>
@@ -63,7 +65,7 @@
     <string name="see">查看</string>
     <string name="about">关于</string>
     <string name="version_lable">程序版本：</string>
-    <string name="copyright">版权所有  CopyRight 2015 amengsoft.org</string>
+    <string name="copyright">版权所有  CopyRight 2015 amsoft.cn</string>
     <string name="about_desc">
       \t\tAndroid开发宝
       \n\t\t又“andBase开发框架”
@@ -86,6 +88,7 @@
     <string name="data1_desc">选择：</string>
     <string name="data1_unit">单位</string>
     <string name="login">登录</string>
+    <string name="im_login">登录聊天系统</string>
     <string name="register">注册</string>
     <string name="userName">用户名</string>
     <string name="userPwd">密码</string>
@@ -149,5 +152,16 @@
     <string name="read_desc">请仔细阅读如下条款</string>
     <string name="register_protocol">同意注册协议</string>
     <string name="clear_cache">清空缓存</string>
+    
+    <!-- 缺省的服务器配置 --> 
+    <integer name="xmpp_port">5222</integer> 
+    <string name="xmpp_host">172.13.2.172</string> 
+    <string name="xmpp_service_name">prchaz1337l</string>
+    <bool name="is_remember">true</bool>
+    <bool name="is_autologin">false</bool>
+    <bool name="is_novisible">false</bool> 
+    
+    <string name="accept_btn">同意</string>
+    <string name="reject_btn">拒绝</string>
 
 </resources>

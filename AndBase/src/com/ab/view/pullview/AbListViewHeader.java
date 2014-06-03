@@ -36,60 +36,61 @@ import com.ab.util.AbViewUtil;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class AbListViewHeader.
+ * 下拉刷新的HeaderView
+ *
  */
 public class AbListViewHeader extends LinearLayout {
 	
-	/** The mContext. */
+	/** 上下文. */
 	private Context mContext;
 	
-	/** The header view. */
+	/** 主View. */
 	private LinearLayout headerView;
 	
-	/** The arrow image view. */
+	/** 箭头图标View. */
 	private ImageView arrowImageView;
 	
-	/** The header progress bar. */
+	/** 进度图标View. */
 	private ProgressBar headerProgressBar;
 	
-	/** The arrow image. */
+	/** 箭头图标. */
 	private Bitmap arrowImage = null;
 	
-	/** The tips textview. */
+	/** 文本提示的View. */
 	private TextView tipsTextview;
 	
-	/** The header time view. */
+	/** 时间的View. */
 	private TextView headerTimeView;
 	
-	/** The m state. */
+	/** 当前状态. */
 	private int mState = -1;
 
-	/** The m rotate up anim. */
+	/** 向上的动画. */
 	private Animation mRotateUpAnim;
 	
-	/** The m rotate down anim. */
+	/** 向下的动画. */
 	private Animation mRotateDownAnim;
 	
-	/** The rotate anim duration. */
+	/** 动画时间. */
 	private final int ROTATE_ANIM_DURATION = 180;
 	
-	/** The Constant STATE_NORMAL. */
+	/** 显示 下拉刷新. */
 	public final static int STATE_NORMAL = 0;
 	
-	/** The Constant STATE_READY. */
+	/** 显示 松开刷新. */
 	public final static int STATE_READY = 1;
 	
-	/** The Constant STATE_REFRESHING. */
+	/** 显示 正在刷新.... */
 	public final static int STATE_REFRESHING = 2;
 	
 	/** 保存上一次的刷新时间. */
 	private String lastRefreshTime = null;
 	
-	/** The head content height. */
+	/** Header的高度 */
 	private int headerHeight;
 
 	/**
-	 * Instantiates a new ab list view header.
+	 * 初始化Header.
 	 *
 	 * @param context the context
 	 */
@@ -99,7 +100,7 @@ public class AbListViewHeader extends LinearLayout {
 	}
 
 	/**
-	 * Instantiates a new ab list view header.
+	 * 初始化Header.
 	 *
 	 * @param context the context
 	 * @param attrs the attrs
@@ -110,8 +111,8 @@ public class AbListViewHeader extends LinearLayout {
 	}
 
 	/**
-	 * Inits the view.
-	 *
+	 * 初始化View.
+	 * 
 	 * @param context the context
 	 */
 	private void initView(Context context) {
@@ -178,8 +179,6 @@ public class AbListViewHeader extends LinearLayout {
 		//获取View的高度
 		AbViewUtil.measureView(this);
 		headerHeight = this.getMeasuredHeight();
-		//向上偏移隐藏起来
-		headerView.setPadding(0, -1 * headerHeight, 0, 0);
 		
 		mRotateUpAnim = new RotateAnimation(0.0f, -180.0f,
 				Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
@@ -284,7 +283,7 @@ public class AbListViewHeader extends LinearLayout {
 	/**
 	 * 设置上一次刷新时间.
 	 *
-	 * @param time the new refresh time
+	 * @param time 时间字符串
 	 */
 	public void setRefreshTime(String time) {
 		headerTimeView.setText(time);
@@ -293,7 +292,7 @@ public class AbListViewHeader extends LinearLayout {
 	/**
 	 * 获取header的高度.
 	 *
-	 * @return the header height
+	 * @return 高度
 	 */
 	public int getHeaderHeight() {
 		return headerHeight;
@@ -303,7 +302,6 @@ public class AbListViewHeader extends LinearLayout {
 	 * 
 	 * 描述：设置字体颜色
 	 * @param color
-	 * @throws 
 	 */
 	public void setTextColor(int color){
 		tipsTextview.setTextColor(color);
@@ -314,7 +312,6 @@ public class AbListViewHeader extends LinearLayout {
 	 * 
 	 * 描述：设置背景颜色
 	 * @param color
-	 * @throws 
 	 */
 	public void setBackgroundColor(int color){
 		headerView.setBackgroundColor(color);
@@ -324,7 +321,6 @@ public class AbListViewHeader extends LinearLayout {
 	 * 
 	 * 描述：获取Header ProgressBar，用于设置自定义样式
 	 * @return
-	 * @throws 
 	 */
 	public ProgressBar getHeaderProgressBar() {
 		return headerProgressBar;
@@ -334,11 +330,18 @@ public class AbListViewHeader extends LinearLayout {
 	 * 
 	 * 描述：设置Header ProgressBar样式
 	 * @return
-	 * @throws 
 	 */
 	public void setHeaderProgressBarDrawable(Drawable indeterminateDrawable) {
 		headerProgressBar.setIndeterminateDrawable(indeterminateDrawable);
 	}
-	
+
+	/**
+	 * 
+	 * 描述：得到当前状态
+	 * @return
+	 */
+    public int getState(){
+        return mState;
+    }
 
 }

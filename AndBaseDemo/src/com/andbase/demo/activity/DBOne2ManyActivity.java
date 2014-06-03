@@ -99,7 +99,7 @@ public class DBOne2ManyActivity extends AbActivity {
 				//(2)执行查询
 				long id = userDao.insert(mLocalUser);
 				//(3)关闭数据库
-				userDao.closeDatabase(false);
+				userDao.closeDatabase();
 				
 			}
 		});
@@ -124,7 +124,7 @@ public class DBOne2ManyActivity extends AbActivity {
 				//(2)执行查询
 				userDao.deleteAll();
 				//(3)关闭数据库
-				userDao.closeDatabase(false);
+				userDao.closeDatabase();
 			}
 		});
        
@@ -133,9 +133,9 @@ public class DBOne2ManyActivity extends AbActivity {
     
      public void queryData(){
     	    //查询出结果检查是否成功了
-			userDao.startReadableDatabase(false);
+			userDao.startReadableDatabase();
 			List<LocalUser>  mLocalUserList = userDao.queryList();
-			userDao.closeDatabase(false);
+			userDao.closeDatabase();
 			resultData.setText("查询结果为：");
 			if(mLocalUserList==null || mLocalUserList.size()==0){
 				resultData.append("查询结果为：0");

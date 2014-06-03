@@ -5,7 +5,8 @@ import android.content.Context;
 import com.ab.db.orm.AbDBHelper;
 import com.andbase.demo.model.LocalUser;
 import com.andbase.demo.model.Stock;
-import com.andbase.friend.ChatMsg;
+import com.andbase.friend.Friend;
+import com.andbase.im.model.IMMessage;
 import com.andbase.model.User;
 /**
  * 
@@ -23,7 +24,7 @@ public class DBInsideHelper extends AbDBHelper {
     // 当前数据库的版本
 	private static final int DBVERSION = 1;
 	// 要初始化的表
-	private static final Class<?>[] clazz = { User.class,LocalUser.class,Stock.class,ChatMsg.class};
+	private static final Class<?>[] clazz = { User.class,LocalUser.class,Stock.class,Friend.class,IMMessage.class};
 
 	public DBInsideHelper(Context context) {
 		super(context, DBNAME, null, DBVERSION, clazz);

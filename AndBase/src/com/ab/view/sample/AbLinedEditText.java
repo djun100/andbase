@@ -54,7 +54,7 @@ public  class AbLinedEditText extends EditText {
 
       for (int i = 0; i < count; i++) {
           int baseline = getLineBounds(i, r);
-          canvas.drawLine(r.left, baseline + 5, r.right, baseline + 1, paint);
+          canvas.drawLine(r.left, baseline+10, r.right, baseline + 10, paint);
       }
 
       super.onDraw(canvas);

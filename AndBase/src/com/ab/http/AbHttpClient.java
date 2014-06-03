@@ -1,14 +1,26 @@
+/*
+ * Copyright (C) 2015 www.amsoft.cn
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.ab.http;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.concurrent.ExecutorService;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.concurrent.Executor;
 
-import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -27,11 +39,12 @@ import org.apache.http.util.EntityUtils;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+import android.os.Process;
 import android.util.Log;
 
 import com.ab.global.AbAppException;
 import com.ab.global.AbConstant;
-import com.ab.task.AbTaskPool;
+import com.ab.task.AbThreadFactory;
 import com.ab.util.AbAppUtil;
 import com.ab.util.AbFileUtil;
 
@@ -43,8 +56,8 @@ public class AbHttpClient {
     /** The m context. */
 	private Context mContext;
 	
-	/** 连接池. */
-    private static ExecutorService executorService = null; 
+	/** 线程执行器. */
+	public static Executor mExecutorService = null;
     
     /** The Constant DEFAULT_MAX_CONNECTIONS. */
     private static final int DEFAULT_MAX_CONNECTIONS = 10;
@@ -87,8 +100,8 @@ public class AbHttpClient {
     
 	
 	public AbHttpClient(Context context) {
-		executorService =  AbTaskPool.getExecutorService();
-		mContext = context;
+	    mContext = context;
+		mExecutorService =  AbThreadFactory.getExecutorService();
 	}
 	
 	
@@ -115,7 +128,7 @@ public class AbHttpClient {
 	public void get(final String url,final AbRequestParams params,final AbHttpResponseListener responseListener) {
 		
 		responseListener.setHandler(new ResponderHandler(responseListener));
-		executorService.submit(new Runnable() { 
+		mExecutorService.execute(new Runnable() { 
     		public void run() {
     			try {
     				doGet(url,params,responseListener);
@@ -149,7 +162,7 @@ public class AbHttpClient {
 	public void post(final String url,final AbRequestParams params,
 			final AbHttpResponseListener responseListener) {
 		responseListener.setHandler(new ResponderHandler(responseListener));
-		executorService.submit(new Runnable() { 
+		mExecutorService.execute(new Runnable() { 
     		public void run() {
     			try {
     				doPost(url,params,responseListener);
@@ -198,7 +211,7 @@ public class AbHttpClient {
 		      HttpConnectionParams.setSocketBufferSize(httpParams, DEFAULT_SOCKET_BUFFER_SIZE);
 
 		      HttpProtocolParams.setVersion(httpParams, HttpVersion.HTTP_1_1);
-		      HttpProtocolParams.setUserAgent(httpParams, String.format("andbase-http/%s (http://www.418log.org/)", 1.0));
+		      HttpProtocolParams.setUserAgent(httpParams, String.format("andbase-http/%s (http://www.amsoft.cn/)", 1.0));
 		      // 设置请求参数
 			  httpRequest.setParams(httpParams);
 			  
@@ -219,7 +232,7 @@ public class AbHttpClient {
 					  readResponseData(mHttpEntity,((AbBinaryHttpResponseListener)responseListener));
 				  }else if(responseListener instanceof AbFileHttpResponseListener){
 					  //获取文件名
-					  String fileName = AbFileUtil.getFileNameFromUrl(url, httpResponse);
+					  String fileName = AbFileUtil.getCacheFileNameFromUrl(url, httpResponse);
 					  writeResponseData(mHttpEntity,fileName,((AbFileHttpResponseListener)responseListener));
 				  }
 			  }else{
@@ -294,7 +307,7 @@ public class AbHttpClient {
 					  readResponseData(mHttpEntity,((AbBinaryHttpResponseListener)responseListener));
 				  }else if(responseListener instanceof AbFileHttpResponseListener){
 					  //获取文件名
-					  String fileName = AbFileUtil.getFileNameFromUrl(url, httpResponse);
+					  String fileName = AbFileUtil.getCacheFileNameFromUrl(url, httpResponse);
 					  writeResponseData(mHttpEntity,fileName,((AbFileHttpResponseListener)responseListener));
 				  }
 			  }else{

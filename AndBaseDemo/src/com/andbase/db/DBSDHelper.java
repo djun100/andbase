@@ -5,7 +5,8 @@ import android.content.Context;
 import com.ab.db.orm.AbSDDBHelper;
 import com.andbase.demo.model.LocalUser;
 import com.andbase.demo.model.Stock;
-import com.andbase.friend.ChatMsg;
+import com.andbase.friend.Friend;
+import com.andbase.im.model.IMMessage;
 import com.andbase.model.User;
 
 public class DBSDHelper extends AbSDDBHelper {
@@ -17,7 +18,7 @@ public class DBSDHelper extends AbSDDBHelper {
     // 当前数据库的版本
 	private static final int DBVERSION = 1;
 	// 要初始化的表
-	private static final Class<?>[] clazz = { User.class,LocalUser.class,Stock.class,ChatMsg.class};
+	private static final Class<?>[] clazz = { User.class,LocalUser.class,Stock.class,Friend.class,IMMessage.class};
 
 	public DBSDHelper(Context context) {
 		super(context,DBPATH, DBNAME, null, DBVERSION, clazz);

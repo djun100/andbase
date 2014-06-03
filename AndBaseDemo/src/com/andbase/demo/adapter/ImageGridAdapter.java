@@ -10,7 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import com.ab.bitmap.AbImageDownloader;
-import com.ab.global.AbConstant;
+import com.ab.util.AbImageUtil;
 import com.andbase.R;
 import com.andbase.model.User;
 /**
@@ -62,7 +62,7 @@ public class ImageGridAdapter extends BaseAdapter{
         mAbImageDownloader.setLoadingImage(R.drawable.image_loading);
         mAbImageDownloader.setErrorImage(R.drawable.image_error);
         mAbImageDownloader.setNoImage(R.drawable.image_no);
-        mAbImageDownloader.setType(AbConstant.SCALEIMG);
+        mAbImageDownloader.setType(AbImageUtil.SCALEIMG);
         //mAbImageDownloader.setAnimation(true);
     } 
     
@@ -95,7 +95,7 @@ public class ImageGridAdapter extends BaseAdapter{
           
 		  //获取该行的数据
           final User mUser = (User)mData.get(position);
-          String imageUrl = mUser.getPhotoUrl();
+          String imageUrl = mUser.getHeadUrl();
           //设置加载中的View
           mAbImageDownloader.setLoadingView(convertView.findViewById(R.id.progressBar));
           //图片的下载

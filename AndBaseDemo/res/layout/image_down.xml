@@ -8,8 +8,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="vertical" 
-        android:paddingTop="10dip">
+        android:orientation="vertical"
+        android:paddingTop="10dip" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dip"
+            android:text=" 缩放比例：使一个方向缩放后，另一方向不小与显示的大小的最合适比例。" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dip"
-                android:text="原图230x230" />
+                android:text="原图208x170" />
         </LinearLayout>
 
         <LinearLayout

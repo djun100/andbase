@@ -16,7 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ab.bitmap.AbImageDownloader;
-import com.ab.global.AbConstant;
+import com.ab.util.AbImageUtil;
 import com.andbase.R;
 import com.andbase.global.Constant;
 /**
@@ -67,7 +67,7 @@ public class ImageListAdapter extends BaseAdapter{
         mAbImageDownloader = new AbImageDownloader(mContext);
         mAbImageDownloader.setWidth(100);
         mAbImageDownloader.setHeight(100);
-        mAbImageDownloader.setType(AbConstant.SCALEIMG);
+        mAbImageDownloader.setType(AbImageUtil.SCALEIMG);
         mAbImageDownloader.setLoadingImage(R.drawable.image_loading);
         mAbImageDownloader.setErrorImage(R.drawable.image_error);
         mAbImageDownloader.setNoImage(R.drawable.image_no);

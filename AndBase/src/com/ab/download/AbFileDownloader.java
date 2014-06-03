@@ -88,7 +88,7 @@ public class AbFileDownloader {
 			this.mThreadNum = threadNum;
 			mDownFileDao = new DownFileDao(context);
 			// 构建保存文件
-			String fileName = AbFileUtil.getFileNameFromUrl(mDownFile.getDownUrl());
+			String fileName = AbFileUtil.getRealFileNameFromUrl(mDownFile.getDownUrl());
 			saveFile = new File(Environment.getExternalStorageDirectory().getPath()+File.separator+AbFileUtil.getDownPathFileDir()+fileName);
 			if (!saveFile.getParentFile().exists()){
 				saveFile.getParentFile().mkdirs();

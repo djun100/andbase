@@ -15,16 +15,14 @@
  */
 package com.ab.bitmap;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.Executor;
 
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
 import com.ab.global.AbAppData;
-import com.ab.util.AbAppUtil;
+import com.ab.task.AbThreadFactory;
 import com.ab.util.AbFileUtil;
 import com.ab.util.AbStrUtil;
 // TODO: Auto-generated Javadoc
@@ -32,7 +30,7 @@ import com.ab.util.AbStrUtil;
  * 
  * Copyright (c) 2012 All rights reserved
  * 名称：AbImageDownloadPool.java 
- * 描述：线程池图片下载
+ * 描述：线程池图片下载,用andbase线程池
  * @author amsoft.cn
  * @date：2013-5-23 上午10:10:53
  * @version v1.0
@@ -46,15 +44,11 @@ public class AbImageDownloadPool{
 	/** The Constant D. */
 	private static final boolean D = AbAppData.DEBUG;
 	
-	//单例对象
-	/** The image download. */
+	/** The image download. 单例对象*/
 	private static AbImageDownloadPool imageDownload = null; 
-	
-	/** 固定4个线程来执行任务 . */
-	private static int nThreads  = 4;
-	
-	/** The executor service. */
-	private ExecutorService executorService = null; 
+
+	/** 线程执行器. */
+	public static Executor mExecutorService = null;
 	
 	/** 下载完成后的消息句柄. */
     private static Handler handler = new Handler() { 
@@ -67,11 +61,9 @@ public class AbImageDownloadPool{
 	
 	/**
 	 * 构造图片下载器.
-	 *
-	 * @param nThreads the n threads
 	 */
-    protected AbImageDownloadPool(int nThreads) {
-    	executorService = Executors.newFixedThreadPool(nThreads); 
+    protected AbImageDownloadPool() {
+    	mExecutorService = AbThreadFactory.getExecutorService();
     } 
 	
 	/**
@@ -81,15 +73,13 @@ public class AbImageDownloadPool{
 	 */
     public static AbImageDownloadPool getInstance() { 
         if (imageDownload == null) { 
-        	nThreads = AbAppUtil.getNumCores();
-        	imageDownload = new AbImageDownloadPool(nThreads*10); 
+        	imageDownload = new AbImageDownloadPool(); 
         } 
         return imageDownload;
     } 
     
     /**
-     * Download.
-     *
+     * 执行下载.
      * @param item the item
      */
     public void execute(final AbImageDownloadItem item) {    
@@ -106,7 +96,7 @@ public class AbImageDownloadPool{
     	
     	if(item.bitmap == null){
 			// 缓存中没有图像，则从网络上取出数据，并将取出的数据缓存到内存中
-	    	executorService.submit(new Runnable() { 
+    		mExecutorService.execute(new Runnable() { 
 	    		public void run() {
 	    			try {
 	    				//逻辑：判断这个任务是否有其他线程再执行，如果有等待，直到下载完成唤醒显示
@@ -114,18 +104,18 @@ public class AbImageDownloadPool{
 	    				if(runnable != null){
 	    					
 	    	            	//线程等待通知后显示
-    	                	if(D) Log.d(TAG, "等待:"+cacheKey+","+item.imageUrl);
+    	                	if(D) Log.d(TAG, "线程等待:"+item.imageUrl+","+cacheKey);
     	                	AbImageCache.addToWaitRunnableCache(cacheKey, this);
     	                	synchronized(this){
     	                		this.wait();
     	                	}
-    	                	if(D) Log.d(TAG, "我醒了:"+item.imageUrl);
+    	                	if(D) Log.d(TAG, "线程被唤醒:"+item.imageUrl);
     	    				//直接获取
     	    				item.bitmap =  AbImageCache.getBitmapFromCache(cacheKey);
 	    				}else{
 	    					//增加下载中的线程记录
-	    					if(D) Log.d(TAG, "增加图片下载中:"+cacheKey+","+item.imageUrl);
-    	    				AbImageCache.addToRunRunnableCache(cacheKey, this);
+	    					if(D) Log.d(TAG, "从内存取或者下载:"+item.imageUrl+","+cacheKey);
+	    					AbImageCache.addToRunRunnableCache(cacheKey, this);
     	    				item.bitmap = AbFileUtil.getBitmapFromSDCache(item.imageUrl,item.type,item.width,item.height);
     	    				//增加到下载完成的缓存，删除下载中的记录和等待的记录，同时唤醒所有等待列表中key与其key相同的线程
         	    			AbImageCache.addBitmapToCache(cacheKey,item.bitmap);     
@@ -154,41 +144,6 @@ public class AbImageDownloadPool{
             } 
     	}
     	
-    }
-    
-    /**
-     * 描述：立即关闭.
-     */
-    public void shutdownNow(){
-    	if(!executorService.isTerminated()){
-    		executorService.shutdownNow();
-    		listenShutdown();
-    	}
-    	
-    }
-    
-    /**
-     * 描述：平滑关闭.
-     */
-    public void shutdown(){
-    	if(!executorService.isTerminated()){
-    	   executorService.shutdown();
-    	   listenShutdown();
-    	}
-    }
-    
-    /**
-     * 描述：关闭监听.
-     */
-    public void listenShutdown(){
-    	try {
-			while(!executorService.awaitTermination(1, TimeUnit.MILLISECONDS)) { 
-				if(D) Log.d(TAG, "线程池未关闭");
-			}  
-			if(D) Log.d(TAG, "线程池已关闭");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
     }
     
 }

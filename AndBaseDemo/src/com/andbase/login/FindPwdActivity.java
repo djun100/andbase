@@ -12,7 +12,7 @@ import android.widget.ImageButton;
 
 import com.ab.activity.AbActivity;
 import com.ab.global.AbConstant;
-import com.ab.global.AbResult;
+import com.ab.model.AbResult;
 import com.ab.task.AbTaskItem;
 import com.ab.task.AbTaskObjectListener;
 import com.ab.task.AbTaskPool;
@@ -45,7 +45,8 @@ public class FindPwdActivity extends AbActivity {
 		mAbTitleBar.setTitleBarBackground(R.drawable.top_bg);
 		mAbTitleBar.setTitleTextMargin(10, 0, 0, 0);
 		mAbTitleBar.setLogoLine(R.drawable.line);
-		
+		//设置AbTitleBar在最上
+        this.setTitleBarAbove(true);
 		mAbTaskPool = AbTaskPool.getInstance();
 		userName = (EditText) this.findViewById(R.id.userName);
 		email = (EditText) this.findViewById(R.id.email);

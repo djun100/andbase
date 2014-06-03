@@ -34,8 +34,8 @@ import android.widget.RelativeLayout;
 
 import com.ab.bitmap.AbImageCache;
 import com.ab.bitmap.AbImageDownloader;
-import com.ab.global.AbConstant;
 import com.ab.util.AbFileUtil;
+import com.ab.util.AbImageUtil;
 import com.ab.util.AbStrUtil;
 import com.andbase.R;
 
@@ -163,7 +163,7 @@ public class ImageShowAdapter extends BaseAdapter {
       		    holder.mImageView1.setImageResource(R.drawable.image_loading);
 	      		if(imagePath.indexOf("http://")!=-1){
 	      		    //图片的下载
-	                mAbImageDownloader.setType(AbConstant.ORIGINALIMG);
+	                mAbImageDownloader.setType(AbImageUtil.ORIGINALIMG);
 	                mAbImageDownloader.display(holder.mImageView1,imagePath);
 					
 				}else if(imagePath.indexOf("/")==-1){
@@ -175,7 +175,7 @@ public class ImageShowAdapter extends BaseAdapter {
 						holder.mImageView1.setImageResource(R.drawable.image_error);
 					}
 				}else{
-					Bitmap mBitmap = AbFileUtil.getBitmapFromSD(new File(imagePath), AbConstant.SCALEIMG, mWidth, mHeight);
+					Bitmap mBitmap = AbFileUtil.getBitmapFromSD(new File(imagePath), AbImageUtil.SCALEIMG, mWidth, mHeight);
 					if(mBitmap!=null){
 						holder.mImageView1.setImageBitmap(mBitmap);
 					}else{
