@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amsoft.cn
+ * Copyright (C) 2012 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,11 +34,14 @@ import com.ab.util.AbStrUtil;
 import com.ab.util.AbViewUtil;
 
 // TODO: Auto-generated Javadoc
+
 /**
+ * 
+ * © 2012 amsoft.cn
+ * 名称：AbBottomBar.java 
  * 描述：标题栏实现.
- *
- * @author amsoft.cn
- * @date：2013-4-24 下午3:46:47
+ * @author 还如一梦中
+ * @date：2013-04-24 下午3:46:47
  * @version v1.0
  */
 public class AbTitleBar extends LinearLayout {

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amsoft.cn
+ * Copyright (C) 2012 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,15 +19,13 @@ import java.util.List;
 
 // TODO: Auto-generated Javadoc
 /**
- * The listener interface for receiving abSqliteStorage events.
- * The class that is interested in processing a abSqliteStorage
- * event implements this interface, and the object created
- * with that class is registered with a component using the
- * component's <code>addAbSqliteStorageListener<code> method. When
- * the abSqliteStorage event occurs, that object's appropriate
- * method is invoked.
- *
- * @see AbSqliteStorageEvent
+ * 
+ * © 2012 amsoft.cn
+ * 名称：AbSqliteStorageListener.java 
+ * 描述：数据操作结构监听器
+ * @author 还如一梦中
+ * @date：2013-10-16 下午1:33:39
+ * @version v1.0
  */
 public class AbSqliteStorageListener {
 

@@ -17,10 +17,10 @@ import com.ab.view.sliding.AbSlidingButton;
 import com.andbase.R;
 
 /**
- * Copyright (c) 2011 All rights reserved 
+ * © 2012 amsoft.cn 
  * 名称：MyListViewAdapter 
  * 描述：ListView自定义Adapter例子
- * @author amsoft.cn
+ * @author 还如一梦中
  * @date 2011-11-8
  * @version
  */

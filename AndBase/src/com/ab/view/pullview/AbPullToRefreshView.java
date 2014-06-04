@@ -9,9 +9,15 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
+
 /**
- * 下拉刷新和加载更多的View
- *
+ * 
+ * © 2012 amsoft.cn
+ * 名称：AbPullToRefreshView.java 
+ * 描述：下拉刷新和加载更多的View.
+ * @author 还如一梦中
+ * @date：2014-06-04 下午11:52:13
+ * @version v1.0
  */
 public class AbPullToRefreshView extends LinearLayout {
 	

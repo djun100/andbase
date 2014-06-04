@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amsoft.cn
+ * Copyright (C) 2012 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,15 @@ import java.util.concurrent.atomic.AtomicInteger;
 import android.os.Process;
 
 import com.ab.util.AbAppUtil;
-
+/**
+ * 
+ * © 2012 amsoft.cn
+ * 名称：AbThreadFactory.java 
+ * 描述：线程工厂.
+ * @author 还如一梦中
+ * @date：2011-11-10 下午11:52:13
+ * @version v1.0
+ */
 public class AbThreadFactory {
 	
 	/** 任务执行器. */
@@ -41,6 +49,7 @@ public class AbThreadFactory {
     /** 活动线程数量 . */
     private static final int KEEP_ALIVE = 5;
 
+    /** 线程工厂 . */
     private static final ThreadFactory mThreadFactory = new ThreadFactory() {
         private final AtomicInteger mCount = new AtomicInteger(1);
 
@@ -49,6 +58,7 @@ public class AbThreadFactory {
         }
     };
 
+    /** 队列. */
     private static final BlockingQueue<Runnable> mPoolWorkQueue =
             new LinkedBlockingQueue<Runnable>(10);
     

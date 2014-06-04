@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amsoft.cn
+ * Copyright (C) 2012 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,11 +27,14 @@ import android.util.Log;
 import com.ab.global.AbAppData;
 
 // TODO: Auto-generated Javadoc
+
 /**
+ * 
+ * © 2012 amsoft.cn
+ * 名称：AbDownloadThread.java 
  * 描述：下载线程类.
- *
- * @author amsoft.cn
- * @date：2013-3-14 下午5:01:31
+ * @author 还如一梦中
+ * @date：2013-10-16 下午1:33:39
  * @version v1.0
  */
 public class AbDownloadThread extends Thread {
@@ -39,7 +42,7 @@ public class AbDownloadThread extends Thread {
 	/** The Constant TAG. */
 	private static final String TAG = "DownloadThread";
 	
-	/** The Constant D. */
+	/** 日志标记. */
 	private static final boolean D = AbAppData.DEBUG;
 	
 	/** The save file. */

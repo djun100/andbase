@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amsoft.cn
+ * Copyright (C) 2012 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,7 +55,7 @@ public class AbWheelView extends View {
 	/** The tag. */
 	private static String TAG = "AbWheelView";
 	
-	/** The Constant D. */
+	/** 日志标记. */
 	private static final boolean D = AbAppData.DEBUG;
 	
 	/** The m context. */

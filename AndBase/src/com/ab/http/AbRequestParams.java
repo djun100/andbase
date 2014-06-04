@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amsoft.cn
+ * Copyright (C) 2012 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,16 +34,16 @@ import org.apache.http.protocol.HTTP;
 // TODO: Auto-generated Javadoc
 /**
  * 
- * Copyright (c) 2012 All rights reserved
+ * © 2012 amsoft.cn
  * 名称：AbRequestParams.java 
  * 描述：Http请求参数
- * @author amsoft.cn
+ * @author 还如一梦中
  * @date：2013-11-13 上午10:28:55
  * @version v1.0
  */
 public class AbRequestParams {
 
-    /** The Constant TAG. */
+    /** 日志标记. */
     private static final String TAG = "AbRequestParams";
     
     /** url参数. */
@@ -164,13 +164,19 @@ public class AbRequestParams {
 
     
     /**
-     * 获取参数字符创.
+     * 获取参数字符串.
      * @return the param string
      */
     public String getParamString() {
         return URLEncodedUtils.format(getParamsList(), HTTP.UTF_8);
     }
     
+   /**
+    * 获取HttpEntity.
+    * @param responseListener
+    * @return
+    * @throws IOException
+    */
     public HttpEntity getEntity(AbHttpResponseListener responseListener) throws IOException {
         if (fileParams.isEmpty()) {
             return createFormEntity();
@@ -215,25 +221,31 @@ public class AbRequestParams {
         return entity;
     }
 
+    /**
+     * 获取url参数
+     * @return
+     */
 	public ConcurrentHashMap<String, String> getUrlParams() {
 		return urlParams;
 	}
 
+	/**
+	 * 设置url参数
+	 * @param urlParams
+	 */
 	public void setUrlParams(ConcurrentHashMap<String, String> urlParams) {
 		this.urlParams = urlParams;
 	}
-
-	
 	
 	/**
      * 文件类.
      */
     private static class FileWrapper {
         
-        /** The file. */
+        /** 文件. */
         public File file;
         
-        /** The content type. */
+        /** 类型. */
         public String contentType;
 
         /**

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amsoft.cn
+ * Copyright (C) 2012 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,13 @@ package com.ab.model;
 
 // TODO: Auto-generated Javadoc
 /**
- * A structure describing general information about a display such as its size,
- * density, and font scaling
+ * 
+ * © 2012 amsoft.cn
+ * 名称：AbDisplayMetrics.java 
+ * 描述：屏幕参数实体
+ * @author 还如一梦中
+ * @date：2013-11-13 上午9:00:52
+ * @version v1.0
  */
 public class AbDisplayMetrics {
 

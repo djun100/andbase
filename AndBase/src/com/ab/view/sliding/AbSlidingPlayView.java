@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amsoft.cn
+ * Copyright (C) 2012 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,7 +51,7 @@ import com.ab.view.sample.AbInnerViewPager;
  * 名称：AbPlayView
  * 描述：可播放显示的View.
  *
- * @author amsoft.cn
+ * @author 还如一梦中
  * @date 2011-11-28
  * @version
  */
@@ -60,7 +60,7 @@ public class AbSlidingPlayView extends LinearLayout {
 	/** The tag. */
 	private static String TAG = "AbSlidingPlayView";
 	
-	/** The Constant D. */
+	/** 日志标记. */
 	private static final boolean D = AbAppData.DEBUG;
 
 	/** The context. */
@@ -69,8 +69,8 @@ public class AbSlidingPlayView extends LinearLayout {
 	/** The m view pager. */
 	private AbInnerViewPager mViewPager;
 
-	/** The page line layout. */
-	private LinearLayout pageLineLayout;
+	/** 导航的布局. */
+	private LinearLayout navLinearLayout;
 	
 	/** The layout params pageLine. */
 	public LinearLayout.LayoutParams pageLineLayoutParams = null;
@@ -109,10 +109,10 @@ public class AbSlidingPlayView extends LinearLayout {
 	private AbViewPagerAdapter mAbViewPagerAdapter = null;
 	
 	/**导航的点父View*/
-	private LinearLayout mPageLineLayoutParent = null;
+	private LinearLayout mNavLayoutParent = null;
 	
-	/** The page line horizontal gravity. */
-	private int pageLineHorizontalGravity = Gravity.RIGHT;
+	/** 导航内容的对齐方式. */
+	private int navHorizontalGravity = Gravity.RIGHT;
 	
 	/**播放的方向*/
 	private int playingDirection = 0;
@@ -160,12 +160,12 @@ public class AbSlidingPlayView extends LinearLayout {
 		//手动创建的ViewPager,如果用fragment必须调用setId()方法设置一个id
 		mViewPager.setId(1985);
 		//导航的点
-		mPageLineLayoutParent = new LinearLayout(context);
-		mPageLineLayoutParent.setPadding(0,5, 0, 5);
-		pageLineLayout = new LinearLayout(context);
-		pageLineLayout.setPadding(15, 1, 15, 1);
-		pageLineLayout.setVisibility(View.INVISIBLE);
-		mPageLineLayoutParent.addView(pageLineLayout,new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
+		mNavLayoutParent = new LinearLayout(context);
+		mNavLayoutParent.setPadding(0,5, 0, 5);
+		navLinearLayout = new LinearLayout(context);
+		navLinearLayout.setPadding(15, 1, 15, 1);
+		navLinearLayout.setVisibility(View.INVISIBLE);
+		mNavLayoutParent.addView(navLinearLayout,new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
 		
 		RelativeLayout.LayoutParams lp1 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         lp1.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM,RelativeLayout.TRUE);
@@ -175,7 +175,7 @@ public class AbSlidingPlayView extends LinearLayout {
 		
 		RelativeLayout.LayoutParams lp2 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         lp2.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM,RelativeLayout.TRUE);
-		mRelativeLayout.addView(mPageLineLayoutParent,lp2);
+		mRelativeLayout.addView(mNavLayoutParent,lp2);
 		addView(mRelativeLayout,layoutParamsFW);
 		
 		displayImage = AbFileUtil.getBitmapFormSrc("image/play_display.png");
@@ -211,10 +211,10 @@ public class AbSlidingPlayView extends LinearLayout {
 	 */
 	public void creatIndex() {
 		//显示下面的点
-		pageLineLayout.removeAllViews();
-		mPageLineLayoutParent.setHorizontalGravity(pageLineHorizontalGravity);
-		pageLineLayout.setGravity(Gravity.CENTER);
-		pageLineLayout.setVisibility(View.VISIBLE);
+		navLinearLayout.removeAllViews();
+		mNavLayoutParent.setHorizontalGravity(navHorizontalGravity);
+		navLinearLayout.setGravity(Gravity.CENTER);
+		navLinearLayout.setVisibility(View.VISIBLE);
 		count = mListViews.size();
 		for (int j = 0; j < count; j++) {
 			ImageView imageView = new ImageView(context);
@@ -225,7 +225,7 @@ public class AbSlidingPlayView extends LinearLayout {
 			} else {
 				imageView.setImageBitmap(hideImage);
 			}
-			pageLineLayout.addView(imageView, j);
+			navLinearLayout.addView(imageView, j);
 		}
 	}
 
@@ -237,9 +237,9 @@ public class AbSlidingPlayView extends LinearLayout {
 		position = mViewPager.getCurrentItem();
 		for (int j = 0; j < count; j++) {
 			if (position == j) {
-				((ImageView)pageLineLayout.getChildAt(position)).setImageBitmap(displayImage);
+				((ImageView)navLinearLayout.getChildAt(position)).setImageBitmap(displayImage);
 			} else {
-				((ImageView)pageLineLayout.getChildAt(j)).setImageBitmap(hideImage);
+				((ImageView)navLinearLayout.getChildAt(j)).setImageBitmap(hideImage);
 			}
 		}
 	}
@@ -485,10 +485,10 @@ public class AbSlidingPlayView extends LinearLayout {
 	/**
 	 * 描述：设置页显示条的位置,在AddView前设置.
 	 *
-	 * @param horizontalGravity the new page line horizontal gravity
+	 * @param horizontalGravity the nav horizontal gravity
 	 */
-	public void setPageLineHorizontalGravity(int horizontalGravity) {
-		pageLineHorizontalGravity = horizontalGravity;
+	public void setNavHorizontalGravity(int horizontalGravity) {
+		navHorizontalGravity = horizontalGravity;
 	}
 	
 	/**
@@ -515,8 +515,8 @@ public class AbSlidingPlayView extends LinearLayout {
 	 * @param resid
 	 * @throws 
 	 */
-	public void setPageLineLayoutBackground(int resid){
-		pageLineLayout.setBackgroundResource(resid);
+	public void setNavLayoutBackground(int resid){
+		navLinearLayout.setBackgroundResource(resid);
 	}
 	
 }

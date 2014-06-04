@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amsoft.cn
+ * Copyright (C) 2012 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,21 +22,21 @@ import android.graphics.Canvas;
 import android.graphics.Paint.FontMetrics;
 import android.text.Layout;
 import android.text.TextPaint;
-import android.util.FloatMath;
 
 
 // TODO: Auto-generated Javadoc
+
 /**
+ * 
+ * © 2012 amsoft.cn
+ * 名称：AbGraphical.java 
  * 描述：图形处理类.
- *
- * @author amsoft.cn
- * @date：2013-1-17 上午10:07:09
+ * @author 还如一梦中
+ * @date：2013-01-17 下午11:52:13
  * @version v1.0
  */
 public final class AbGraphical {
     
-   
-
      /**
       * 描述：获取字符的所在位置（按像素获取最大能容纳的）.
       *

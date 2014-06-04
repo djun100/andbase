@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amsoft.cn
+ * Copyright (C) 2012 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,10 +18,14 @@ package com.ab.task;
 import java.util.List;
 
 // TODO: Auto-generated Javadoc
+
 /**
+ * 
+ * © 2012 amsoft.cn
+ * 名称：AbTaskListListener.java 
  * 描述：数据执行的接口.
- * @author amsoft.cn
- * @date 2011-12-10
+ * @author 还如一梦中
+ * @date：2013-9-2 下午12:52:13
  * @version v1.0
  */
 public abstract class AbTaskListListener extends AbTaskListener{

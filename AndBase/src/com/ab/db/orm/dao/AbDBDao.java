@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amsoft.cn
+ * Copyright (C) 2012 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,10 +21,15 @@ import java.util.Map;
 import android.database.sqlite.SQLiteOpenHelper;
 
 // TODO: Auto-generated Javadoc
+
 /**
- * The Interface AbDBDao.
- *
- * @param <T> the generic type
+ * 
+ * © 2012 amsoft.cn
+ * 名称：AbDBDao.java 
+ * 描述：数据库表操作类接口
+ * @author 还如一梦中
+ * @date：2013-7-23 上午9:47:10
+ * @version v1.0
  */
 public interface AbDBDao<T> {
 

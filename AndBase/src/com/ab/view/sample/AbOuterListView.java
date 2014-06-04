@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amsoft.cn
+ * Copyright (C) 2012 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,10 +24,10 @@ import android.view.MotionEvent;
 import android.widget.ListView;
 /**
  * 
- * Copyright (c) 2012 All rights reserved
+ * © 2012 amsoft.cn
  * 名称：AbOuterListView.java 
  * 描述：这个ListView不会与它里面有可滑动view的事件产生冲突
- * @author amsoft.cn
+ * @author 还如一梦中
  * @date：2013-10-24 上午11:17:45
  * @version v1.0
  */

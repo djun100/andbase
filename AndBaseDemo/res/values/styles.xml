@@ -56,12 +56,12 @@
         <item name="android:gravity">center_vertical</item>
     </style>
     
-   <!--  <style name="mCheckBox" parent="@android:style/Widget.CompoundButton.CheckBox">
+   <style name="mCheckBox" parent="@android:style/Widget.CompoundButton.CheckBox">
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/gray</item>
-        <item name="android:paddingLeft">50dip</item>
+        <item name="android:paddingLeft">10dip</item>
         <item name="android:button">@drawable/check_box</item>
-    </style> -->
+    </style>
     
 
 </resources>

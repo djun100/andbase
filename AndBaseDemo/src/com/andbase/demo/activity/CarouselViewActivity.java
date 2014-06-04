@@ -17,10 +17,10 @@ import com.ab.view.carousel.CarouselViewAdapter;
 import com.andbase.R;
 /**
  * 
- * Copyright (c) 2012 All rights reserved
+ * © 2012 amsoft.cn
  * 名称：CarouselViewActivity.java 
  * 描述：View适配的旋转木马
- * @author amsoft.cn
+ * @author 还如一梦中
  * @date：2013-8-23 下午2:07:13
  * @version v1.0
  */

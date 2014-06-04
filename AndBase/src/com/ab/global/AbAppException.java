@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amsoft.cn
+ * Copyright (C) 2012 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,11 +26,14 @@ import org.apache.http.conn.HttpHostConnectException;
 import com.ab.util.AbStrUtil;
 
 // TODO: Auto-generated Javadoc
+
 /**
- * 描述： 公共异常类.
- *
- * @author amsoft.cn
- * @date 2012-2-10
+ * 
+ * © 2012 amsoft.cn
+ * 名称：AbAppException.java 
+ * 描述：公共异常类.
+ * @author 还如一梦中
+ * @date：2013-10-16 下午1:33:39
  * @version v1.0
  */
 public class AbAppException extends Exception {

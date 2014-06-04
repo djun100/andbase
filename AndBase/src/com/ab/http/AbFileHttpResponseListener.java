@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amsoft.cn
+ * Copyright (C) 2012 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,27 +16,24 @@
 package com.ab.http;
 
 import java.io.File;
-import java.io.IOException;
 
 import android.os.Environment;
 
 import com.ab.util.AbFileUtil;
 
-
-
 // TODO: Auto-generated Javadoc
 /**
  * 
- * Copyright (c) 2012 All rights reserved
+ * © 2012 amsoft.cn
  * 名称：AbBinaryHttpResponseListener.java 
  * 描述：Http文件响应监听器
- * @author amsoft.cn
+ * @author 还如一梦中
  * @date：2013-11-13 上午9:00:52
  * @version v1.0
  */
 public class AbFileHttpResponseListener extends AbHttpResponseListener{
 	
-	/** The Constant TAG. */
+	/** 日志标记. */
     private static final String TAG = "AbFileHttpResponseListener";
     
     /** 当前缓存文件. */
@@ -86,14 +83,14 @@ public class AbFileHttpResponseListener extends AbHttpResponseListener{
      * 成功消息.
      */
     public void sendSuccessMessage(int statusCode){
-    	sendMessage(obtainMessage(SUCCESS_MESSAGE, new Object[]{statusCode}));
+    	sendMessage(obtainMessage(AbHttpUtil.SUCCESS_MESSAGE, new Object[]{statusCode}));
     }
     
     /**
      * 失败消息.
      */
     public void sendFailureMessage(int statusCode,Throwable error){
-    	sendMessage(obtainMessage(FAILURE_MESSAGE, new Object[]{statusCode, error}));
+    	sendMessage(obtainMessage(AbHttpUtil.FAILURE_MESSAGE, new Object[]{statusCode, error}));
     }
     
 

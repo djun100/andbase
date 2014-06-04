@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amsoft.cn
+ * Copyright (C) 2012 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,10 +34,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 /**
  * 
- * Copyright (c) 2012 All rights reserved
+ * © 2012-2015 amsoft.cn
  * 名称：AbPopoverView.java 
  * 描述：提示框
- * @author amsoft.cn
+ * @author zhaoqp
  * @date：2013-11-18 下午5:02:16
  * @version v1.0
  */

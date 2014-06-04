@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amsoft.cn
+ * Copyright (C) 2012 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,29 +36,29 @@ import java.util.Random;
 // TODO: Auto-generated Javadoc
 /**
  * 
- * Copyright (c) 2012 All rights reserved
+ * © 2012 amsoft.cn
  * 名称：AbMultipartEntity.java 
  * 描述：用于文件上传
- * @author amsoft.cn
+ * @author 还如一梦中
  * @date：2013-11-13 下午1:09:20
  * @version v1.0
  */
 public class AbMultipartEntity implements HttpEntity {
 
-    /** The Constant TAG. */
+    /** 日志标记. */
     private static final String TAG = "AbMultipartEntity";
 
-    /** The Constant APPLICATION_OCTET_STREAM. */
+    /** 流常量. */
     private static final String APPLICATION_OCTET_STREAM = "application/octet-stream";
     
-    /** The Constant CR_LF. */
+    /** CR_LF. */
     private static final byte[] CR_LF = ("\r\n").getBytes();
     
-    /** The Constant TRANSFER_ENCODING_BINARY. */
+    /** TRANSFER_ENCODING_BINARY. */
     private static final byte[] TRANSFER_ENCODING_BINARY = "Content-Transfer-Encoding: binary\r\n"
             .getBytes();
 
-    /** The Constant MULTIPART_CHARS. */
+    /** MULTIPART_CHARS. */
     private final static char[] MULTIPART_CHARS = "-_1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
     /** The boundary. */
@@ -82,11 +82,11 @@ public class AbMultipartEntity implements HttpEntity {
     /** The bytes written. */
     private int bytesWritten;
 
-    /** The total size. */
+    /** 总大小. */
     private int totalSize;
 
     /**
-     * Instantiates a new simple multipart entity.
+     * 构造.
      *
      * @param progressHandler the progress handler
      */
@@ -332,7 +332,7 @@ public class AbMultipartEntity implements HttpEntity {
     // The following methods are from the HttpEntity interface
 
     /**
-     * 描述：TODO
+     * 描述：获取长度
      * @see org.apache.http.HttpEntity#getContentLength()
      */
     @Override
@@ -350,7 +350,7 @@ public class AbMultipartEntity implements HttpEntity {
     }
 
     /**
-     * 描述：TODO
+     * 描述：获取类型
      * @see org.apache.http.HttpEntity#getContentType()
      * @author: amsoft.cn
      * @date：2013-10-22 下午4:23:15
@@ -389,7 +389,7 @@ public class AbMultipartEntity implements HttpEntity {
     }
 
     /**
-     * 描述：TODO
+     * 描述：写入
      * @see org.apache.http.HttpEntity#writeTo(java.io.OutputStream)
      */
     @Override
@@ -407,7 +407,7 @@ public class AbMultipartEntity implements HttpEntity {
     }
 
     /**
-     * 描述：TODO
+     * 描述：获取编码
      * @see org.apache.http.HttpEntity#getContentEncoding()
      */
     @Override
@@ -428,7 +428,7 @@ public class AbMultipartEntity implements HttpEntity {
     }
 
     /**
-     * 描述：TODO
+     * 描述：获取内容流
      * @see org.apache.http.HttpEntity#getContent()
      */
     @Override

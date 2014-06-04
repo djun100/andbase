@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amsoft.cn
+ * Copyright (C) 2012 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,10 +17,10 @@ package com.ab.view.listener;
 // TODO: Auto-generated Javadoc
 /**
  * 
- * Copyright (c) 2012 All rights reserved
+ * © 2012 amsoft.cn
  * 名称：AbOnRefreshListener.java 
  * 描述：刷新事件的接口
- * @author amsoft.cn
+ * @author 还如一梦中
  * @date：2013-8-19 下午2:39:48
  * @version v1.0
  */

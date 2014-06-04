@@ -36,8 +36,8 @@ public class FriendActivity extends AbActivity {
         this.setTitleBarAbove(true);
         mSlidingPlayView = (AbSlidingPlayView)findViewById(R.id.mAbSlidingPlayView);
         
-		mSlidingPlayView.setPageLineHorizontalGravity(Gravity.CENTER_HORIZONTAL);
-		mSlidingPlayView.setPageLineLayoutBackground(R.drawable.page_layout_bg);
+		mSlidingPlayView.setNavHorizontalGravity(Gravity.CENTER_HORIZONTAL);
+		mSlidingPlayView.setNavLayoutBackground(R.drawable.page_layout_bg);
 		
 		mFriendDao = new FriendDao(this);
 		

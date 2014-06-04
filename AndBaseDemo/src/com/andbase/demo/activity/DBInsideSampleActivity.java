@@ -22,7 +22,7 @@ import com.andbase.global.MyApplication;
 /**
  * 名称：DBInsideSampleActivity
  * 描述：数据库演示内置数据库存储
- * @author amsoft.cn
+ * @author 还如一梦中
  * @date 2011-12-13
  * @version
  */

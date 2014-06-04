@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amsoft.cn
+ * Copyright (C) 2012 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,9 +40,9 @@ import android.view.animation.Transformation;
 // TODO: Auto-generated Javadoc
 /**
  * 
- * Copyright (c) 2012 All rights reserved
+ * © 2012 amsoft.cn
  * 名称：CarouselView.java 
- * @author amsoft.cn
+ * @author 还如一梦中
  * @date：2013-11-28 上午11:10:13
  * @version v1.0
  */

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amsoft.cn
+ * Copyright (C) 2012 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@ import com.ab.util.AbFileUtil;
 /**
  * 描述：多线程支持断点续传下载器.
  *
- * @author amsoft.cn
+ * @author 还如一梦中
  * @date：2013-3-14 下午5:00:52
  * @version v1.0
  */
@@ -40,7 +40,7 @@ public class AbFileDownloader {
 	/** The Constant TAG. */
 	private static final String TAG = "FileDownloader";
 	
-	/** The Constant D. */
+	/** 日志标记. */
 	private static final boolean D = AbAppData.DEBUG;
 	
 	/** The context. */

@@ -10,10 +10,10 @@ import com.ab.view.titlebar.AbTitleBar;
 import com.andbase.R;
 /**
  * 
- * Copyright (c) 2012 All rights reserved
+ * © 2012 amsoft.cn
  * 名称：SlidingMenuNestViewPagerActivity.java 
  * 描述：SlidingMenu+ViewPager冲突解决的演示
- * @author amsoft.cn
+ * @author 还如一梦中
  * @date：2013-10-25 上午9:15:58
  * @version v1.0
  */

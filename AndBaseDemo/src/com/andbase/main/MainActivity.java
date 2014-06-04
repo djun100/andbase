@@ -25,7 +25,6 @@ import com.ab.view.titlebar.AbTitleBar;
 import com.andbase.R;
 import com.andbase.friend.UserDao;
 import com.andbase.global.MyApplication;
-import com.andbase.im.IMConfig;
 import com.andbase.im.activity.ChatActivity;
 import com.andbase.im.activity.ContacterActivity;
 import com.andbase.im.model.IMMessage;

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amsoft.cn
+ * Copyright (C) 2012 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,10 +33,10 @@ import com.ab.global.AbAppData;
 
 /**
  * 
- * Copyright (c) 2012 All rights reserved
+ * © 2012 amsoft.cn
  * 名称：AbAnalogClock.java 
  * 描述：自定义模拟时钟
- * @author amsoft.cn
+ * @author 还如一梦中
  * @date：2013-11-6 上午9:13:49
  * @version v1.0
  */
@@ -45,7 +45,7 @@ public class AbAnalogClock extends View {
 	/** The tag. */
 	private static String TAG = "AbAnalogClock";
 	
-	/** The Constant D. */
+	/** 日志标记. */
 	private static final boolean D = AbAppData.DEBUG;
 	
 	private Time mCalendar;

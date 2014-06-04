@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amsoft.cn
+ * Copyright (C) 2012 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,11 +16,14 @@
 package com.ab.download;
 
 // TODO: Auto-generated Javadoc
+
 /**
+ * 
+ * © 2012 amsoft.cn
+ * 名称：AbDownloadProgressListener.java 
  * 描述：下载线程监听.
- *
- * @author amsoft.cn
- * @date：2013-3-14 下午5:01:44
+ * @author 还如一梦中
+ * @date：2013-10-16 下午1:33:39
  * @version v1.0
  */
 public interface AbDownloadProgressListener {

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amsoft.cn
+ * Copyright (C) 2012 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,35 +23,17 @@ import android.os.Message;
 // TODO: Auto-generated Javadoc
 /**
  * 
- * Copyright (c) 2012 All rights reserved
+ * © 2012 amsoft.cn
  * 名称：AbHttpResponseListener.java 
  * 描述：Http响应监听器
- * @author amsoft.cn
+ * @author 还如一梦中
  * @date：2013-11-13 上午9:00:52
  * @version v1.0
  */
 public class AbHttpResponseListener {
 	
-	/** The Constant TAG. */
+    /** 日志标记. */
     private static final String TAG = "AbHttpResponseListener";
-	
-	/** The Constant SUCCESS_MESSAGE. */
-    protected static final int SUCCESS_MESSAGE = 0;
-    
-    /** The Constant FAILURE_MESSAGE. */
-    protected static final int FAILURE_MESSAGE = 1;
-    
-    /** The Constant START_MESSAGE. */
-    protected static final int START_MESSAGE = 2;
-    
-    /** The Constant FINISH_MESSAGE. */
-    protected static final int FINISH_MESSAGE = 3;
-    
-    /** The Constant PROGRESS_MESSAGE. */
-    protected static final int PROGRESS_MESSAGE = 4;
-    
-    /** The Constant RETRY_MESSAGE. */
-    protected static final int RETRY_MESSAGE = 5;
     
     /** The handler. */
     private Handler mHandler;
@@ -90,35 +72,35 @@ public class AbHttpResponseListener {
      * 开始消息.
      */
     public void sendStartMessage(){
-    	sendMessage(obtainMessage(START_MESSAGE, null));
+    	sendMessage(obtainMessage(AbHttpUtil.START_MESSAGE, null));
     }
     
     /**
      * 完成消息.
      */
     public void sendFinishMessage(){
-    	sendMessage(obtainMessage(FINISH_MESSAGE,null));
+    	sendMessage(obtainMessage(AbHttpUtil.FINISH_MESSAGE,null));
     }
     
     /**
      * 进度消息.
      */
     public void sendProgressMessage(int bytesWritten, int totalSize) {
-        sendMessage(obtainMessage(PROGRESS_MESSAGE, new Object[]{bytesWritten, totalSize}));
+        sendMessage(obtainMessage(AbHttpUtil.PROGRESS_MESSAGE, new Object[]{bytesWritten, totalSize}));
     }
     
     /**
      * 失败消息.
      */
     public void sendFailureMessage(int statusCode,String content,Throwable error){
-    	sendMessage(obtainMessage(FAILURE_MESSAGE, new Object[]{statusCode,content, error}));
+    	sendMessage(obtainMessage(AbHttpUtil.FAILURE_MESSAGE, new Object[]{statusCode,content, error}));
     }
     
     /**
      * 重试消息.
      */
     public void sendRetryMessage() {
-        sendMessage(obtainMessage(RETRY_MESSAGE, null));
+        sendMessage(obtainMessage(AbHttpUtil.RETRY_MESSAGE, null));
     }
     
     /**

@@ -113,7 +113,7 @@ public class ListNestViewPagerActivity extends AbActivity implements OnHeaderRef
 		mPlayText2.setText("33333333333333333");
 		mPlayImage2.setBackgroundResource(R.drawable.pic3);
 
-		mSlidingPlayView.setPageLineHorizontalGravity(Gravity.RIGHT);
+		mSlidingPlayView.setNavHorizontalGravity(Gravity.RIGHT);
 		mSlidingPlayView.addView(mPlayView);
 		mSlidingPlayView.addView(mPlayView1);
 		mSlidingPlayView.addView(mPlayView2);

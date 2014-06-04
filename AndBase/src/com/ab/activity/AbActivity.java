@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amsoft.cn
+ * Copyright (C) 2012 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -60,8 +60,10 @@ import com.ab.view.titlebar.AbTitleBar;
 
 // TODO: Auto-generated Javadoc
 /**
+ * © 2012 amsoft.cn
+ * 名称：AbActivity.java 
  * 描述：继承这个Activity使你的Activity拥有一个程序框架.
- * @author amsoft.cn
+ * @author 还如一梦中
  * @date：2013-1-15 下午3:27:05
  * @version v1.0
  */

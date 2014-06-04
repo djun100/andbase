@@ -52,11 +52,13 @@ public class PullToRefreshListActivity extends AbActivity implements OnHeaderRef
         mAbTitleBar.setLogoLine(R.drawable.line);
         
         for (int i = 0; i < 23; i++) {
-        	mPhotoList.add(Constant.BASEURL+"content/templates/amsoft/images/rand/"+i+".jpg");
+        	mPhotoList.add(Constant.BASEURL
+        	        +"content/templates/amsoft/images/rand/"+i+".jpg");
 		}
         
 	    //获取ListView对象
-        mAbPullToRefreshView = (AbPullToRefreshView)this.findViewById(R.id.mPullRefreshView);
+        mAbPullToRefreshView = (AbPullToRefreshView)
+                this.findViewById(R.id.mPullRefreshView);
         mListView = (ListView)this.findViewById(R.id.mListView);
         
         //设置监听器
@@ -64,17 +66,19 @@ public class PullToRefreshListActivity extends AbActivity implements OnHeaderRef
         mAbPullToRefreshView.setOnFooterLoadListener(this);
         
         //设置进度条的样式
-        mAbPullToRefreshView.getHeaderView().setHeaderProgressBarDrawable(this.getResources().getDrawable(R.drawable.progress_circular));
-        mAbPullToRefreshView.getFooterView().setFooterProgressBarDrawable(this.getResources().getDrawable(R.drawable.progress_circular));
-        //mAbPullListView.getHeaderView().setHeaderProgressBarDrawable(this.getResources().getDrawable(R.drawable.progress_circular2));
-        //mAbPullListView.getFooterView().setFooterProgressBarDrawable(this.getResources().getDrawable(R.drawable.progress_circular2));
+        mAbPullToRefreshView.getHeaderView().setHeaderProgressBarDrawable(
+                this.getResources().getDrawable(R.drawable.progress_circular));
+        mAbPullToRefreshView.getFooterView().setFooterProgressBarDrawable(
+                this.getResources().getDrawable(R.drawable.progress_circular));
          
         //ListView数据
     	list = new ArrayList<Map<String, Object>>();
     	
     	//使用自定义的Adapter
-    	myListViewAdapter = new ImageListAdapter(this, list,R.layout.item_list,
-				new String[] { "itemsIcon", "itemsTitle","itemsText" }, new int[] { R.id.itemsIcon,
+    	myListViewAdapter = new ImageListAdapter(this, list,
+    	        R.layout.item_list,
+				new String[] { "itemsIcon", "itemsTitle","itemsText" }, 
+				new int[] { R.id.itemsIcon,
 						R.id.itemsTitle,R.id.itemsText });
     	mListView.setAdapter(myListViewAdapter);
     	
@@ -93,15 +97,6 @@ public class PullToRefreshListActivity extends AbActivity implements OnHeaderRef
 		
     }
     
-
-	@Override
-	protected void onResume() {
-		super.onResume();
-	}
-	
-	public void onPause() {
-		super.onPause();
-	}
 	
 	@Override
     public void onFooterLoad(AbPullToRefreshView view) {
@@ -131,9 +126,11 @@ public class PullToRefreshListActivity extends AbActivity implements OnHeaderRef
                     for (int i = 0; i < pageSize; i++) {
                         map = new HashMap<String, Object>();
                         if(i>=mPhotoList.size()){
-                            map.put("itemsIcon",mPhotoList.get(mPhotoList.size()-1));
+                            map.put("itemsIcon",mPhotoList.get(
+                                    mPhotoList.size()-1));
                         }else{
-                            map.put("itemsIcon",mPhotoList.get(new Random().nextInt(mPhotoList.size())));
+                            map.put("itemsIcon",mPhotoList.get(
+                                    new Random().nextInt(mPhotoList.size())));
                         }
                         
                         map.put("itemsTitle", "item"+(i+1));
@@ -149,7 +146,8 @@ public class PullToRefreshListActivity extends AbActivity implements OnHeaderRef
             @Override
             public void update(List<?> paramList){
                 removeProgressDialog();
-                List<Map<String, Object>> newList = (List<Map<String, Object>>)paramList;
+                List<Map<String, Object>> newList 
+                                = (List<Map<String, Object>>)paramList;
                 list.clear();
                 if(newList!=null && newList.size()>0){
                     list.addAll(newList);
@@ -171,7 +169,8 @@ public class PullToRefreshListActivity extends AbActivity implements OnHeaderRef
 
             @Override
             public void update(List<?> paramList){
-                List<Map<String, Object>> newList = (List<Map<String, Object>>)paramList;
+                List<Map<String, Object>> newList 
+                             = (List<Map<String, Object>>)paramList;
                 if(newList!=null && newList.size()>0){
                     list.addAll(newList);
                     myListViewAdapter.notifyDataSetChanged();
@@ -192,9 +191,12 @@ public class PullToRefreshListActivity extends AbActivity implements OnHeaderRef
                     
                     for (int i = 0; i < pageSize; i++) {
                         map = new HashMap<String, Object>();
-                        map.put("itemsIcon",mPhotoList.get(new Random().nextInt(mPhotoList.size())));
-                        map.put("itemsTitle", "item上拉"+((currentPage-1)*pageSize+(i+1)));
-                        map.put("itemsText", "item上拉..."+((currentPage-1)*pageSize+(i+1)));
+                        map.put("itemsIcon",mPhotoList.get(new Random()
+                                              .nextInt(mPhotoList.size())));
+                        map.put("itemsTitle", 
+                                "item上拉"+((currentPage-1)*pageSize+(i+1)));
+                        map.put("itemsText", 
+                                "item上拉..."+((currentPage-1)*pageSize+(i+1)));
                         if((list.size()+newList.size()) < total){
                             newList.add(map);
                         }
@@ -212,7 +214,14 @@ public class PullToRefreshListActivity extends AbActivity implements OnHeaderRef
         mAbTask.execute(item);
     }
 	
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
     
+    public void onPause() {
+        super.onPause();
+    }
    
 }
 

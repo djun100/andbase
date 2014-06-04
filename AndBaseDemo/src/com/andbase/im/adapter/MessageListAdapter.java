@@ -25,10 +25,10 @@ import com.andbase.global.Constant;
 import com.andbase.im.model.IMMessage;
 import com.andbase.im.util.IMUtil;
 /**
- * Copyright (c) 2011 All rights reserved
+ * © 2012 amsoft.cn
  * 名称：MessageListAdapter
  * 描述：消息列表
- * @author amsoft.cn
+ * @author 还如一梦中
  * @date 2011-12-10
  * @version
  */

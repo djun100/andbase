@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amsoft.cn
+ * Copyright (C) 2012 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,8 +19,15 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 // TODO: Auto-generated Javadoc
+
 /**
- * The Class AbDBDao.
+ * 
+ * © 2012 amsoft.cn
+ * 名称：AbBasicDBDao.java 
+ * 描述：普通的基础操作类
+ * @author 还如一梦中
+ * @date：2013-7-23 上午9:47:10
+ * @version v1.0
  */
 public class AbBasicDBDao {
 	

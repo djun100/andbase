@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amsoft.cn
+ * Copyright (C) 2012 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 package com.ab.view.sliding;
 
 /*
- * Copyright (C) 2015 www.amsoft.cn
+ * Copyright (C) 2012 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,7 +57,7 @@ import com.ab.global.AbAppData;
 /**
  * 名称：AbSlidingTabView
  * 描述：滑动的tab.
- * @author amsoft.cn
+ * @author 还如一梦中
  * @date 2011-11-28
  * @version
  */
@@ -66,7 +66,7 @@ public class AbBottomTabView extends LinearLayout {
 	/** The tag. */
 	private static String TAG = "AbSlidingTabView";
 	
-	/** The Constant D. */
+	/** 日志标记. */
 	private static final boolean D = AbAppData.DEBUG;
 
 	/** The context. */

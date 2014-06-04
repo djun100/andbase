@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amsoft.cn
+ * Copyright (C) 2012 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,6 @@ import org.apache.http.util.EntityUtils;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import android.os.Process;
 import android.util.Log;
 
 import com.ab.global.AbAppException;
@@ -48,48 +47,57 @@ import com.ab.task.AbThreadFactory;
 import com.ab.util.AbAppUtil;
 import com.ab.util.AbFileUtil;
 
+/**
+ * 
+ * © 2012 amsoft.cn
+ * 名称：AbHttpClient.java 
+ * 描述：Http客户端
+ * @author 还如一梦中
+ * @date：2013-11-13 上午9:00:52
+ * @version v1.0
+ */
 public class AbHttpClient {
 	
-	/** The Constant TAG. */
+	/** 日志标记. */
     private static final String TAG = "AbHttpClient";
     
-    /** The m context. */
+    /** 上下文. */
 	private Context mContext;
 	
 	/** 线程执行器. */
 	public static Executor mExecutorService = null;
     
-    /** The Constant DEFAULT_MAX_CONNECTIONS. */
+    /** 最大连接数. */
     private static final int DEFAULT_MAX_CONNECTIONS = 10;
     
-    /** The Constant DEFAULT_SOCKET_TIMEOUT. */
+    /** 超时时间. */
     private static final int DEFAULT_SOCKET_TIMEOUT = 10 * 1000;
     
-    /** The Constant DEFAULT_MAX_RETRIES. */
+    /** 重试. */
     private static final int DEFAULT_MAX_RETRIES = 5;
     
-    /** The Constant DEFAULT_SOCKET_BUFFER_SIZE. */
+    /** 缓冲大小. */
     private static final int DEFAULT_SOCKET_BUFFER_SIZE = 8192;
     
-    /** The Constant BUFFER_SIZE. */
+    /** 缓冲大小. */
     private static final int BUFFER_SIZE = 4096;
     
-    /** The Constant SUCCESS_MESSAGE. */
+    /** 成功. */
     protected static final int SUCCESS_MESSAGE = 0;
     
-    /** The Constant FAILURE_MESSAGE. */
+    /** 失败. */
     protected static final int FAILURE_MESSAGE = 1;
     
-    /** The Constant START_MESSAGE. */
+    /** 开始. */
     protected static final int START_MESSAGE = 2;
     
-    /** The Constant FINISH_MESSAGE. */
+    /** 完成. */
     protected static final int FINISH_MESSAGE = 3;
     
-    /** The Constant PROGRESS_MESSAGE. */
+    /** 进行中. */
     protected static final int PROGRESS_MESSAGE = 4;
     
-    /** The Constant RETRY_MESSAGE. */
+    /** 重试. */
     protected static final int RETRY_MESSAGE = 5;
     
     /**超时时间*/
@@ -98,7 +106,10 @@ public class AbHttpClient {
 	/**debug true表示是内网*/
 	private boolean debug = false;
     
-	
+    /**
+     * 初始化
+     * @param context
+     */
 	public AbHttpClient(Context context) {
 	    mContext = context;
 		mExecutorService =  AbThreadFactory.getExecutorService();
@@ -456,10 +467,10 @@ public class AbHttpClient {
 
 	/**
      * 
-     * Copyright (c) 2012 All rights reserved
+     * © 2012 amsoft.cn
      * 名称：ResponderHandler.java 
      * 描述：请求返回
-     * @author amsoft.cn
+     * @author 还如一梦中
      * @date：2013-11-13 下午3:22:30
      * @version v1.0
      */

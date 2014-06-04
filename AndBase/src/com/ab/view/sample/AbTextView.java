@@ -4,7 +4,7 @@ package com.ab.view.sample;
 /**
  * 描述：中英混合乱换行问题 .
  *
- * @author amsoft.cn
+ * @author 还如一梦中
  * @date：2013-5-17 下午6:46:29
  * @version v1.0
  */

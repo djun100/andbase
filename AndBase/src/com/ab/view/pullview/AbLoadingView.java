@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amsoft.cn
+ * Copyright (C) 2012 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,13 @@ import android.widget.ProgressBar;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class AbLoadingView.
+ * 
+ * © 2012 amsoft.cn
+ * 名称：AbLoadingView.java 
+ * 描述：loading.
+ * @author 还如一梦中
+ * @date：2013-01-17 下午11:52:13
+ * @version v1.0
  */
 public class AbLoadingView extends LinearLayout {
 	

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 www.amsoft.cn
+ * Copyright (C) 2012 www.amsoft.cn
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,30 +29,37 @@ import com.ab.task.AbTaskObjectListener;
 import com.ab.task.AbTaskQueue;
 
 // TODO: Auto-generated Javadoc
+
 /**
- * The Class AbSqliteStorage.
+ * 
+ * © 2012 amsoft.cn
+ * 名称：AbSqliteStorage.java 
+ * 描述：数据库对象操作类
+ * @author 还如一梦中
+ * @date：2013-10-16 下午1:33:39
+ * @version v1.0
  */
 public class AbSqliteStorage {
 	
 	/** The m context. */
 	private static Context mContext;
 	
-	/** The m sqlite storage. */
+	/** 单例. */
 	private static AbSqliteStorage mSqliteStorage = null;
 	
-	/** The m ab task queue. */
+	/** 队列. */
 	private static AbTaskQueue mAbTask = null;
 	
-	/** The error code100. */
+	/** 参数错误的code. */
 	private int errorCode100 = 100;
 	
-	/** The error message100. */
+	/** 参数错误的message. */
 	private String errorMessage100 = "参数错误";
 	
-	/** The error code101. */
+	/** 执行时错误的code. */
 	private int errorCode101 = 101;
 	
-	/** The error message101. */
+	/** 执行时错误的message. */
 	private String errorMessage101 = "执行时错误";
 	
 	/**
@@ -75,7 +82,7 @@ public class AbSqliteStorage {
 	}
 	
 	/**
-	 * Instantiates a new ab sqlite storage.
+	 * 初始化.
 	 *
 	 * @param context the context
 	 */
@@ -188,7 +195,7 @@ public class AbSqliteStorage {
 	
 	
 	/**
-	 * Find data.
+	 * 查找数据.
 	 *
 	 * @param <T> 描述：查询数据
 	 * @param storageQuery the storage query

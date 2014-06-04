@@ -18,7 +18,7 @@ import com.andbase.global.MyApplication;
 /**
  * 异步的使用参照
  * http://www.amsoft.cn/post-133.html
- * @author amsoft.cn
+ * @author 还如一梦中
  *
  */
 public class ThreadControlActivity extends AbActivity {
