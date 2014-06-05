@@ -514,11 +514,17 @@ public abstract class  CarouselAdapter <T extends Adapter> extends ViewGroup {
     }
 
     /**
-     * 描述：TODO
+     * 描述：TODO.
+     *
+     * @version v1.0
+     * @param changed the changed
+     * @param left the left
+     * @param top the top
+     * @param right the right
+     * @param bottom the bottom
      * @see android.view.ViewGroup#onLayout(boolean, int, int, int, int)
      * @author: amsoft.cn
      * @date：2013-11-28 上午11:14:33
-     * @version v1.0
      */
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
@@ -678,11 +684,13 @@ public abstract class  CarouselAdapter <T extends Adapter> extends ViewGroup {
     }
 
     /**
-     * 描述：TODO
+     * 描述：TODO.
+     *
+     * @version v1.0
+     * @param focusable the new focusable
      * @see android.view.View#setFocusable(boolean)
      * @author: amsoft.cn
      * @date：2013-11-28 上午11:14:33
-     * @version v1.0
      */
     @Override
     public void setFocusable(boolean focusable) {
@@ -698,11 +706,13 @@ public abstract class  CarouselAdapter <T extends Adapter> extends ViewGroup {
     }
 
     /**
-     * 描述：TODO
+     * 描述：TODO.
+     *
+     * @version v1.0
+     * @param focusable the new focusable in touch mode
      * @see android.view.View#setFocusableInTouchMode(boolean)
      * @author: amsoft.cn
      * @date：2013-11-28 上午11:14:33
-     * @version v1.0
      */
     @Override
     public void setFocusableInTouchMode(boolean focusable) {
@@ -790,11 +800,13 @@ public abstract class  CarouselAdapter <T extends Adapter> extends ViewGroup {
     }
 
     /**
-     * 描述：TODO
+     * 描述：TODO.
+     *
+     * @version v1.0
+     * @param l the new on click listener
      * @see android.view.View#setOnClickListener(android.view.View.OnClickListener)
      * @author: amsoft.cn
      * @date：2013-11-28 上午11:14:33
-     * @version v1.0
      */
     @Override
     public void setOnClickListener(OnClickListener l) {
@@ -832,11 +844,12 @@ public abstract class  CarouselAdapter <T extends Adapter> extends ViewGroup {
         private Parcelable mInstanceState = null;
 
         /**
-         * 描述：TODO
+         * 描述：TODO.
+         *
+         * @version v1.0
          * @see android.database.DataSetObserver#onChanged()
          * @author: amsoft.cn
          * @date：2013-11-28 上午11:14:33
-         * @version v1.0
          */
         @Override
         public void onChanged() {
@@ -858,11 +871,12 @@ public abstract class  CarouselAdapter <T extends Adapter> extends ViewGroup {
         }
 
         /**
-         * 描述：TODO
+         * 描述：TODO.
+         *
+         * @version v1.0
          * @see android.database.DataSetObserver#onInvalidated()
          * @author: amsoft.cn
          * @date：2013-11-28 上午11:14:33
-         * @version v1.0
          */
         @Override
         public void onInvalidated() {
@@ -904,11 +918,12 @@ public abstract class  CarouselAdapter <T extends Adapter> extends ViewGroup {
     private class SelectionNotifier extends Handler implements Runnable {
         
         /**
-         * 描述：TODO
+         * 描述：TODO.
+         *
+         * @version v1.0
          * @see java.lang.Runnable#run()
          * @author: amsoft.cn
          * @date：2013-11-28 上午11:14:33
-         * @version v1.0
          */
         public void run() {
             if (mDataChanged) {
@@ -965,11 +980,14 @@ public abstract class  CarouselAdapter <T extends Adapter> extends ViewGroup {
     }
 
     /**
-     * 描述：TODO
+     * 描述：TODO.
+     *
+     * @version v1.0
+     * @param event the event
+     * @return true, if successful
      * @see android.view.ViewGroup#dispatchPopulateAccessibilityEvent(android.view.accessibility.AccessibilityEvent)
      * @author: amsoft.cn
      * @date：2013-11-28 上午11:14:33
-     * @version v1.0
      */
     @Override
     public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent event) {
@@ -1001,11 +1019,13 @@ public abstract class  CarouselAdapter <T extends Adapter> extends ViewGroup {
     }
 
     /**
-     * 描述：TODO
+     * 描述：TODO.
+     *
+     * @version v1.0
+     * @return true, if successful
      * @see android.view.ViewGroup#canAnimate()
      * @author: amsoft.cn
      * @date：2013-11-28 上午11:14:34
-     * @version v1.0
      */
     @Override
     protected boolean canAnimate() {

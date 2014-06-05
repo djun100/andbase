@@ -28,13 +28,13 @@ import android.widget.BaseAdapter;
 import com.ab.util.AbImageUtil;
 // TODO: Auto-generated Javadoc
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：CarouselImageAdapter.java 
  * 描述：只有图片适配的Carousel
+ *
  * @author 还如一梦中
- * @date：2013-8-22 下午4:04:42
  * @version v1.0
+ * @date：2013-8-22 下午4:04:42
  */
 public class CarouselImageAdapter extends BaseAdapter {
 
@@ -67,11 +67,11 @@ public class CarouselImageAdapter extends BaseAdapter {
 	/**
 	 * 描述：TODO.
 	 *
+	 * @version v1.0
 	 * @return the count
 	 * @see android.widget.Adapter#getCount()
 	 * @author: amsoft.cn
 	 * @date：2013-8-22 下午4:07:39
-	 * @version v1.0
 	 */
 	public int getCount() {
 		if (mDrawables == null){
@@ -84,12 +84,12 @@ public class CarouselImageAdapter extends BaseAdapter {
 	/**
 	 * 描述：TODO.
 	 *
+	 * @version v1.0
 	 * @param position the position
 	 * @return the item
 	 * @see android.widget.Adapter#getItem(int)
 	 * @author: amsoft.cn
 	 * @date：2013-8-22 下午4:07:39
-	 * @version v1.0
 	 */
 	public Object getItem(int position) {
 		return position;
@@ -98,12 +98,12 @@ public class CarouselImageAdapter extends BaseAdapter {
 	/**
 	 * 描述：TODO.
 	 *
+	 * @version v1.0
 	 * @param position the position
 	 * @return the item id
 	 * @see android.widget.Adapter#getItemId(int)
 	 * @author: amsoft.cn
 	 * @date：2013-8-22 下午4:07:39
-	 * @version v1.0
 	 */
 	public long getItemId(int position) {
 		return position;
@@ -112,6 +112,7 @@ public class CarouselImageAdapter extends BaseAdapter {
 	/**
 	 * 描述：TODO.
 	 *
+	 * @version v1.0
 	 * @param position the position
 	 * @param convertView the convert view
 	 * @param parent the parent
@@ -119,7 +120,6 @@ public class CarouselImageAdapter extends BaseAdapter {
 	 * @see android.widget.Adapter#getView(int, android.view.View, android.view.ViewGroup)
 	 * @author: amsoft.cn
 	 * @date：2013-8-22 下午4:07:39
-	 * @version v1.0
 	 */
 	public View getView(int position, View convertView, ViewGroup parent) {
 		

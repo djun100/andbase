@@ -44,13 +44,14 @@ import com.ab.util.AbStrUtil;
 
 // TODO: Auto-generated Javadoc
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbDBDaoImpl.java 
  * 描述：数据库表操作类接口实现类
+ *
  * @author 还如一梦中
- * @date：2013-7-23 上午9:47:10
  * @version v1.0
+ * @param <T> the generic type
+ * @date：2013-7-23 上午9:47:10
  */
 public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 	
@@ -60,7 +61,7 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 	/** The db helper. */
 	private SQLiteOpenHelper dbHelper;
 	
-	/**锁对象*/
+	/** 锁对象. */
     private final ReentrantLock lock = new ReentrantLock();
 	
 	/** The table name. */
@@ -87,7 +88,7 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 	/** The Constant TYPE_INCREMENT. */
 	private static final int TYPE_INCREMENT = 1;
 	
-	/**这个Dao的数据库对象*/
+	/** 这个Dao的数据库对象. */
 	private SQLiteDatabase db = null;
 
 	/**
@@ -438,6 +439,7 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 	/**
 	 * 从游标中获得映射对象列表.
 	 *
+	 * @param clazz the clazz
 	 * @param list 返回的映射对象列表
 	 * @param cursor 当前游标
 	 * @return the list from cursor
@@ -634,7 +636,10 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 	
 	
 	/**
-	 * 描述：插入列表
+	 * 描述：插入列表.
+	 *
+	 * @param entityList the entity list
+	 * @return the long
 	 * @see com.ab.db.orm.dao.AbDBDao#insertList(java.util.List)
 	 */
 	@Override
@@ -643,7 +648,11 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 	}
 
 	/**
-	 * 描述：插入列表
+	 * 描述：插入列表.
+	 *
+	 * @param entityList the entity list
+	 * @param flag the flag
+	 * @return the long
 	 * @see com.ab.db.orm.dao.AbDBDao#insertList(java.util.List, boolean)
 	 */
 	@Override
@@ -766,6 +775,7 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 	 * 描述：按id删除.
 	 *
 	 * @param id the id
+	 * @return the long
 	 * @see com.ab.db.orm.dao.AbDBDao#delete(int)
 	 */
 	@Override
@@ -793,6 +803,7 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 	 * 描述：按id删除.
 	 *
 	 * @param ids the ids
+	 * @return the long
 	 * @see com.ab.db.orm.dao.AbDBDao#delete(java.lang.Integer[])
 	 */
 	@Override
@@ -808,7 +819,11 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 	
 
 	/**
-	 * 描述：按条件删除数据
+	 * 描述：按条件删除数据.
+	 *
+	 * @param whereClause the where clause
+	 * @param whereArgs the where args
+	 * @return the long
 	 * @see com.ab.db.orm.dao.AbDBDao#delete(java.lang.String, java.lang.String[])
 	 */
 	@Override
@@ -834,7 +849,9 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 	}
 
 	/**
-	 * 描述：清空数据
+	 * 描述：清空数据.
+	 *
+	 * @return the long
 	 * @see com.ab.db.orm.dao.AbDBDao#deleteAll()
 	 */
 	@Override
@@ -895,7 +912,10 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 	
 
 	/**
-	 * 描述：更新列表
+	 * 描述：更新列表.
+	 *
+	 * @param entityList the entity list
+	 * @return the long
 	 * @see com.ab.db.orm.dao.AbDBDao#updateList(java.util.List)
 	 */
 	@Override
@@ -1094,10 +1114,9 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 	}
 	
 	/**
-	 * 
-	 * 描述：获取写数据库，数据操作前必须调用
+	 * 描述：获取写数据库，数据操作前必须调用.
+	 *
 	 * @param transaction 是否开启事务
-	 * @throws 
 	 */
 	public void startWritableDatabase(boolean transaction){
 		try {
@@ -1117,9 +1136,7 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 	}
 	
 	/**
-	 * 
-	 * 描述：获取读数据库，数据操作前必须调用
-	 * @throws 
+	 * 描述：获取读数据库，数据操作前必须调用.
 	 */
 	public void startReadableDatabase(){
 		try {
@@ -1137,10 +1154,7 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 	}
 	
 	/**
-	 * 
-	 * 描述：关闭数据库，数据操作后必须调用
-	 * @param transaction  关闭事务
-	 * @throws 
+	 * 描述：关闭数据库，数据操作后必须调用.
 	 */
 	public void closeDatabase(){
 		try {

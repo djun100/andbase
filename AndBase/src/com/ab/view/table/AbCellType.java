@@ -16,12 +16,15 @@
 package com.ab.view.table;
 
 // TODO: Auto-generated Javadoc
+
 /**
+ * © 2012 amsoft.cn
+ * 名称：AbCellType.java 
  * 描述：单元格支持的类型.
  *
  * @author 还如一梦中
- * @date：2013-1-28 下午3:54:26
  * @version v1.0
+ * @date：2013-01-18 下午11:52:13
  */
 public class AbCellType {
      

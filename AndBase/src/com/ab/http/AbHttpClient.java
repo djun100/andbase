@@ -28,9 +28,18 @@ import org.apache.http.HttpVersion;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.params.CookiePolicy;
+import org.apache.http.client.params.HttpClientParams;
+import org.apache.http.conn.ClientConnectionManager;
 import org.apache.http.conn.params.ConnManagerParams;
 import org.apache.http.conn.params.ConnPerRouteBean;
+import org.apache.http.conn.params.ConnRoutePNames;
+import org.apache.http.conn.scheme.PlainSocketFactory;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.scheme.SchemeRegistry;
+import org.apache.http.conn.scheme.SocketFactory;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpProtocolParams;
@@ -47,14 +56,15 @@ import com.ab.task.AbThreadFactory;
 import com.ab.util.AbAppUtil;
 import com.ab.util.AbFileUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbHttpClient.java 
  * 描述：Http客户端
+ *
  * @author 还如一梦中
- * @date：2013-11-13 上午9:00:52
  * @version v1.0
+ * @date：2013-11-13 上午9:00:52
  */
 public class AbHttpClient {
 	
@@ -71,7 +81,7 @@ public class AbHttpClient {
     private static final int DEFAULT_MAX_CONNECTIONS = 10;
     
     /** 超时时间. */
-    private static final int DEFAULT_SOCKET_TIMEOUT = 10 * 1000;
+    public static final int DEFAULT_SOCKET_TIMEOUT = 10 * 1000;
     
     /** 重试. */
     private static final int DEFAULT_MAX_RETRIES = 5;
@@ -100,15 +110,19 @@ public class AbHttpClient {
     /** 重试. */
     protected static final int RETRY_MESSAGE = 5;
     
-    /**超时时间*/
+    /** 超时时间. */
 	private int timeout = DEFAULT_SOCKET_TIMEOUT;
 	
-	/**debug true表示是内网*/
+	/** debug true表示是内网. */
 	private boolean debug = false;
+	
+	/** 通用证书. 如果要求HTTPS连接，则使用SSL打开连接*/
+	private boolean isOpenEasySSL = true;
     
     /**
-     * 初始化
-     * @param context
+     * 初始化.
+     *
+     * @param context the context
      */
 	public AbHttpClient(Context context) {
 	    mContext = context;
@@ -117,24 +131,21 @@ public class AbHttpClient {
 	
 	
 	/**
-	 * 
-	 * 描述：无参数的get请求
-	 * 
-	 * @param url
-	 * @param responseHandler
-	 * @throws
+	 * 描述：无参数的get请求.
+	 *
+	 * @param url the url
+	 * @param responseListener the response listener
 	 */
 	public void get(String url, AbHttpResponseListener responseListener) {
 		get(url,null,responseListener);          
 	}
 
 	/**
-	 * 
-	 * 描述：带参数的get请求
-	 * 
-	 * @param url
-	 * @param responseHandler
-	 * @throws
+	 * 描述：带参数的get请求.
+	 *
+	 * @param url the url
+	 * @param params the params
+	 * @param responseListener the response listener
 	 */
 	public void get(final String url,final AbRequestParams params,final AbHttpResponseListener responseListener) {
 		
@@ -151,24 +162,21 @@ public class AbHttpClient {
 	}
 	
 	/**
-	 * 
-	 * 描述：无参数的post请求
-	 * 
-	 * @param url
-	 * @param responseHandler
-	 * @throws
+	 * 描述：无参数的post请求.
+	 *
+	 * @param url the url
+	 * @param responseListener the response listener
 	 */
 	public void post(String url, AbHttpResponseListener responseListener) {
 		post(url,null,responseListener);          
 	}
 	
 	/**
-	 * 
-	 * 描述：带参数的post请求
-	 * @param url
-	 * @param params
-	 * @param responseHandler
-	 * @throws 
+	 * 描述：带参数的post请求.
+	 *
+	 * @param url the url
+	 * @param params the params
+	 * @param responseListener the response listener
 	 */
 	public void post(final String url,final AbRequestParams params,
 			final AbHttpResponseListener responseListener) {
@@ -186,12 +194,11 @@ public class AbHttpClient {
 	
 	
 	/**
-	 * 
-	 * 描述：执行get请求
-	 * @param url
-	 * @param params
-	 * @param responseListener
-	 * @throws 
+	 * 描述：执行get请求.
+	 *
+	 * @param url the url
+	 * @param params the params
+	 * @param responseListener the response listener
 	 */
 	private void doGet(String url,AbRequestParams params,AbHttpResponseListener responseListener){
 		  try {
@@ -209,25 +216,20 @@ public class AbHttpClient {
 			  }
 			  HttpGet httpRequest = new HttpGet(url);  
 			  
-			  BasicHttpParams httpParams = new BasicHttpParams();
-			  
-			  // 从连接池中取连接的超时时间，设置为1秒
-		      ConnManagerParams.setTimeout(httpParams, DEFAULT_SOCKET_TIMEOUT);
-		      ConnManagerParams.setMaxConnectionsPerRoute(httpParams, new ConnPerRouteBean(DEFAULT_MAX_CONNECTIONS));
-		      ConnManagerParams.setMaxTotalConnections(httpParams, DEFAULT_MAX_CONNECTIONS);
-		      // 读响应数据的超时时间
-		      HttpConnectionParams.setSoTimeout(httpParams, DEFAULT_SOCKET_TIMEOUT);
-		      HttpConnectionParams.setConnectionTimeout(httpParams, DEFAULT_SOCKET_TIMEOUT);
-		      HttpConnectionParams.setTcpNoDelay(httpParams, true);
-		      HttpConnectionParams.setSocketBufferSize(httpParams, DEFAULT_SOCKET_BUFFER_SIZE);
-
-		      HttpProtocolParams.setVersion(httpParams, HttpVersion.HTTP_1_1);
-		      HttpProtocolParams.setUserAgent(httpParams, String.format("andbase-http/%s (http://www.amsoft.cn/)", 1.0));
+              BasicHttpParams httpParams = getHttpParams();
+		      
 		      // 设置请求参数
 			  httpRequest.setParams(httpParams);
 			  
-			  //取得HttpClient对象  
-			  HttpClient httpClient = new DefaultHttpClient();  
+			  //默认参数
+              HttpClientParams.setRedirecting(httpParams, false);
+              HttpClientParams.setCookiePolicy(httpParams,
+                      CookiePolicy.BROWSER_COMPATIBILITY);
+              httpParams.setParameter(ConnRoutePNames.DEFAULT_PROXY, null);
+
+              //取得默认的HttpClient
+      	      HttpClient httpClient = getHttpClient(httpParams); 
+      	      
 			  //请求HttpClient，取得HttpResponse  
 			  HttpResponse httpResponse = httpClient.execute(httpRequest);  
 			  //请求成功  
@@ -260,12 +262,11 @@ public class AbHttpClient {
 	}
 	
 	/**
-	 * 
-	 * 描述：执行post请求
-	 * @param url
-	 * @param params
-	 * @param responseListener
-	 * @throws 
+	 * 描述：执行post请求.
+	 *
+	 * @param url the url
+	 * @param params the params
+	 * @param responseListener the response listener
 	 */
 	private void doPost(String url,AbRequestParams params,AbHttpResponseListener responseListener){
 		  try {
@@ -285,27 +286,21 @@ public class AbHttpClient {
 			      httpRequest.setEntity(httpentity); 
 			  }
 		      
-              BasicHttpParams httpParams = new BasicHttpParams();
-			  
-			  // 从连接池中取连接的超时时间，设置为1秒
-		      ConnManagerParams.setTimeout(httpParams, timeout);
-		      ConnManagerParams.setMaxConnectionsPerRoute(httpParams, new ConnPerRouteBean(DEFAULT_MAX_CONNECTIONS));
-		      ConnManagerParams.setMaxTotalConnections(httpParams, DEFAULT_MAX_CONNECTIONS);
-		      // 读响应数据的超时时间
-		      HttpConnectionParams.setSoTimeout(httpParams, timeout);
-		      HttpConnectionParams.setConnectionTimeout(httpParams, timeout);
-		      HttpConnectionParams.setTcpNoDelay(httpParams, true);
-		      HttpConnectionParams.setSocketBufferSize(httpParams, DEFAULT_SOCKET_BUFFER_SIZE);
+		      BasicHttpParams httpParams = getHttpParams();
+		      
+		      httpRequest.setParams(httpParams);
+              
+      	      //默认参数
+              HttpClientParams.setRedirecting(httpParams, false);
+              HttpClientParams.setCookiePolicy(httpParams,
+                      CookiePolicy.BROWSER_COMPATIBILITY);
+              httpParams.setParameter(ConnRoutePNames.DEFAULT_PROXY, null);
 
-		      HttpProtocolParams.setVersion(httpParams, HttpVersion.HTTP_1_1);
-		      HttpProtocolParams.setUserAgent(httpParams, String.format("andbase-http/%s (http://www.418log.org/)", 1.0));
-		      // 设置请求参数
-			  httpRequest.setParams(httpParams);
-	    	  
-		      //取得默认的HttpClient
-		      HttpClient httpclient = new DefaultHttpClient();  
+              //取得默认的HttpClient
+      	      HttpClient httpClient = getHttpClient(httpParams);  
+		      
 		      //取得HttpResponse
-		      HttpResponse httpResponse = httpclient.execute(httpRequest);  
+		      HttpResponse httpResponse = httpClient.execute(httpRequest);  
 			  //请求成功  
 			  int statusCode = httpResponse.getStatusLine().getStatusCode();
 			  //取得返回的字符串  
@@ -337,8 +332,12 @@ public class AbHttpClient {
 	
 	
 	/**
-     * 描述：写入文件并回调进度
-     */
+	 * 描述：写入文件并回调进度.
+	 *
+	 * @param entity the entity
+	 * @param name the name
+	 * @param responseListener the response listener
+	 */
     public void writeResponseData(HttpEntity entity,String name,AbFileHttpResponseListener responseListener){
         
     	if(entity == null){
@@ -389,7 +388,10 @@ public class AbHttpClient {
     }
     
     /**
-     * 描述：转换为二进制并回调进度
+     * 描述：转换为二进制并回调进度.
+     *
+     * @param entity the entity
+     * @param responseListener the response listener
      */
     public void readResponseData(HttpEntity entity,AbBinaryHttpResponseListener responseListener){
         
@@ -434,56 +436,65 @@ public class AbHttpClient {
     	
         
     }
-
-
     
     /**
-	 * 
-	 * 描述：设置连接超时时间
-	 * @param timeout 毫秒
-	 * @throws 
-	 */
+     * 描述：设置连接超时时间.
+     *
+     * @param timeout 毫秒
+     */
     public void setTimeout(int timeout) {
     	this.timeout = timeout;
 	}
     
     
     /**
-	 * 
-	 * 描述：调试模式
-	 */
+     * 描述：调试模式.
+     *
+     * @return true, if is debug
+     */
     public boolean isDebug() {
 		return debug;
 	}
 
     /**
-	 * 
-	 * 描述：是否为调试模式
-	 * @param debug
-	 */
+     * 描述：是否为调试模式.
+     *
+     * @param debug the new debug
+     */
 	public void setDebug(boolean debug) {
 		this.debug = debug;
 	}
 
 	/**
-     * 
-     * © 2012 amsoft.cn
-     * 名称：ResponderHandler.java 
-     * 描述：请求返回
-     * @author 还如一梦中
-     * @date：2013-11-13 下午3:22:30
-     * @version v1.0
-     */
+	 * © 2012 amsoft.cn
+	 * 名称：ResponderHandler.java 
+	 * 描述：请求返回
+	 *
+	 * @author 还如一梦中
+	 * @version v1.0
+	 * @date：2013-11-13 下午3:22:30
+	 */
     private static class ResponderHandler extends Handler {
 		
+		/** The response. */
 		private Object[] response;
+		
+		/** The response listener. */
 		private AbHttpResponseListener responseListener;
 		
 
+		/**
+		 * Instantiates a new responder handler.
+		 *
+		 * @param responseListener the response listener
+		 */
 		public ResponderHandler(AbHttpResponseListener responseListener) {
 			this.responseListener = responseListener;
 		}
 
+		/* (non-Javadoc)
+		 * @see android.os.Handler#handleMessage(android.os.Message)
+		 */
 		@Override
 		public void handleMessage(Message msg) {
 			
@@ -551,5 +562,66 @@ public class AbHttpClient {
 		}
 		
 	}
+    
+    /**
+     * HTTP参数配置
+     * @return
+     */
+    public BasicHttpParams getHttpParams(){
+    	
+    	BasicHttpParams httpParams = new BasicHttpParams();
+        
+        // 设置每个路由最大连接数
+        ConnPerRouteBean connPerRoute = new ConnPerRouteBean(30);
+        ConnManagerParams.setMaxConnectionsPerRoute(httpParams, connPerRoute);
+        HttpConnectionParams.setStaleCheckingEnabled(httpParams, false);
+		// 从连接池中取连接的超时时间，设置为1秒
+	    ConnManagerParams.setTimeout(httpParams, timeout);
+	    ConnManagerParams.setMaxConnectionsPerRoute(httpParams, new ConnPerRouteBean(DEFAULT_MAX_CONNECTIONS));
+	    ConnManagerParams.setMaxTotalConnections(httpParams, DEFAULT_MAX_CONNECTIONS);
+	    // 读响应数据的超时时间
+	    HttpConnectionParams.setSoTimeout(httpParams, timeout);
+	    HttpConnectionParams.setConnectionTimeout(httpParams, timeout);
+	    HttpConnectionParams.setTcpNoDelay(httpParams, true);
+	    HttpConnectionParams.setSocketBufferSize(httpParams, DEFAULT_SOCKET_BUFFER_SIZE);
+
+	    HttpProtocolParams.setVersion(httpParams, HttpVersion.HTTP_1_1);
+	    HttpProtocolParams.setUserAgent(httpParams, String.format("andbase-http/%s (http://www.amsoft.cn/)", 1.0));
+	    // 设置请求参数
+		return httpParams;
+	      
+    }
+    
+    /**
+     * 获取HttpClient，自签名的证书，如果想做签名参考AuthSSLProtocolSocketFactory类
+     * @param httpParams
+     * @return
+     */
+    public HttpClient getHttpClient(BasicHttpParams httpParams){
+    	HttpClient httpClient = null;
+    	if(isOpenEasySSL){
+    		 // 支持https的   SSL自签名的实现类
+    	     EasySSLProtocolSocketFactory easySSL = new EasySSLProtocolSocketFactory();
+    	      
+    	     // Sets up the http part of the service.
+             SchemeRegistry supportedSchemes = new SchemeRegistry();
+
+             // Register the "http" protocol scheme, it is required
+             // by the default operator to look up socket factories.
+             SocketFactory sf = PlainSocketFactory.getSocketFactory();
+             supportedSchemes.register(new Scheme("http", sf, 80));
+             supportedSchemes.register(new Scheme("https",easySSL, 443));
+
+             ClientConnectionManager connectionManager = new ThreadSafeClientConnManager(
+                    httpParams, supportedSchemes);
+            
+             //取得HttpClient
+             httpClient = new DefaultHttpClient(connectionManager, httpParams);
+    	}else{
+    		 httpClient = new DefaultHttpClient();  
+    	}
+    	 
+ 	    return httpClient;
+    }
 	
 }

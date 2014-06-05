@@ -26,13 +26,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 // TODO: Auto-generated Javadoc
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：CarouselItemView.java 
  * 描述：旋转木马的任意View
+ *
  * @author 还如一梦中
- * @date：2013-8-23 下午2:02:31
  * @version v1.0
+ * @date：2013-8-23 下午2:02:31
  */
 public class CarouselItemView extends LinearLayout 
 	implements Comparable<CarouselItemView> {
@@ -126,11 +126,14 @@ public class CarouselItemView extends LinearLayout
 	}
 
 	/**
-	 * 描述：TODO
+	 * 描述：TODO.
+	 *
+	 * @version v1.0
+	 * @param another the another
+	 * @return the int
 	 * @see java.lang.Comparable#compareTo(java.lang.Object)
 	 * @author: amsoft.cn
 	 * @date：2013-11-28 上午11:14:34
-	 * @version v1.0
 	 */
 	public int compareTo(CarouselItemView another) {
 		return (int)(another.itemZ - this.itemZ);

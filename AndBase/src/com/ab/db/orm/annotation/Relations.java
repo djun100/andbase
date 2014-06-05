@@ -19,14 +19,15 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：Id.java 
  * 描述：表示关联表
+ *
  * @author 还如一梦中
- * @date：2013-7-23 上午9:47:10
  * @version v1.0
+ * @date：2013-7-23 上午9:47:10
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target( { java.lang.annotation.ElementType.FIELD })

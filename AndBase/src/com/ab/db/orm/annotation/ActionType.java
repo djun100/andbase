@@ -14,19 +14,31 @@
  * limitations under the License.
  */
 package com.ab.db.orm.annotation;
+// TODO: Auto-generated Javadoc
+
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：ActionType.java 
  * 描述：关联关系操作类型
+ *
  * @author 还如一梦中
- * @date：2013-10-15 上午9:55:13
  * @version v1.0
+ * @date：2013-10-15 上午9:55:13
  */
 public class ActionType {
+    
+    /** The Constant query. */
     public static final String query = "query";
+    
+    /** The Constant insert. */
     public static final String insert = "insert";
+    
+    /** The Constant update. */
     public static final String update = "update";
+    
+    /** The Constant delete. */
     public static final String delete = "delete";
+    
+    /** The Constant query_insert. */
     public static final String query_insert= "query_insert";
 }

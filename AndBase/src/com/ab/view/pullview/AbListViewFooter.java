@@ -29,13 +29,13 @@ import com.ab.util.AbViewUtil;
 
 // TODO: Auto-generated Javadoc
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbListViewFooter.java 
  * 描述：加载更多Footer View类.
+ *
  * @author 还如一梦中
- * @date：2013-01-17 下午11:52:13
  * @version v1.0
+ * @date：2013-01-17 下午11:52:13
  */
 public class AbListViewFooter extends LinearLayout {
 	
@@ -195,50 +195,45 @@ public class AbListViewFooter extends LinearLayout {
 
 	
 	/**
-	 * 
-	 * 描述：设置字体颜色
-	 * @param color
-	 * @throws 
+	 * 描述：设置字体颜色.
+	 *
+	 * @param color the new text color
 	 */
 	public void setTextColor(int color){
 		footerTextView.setTextColor(color);
 	}
 	
 	/**
-	 * 
-	 * 描述：设置背景颜色
-	 * @param color
-	 * @throws 
+	 * 描述：设置背景颜色.
+	 *
+	 * @param color the new background color
 	 */
 	public void setBackgroundColor(int color){
 		footerView.setBackgroundColor(color);
 	}
 
 	/**
-	 * 
-	 * 描述：获取Footer ProgressBar，用于设置自定义样式
-	 * @return
-	 * @throws 
+	 * 描述：获取Footer ProgressBar，用于设置自定义样式.
+	 *
+	 * @return the footer progress bar
 	 */
 	public ProgressBar getFooterProgressBar() {
 		return footerProgressBar;
 	}
 
 	/**
-	 * 
-	 * 描述：设置Footer ProgressBar样式
-	 * @return
-	 * @throws 
+	 * 描述：设置Footer ProgressBar样式.
+	 *
+	 * @param indeterminateDrawable the new footer progress bar drawable
 	 */
 	public void setFooterProgressBarDrawable(Drawable indeterminateDrawable) {
 		footerProgressBar.setIndeterminateDrawable(indeterminateDrawable);
 	}
 
 	/**
-	 * 
-	 * 描述：获取高度
-	 * @return
-	 * @throws 
+	 * 描述：获取高度.
+	 *
+	 * @return the footer height
 	 */
 	public int getFooterHeight() {
 		return footerHeight;
@@ -256,6 +251,11 @@ public class AbListViewFooter extends LinearLayout {
 		footerView.setLayoutParams(lp);
 	}
 	
+	/**
+	 * Gets the state.
+	 *
+	 * @return the state
+	 */
 	public int getState(){
 	        return mState;
 	}

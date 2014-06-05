@@ -22,13 +22,13 @@ import android.os.Message;
 
 // TODO: Auto-generated Javadoc
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbHttpResponseListener.java 
  * 描述：Http响应监听器
+ *
  * @author 还如一梦中
- * @date：2013-11-13 上午9:00:52
  * @version v1.0
+ * @date：2013-11-13 上午9:00:52
  */
 public class AbHttpResponseListener {
 	
@@ -38,6 +38,9 @@ public class AbHttpResponseListener {
     /** The handler. */
     private Handler mHandler;
     
+    /**
+     * 构造.
+     */
     public AbHttpResponseListener() {
 		super();
 	}
@@ -59,13 +62,20 @@ public class AbHttpResponseListener {
     public void onRetry() {}
     
     /**
-	 * 描述：失败，调用.
-	 */
+     * 描述：失败，调用.
+     *
+     * @param statusCode the status code
+     * @param content the content
+     * @param error the error
+     */
     public void onFailure(int statusCode, String content,Throwable error) {}
     
     /**
-	 * 进度.
-	 */
+     * 进度.
+     *
+     * @param bytesWritten the bytes written
+     * @param totalSize the total size
+     */
     public void onProgress(int bytesWritten, int totalSize) {}
     
     /**
@@ -84,6 +94,9 @@ public class AbHttpResponseListener {
     
     /**
      * 进度消息.
+     *
+     * @param bytesWritten the bytes written
+     * @param totalSize the total size
      */
     public void sendProgressMessage(int bytesWritten, int totalSize) {
         sendMessage(obtainMessage(AbHttpUtil.PROGRESS_MESSAGE, new Object[]{bytesWritten, totalSize}));
@@ -91,6 +104,10 @@ public class AbHttpResponseListener {
     
     /**
      * 失败消息.
+     *
+     * @param statusCode the status code
+     * @param content the content
+     * @param error the error
      */
     public void sendFailureMessage(int statusCode,String content,Throwable error){
     	sendMessage(obtainMessage(AbHttpUtil.FAILURE_MESSAGE, new Object[]{statusCode,content, error}));
@@ -133,16 +150,20 @@ public class AbHttpResponseListener {
         return msg;
     }
 
+	/**
+	 * Gets the handler.
+	 *
+	 * @return the handler
+	 */
 	public Handler getHandler() {
 		return mHandler;
 	}
 
 	/**
-     * 
-     * 描述：设置Handler
-     * @param handler
-     * @throws 
-     */
+	 * 描述：设置Handler.
+	 *
+	 * @param handler the new handler
+	 */
 	public void setHandler(Handler handler) {
 		this.mHandler = handler;
 	}

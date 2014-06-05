@@ -29,12 +29,16 @@ import android.widget.Scroller;
 import com.ab.global.AbAppData;
 
 // TODO: Auto-generated Javadoc
+
 /**
+ * © 2012 amsoft.cn
+ * 名称：AbSlidingMenuView.java 
  * 描述：左右简单的侧边栏实现
- * 滑动事件只在一个android:clickable="true"的View上
+ * 滑动事件只在一个android:clickable="true"的View上.
+ *
  * @author 还如一梦中
- * @date：2013-4-24 下午3:46:47
  * @version v1.0
+ * @date：2013-05-17 下午6:46:29
  */
 public class AbSlidingMenuView extends ViewGroup {
 	
@@ -109,6 +113,11 @@ public class AbSlidingMenuView extends ViewGroup {
 	/**
 	 * 描述：View的位置设定.
 	 *
+	 * @param changed the changed
+	 * @param l the l
+	 * @param t the t
+	 * @param r the r
+	 * @param b the b
 	 */
 	@Override
 	protected void onLayout(boolean changed, int l, int t, int r, int b) {
@@ -348,7 +357,7 @@ public class AbSlidingMenuView extends ViewGroup {
 	/**
 	 * 设置主View.
 	 *
-	 * @param view
+	 * @param view the new content view
 	 */
 	public void setContentView(View view) {
 		removeViewAt(1);

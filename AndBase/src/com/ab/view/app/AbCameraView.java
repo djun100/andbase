@@ -20,11 +20,29 @@ import android.hardware.Camera;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+// TODO: Auto-generated Javadoc
+/**
+ * © 2012 amsoft.cn
+ * 名称：AbCameraView.java 
+ * 描述：摄像机view
+ *
+ * @author 还如一梦中
+ * @version v1.0
+ * @date：2013-11-7 下午2:35:05
+ */
 public class AbCameraView extends SurfaceView implements SurfaceHolder.Callback {
 
+    /** The surface holder. */
     private SurfaceHolder surfaceHolder;
+    
+    /** The camera. */
     private Camera camera;
 
+    /**
+     * Instantiates a new ab camera view.
+     *
+     * @param context the context
+     */
     public AbCameraView(Context context) {
         super(context);
 
@@ -33,6 +51,9 @@ public class AbCameraView extends SurfaceView implements SurfaceHolder.Callback 
         surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
     }
 
+    /* (non-Javadoc)
+     * @see android.view.SurfaceHolder.Callback#surfaceCreated(android.view.SurfaceHolder)
+     */
     @Override
     public void surfaceCreated(SurfaceHolder surfaceholder) {
         try {
@@ -43,6 +64,9 @@ public class AbCameraView extends SurfaceView implements SurfaceHolder.Callback 
         }
     }
 
+    /* (non-Javadoc)
+     * @see android.view.SurfaceHolder.Callback#surfaceChanged(android.view.SurfaceHolder, int, int, int)
+     */
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width,
             int height) {
@@ -51,6 +75,9 @@ public class AbCameraView extends SurfaceView implements SurfaceHolder.Callback 
     	}
     }
 
+    /* (non-Javadoc)
+     * @see android.view.SurfaceHolder.Callback#surfaceDestroyed(android.view.SurfaceHolder)
+     */
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
     	if(camera!=null){

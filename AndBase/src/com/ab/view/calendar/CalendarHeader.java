@@ -26,11 +26,9 @@ import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.text.TextPaint;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.LinearLayout.LayoutParams;
 
 import com.ab.util.AbGraphical;
 
@@ -39,9 +37,10 @@ import com.ab.util.AbGraphical;
  * © 2012 amsoft.cn
  * 名称：CalendarHeader.java 
  * 描述：日历控件头部绘制类
+ *
  * @author 还如一梦中
- * @date：2013-7-9 下午2:07:52
  * @version v1.0
+ * @date：2013-7-9 下午2:07:52
  */
 public class CalendarHeader extends View {
 	
@@ -156,11 +155,11 @@ public class CalendarHeader extends View {
 	/**
 	 * 描述：TODO.
 	 *
+	 * @version v1.0
 	 * @param canvas the canvas
 	 * @see android.view.View#onDraw(android.graphics.Canvas)
 	 * @author: amsoft.cn
 	 * @date：2013-7-19 下午4:30:45
-	 * @version v1.0
 	 */
 	@Override
 	protected void onDraw(Canvas canvas) {

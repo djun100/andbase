@@ -18,6 +18,10 @@ package com.ab.view.slidingmenu;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Interface SlidingActivityBase.
+ */
 public interface SlidingActivityBase {
 	
 	/**

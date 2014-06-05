@@ -47,15 +47,22 @@ import com.ab.util.AbGraphical;
 import com.ab.util.AbViewUtil;
 
 // TODO: Auto-generated Javadoc
+
 /**
- * Numeric wheel view.
+ * © 2012 amsoft.cn
+ * 名称：AbWheelView.java 
+ * 描述：轮子View
+ *
+ * @author 还如一梦中
+ * @version v1.0
+ * @date：2013-05-17 下午6:46:29
  */
 public class AbWheelView extends View {
 	
-	/** The tag. */
+	/** 日志标记. */
 	private static String TAG = "AbWheelView";
 	
-	/** 日志标记. */
+	/** 日志标记开关. */
 	private static final boolean D = AbAppData.DEBUG;
 	
 	/** The m context. */
@@ -779,12 +786,12 @@ public class AbWheelView extends View {
 	/**
 	 * 描述：TODO.
 	 *
+	 * @version v1.0
 	 * @param widthMeasureSpec the width measure spec
 	 * @param heightMeasureSpec the height measure spec
 	 * @see android.view.View#onMeasure(int, int)
 	 * @author: amsoft.cn
 	 * @date：2013-6-17 上午9:04:47
-	 * @version v1.0
 	 */
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -812,11 +819,11 @@ public class AbWheelView extends View {
 	/**
 	 * 描述：TODO.
 	 *
+	 * @version v1.0
 	 * @param canvas the canvas
 	 * @see android.view.View#onDraw(android.graphics.Canvas)
 	 * @author: amsoft.cn
 	 * @date：2013-6-17 上午9:04:47
-	 * @version v1.0
 	 */
 	@Override
 	protected void onDraw(Canvas canvas) {
@@ -921,12 +928,12 @@ public class AbWheelView extends View {
 	/**
 	 * 描述：TODO.
 	 *
+	 * @version v1.0
 	 * @param event the event
 	 * @return true, if successful
 	 * @see android.view.View#onTouchEvent(android.view.MotionEvent)
 	 * @author: amsoft.cn
 	 * @date：2013-6-17 上午9:04:47
-	 * @version v1.0
 	 */
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
@@ -1242,5 +1249,43 @@ public class AbWheelView extends View {
 		this.additionalItemHeight = additionalItemHeight;
 	}
 	
+	/**
+	 * Wheel scrolled listener interface.
+	 *
+	 * @see AbOnWheelScrollEvent
+	 */
+	public interface AbOnWheelScrollListener {
+		/**
+		 * Callback method to be invoked when scrolling started.
+		 * @param wheel the wheel view whose state has changed.
+		 */
+		void onScrollingStarted(AbWheelView wheel);
+		
+		/**
+		 * Callback method to be invoked when scrolling ended.
+		 * @param wheel the wheel view whose state has changed.
+		 */
+		void onScrollingFinished(AbWheelView wheel);
+	}
+	
+	/**
+	 * Wheel changed listener interface.
+	 * <p>The currentItemChanged() method is called whenever current wheel positions is changed:
+	 * <li> New Wheel position is set
+	 * <li> Wheel view is scrolled
+	 *
+	 * @see AbOnWheelChangedEvent
+	 */
+	public interface AbOnWheelChangedListener {
+		
+		/**
+		 * Callback method to be invoked when current item changed.
+		 *
+		 * @param wheel the wheel view whose state has changed
+		 * @param oldValue the old value of current item
+		 * @param newValue the new value of current item
+		 */
+		void onChanged(AbWheelView wheel, int oldValue, int newValue);
+	}
 	
 }

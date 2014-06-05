@@ -25,13 +25,13 @@ import android.os.Message;
 import com.ab.global.AbAppData;
 // TODO: Auto-generated Javadoc
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbTaskPool.java 
  * 描述：用andbase线程池
+ *
  * @author 还如一梦中
- * @date：2013-5-23 上午10:10:53
  * @version v1.0
+ * @date：2013-5-23 上午10:10:53
  */
 
 public class AbTaskPool{
@@ -48,7 +48,7 @@ public class AbTaskPool{
 	/** 线程执行器. */
 	public static Executor mExecutorService = null;
 	
-	/** 存放返回的任务结果*/
+	/**  存放返回的任务结果. */
     private static HashMap<String,Object> result;
 	
 	/** 下载完成后的消息句柄. */

@@ -29,13 +29,13 @@ import com.ab.global.AbAppData;
 // TODO: Auto-generated Javadoc
 
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbTaskQueue.java 
  * 描述：线程队列.
+ *
  * @author 还如一梦中
- * @date：2011-11-10 下午11:52:13
  * @version v1.0
+ * @date：2011-11-10 下午11:52:13
  */
 public class AbTaskQueue extends Thread { 
 	
@@ -48,13 +48,13 @@ public class AbTaskQueue extends Thread {
 	/** 等待执行的任务. 用 LinkedList增删效率高*/
 	private static LinkedList<AbTaskItem> mAbTaskItemList = null;
     
-    /**单例对象 */
+    /** 单例对象. */
   	private static AbTaskQueue abTaskQueue = null; 
   	
   	/** 停止的标记. */
 	private boolean mQuit = false;
 	
-	/** 存放返回的任务结果*/
+	/**  存放返回的任务结果. */
     private static HashMap<String,Object> result;
 	
 	/** 执行完成后的消息句柄. */
@@ -74,8 +74,10 @@ public class AbTaskQueue extends Thread {
     }; 
     
     /**
-	 * 单例构造.
-	 */
+     * 单例构造.
+     *
+     * @return single instance of AbTaskQueue
+     */
     public static AbTaskQueue getInstance() { 
         if (abTaskQueue == null) { 
             abTaskQueue = new AbTaskQueue();
@@ -85,8 +87,6 @@ public class AbTaskQueue extends Thread {
 	
 	/**
 	 * 构造执行线程队列.
-	 *
-	 * @param context the context
 	 */
     public AbTaskQueue() {
     	mQuit = false;
@@ -193,6 +193,8 @@ public class AbTaskQueue extends Thread {
     
     /**
      * 描述：终止队列释放线程.
+     *
+     * @param mayInterruptIfRunning the may interrupt if running
      */
     public void cancel(boolean mayInterruptIfRunning){
 		mQuit  = true;

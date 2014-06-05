@@ -17,32 +17,32 @@ package com.ab.model;
 
 // TODO: Auto-generated Javadoc
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbDisplayMetrics.java 
  * 描述：屏幕参数实体
+ *
  * @author 还如一梦中
- * @date：2013-11-13 上午9:00:52
  * @version v1.0
+ * @date：2013-11-13 上午9:00:52
  */
 public class AbDisplayMetrics {
 
-	/** 屏幕的宽度 */
+	/**  屏幕的宽度. */
 	public int displayWidth;
 
-	/** 屏幕的高度 */
+	/**  屏幕的高度. */
 	public int displayHeight;
 
-	/** 屏幕的像素宽度 */
+	/**  屏幕的像素宽度. */
 	public int widthPixels;
 
-	/** 屏幕的像素高度 */
+	/**  屏幕的像素高度. */
 	public int heightPixels;
 
-	/** 屏幕的密度 */
+	/**  屏幕的密度. */
 	public float density;
 
-	/** 字体缩放的比例 */
+	/**  字体缩放的比例. */
 	public float scaledDensity;
 
 }

@@ -33,13 +33,13 @@ import com.ab.util.AbViewUtil;
 // TODO: Auto-generated Javadoc
 
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbBottomBar.java 
  * 描述：底部菜单栏实现.
+ *
  * @author 还如一梦中
- * @date：2013-04-24 下午11:52:13
  * @version v1.0
+ * @date：2013-04-24 下午11:52:13
  */
 public class AbBottomBar extends LinearLayout {
 	
@@ -62,17 +62,33 @@ public class AbBottomBar extends LinearLayout {
 	public int diaplayWidth  = 320;
 	
 
+	/**
+	 * Instantiates a new ab bottom bar.
+	 *
+	 * @param context the context
+	 * @param attrs the attrs
+	 */
 	public AbBottomBar(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		ininBottomBar(context);
 	}
 
+	/**
+	 * Instantiates a new ab bottom bar.
+	 *
+	 * @param context the context
+	 */
 	public AbBottomBar(Context context) {
 		super(context);
 		ininBottomBar(context);
 		
 	}
 	
+	/**
+	 * Inin bottom bar.
+	 *
+	 * @param context the context
+	 */
 	public void ininBottomBar(Context context){
 		
 		mActivity  = (Activity)context;
@@ -119,8 +135,9 @@ public class AbBottomBar extends LinearLayout {
 	
 	
 	/**
-	 * 描述：下拉菜单的的实现方法
-	 * @param parent
+	 * 描述：下拉菜单的的实现方法.
+	 *
+	 * @param parent the parent
 	 * @param view 要显示的View
 	 * @param offsetMode 不填满的模式
 	 */
@@ -156,10 +173,10 @@ public class AbBottomBar extends LinearLayout {
 	}
 	
 	/**
-	 * 
-	 * 描述：设置下拉的View
-	 * @param view
-	 * @throws 
+	 * 描述：设置下拉的View.
+	 *
+	 * @param parent the parent
+	 * @param view the view
 	 */
 	public void setDropDown(final View parent,final View view){
 		 if(parent==null || view == null){
@@ -176,10 +193,9 @@ public class AbBottomBar extends LinearLayout {
 	}
 
 	/**
-	 * 
-	 * 描述：设置副标题栏界面显示
-	 * @param view
-	 * @throws 
+	 * 描述：设置副标题栏界面显示.
+	 *
+	 * @param view the new bottom view
 	 */
 	public void setBottomView(View view) {
 		removeAllViews();

@@ -19,13 +19,13 @@ package com.ab.global;
 
 // TODO: Auto-generated Javadoc
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbAppData.java 
  * 描述：变量类.
+ *
  * @author 还如一梦中
- * @date：2013-10-16 下午1:33:39
  * @version v1.0
+ * @date：2013-10-16 下午1:33:39
  */
 public class AbAppData {
 	
@@ -39,10 +39,10 @@ public class AbAppData {
 	public static long startLogTimeInMillis = 0;
 	
 	
-	/** UI设计的基准宽度*/
+	/**  UI设计的基准宽度. */
 	public static int uiWidth = 480;
 	
-	/** UI设计的基准高度*/
+	/**  UI设计的基准高度. */
 	public static int uiHeight = 800;
 
 }

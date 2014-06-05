@@ -35,13 +35,13 @@ import java.util.Random;
 
 // TODO: Auto-generated Javadoc
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbMultipartEntity.java 
  * 描述：用于文件上传
+ *
  * @author 还如一梦中
- * @date：2013-11-13 下午1:09:20
  * @version v1.0
+ * @date：2013-11-13 下午1:09:20
  */
 public class AbMultipartEntity implements HttpEntity {
 
@@ -73,10 +73,10 @@ public class AbMultipartEntity implements HttpEntity {
     /** The file parts. */
     private List<FilePart> fileParts = new ArrayList<FilePart>();
 
-    /** The out. */
+    /** 输出流. */
     private ByteArrayOutputStream out = new ByteArrayOutputStream();
 
-    /** The progress handler. */
+    /** 响应监听器. */
     private AbHttpResponseListener responseListener;
 
     /** The bytes written. */
@@ -88,7 +88,7 @@ public class AbMultipartEntity implements HttpEntity {
     /**
      * 构造.
      *
-     * @param progressHandler the progress handler
+     * @param responseListener the response listener
      */
     public AbMultipartEntity(AbHttpResponseListener responseListener) {
         final StringBuilder buf = new StringBuilder();
@@ -332,7 +332,9 @@ public class AbMultipartEntity implements HttpEntity {
     // The following methods are from the HttpEntity interface
 
     /**
-     * 描述：获取长度
+     * 描述：获取长度.
+     *
+     * @return the content length
      * @see org.apache.http.HttpEntity#getContentLength()
      */
     @Override
@@ -350,11 +352,13 @@ public class AbMultipartEntity implements HttpEntity {
     }
 
     /**
-     * 描述：获取类型
+     * 描述：获取类型.
+     *
+     * @version v1.0
+     * @return the content type
      * @see org.apache.http.HttpEntity#getContentType()
      * @author: amsoft.cn
      * @date：2013-10-22 下午4:23:15
-     * @version v1.0
      */
     @Override
     public Header getContentType() {
@@ -362,7 +366,9 @@ public class AbMultipartEntity implements HttpEntity {
     }
 
     /**
-     * 描述：TODO
+     * 描述：TODO.
+     *
+     * @return true, if is chunked
      * @see org.apache.http.HttpEntity#isChunked()
      */
     @Override
@@ -371,7 +377,9 @@ public class AbMultipartEntity implements HttpEntity {
     }
 
     /**
-     * 描述：TODO
+     * 描述：TODO.
+     *
+     * @return true, if is repeatable
      * @see org.apache.http.HttpEntity#isRepeatable()
      */
     @Override
@@ -380,7 +388,9 @@ public class AbMultipartEntity implements HttpEntity {
     }
 
     /**
-     * 描述：TODO
+     * 描述：TODO.
+     *
+     * @return true, if is streaming
      * @see org.apache.http.HttpEntity#isStreaming()
      */
     @Override
@@ -389,7 +399,10 @@ public class AbMultipartEntity implements HttpEntity {
     }
 
     /**
-     * 描述：写入
+     * 描述：写入.
+     *
+     * @param outstream the outstream
+     * @throws IOException Signals that an I/O exception has occurred.
      * @see org.apache.http.HttpEntity#writeTo(java.io.OutputStream)
      */
     @Override
@@ -407,7 +420,9 @@ public class AbMultipartEntity implements HttpEntity {
     }
 
     /**
-     * 描述：获取编码
+     * 描述：获取编码.
+     *
+     * @return the content encoding
      * @see org.apache.http.HttpEntity#getContentEncoding()
      */
     @Override
@@ -416,7 +431,10 @@ public class AbMultipartEntity implements HttpEntity {
     }
 
     /**
-     * 描述：TODO
+     * 描述：TODO.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws UnsupportedOperationException the unsupported operation exception
      * @see org.apache.http.HttpEntity#consumeContent()
      */
     @Override
@@ -428,7 +446,11 @@ public class AbMultipartEntity implements HttpEntity {
     }
 
     /**
-     * 描述：获取内容流
+     * 描述：获取内容流.
+     *
+     * @return the content
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws UnsupportedOperationException the unsupported operation exception
      * @see org.apache.http.HttpEntity#getContent()
      */
     @Override

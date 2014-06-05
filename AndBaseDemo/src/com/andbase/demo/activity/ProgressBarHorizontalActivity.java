@@ -7,8 +7,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.ab.activity.AbActivity;
-import com.ab.global.AbConstant;
-import com.ab.view.listener.AbOnProgressListener;
 import com.ab.view.progress.AbHorizontalProgressBar;
 import com.ab.view.titlebar.AbTitleBar;
 import com.andbase.R;
@@ -70,7 +68,7 @@ public class ProgressBarHorizontalActivity extends AbActivity {
 		
 		startAddProgress();
 		
-		mAbProgressBar.setAbOnProgressListener(new AbOnProgressListener() {
+		mAbProgressBar.setAbOnProgressListener(new AbHorizontalProgressBar.AbOnProgressListener() {
 			
 			@Override
 			public void onProgress(int progress) {
@@ -78,7 +76,7 @@ public class ProgressBarHorizontalActivity extends AbActivity {
 			}
 			
 			@Override
-			public void onComplete(int progress1) {
+			public void onComplete() {
 				progress = 0;
 				mAbProgressBar.reset();
 			}

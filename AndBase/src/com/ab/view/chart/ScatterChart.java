@@ -57,12 +57,12 @@ public class ScatterChart extends XYChart {
   /**
    * 描述：TODO.
    *
+   * @version v1.0
    * @param dataset the dataset
    * @param renderer the renderer
    * @see com.ab.view.chart.XYChart#setDatasetRenderer(com.ab.view.chart.XYMultipleSeriesDataset, com.ab.view.chart.XYMultipleSeriesRenderer)
    * @author: amsoft.cn
    * @date：2013-6-17 上午9:04:49
-   * @version v1.0
    */
   protected void setDatasetRenderer(XYMultipleSeriesDataset dataset,
       XYMultipleSeriesRenderer renderer) {
@@ -134,6 +134,7 @@ public class ScatterChart extends XYChart {
   /**
    * 描述：TODO.
    *
+   * @version v1.0
    * @param points the points
    * @param values the values
    * @param yAxisValue the y axis value
@@ -143,7 +144,6 @@ public class ScatterChart extends XYChart {
    * @see com.ab.view.chart.XYChart#clickableAreasForPoints(float[], double[], float, int, int)
    * @author: amsoft.cn
    * @date：2013-6-17 上午9:04:49
-   * @version v1.0
    */
   @Override
   protected ClickableArea[] clickableAreasForPoints(float[] points, double[] values,

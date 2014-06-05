@@ -18,13 +18,13 @@ package com.ab.global;
 // TODO: Auto-generated Javadoc
 
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbConstant.java 
  * 描述：常量.
+ *
  * @author 还如一梦中
- * @date：2013-10-16 下午1:33:39
  * @version v1.0
+ * @date：2013-10-16 下午1:33:39
  */
 public class AbConstant {
 	
@@ -88,12 +88,25 @@ public class AbConstant {
 	/** 未处理的HTTP返回码. */
 	public static final int UNTREATED_CODE = 900;
 	
+	/** The Constant CONNECTEXCEPTION. */
 	public static final String CONNECTEXCEPTION = "无法连接到网络";
+	
+	/** The Constant UNKNOWNHOSTEXCEPTION. */
 	public static final String UNKNOWNHOSTEXCEPTION = "连接远程地址失败";
+	
+	/** The Constant SOCKETEXCEPTION. */
 	public static final String SOCKETEXCEPTION = "网络连接出错，请重试";
+	
+	/** The Constant SOCKETTIMEOUTEXCEPTION. */
 	public static final String SOCKETTIMEOUTEXCEPTION = "连接超时，请重试";
+	
+	/** The Constant NULLPOINTEREXCEPTION. */
 	public static final String NULLPOINTEREXCEPTION = "抱歉，远程服务出错了";
+	
+	/** The Constant NULLMESSAGEEXCEPTION. */
 	public static final String NULLMESSAGEEXCEPTION = "抱歉，程序出错了";
+	
+	/** The Constant CLIENTPROTOCOLEXCEPTION. */
 	public static final String CLIENTPROTOCOLEXCEPTION = "Http请求参数错误";
 	
 	/** 参数个数不够. */

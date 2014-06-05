@@ -21,8 +21,6 @@ import com.ab.activity.AbActivity;
 import com.ab.task.AbTask;
 import com.ab.task.AbTaskItem;
 import com.ab.task.AbTaskListener;
-import com.ab.view.listener.AbOnChangeListener;
-import com.ab.view.listener.AbOnItemClickListener;
 import com.ab.view.pullview.AbPullToRefreshView;
 import com.ab.view.pullview.AbPullToRefreshView.OnFooterLoadListener;
 import com.ab.view.pullview.AbPullToRefreshView.OnHeaderRefreshListener;
@@ -123,7 +121,7 @@ public class ListNestViewPagerActivity extends AbActivity implements OnHeaderRef
 		mListView.addHeaderView(mSlidingPlayView);
 		//解决冲突问题
 		mSlidingPlayView.setParentListView(mListView);
-		mSlidingPlayView.setOnItemClickListener(new AbOnItemClickListener() {
+		mSlidingPlayView.setOnItemClickListener(new AbSlidingPlayView.AbOnItemClickListener() {
 			
 			@Override
 			public void onClick(int position) {
@@ -131,7 +129,7 @@ public class ListNestViewPagerActivity extends AbActivity implements OnHeaderRef
 			}
 		});
 	    
-        mSlidingPlayView.setOnPageChangeListener(new AbOnChangeListener() {
+        mSlidingPlayView.setOnPageChangeListener(new AbSlidingPlayView.AbOnChangeListener() {
 			
 			@Override
 			public void onChange(int position) {

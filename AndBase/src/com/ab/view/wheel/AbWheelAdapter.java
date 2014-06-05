@@ -17,8 +17,15 @@
 package com.ab.view.wheel;
 
 // TODO: Auto-generated Javadoc
+
 /**
- * The Interface AbWheelAdapter.
+ * © 2012 amsoft.cn
+ * 名称：AbWheelAdapter.java 
+ * 描述：轮子适配器接口
+ *
+ * @author 还如一梦中
+ * @version v1.0
+ * @date：2013-05-17 下午6:46:29
  */
 public interface AbWheelAdapter {
 	

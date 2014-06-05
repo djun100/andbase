@@ -22,19 +22,50 @@ import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import android.widget.LinearLayout;
 
+// TODO: Auto-generated Javadoc
+/**
+ * © 2012 amsoft.cn
+ * 名称：AbFocusView.java 
+ * 描述：控制焦点
+ *
+ * @author 还如一梦中
+ * @version v1.0
+ * @date：2013-8-23 下午2:03:29
+ */
 public class AbFocusView extends LinearLayout implements OnFocusChangeListener{
     
+    /** The selector drawable. */
     private Drawable selectorDrawable;
+    
+    /** The selector resourse. */
     private int selectorResourse;
 
+    /**
+     * Instantiates a new ab focus view.
+     *
+     * @param context the context
+     */
     public AbFocusView(Context context){
         this(context, null);
     }
 
+    /**
+     * Instantiates a new ab focus view.
+     *
+     * @param context the context
+     * @param attrs the attrs
+     */
     public AbFocusView(Context context, AttributeSet attrs){
         this(context, attrs, 0);
     }
 
+    /**
+     * Instantiates a new ab focus view.
+     *
+     * @param context the context
+     * @param attrs the attrs
+     * @param defStyle the def style
+     */
     public AbFocusView(Context context, AttributeSet attrs, int defStyle){
         super(context, attrs);
         
@@ -64,6 +95,9 @@ public class AbFocusView extends LinearLayout implements OnFocusChangeListener{
         setDrawingCacheEnabled(true);
     }
 
+    /* (non-Javadoc)
+     * @see android.view.View.OnFocusChangeListener#onFocusChange(android.view.View, boolean)
+     */
     @Override
     public void onFocusChange(View v, boolean hasFocus){
         if (hasFocus){
@@ -71,10 +105,20 @@ public class AbFocusView extends LinearLayout implements OnFocusChangeListener{
         }
     }
 
+    /**
+     * Gets the selector drawable.
+     *
+     * @return the selector drawable
+     */
     public Drawable getSelectorDrawable(){
         return selectorDrawable;
     }
 
+    /**
+     * Sets the selector drawable.
+     *
+     * @param selectorDrawable the new selector drawable
+     */
     public void setSelectorDrawable(Drawable selectorDrawable){
         this.selectorDrawable = selectorDrawable;
         if (this.selectorDrawable != null){
@@ -82,10 +126,20 @@ public class AbFocusView extends LinearLayout implements OnFocusChangeListener{
         }
     }
 
+    /**
+     * Gets the selector resourse.
+     *
+     * @return the selector resourse
+     */
     public int getSelectorResourse(){
         return selectorResourse;
     }
 
+    /**
+     * Sets the selector resourse.
+     *
+     * @param selectorResourse the new selector resourse
+     */
     public void setSelectorResourse(int selectorResourse){
         this.selectorResourse = selectorResourse;
         this.selectorDrawable = this.getResources().getDrawable(selectorResourse);

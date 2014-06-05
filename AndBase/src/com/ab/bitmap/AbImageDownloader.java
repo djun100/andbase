@@ -33,9 +33,10 @@ import com.ab.util.AbStrUtil;
  * © 2012 amsoft.cn
  * 名称：AbImageDownloader.java
  * 描述：下载图片并显示的工具类.
+ *
  * @author 还如一梦中
- * @date：2011-12-10 上午10:10:53
  * @version v1.0
+ * @date：2011-12-10 上午10:10:53
  */
 public class AbImageDownloader { 
 	
@@ -77,6 +78,8 @@ public class AbImageDownloader {
     
     /**
      * 构造图片下载器.
+     *
+     * @param context the context
      */
     public AbImageDownloader(Context context) {
     	this.mContext = context;
@@ -86,7 +89,9 @@ public class AbImageDownloader {
     /**
      * 显示这个图片.
      * 加入动画效果后加载下一页后图片会全部闪一下，因为设置了不同的图片
+     *
      * @param imageView 显得的View
+     * @param url the url
      * @return url 网络url
      */
     public void display(final ImageView imageView,String url) { 
@@ -174,68 +179,72 @@ public class AbImageDownloader {
     } 
     
     /**
-	 * 
-	 * 描述：设置下载中的图片
-	 * @param resID
-	 * @throws 
-	 */
+     * 描述：设置下载中的图片.
+     *
+     * @param resID the new loading image
+     */
 	public void setLoadingImage(int resID) {
 		this.loadingImage = mContext.getResources().getDrawable(resID);
 	}
 	
 	/**
-	 * 
-	 * 描述：设置下载中的View，优先级高于setLoadingImage
+	 * 描述：设置下载中的View，优先级高于setLoadingImage.
+	 *
 	 * @param view 放在ImageView的上边或者下边的View
-	 * @throws 
 	 */
 	public void setLoadingView(View view) {
 		this.loadingView = view;
 	}
 
 	/**
-	 * 
-	 * 描述：设置下载失败的图片
-	 * @param resID
-	 * @throws 
+	 * 描述：设置下载失败的图片.
+	 *
+	 * @param resID the new error image
 	 */
 	public void setErrorImage(int resID) {
 		this.errorImage = mContext.getResources().getDrawable(resID);
 	}
 
 	/**
-	 * 
-	 * 描述：设置未找到的图片
-	 * @param resID
-	 * @throws 
+	 * 描述：设置未找到的图片.
+	 *
+	 * @param resID the new no image
 	 */
 	public void setNoImage(int resID) {
 		this.noImage = mContext.getResources().getDrawable(resID);
 	}
 
+	/**
+	 * Gets the width.
+	 *
+	 * @return the width
+	 */
 	public int getWidth() {
 		return width;
 	}
 
 	/**
-	 * 
-	 * 描述：设置图片的宽度
-	 * @param height
-	 * @throws 
+	 * 描述：设置图片的宽度.
+	 *
+	 * @param width the new width
 	 */
 	public void setWidth(int width) {
 		this.width = width;
 	}
 
+	/**
+	 * Gets the height.
+	 *
+	 * @return the height
+	 */
 	public int getHeight() {
 		return height;
 	}
 
 	/**
-	 * 
-	 * 描述：设置图片的高度
-	 * @param height
-	 * @throws 
+	 * 描述：设置图片的高度.
+	 *
+	 * @param height the new height
 	 */
 	public void setHeight(int height) {
 		this.height = height;
@@ -243,25 +252,28 @@ public class AbImageDownloader {
 
 	
 	
+	/**
+	 * Gets the type.
+	 *
+	 * @return the type
+	 */
 	public int getType() {
 		return type;
 	}
 
 	/**
-	 * 
 	 * 描述：图片的处理类型（剪切或者缩放到指定大小，参考AbConstant类）.
-	 * @param type
-	 * @throws 
+	 *
+	 * @param type the new type
 	 */
 	public void setType(int type) {
 		this.type = type;
 	}
 
 	/**
-	 * 
 	 * 描述：是否开启动画.
-	 * @param animation
-	 * @throws 
+	 *
+	 * @param animation the new animation
 	 */
 	public void setAnimation(boolean animation) {
 		this.animation = animation;

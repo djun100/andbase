@@ -23,13 +23,13 @@ import com.ab.util.AbFileUtil;
 
 // TODO: Auto-generated Javadoc
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbBinaryHttpResponseListener.java 
  * 描述：Http文件响应监听器
+ *
  * @author 还如一梦中
- * @date：2013-11-13 上午9:00:52
  * @version v1.0
+ * @date：2013-11-13 上午9:00:52
  */
 public class AbFileHttpResponseListener extends AbHttpResponseListener{
 	
@@ -40,16 +40,17 @@ public class AbFileHttpResponseListener extends AbHttpResponseListener{
     private File mFile;
     
     /**
-     * 下载文件的构造,用默认的缓存方式
-     * @param url
+     * 下载文件的构造,用默认的缓存方式.
+     *
+     * @param url the url
      */
 	public AbFileHttpResponseListener(String url) {
 		super();
 	}
 	
 	/**
-     * 默认的构造
-     */
+	 * 默认的构造.
+	 */
 	public AbFileHttpResponseListener() {
 		super();
 	}
@@ -65,39 +66,63 @@ public class AbFileHttpResponseListener extends AbHttpResponseListener{
 	
 	/**
 	 * 描述：下载文件成功会调用这里.
+	 *
+	 * @param statusCode the status code
+	 * @param file the file
 	 */
     public void onSuccess(int statusCode,File file) {};
     
     /**
-	 * 描述：多文件上传成功调用.
-	 */
+     * 描述：多文件上传成功调用.
+     *
+     * @param statusCode the status code
+     */
     public void onSuccess(int statusCode) {};
     
     
     /**
-	 * 描述：文件上传下载失败调用.
-	 */
+     * 描述：文件上传下载失败调用.
+     *
+     * @param statusCode the status code
+     * @param content the content
+     * @param error the error
+     */
     public void onFailure(int statusCode, String content,Throwable error) {}
    
    /**
-     * 成功消息.
-     */
+    * 成功消息.
+    *
+    * @param statusCode the status code
+    */
     public void sendSuccessMessage(int statusCode){
     	sendMessage(obtainMessage(AbHttpUtil.SUCCESS_MESSAGE, new Object[]{statusCode}));
     }
     
     /**
      * 失败消息.
+     *
+     * @param statusCode the status code
+     * @param error the error
      */
     public void sendFailureMessage(int statusCode,Throwable error){
     	sendMessage(obtainMessage(AbHttpUtil.FAILURE_MESSAGE, new Object[]{statusCode, error}));
     }
     
 
+	/**
+	 * Gets the file.
+	 *
+	 * @return the file
+	 */
 	public File getFile() {
 		return mFile;
 	}
 
+	/**
+	 * Sets the file.
+	 *
+	 * @param file the new file
+	 */
 	public void setFile(File file) {
 		this.mFile = file;
 		try {
@@ -112,6 +137,11 @@ public class AbFileHttpResponseListener extends AbHttpResponseListener{
 		}
 	}
 	
+	/**
+	 * Sets the file.
+	 *
+	 * @param name the new file
+	 */
 	public void setFile(String name) {
 		//生成缓存文件
         if(AbFileUtil.isCanUseSD()){

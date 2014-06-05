@@ -36,13 +36,13 @@ import com.ab.util.AbViewUtil;
 // TODO: Auto-generated Javadoc
 
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbBottomBar.java 
  * 描述：标题栏实现.
+ *
  * @author 还如一梦中
- * @date：2013-04-24 下午3:46:47
  * @version v1.0
+ * @date：2013-04-24 下午3:46:47
  */
 public class AbTitleBar extends LinearLayout {
 	
@@ -105,17 +105,33 @@ public class AbTitleBar extends LinearLayout {
 	/** 下拉选择. */
 	private PopupWindow popupWindow;
 
+	/**
+	 * Instantiates a new ab title bar.
+	 *
+	 * @param context the context
+	 * @param attrs the attrs
+	 */
 	public AbTitleBar(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		ininTitleBar(context);
 	}
 
+	/**
+	 * Instantiates a new ab title bar.
+	 *
+	 * @param context the context
+	 */
 	public AbTitleBar(Context context) {
 		super(context);
 		ininTitleBar(context);
 		
 	}
 	
+	/**
+	 * Inin title bar.
+	 *
+	 * @param context the context
+	 */
 	public void ininTitleBar(Context context){
 		
 		mActivity  = (Activity)context;
@@ -487,8 +503,9 @@ public class AbTitleBar extends LinearLayout {
 	}
 	
 	/**
-	 * 获取这个右边的布局,可用来设置位置
-	 * @return
+	 * 获取这个右边的布局,可用来设置位置.
+	 *
+	 * @return the right layout
 	 */
 	public LinearLayout getRightLayout() {
 		return rightLayout;
@@ -519,8 +536,9 @@ public class AbTitleBar extends LinearLayout {
 	}
 	
 	/**
-	 * 描述：下拉菜单的的实现方法
-	 * @param parent
+	 * 描述：下拉菜单的的实现方法.
+	 *
+	 * @param parent the parent
 	 * @param view 要显示的View
 	 * @param offsetMode 不填满的模式
 	 */
@@ -547,7 +565,7 @@ public class AbTitleBar extends LinearLayout {
 	}
 	
 	/**
-	 * 描述：隐藏Window
+	 * 描述：隐藏Window.
 	 */
 	public void hideWindow() {
 		if (popupWindow != null) {
@@ -557,10 +575,9 @@ public class AbTitleBar extends LinearLayout {
 	}
 	
 	/**
-	 * 
-	 * 描述：设置标题下拉的View
-	 * @param view
-	 * @throws 
+	 * 描述：设置标题下拉的View.
+	 *
+	 * @param view the new title text drop down
 	 */
 	public void setTitleTextDropDown(final View view){
 		 if(view == null){
@@ -576,8 +593,9 @@ public class AbTitleBar extends LinearLayout {
 	}
 
 	/**
-	 * 获取标题的全体布局
-	 * @return
+	 * 获取标题的全体布局.
+	 *
+	 * @return the title text layout
 	 */
 	public LinearLayout getTitleTextLayout() {
 		return titleTextLayout;
@@ -585,8 +603,9 @@ public class AbTitleBar extends LinearLayout {
 	
 	/**
 	 * 获取子布局显示宽度比例
-	 * 默认为标题填充，右边靠右
-	 * @return
+	 * 默认为标题填充，右边靠右.
+	 *
+	 * @param left the new child view fill parent
 	 */
 	public void setChildViewFillParent(boolean left) {
 		if(left){

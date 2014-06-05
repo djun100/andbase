@@ -20,17 +20,19 @@ import java.util.List;
 // TODO: Auto-generated Javadoc
 
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbTaskListListener.java 
  * 描述：数据执行的接口.
+ *
  * @author 还如一梦中
- * @date：2013-9-2 下午12:52:13
  * @version v1.0
+ * @date：2013-9-2 下午12:52:13
  */
 public abstract class AbTaskListListener extends AbTaskListener{
 
 	/**
+	 * Gets the list.
+	 *
 	 * @return 返回的结果列表
 	 */
 	public abstract List<?> getList();

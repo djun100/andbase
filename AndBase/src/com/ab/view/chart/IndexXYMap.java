@@ -45,13 +45,13 @@ public class IndexXYMap<K, V> extends TreeMap<K, V> {
   /**
    * 描述：TODO.
    *
+   * @version v1.0
    * @param key the key
    * @param value the value
    * @return the v
    * @see java.util.TreeMap#put(java.lang.Object, java.lang.Object)
    * @author: amsoft.cn
    * @date：2013-6-17 上午9:04:48
-   * @version v1.0
    */
   public V put(K key, V value) {
     indexList.add(key);
@@ -86,10 +86,10 @@ public class IndexXYMap<K, V> extends TreeMap<K, V> {
   /**
    * 描述：TODO.
    *
+   * @version v1.0
    * @see java.util.TreeMap#clear()
    * @author: amsoft.cn
    * @date：2013-6-17 上午9:04:48
-   * @version v1.0
    */
   public void clear() {
     updateMaxXDifference();

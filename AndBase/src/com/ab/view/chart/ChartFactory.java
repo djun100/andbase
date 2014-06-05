@@ -71,7 +71,8 @@ public class ChartFactory {
   }
   
   /**
-   * 饼图
+   * 饼图.
+   *
    * @param context the context
    * @param dataset the category series dataset (cannot be null)
    * @param renderer the series renderer (cannot be null)

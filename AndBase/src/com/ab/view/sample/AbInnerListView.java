@@ -23,13 +23,13 @@ import android.widget.ScrollView;
 
 // TODO: Auto-generated Javadoc
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbInnerListView.java 
  * 描述：这个ListView不会与父亲是个ScrollView与List的产生事件冲突
+ *
  * @author 还如一梦中
- * @date：2013-10-24 下午1:39:31
  * @version v1.0
+ * @date：2013-10-24 下午1:39:31
  */
 public class AbInnerListView extends ListView {
 
@@ -88,12 +88,12 @@ public class AbInnerListView extends ListView {
 	/**
 	 * 描述：TODO.
 	 *
+	 * @version v1.0
 	 * @param widthMeasureSpec the width measure spec
 	 * @param heightMeasureSpec the height measure spec
 	 * @see android.widget.ListView#onMeasure(int, int)
 	 * @author: amsoft.cn
 	 * @date：2013-6-17 上午9:04:48
-	 * @version v1.0
 	 */
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -108,12 +108,12 @@ public class AbInnerListView extends ListView {
 	/**
 	 * 描述：TODO.
 	 *
+	 * @version v1.0
 	 * @param ev the ev
 	 * @return true, if successful
 	 * @see android.widget.AbsListView#onInterceptTouchEvent(android.view.MotionEvent)
 	 * @author: amsoft.cn
 	 * @date：2013-6-17 上午9:04:48
-	 * @version v1.0
 	 */
 	@Override
 	public boolean onInterceptTouchEvent(MotionEvent ev) {

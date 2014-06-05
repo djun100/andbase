@@ -23,13 +23,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 // TODO: Auto-generated Javadoc
 
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbDBDao.java 
  * 描述：数据库表操作类接口
+ *
  * @author 还如一梦中
- * @date：2013-7-23 上午9:47:10
  * @version v1.0
+ * @param <T> the generic type
+ * @date：2013-7-23 上午9:47:10
  */
 public interface AbDBDao<T> {
 
@@ -80,6 +81,7 @@ public interface AbDBDao<T> {
 	 * 根据ID删除数据.
 	 *
 	 * @param id 数据ID主键
+	 * @return the long
 	 */
 	public abstract long delete(int id);
 
@@ -87,18 +89,23 @@ public interface AbDBDao<T> {
 	 * 根据ID删除数据（多个）.
 	 *
 	 * @param ids 数据ID主键
+	 * @return the long
 	 */
 	public abstract long delete(Integer... ids);
 	
 	/**
 	 * 根据where删除数据.
+	 *
 	 * @param whereClause where语句
 	 * @param whereArgs  where参数
+	 * @return the long
 	 */
 	public abstract long delete(String whereClause, String[] whereArgs);
 
 	/**
 	 * 删除所有数据.
+	 *
+	 * @return the long
 	 */
 	public abstract long deleteAll();
 	

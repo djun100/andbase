@@ -9,8 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ab.activity.AbActivity;
-import com.ab.view.listener.AbOnChangeListener;
-import com.ab.view.listener.AbOnItemClickListener;
 import com.ab.view.sliding.AbSlidingPlayView;
 import com.ab.view.titlebar.AbTitleBar;
 import com.andbase.R;
@@ -116,7 +114,7 @@ public class SlidingPlayViewActivity extends AbActivity {
         	
         });
         
-        mSlidingPlayView.setOnItemClickListener(new AbOnItemClickListener() {
+        mSlidingPlayView.setOnItemClickListener(new AbSlidingPlayView.AbOnItemClickListener() {
 			
 			@Override
 			public void onClick(int position) {
@@ -124,7 +122,7 @@ public class SlidingPlayViewActivity extends AbActivity {
 			}
 		});
         
-        mSlidingPlayView.setOnPageChangeListener(new AbOnChangeListener() {
+        mSlidingPlayView.setOnPageChangeListener(new AbSlidingPlayView.AbOnChangeListener() {
 			
 			@Override
 			public void onChange(int position) {

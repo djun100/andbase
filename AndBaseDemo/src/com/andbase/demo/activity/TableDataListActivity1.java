@@ -15,9 +15,9 @@ import com.ab.activity.AbActivity;
 import com.ab.task.AbTaskItem;
 import com.ab.task.AbTaskListener;
 import com.ab.task.AbTaskPool;
-import com.ab.view.listener.AbOnItemClickListener;
 import com.ab.view.table.AbCellType;
 import com.ab.view.table.AbTable;
+import com.ab.view.table.AbTable.AbOnItemClickListener;
 import com.ab.view.table.AbTableArrayAdapter;
 import com.ab.view.titlebar.AbTitleBar;
 import com.andbase.R;
@@ -96,7 +96,7 @@ public class TableDataListActivity1 extends AbActivity {
 		table.setTableResource(tableResource);
 		table.setRowTextColor(rowTextColor);
 		//点击事件
-		AbOnItemClickListener mAbOnItemClickListener = new AbOnItemClickListener(){
+		AbOnItemClickListener mAbOnItemClickListener = new AbTable.AbOnItemClickListener(){
 
 			@Override
 			public void onClick(int position) {

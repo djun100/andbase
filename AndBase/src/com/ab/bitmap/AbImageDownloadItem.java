@@ -23,9 +23,10 @@ import android.graphics.Bitmap;
  * © 2012 amsoft.cn
  * 名称：AbImageDownloadItem.java
  * 描述：图片下载单位.
+ *
  * @author 还如一梦中
- * @date：2011-12-10 上午10:10:53
  * @version v1.0
+ * @date：2011-12-10 上午10:10:53
  */
 public class AbImageDownloadItem {
 	
@@ -47,59 +48,127 @@ public class AbImageDownloadItem {
 	/** 下载完成的回调接口. */
 	private AbImageDownloadListener listener;
 	
+	/**
+	 * Instantiates a new ab image download item.
+	 */
 	public AbImageDownloadItem() {
 		super();
 	}
 
+	/**
+	 * Instantiates a new ab image download item.
+	 *
+	 * @param listener the listener
+	 */
 	public AbImageDownloadItem(AbImageDownloadListener listener) {
 		super();
 		this.listener = listener;
 	}
 
+	/**
+	 * Gets the image url.
+	 *
+	 * @return the image url
+	 */
 	public String getImageUrl() {
 		return imageUrl;
 	}
 
+	/**
+	 * Sets the image url.
+	 *
+	 * @param imageUrl the new image url
+	 */
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
 
+	/**
+	 * Gets the width.
+	 *
+	 * @return the width
+	 */
 	public int getWidth() {
 		return width;
 	}
 
+	/**
+	 * Sets the width.
+	 *
+	 * @param width the new width
+	 */
 	public void setWidth(int width) {
 		this.width = width;
 	}
 
+	/**
+	 * Gets the height.
+	 *
+	 * @return the height
+	 */
 	public int getHeight() {
 		return height;
 	}
 
+	/**
+	 * Sets the height.
+	 *
+	 * @param height the new height
+	 */
 	public void setHeight(int height) {
 		this.height = height;
 	}
 
+	/**
+	 * Gets the type.
+	 *
+	 * @return the type
+	 */
 	public int getType() {
 		return type;
 	}
 
+	/**
+	 * Sets the type.
+	 *
+	 * @param type the new type
+	 */
 	public void setType(int type) {
 		this.type = type;
 	}
 
+	/**
+	 * Gets the bitmap.
+	 *
+	 * @return the bitmap
+	 */
 	public Bitmap getBitmap() {
 		return bitmap;
 	}
 
+	/**
+	 * Sets the bitmap.
+	 *
+	 * @param bitmap the new bitmap
+	 */
 	public void setBitmap(Bitmap bitmap) {
 		this.bitmap = bitmap;
 	}
 
+	/**
+	 * Gets the listener.
+	 *
+	 * @return the listener
+	 */
 	public AbImageDownloadListener getListener() {
 		return listener;
 	}
 
+	/**
+	 * Sets the listener.
+	 *
+	 * @param listener the new listener
+	 */
 	public void setListener(AbImageDownloadListener listener) {
 		this.listener = listener;
 	}

@@ -16,7 +16,6 @@ import com.ab.activity.AbActivity;
 import com.ab.util.AbStrUtil;
 import com.ab.view.calendar.CalendarCell;
 import com.ab.view.calendar.CalendarView;
-import com.ab.view.listener.AbOnItemClickListener;
 import com.ab.view.titlebar.AbTitleBar;
 import com.andbase.R;
 
@@ -53,7 +52,7 @@ public class CalendarActivity extends AbActivity {
 		
 		mCalendarView.setBackgroundResource(R.drawable.calendar_bg);
 		mCalendarView.setHeaderBackgroundResource(R.drawable.week_bg);
-		mCalendarView.setOnItemClickListener(new AbOnItemClickListener() {
+		mCalendarView.setOnItemClickListener(new CalendarView.AbOnItemClickListener() {
 			
 			@Override
 			public void onClick(int position) {

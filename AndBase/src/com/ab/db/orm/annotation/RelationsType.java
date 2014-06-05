@@ -14,17 +14,25 @@
  * limitations under the License.
  */
 package com.ab.db.orm.annotation;
+// TODO: Auto-generated Javadoc
+
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：RelationsType.java 
  * 描述：关联关系类型
+ *
  * @author 还如一梦中
- * @date：2013-10-15 上午9:55:13
  * @version v1.0
+ * @date：2013-10-15 上午9:55:13
  */
 public class RelationsType {
+    
+    /** The Constant one2one. */
     public static final String one2one = "one2one";
+    
+    /** The Constant one2many. */
     public static final String one2many = "one2many";
+    
+    /** The Constant many2many. */
     public static final String many2many = "many2many";
 }

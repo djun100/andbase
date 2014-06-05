@@ -45,13 +45,13 @@ import com.ab.model.AbDisplayMetrics;
 
 // TODO: Auto-generated Javadoc
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbAppUtil.java 
  * 描述：应用工具类.
+ *
  * @author 还如一梦中
- * @date：2011-11-10 下午11:52:13
  * @version v1.0
+ * @date：2011-11-10 下午11:52:13
  */
 public class AbAppUtil {
 
@@ -255,17 +255,16 @@ public class AbAppUtil {
 	
 	
 	/**
-     * 描述：记录当前时间毫秒
-     * @throws 
-     */
+	 * 描述：记录当前时间毫秒.
+	 */
 	public static void prepareLog() {
 		Calendar current = Calendar.getInstance();
 		AbAppData.startLogTimeInMillis = current.getTimeInMillis();
 	}
 	
 	/**
-	 * 
-	 * 描述：打印这次的执行时间毫秒，需要首先调用prepareLog()
+	 * 描述：打印这次的执行时间毫秒，需要首先调用prepareLog().
+	 *
 	 * @param tag 标记
 	 * @param msg 描述
 	 */
@@ -276,11 +275,13 @@ public class AbAppUtil {
 	}
 	
 	/**
-     * 导入数据库
-     * @param context
-     * @param dbfile
-     * @return
-     */
+	 * 导入数据库.
+	 *
+	 * @param context the context
+	 * @param dbName the db name
+	 * @param rawRes the raw res
+	 * @return true, if successful
+	 */
     public static boolean importDatabase(Context context,String dbName,int rawRes) {
 		int buffer_size = 1024;
 		InputStream is = null;
@@ -348,8 +349,9 @@ public class AbAppUtil {
     }
     
     /**
-     * 打开键盘
-     * 
+     * 打开键盘.
+     *
+     * @param context the context
      */
     public void showSoftInput(Context context){
         InputMethodManager inputMethodManager = (InputMethodManager) context
@@ -358,8 +360,9 @@ public class AbAppUtil {
     }
     
     /**
-     * 关闭键盘事件
-     * 
+     * 关闭键盘事件.
+     *
+     * @param context the context
      */
     public void closeSoftInput(Context context) {
         InputMethodManager inputMethodManager = (InputMethodManager)context

@@ -24,11 +24,15 @@ import android.util.DisplayMetrics;
 import android.view.View;
 
 // TODO: Auto-generated Javadoc
+
 /**
+ * © 2012 amsoft.cn
+ * 名称：AbLevelView.java 
  * 描述：等级条View.
+ *
  * @author 还如一梦中
- * @date 2011-11-28
- * @version
+ * @version v1.0
+ * @date：2013-1-15 下午3:27:05
  */
 
 public class AbLevelView extends View {

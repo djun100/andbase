@@ -23,9 +23,10 @@ import android.graphics.Bitmap;
  * © 2012 amsoft.cn
  * 名称：AbImageDownloadListener.java
  * 描述：图片下载的回调接口.
+ *
  * @author 还如一梦中
- * @date：2011-12-10 上午10:10:53
  * @version v1.0
+ * @date：2011-12-10 上午10:10:53
  */
 public interface AbImageDownloadListener {
 	

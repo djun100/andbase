@@ -22,20 +22,31 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SlidingActivityHelper.
+ */
 public class SlidingActivityHelper {
 
+	/** The m activity. */
 	private Activity mActivity;
 
+	/** The m sliding menu. */
 	private SlidingMenu mSlidingMenu;
 
+	/** The m view above. */
 	private View mViewAbove;
 
+	/** The m view behind. */
 	private View mViewBehind;
 
+	/** The m broadcasting. */
 	private boolean mBroadcasting = false;
 
+	/** The m on post create called. */
 	private boolean mOnPostCreateCalled = false;
 
+	/** The m enable slide. */
 	private boolean mEnableSlide = true;
 
 	/**

@@ -30,9 +30,10 @@ import com.ab.util.AbStrUtil;
  * © 2012 amsoft.cn
  * 名称：AbImageDownloadPool.java 
  * 描述：线程池图片下载,用andbase线程池
+ *
  * @author 还如一梦中
- * @date：2013-5-23 上午10:10:53
  * @version v1.0
+ * @date：2013-5-23 上午10:10:53
  */
 
 public class AbImageDownloadPool{

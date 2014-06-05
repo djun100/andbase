@@ -22,8 +22,13 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ListView;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SlidingListActivity.
+ */
 public class SlidingListActivity extends ListActivity implements SlidingActivityBase {
 
+	/** The m helper. */
 	private SlidingActivityHelper mHelper;
 
 	/* (non-Javadoc)

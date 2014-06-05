@@ -34,9 +34,10 @@ import com.ab.util.AbStrUtil;
  * © 2012 amsoft.cn
  * 名称：AbImageCache.java
  * 描述：图片缓存.
+ *
  * @author 还如一梦中
- * @date：2013-5-23 上午10:10:53
  * @version v1.0
+ * @date：2013-5-23 上午10:10:53
  */
 public class AbImageCache {
 	
@@ -64,13 +65,13 @@ public class AbImageCache {
 		
 	};  
 	
-	/**正在下载中的线程*/
+	/** 正在下载中的线程. */
     private static final HashMap<String, Runnable> runRunnableCache = new HashMap<String, Runnable>();
     
-    /**等待中的线程*/
+    /** 等待中的线程. */
     private static final List<HashMap<String, Runnable>> waitRunnableList = new ArrayList<HashMap<String, Runnable>>();
 	
-    /**锁对象*/
+    /** 锁对象. */
     public static final ReentrantLock lock = new ReentrantLock();
 	
 	/**
@@ -140,12 +141,14 @@ public class AbImageCache {
 	}
 	
 	/**
-     * 根据url计算缓存key,这个key+后缀就是文件名.
-     * @param url 图片地址.
-     * @param width 图片宽度.
-     * @param height 图片高度.
-     * @param type 处理类型.
-     */
+	 * 根据url计算缓存key,这个key+后缀就是文件名.
+	 *
+	 * @param url 图片地址.
+	 * @param width 图片宽度.
+	 * @param height 图片高度.
+	 * @param type 处理类型.
+	 * @return the cache key
+	 */
     public  static String getCacheKey(String url, int width, int height,int type) {
         return AbMd5.MD5(new StringBuilder(url.length() + 12).append("#W").append(width)
         .append("#H").append(height).append("#T").append(type).append(url).toString());

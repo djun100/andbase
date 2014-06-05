@@ -20,63 +20,64 @@ import java.util.List;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.Display;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
-
-import com.ab.view.listener.AbOnItemClickListener;
 // TODO: Auto-generated Javadoc
+
 /**
+ * © 2012 amsoft.cn
+ * 名称：AbCellType.java 
  * 描述：表格控件实体类
  *  <p>(1)标题配置
-	<p>titles = new String[] { "标题1", "标题2", "标题3", "标题4","标题5"};
-	<p>(2)内容列表配置(初始为空的)
-	<p>contents = new ArrayList<String[]>();
-	<p>(3)列类型配置（参照AbCellType）
-	<p>cellTypes = new int[] { AbCellType.STRING, AbCellType.STRING, AbCellType.STRING, AbCellType.STRING,AbCellType.STRING};
-	<p>(4)列宽配置(%) 超过100% 可以横向滑动
-	<p>cellWidth = new int[] {20,50,10,20,50};
-	<p>(5)行高（索引0：标题高，1：内容列表高）
-	<p>rowHeight = new int[] { 35, 35 };
-	<p>(6)行文字大小（索引0标题，1内容列表）
-	<p>rowTextSize = new int[] { 15, 12};
-	<p>(7)行文字颜色（索引0标题，1内容列表）
-	<p>rowTextColor = new int[] {Color.rgb(255, 255, 255),Color.rgb(113, 113, 113) };
-	<p>(8)背景资源（索引0标题行背景，1标题单元格背景，2内容列表行背景。3表格内容单元格背景）
-	<p>tableResource = new int[] {android.R.color.transparent,R.drawable.title_cell,android.R.color.transparent,R.drawable.content_cell};
-	<p> (9)表格实体（通过newAbTable实例化并初始化列数，可自动完成AbTable的配置）
-	<p>table = AbTable.newAbTable(this,5); 
-	<p>table.setTitles(titles);
-	<p>table.setContents(contents);
-	<p>table.setCellTypes(cellTypes);
-	<p>table.setCellWidth(cellWidth);
-	<p>table.setRowHeight(rowHeight);
-	<p>table.setRowTextSize(rowTextSize);
-	<p>table.setTableResource(tableResource);
-	<p>table.setRowTextColor(rowTextColor);
-	<p>(10)AbTableArrayAdapter对象
-	<p>mAbTableArrayAdapter = new AbTableArrayAdapter(this, table);
-	<p>(12)ListView（布局参照）：
-	<p> &nbsp;&nbsp; < HorizontalScrollView
-    <p> &nbsp;&nbsp;&nbsp;&nbsp; android:id="@+id/horView"
-    <p> &nbsp;&nbsp;&nbsp;&nbsp; android:layout_width="fill_parent"
-    <p> &nbsp;&nbsp;&nbsp;&nbsp; android:layout_height="fill_parent" >
-    <p>
-    <p> &nbsp;&nbsp;&nbsp;&nbsp; <ListView
-    <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  android:id="@+id/mListView"
-    <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; android:layout_width="wrap_content"
-    <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; android:layout_height="wrap_content"
-    <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; android:cacheColorHint="#00000000"
-    <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; android:divider="@android:color/transparent"
-    <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; android:dividerHeight="0dip" >
-    <p> &nbsp;&nbsp;&nbsp;&nbsp;  < /ListView>
-    <p> &nbsp;&nbsp;< /HorizontalScrollView>
-	<p>mListView = (ListView)findViewById(R.id.mListView);
-	<p>(11)设置Adapter
-	<p>mListView.setAdapter(tableAdapter);
+ * 	<p>titles = new String[] { "标题1", "标题2", "标题3", "标题4","标题5"};
+ * 	<p>(2)内容列表配置(初始为空的)
+ * 	<p>contents = new ArrayList<String[]>();
+ * 	<p>(3)列类型配置（参照AbCellType）
+ * 	<p>cellTypes = new int[] { AbCellType.STRING, AbCellType.STRING, AbCellType.STRING, AbCellType.STRING,AbCellType.STRING};
+ * 	<p>(4)列宽配置(%) 超过100% 可以横向滑动
+ * 	<p>cellWidth = new int[] {20,50,10,20,50};
+ * 	<p>(5)行高（索引0：标题高，1：内容列表高）
+ * 	<p>rowHeight = new int[] { 35, 35 };
+ * 	<p>(6)行文字大小（索引0标题，1内容列表）
+ * 	<p>rowTextSize = new int[] { 15, 12};
+ * 	<p>(7)行文字颜色（索引0标题，1内容列表）
+ * 	<p>rowTextColor = new int[] {Color.rgb(255, 255, 255),Color.rgb(113, 113, 113) };
+ * 	<p>(8)背景资源（索引0标题行背景，1标题单元格背景，2内容列表行背景。3表格内容单元格背景）
+ * 	<p>tableResource = new int[] {android.R.color.transparent,R.drawable.title_cell,android.R.color.transparent,R.drawable.content_cell};
+ * 	<p> (9)表格实体（通过newAbTable实例化并初始化列数，可自动完成AbTable的配置）
+ * 	<p>table = AbTable.newAbTable(this,5); 
+ * 	<p>table.setTitles(titles);
+ * 	<p>table.setContents(contents);
+ * 	<p>table.setCellTypes(cellTypes);
+ * 	<p>table.setCellWidth(cellWidth);
+ * 	<p>table.setRowHeight(rowHeight);
+ * 	<p>table.setRowTextSize(rowTextSize);
+ * 	<p>table.setTableResource(tableResource);
+ * 	<p>table.setRowTextColor(rowTextColor);
+ * 	<p>(10)AbTableArrayAdapter对象
+ * 	<p>mAbTableArrayAdapter = new AbTableArrayAdapter(this, table);
+ * 	<p>(12)ListView（布局参照）：
+ * 	<p> &nbsp;&nbsp; < HorizontalScrollView
+ *     <p> &nbsp;&nbsp;&nbsp;&nbsp; android:id="@+id/horView"
+ *     <p> &nbsp;&nbsp;&nbsp;&nbsp; android:layout_width="fill_parent"
+ *     <p> &nbsp;&nbsp;&nbsp;&nbsp; android:layout_height="fill_parent" >
+ *     <p>
+ *     <p> &nbsp;&nbsp;&nbsp;&nbsp; <ListView
+ *     <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  android:id="@+id/mListView"
+ *     <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; android:layout_width="wrap_content"
+ *     <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; android:layout_height="wrap_content"
+ *     <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; android:cacheColorHint="#00000000"
+ *     <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; android:divider="@android:color/transparent"
+ *     <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; android:dividerHeight="0dip" >
+ *     <p> &nbsp;&nbsp;&nbsp;&nbsp;  < /ListView>
+ *     <p> &nbsp;&nbsp;< /HorizontalScrollView>
+ * 	<p>mListView = (ListView)findViewById(R.id.mListView);
+ * 	<p>(11)设置Adapter
+ * 	<p>mListView.setAdapter(tableAdapter);
+ *
  * @author 还如一梦中
- * @date：2013-1-28 下午3:54:41
  * @version v1.0
+ * @date：2013-01-18 下午11:52:13
  */
 public class AbTable {
 	
@@ -364,9 +365,19 @@ public class AbTable {
 		this.itemCellCheckListener = itemCellCheckListener;
 	}
 	
-	
-	
-	 
+	/**
+	 * 条目点击接口.
+	 *
+	 * @see AbOnItemClickEvent
+	 */
+    public interface AbOnItemClickListener {
+        
+        /**
+         * 描述：点击事件.
+         * @param position 索引
+         */
+        public void onClick(int position); 
+    }
 	
 }
 

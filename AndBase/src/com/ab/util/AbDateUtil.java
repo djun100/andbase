@@ -29,13 +29,13 @@ import android.util.Log;
 // TODO: Auto-generated Javadoc
 
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbDateUtil.java 
  * 描述：日期处理类.
+ *
  * @author 还如一梦中
- * @date：2013-01-18 下午11:52:13
  * @version v1.0
+ * @date：2013-01-18 下午11:52:13
  */
 public class AbDateUtil {
 	
@@ -258,8 +258,8 @@ public class AbDateUtil {
 	/**
 	 * 描述：计算两个日期所差的天数.
 	 *
-	 * @param date1 第一个时间的毫秒表示
-	 * @param date2 第二个时间的毫秒表示
+	 * @param milliseconds1 the milliseconds1
+	 * @param milliseconds2 the milliseconds2
 	 * @return int 所差的天数
 	 */
 	public static int getOffectDay(long milliseconds1, long milliseconds2) {
@@ -572,10 +572,11 @@ public class AbDateUtil {
     }
     
     /**
-     * 根据给定的日期判断是否为上下午
-     * @param strDate
-     * @param format
-     * @return
+     * 根据给定的日期判断是否为上下午.
+     *
+     * @param strDate the str date
+     * @param format the format
+     * @return the time quantum
      */
     public static String getTimeQuantum(String strDate, String format) {
         Date mDate = getDateByFormat(strDate, format);
@@ -587,9 +588,10 @@ public class AbDateUtil {
     }
     
     /**
-     * 根据给定的毫秒数算得时间的描述
-     * @param milliseconds
-     * @return
+     * 根据给定的毫秒数算得时间的描述.
+     *
+     * @param milliseconds the milliseconds
+     * @return the time description
      */
     public static String getTimeDescription(long milliseconds) {
         if(milliseconds > 1000){

@@ -28,9 +28,10 @@ import com.ab.util.AbStrUtil;
  * © 2012 amsoft.cn
  * 名称：AbFileCache.java
  * 描述：文件SD卡缓存管理.
+ *
  * @author 还如一梦中
- * @date：2013-5-23 上午10:10:53
  * @version v1.0
+ * @date：2013-5-23 上午10:10:53
  */
 
 public class AbFileCache {
@@ -47,10 +48,10 @@ public class AbFileCache {
 	/** 当前缓存大小. */
 	public static int cacheSize = 0; 
 	
-	/** 文件缓存(文件名，文件) */
+	/**  文件缓存(文件名，文件). */
 	private static final HashMap<String, File> fileCache = new HashMap<String, File>();     
 	
-    /**锁对象*/
+    /** 锁对象. */
     public static final ReentrantLock lock = new ReentrantLock();
 	
     static {
@@ -72,7 +73,7 @@ public class AbFileCache {
 	 * 描述：增加一个File到缓存.
 	 *
 	 * @param name   文件名
-	 * @param bitmap the bitmap
+	 * @param file the file
 	 */
 	public  static void addFileToCache(String name,File file){
 		try {
@@ -125,19 +126,19 @@ public class AbFileCache {
 
 
 	/**
-	 * 设置缓存空间大小 
-	 * @param cacheSize
+	 * 设置缓存空间大小 .
+	 *
+	 * @param cacheSize the new max cache size
 	 */
 	public static void setMaxCacheSize(int cacheSize) {
 		AbFileCache.maxCacheSize = cacheSize;
 	}
 	
 	/**
-     * 
-     * 描述：缓存文件夹的大小
-     * @return
-     * @throws 
-     */
+	 * 描述：缓存文件夹的大小.
+	 *
+	 * @return the cache size
+	 */
 	public static int getCacheSize() {
 		return cacheSize;
 	}

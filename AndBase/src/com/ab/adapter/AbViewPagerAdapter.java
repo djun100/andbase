@@ -28,9 +28,10 @@ import android.view.View;
  * © 2012 amsoft.cn
  * 名称：AbViewPagerAdapter.java 
  * 描述：一个通用的ViewPager适配器
+ *
  * @author 还如一梦中
- * @date：2013-11-28 上午10:58:26
  * @version v1.0
+ * @date：2013-11-28 上午10:58:26
  */
 public class AbViewPagerAdapter extends PagerAdapter{
 	

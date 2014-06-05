@@ -20,13 +20,13 @@ import java.math.BigDecimal;
 // TODO: Auto-generated Javadoc
 
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbMathUtil.java 
  * 描述：数学处理类.
+ *
  * @author 还如一梦中
- * @date：2013-01-17 下午11:52:13
  * @version v1.0
+ * @date：2013-01-17 下午11:52:13
  */
 public class AbMathUtil{
 
@@ -64,10 +64,11 @@ public class AbMathUtil{
   } 
   
   /**
-	* 二进制转为十六进制
-	* @param int binary
-    * @return char hex
-	*/
+   * 二进制转为十六进制.
+   *
+   * @param binary the binary
+   * @return char hex
+   */
 	public static char binaryToHex(int binary) {
 		char ch = ' ';
 		switch (binary){
@@ -126,14 +127,16 @@ public class AbMathUtil{
 	}
 	
 	
-	/** 
-     * 一维数组转为二维数组 
-     *  
-     * @param m 
-     * @param width 
-     * @param height 
-     * @return 
-     */  
+	/**
+	 *  
+	 * 一维数组转为二维数组 
+	 *  
+	 *
+	 * @param m the m
+	 * @param width the width
+	 * @param height the height
+	 * @return the int[][]
+	 */  
     public static int[][] arrayToMatrix(int[] m, int width, int height) {  
         int[][] result = new int[height][width];  
         for (int i = 0; i < height; i++) {  
@@ -146,12 +149,14 @@ public class AbMathUtil{
     }  
 
 	
-	/** 
-     * 二维数组转为一维数组 
-     *  
-     * @param m 
-     * @return 
-     */  
+	/**
+	 *  
+	 * 二维数组转为一维数组 
+	 *  
+	 *
+	 * @param m the m
+	 * @return the double[]
+	 */  
     public static double[] matrixToArray(double[][] m) {  
         int p = m.length * m[0].length;  
         double[] result = new double[p];  
@@ -165,9 +170,10 @@ public class AbMathUtil{
     }  
 
     /**
-     * 描述：int数组转换为double数组
-     * @param input
-     * @return
+     * 描述：int数组转换为double数组.
+     *
+     * @param input the input
+     * @return the double[]
      */
     public static double[] intToDoubleArray(int[] input) {  
         int length = input.length;  
@@ -179,9 +185,10 @@ public class AbMathUtil{
     }  
     
     /**
-     * 描述：int二维数组转换为double二维数组
-     * @param input
-     * @return
+     * 描述：int二维数组转换为double二维数组.
+     *
+     * @param input the input
+     * @return the double[][]
      */
     public static double[][] intToDoubleMatrix(int[][] input) {  
         int height = input.length;  
@@ -198,10 +205,11 @@ public class AbMathUtil{
     }  
 
     /**
-	 * 计算数组的平均值
-	 * @param pixels 数组
-	 * @return int 平均值
-	 */
+     * 计算数组的平均值.
+     *
+     * @param pixels 数组
+     * @return int 平均值
+     */
     public static int average(int[] pixels) {
 		float m = 0;
 		for (int i = 0; i < pixels.length; ++i) {
@@ -212,10 +220,11 @@ public class AbMathUtil{
 	}
     
     /**
-	 * 计算数组的平均值
-	 * @param pixels 数组
-	 * @return int 平均值
-	 */
+     * 计算数组的平均值.
+     *
+     * @param pixels 数组
+     * @return int 平均值
+     */
     public static int average(double[] pixels) {
 		float m = 0;
 		for (int i = 0; i < pixels.length; ++i) {

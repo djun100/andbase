@@ -40,12 +40,15 @@ import com.ab.model.AbDisplayMetrics;
 import com.ab.util.AbAppUtil;
 
 // TODO: Auto-generated Javadoc
+
 /**
- * 名称：AbSlidingSmoothFixTabView
+ * © 2012 amsoft.cn
+ * 名称：AbSlidingSmoothFixTabView.java 
  * 描述：滑动的tab,tab固定屏幕内.
+ *
  * @author 还如一梦中
- * @date 2011-11-28
- * @version
+ * @version v1.0
+ * @date：2013-05-17 下午6:46:29
  */
 public class AbSlidingSmoothFixTabView extends LinearLayout {
 	
@@ -64,13 +67,13 @@ public class AbSlidingSmoothFixTabView extends LinearLayout {
 	/** The m view pager. */
 	private ViewPager mViewPager;
 	
-	/**tab的列表*/
+	/** tab的列表. */
 	private ArrayList<TextView> tabItemList = null;
 	
-	/**内容的View*/
+	/** 内容的View. */
 	private ArrayList<Fragment> pagerItemList = null;
 	
-	/**tab的文字*/
+	/** tab的文字. */
 	private List<String> tabItemTextList = null;
 	
 	/** The layout params ff. */
@@ -82,32 +85,39 @@ public class AbSlidingSmoothFixTabView extends LinearLayout {
 	/** The layout params ww. */
 	public LinearLayout.LayoutParams layoutParamsWW = null;
 	
-	/**滑块动画图片*/
+	/** 滑块动画图片. */
 	private ImageView mTabImg;
 	
-	/**当前页卡编号*/
+	/** 当前页卡编号. */
 	private int mSelectedTabIndex = 0;
 	
-	/**内容区域的适配器*/
+	/** 内容区域的适配器. */
 	private AbFragmentPagerAdapter mFragmentPagerAdapter = null;
 
-	/**tab的文字大小*/
+	/** tab的文字大小. */
 	private int tabTextSize = 16;
 	
-	/**tab的文字颜色*/
+	/** tab的文字颜色. */
 	private int tabColor = Color.BLACK;
 	
-	/**tab的选中文字颜色*/
+	/** tab的选中文字颜色. */
 	private int tabSelectedColor = Color.BLACK;
 	
-	/**tab滑块的高度*/
+	/** tab滑块的高度. */
 	private int tabSlidingHeight = 5;
 	
-	/**当前tab的位置*/
+	/** 当前tab的位置. */
 	private int startX = 0;
 	
+	/** The m width. */
 	private int mWidth = 0;
 	
+	/**
+	 * Instantiates a new ab sliding smooth fix tab view.
+	 *
+	 * @param context the context
+	 * @param attrs the attrs
+	 */
 	public AbSlidingSmoothFixTabView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		this.context = context;
@@ -157,18 +167,38 @@ public class AbSlidingSmoothFixTabView extends LinearLayout {
 		
 	}
 
+	/**
+	 * The listener interface for receiving myOnPageChange events.
+	 * The class that is interested in processing a myOnPageChange
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addMyOnPageChangeListener<code> method. When
+	 * the myOnPageChange event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see MyOnPageChangeEvent
+	 */
 	public class MyOnPageChangeListener implements OnPageChangeListener{
 
+		/* (non-Javadoc)
+		 * @see android.support.v4.view.ViewPager.OnPageChangeListener#onPageScrollStateChanged(int)
+		 */
 		@Override
 		public void onPageScrollStateChanged(int arg0) {
 			
 		}
 
+		/* (non-Javadoc)
+		 * @see android.support.v4.view.ViewPager.OnPageChangeListener#onPageScrolled(int, float, int)
+		 */
 		@Override
 		public void onPageScrolled(int arg0, float arg1, int arg2) {
 			
 		}
 
+		/* (non-Javadoc)
+		 * @see android.support.v4.view.ViewPager.OnPageChangeListener#onPageSelected(int)
+		 */
 		@Override
 		public void onPageSelected(int arg0) {
 			//计算滑块偏移
@@ -178,14 +208,13 @@ public class AbSlidingSmoothFixTabView extends LinearLayout {
 	}
 	
 	/**
-	 * 
-	 * 描述：滑动动画
-	 * @param v
-	 * @param startX
-	 * @param toX
-	 * @param startY
-	 * @param toY
-	 * @throws 
+	 * 描述：滑动动画.
+	 *
+	 * @param v the v
+	 * @param startX the start x
+	 * @param toX the to x
+	 * @param startY the start y
+	 * @param toY the to y
 	 */
 	public void imageSlide(View v, int startX, int toX, int startY, int toY) {
 		TranslateAnimation anim = new TranslateAnimation(startX, toX, startY, toY);
@@ -195,10 +224,9 @@ public class AbSlidingSmoothFixTabView extends LinearLayout {
 	}
 	
 	/**
-	 * 
-	 * 描述：滑动条
-	 * @param index
-	 * @throws 
+	 * 描述：滑动条.
+	 *
+	 * @param index the index
 	 */
 	public void computeTabImg(int index){
 		
@@ -229,9 +257,10 @@ public class AbSlidingSmoothFixTabView extends LinearLayout {
 	
 	
 	/**
-	 * 
-	 * 描述：增加一组内容与tab
-	 * @throws 
+	 * 描述：增加一组内容与tab.
+	 *
+	 * @param tabTexts the tab texts
+	 * @param fragments the fragments
 	 */
 	public void addItemViews(List<String> tabTexts,List<Fragment> fragments){
 		
@@ -271,9 +300,10 @@ public class AbSlidingSmoothFixTabView extends LinearLayout {
 	}
 	
 	/**
-	 * 
-	 * 描述：增加一个内容与tab
-	 * @throws 
+	 * 描述：增加一个内容与tab.
+	 *
+	 * @param tabText the tab text
+	 * @param fragment the fragment
 	 */
 	public void addItemView(String tabText,Fragment fragment){
 		
@@ -314,10 +344,9 @@ public class AbSlidingSmoothFixTabView extends LinearLayout {
 	
 	
 	/**
-	 * 
-	 * 描述：删除某一个
-	 * @param index
-	 * @throws 
+	 * 描述：删除某一个.
+	 *
+	 * @param index the index
 	 */
 	public void removeItemView(int index){
 		
@@ -329,9 +358,9 @@ public class AbSlidingSmoothFixTabView extends LinearLayout {
 	}
 	
 	/**
-	 * 
-	 * 描述：删除所有
-	 * @throws 
+	 * 描述：删除所有.
+	 *
+	 * @param index the index
 	 */
 	public void removeAllItemView(int index){
 		tabItemList.clear();
@@ -342,38 +371,45 @@ public class AbSlidingSmoothFixTabView extends LinearLayout {
 
 	
 	/**
-	 * 
-	 * 描述：获取这个View的ViewPager
-	 * @return
-	 * @throws 
+	 * 描述：获取这个View的ViewPager.
+	 *
+	 * @return the view pager
 	 */
 	public ViewPager getViewPager() {
 		return mViewPager;
 	}
 
+	/**
+	 * Gets the tab layout.
+	 *
+	 * @return the tab layout
+	 */
 	public LinearLayout getTabLayout() {
 		return mTabLayout;
 	}
 
 	/**
-	 * 
-	 * 描述：设置Tab的背景
-	 * @param res
-	 * @throws 
+	 * 描述：设置Tab的背景.
+	 *
+	 * @param res the new tab layout background resource
 	 */
 	public void setTabLayoutBackgroundResource(int res) {
 		this.mTabLayout.setBackgroundResource(res);
 	}
 
+	/**
+	 * Gets the tab color.
+	 *
+	 * @return the tab color
+	 */
 	public int getTabColor() {
 		return tabColor;
 	}
 	
 	/**
-	 * 
-	 * 描述：设置tab文字和滑块的颜色
-	 * @param tabColor
-	 * @throws 
+	 * 描述：设置tab文字和滑块的颜色.
+	 *
+	 * @param tabColor the new tab color
 	 */
 	public void setTabColor(int tabColor) {
 		this.tabColor = tabColor;
@@ -381,32 +417,40 @@ public class AbSlidingSmoothFixTabView extends LinearLayout {
 	
 
 	/**
-	 * 
-	 * 描述：设置选中和滑块的颜色
-	 * @param tabColor
-	 * @throws 
+	 * 描述：设置选中和滑块的颜色.
+	 *
+	 * @param tabColor the new tab selected color
 	 */
 	public void setTabSelectedColor(int tabColor) {
 		this.tabSelectedColor = tabColor;
 		this.mTabImg.setBackgroundColor(tabColor);
 	}
 
+	/**
+	 * Gets the tab text size.
+	 *
+	 * @return the tab text size
+	 */
 	public int getTabTextSize() {
 		return tabTextSize;
 	}
 
+	/**
+	 * Sets the tab text size.
+	 *
+	 * @param tabTextSize the new tab text size
+	 */
 	public void setTabTextSize(int tabTextSize) {
 		this.tabTextSize = tabTextSize;
 	}
 	
 	/**
-	 * 
-	 * 描述：设置每个tab的边距
-	 * @param left
-	 * @param top
-	 * @param right
-	 * @param bottom
-	 * @throws 
+	 * 描述：设置每个tab的边距.
+	 *
+	 * @param left the left
+	 * @param top the top
+	 * @param right the right
+	 * @param bottom the bottom
 	 */
 	public void setTabPadding(int left, int top, int right, int bottom) {
 		for(int i = 0;i<tabItemList.size();i++){
@@ -415,21 +459,28 @@ public class AbSlidingSmoothFixTabView extends LinearLayout {
 		}
 	}
 
+	/**
+	 * Gets the tab sliding height.
+	 *
+	 * @return the tab sliding height
+	 */
 	public int getTabSlidingHeight() {
 		return tabSlidingHeight;
 	}
 
 	/**
-	 * 
-	 * 描述：设置滑块的高度
-	 * @param tabSlidingHeight
-	 * @throws 
+	 * 描述：设置滑块的高度.
+	 *
+	 * @param tabSlidingHeight the new tab sliding height
 	 */
 	public void setTabSlidingHeight(int tabSlidingHeight) {
 		this.tabSlidingHeight = tabSlidingHeight;
 	}
 	
 	
+	/* (non-Javadoc)
+	 * @see android.widget.LinearLayout#onMeasure(int, int)
+	 */
 	@Override
     public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 		super.onMeasure(widthMeasureSpec, heightMeasureSpec);

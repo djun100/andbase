@@ -23,13 +23,13 @@ import android.widget.ImageView;
 
 // TODO: Auto-generated Javadoc
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbScaleImageView.java 
  * 描述：根据宽度或高度设置图像尺寸，如果未设置取决于图像尺寸
+ *
  * @author 还如一梦中
- * @date：2013-9-3 下午4:09:16
  * @version v1.0
+ * @date：2013-9-3 下午4:09:16
  */
 public class AbScaleImageView extends ImageView {
     
@@ -94,7 +94,9 @@ public class AbScaleImageView extends ImageView {
     }
 
     /**
-     * 描述：设置图片Bitmap
+     * 描述：设置图片Bitmap.
+     *
+     * @param bm the new image bitmap
      */
     @Override
     public void setImageBitmap(Bitmap bm) {
@@ -103,7 +105,9 @@ public class AbScaleImageView extends ImageView {
     }
 
     /**
-     * 描述：设置图片Drawable
+     * 描述：设置图片Drawable.
+     *
+     * @param d the new image drawable
      */
     @Override
     public void setImageDrawable(Drawable d) {
@@ -111,7 +115,9 @@ public class AbScaleImageView extends ImageView {
     }
 
     /**
-     * 描述：设置图片资源
+     * 描述：设置图片资源.
+     *
+     * @param id the new image resource
      */
     @Override
     public void setImageResource(int id) {
@@ -120,7 +126,10 @@ public class AbScaleImageView extends ImageView {
 
     
     /**
-     * 描述：onMeasure
+     * 描述：onMeasure.
+     *
+     * @param widthMeasureSpec the width measure spec
+     * @param heightMeasureSpec the height measure spec
      * @see android.widget.ImageView#onMeasure(int, int)
      */
     @Override

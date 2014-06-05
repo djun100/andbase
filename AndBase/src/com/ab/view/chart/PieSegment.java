@@ -99,11 +99,11 @@ public class PieSegment implements Serializable {
   /**
    * 描述：TODO.
    *
+   * @version v1.0
    * @return the string
    * @see java.lang.Object#toString()
    * @author: amsoft.cn
    * @date：2013-6-17 上午9:04:50
-   * @version v1.0
    */
   public String toString() {
     return "mDataIndex=" + mDataIndex + ",mValue=" + mValue + ",mStartAngle=" + mStartAngle

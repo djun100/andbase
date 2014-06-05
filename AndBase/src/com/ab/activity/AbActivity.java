@@ -52,9 +52,9 @@ import com.ab.global.AbAppData;
 import com.ab.global.AbConstant;
 import com.ab.util.AbStrUtil;
 import com.ab.view.app.AbMonitorView;
+import com.ab.view.ioc.AbIocEventListener;
 import com.ab.view.ioc.AbIocSelect;
 import com.ab.view.ioc.AbIocView;
-import com.ab.view.listener.AbIocEventListener;
 import com.ab.view.titlebar.AbBottomBar;
 import com.ab.view.titlebar.AbTitleBar;
 
@@ -63,9 +63,10 @@ import com.ab.view.titlebar.AbTitleBar;
  * © 2012 amsoft.cn
  * 名称：AbActivity.java 
  * 描述：继承这个Activity使你的Activity拥有一个程序框架.
+ *
  * @author 还如一梦中
- * @date：2013-1-15 下午3:27:05
  * @version v1.0
+ * @date：2013-1-15 下午3:27:05
  */
 
 public abstract class AbActivity extends FragmentActivity {
@@ -405,9 +406,11 @@ public abstract class AbActivity extends FragmentActivity {
 	
 	/**
 	 * 描述：对话框dialog （确认，取消）.
+	 *
 	 * @param title 对话框标题内容
 	 * @param view  对话框提示内容
 	 * @param mOkOnClickListener  点击确认按钮的事件监听
+	 * @return the alert dialog
 	 */
 	public AlertDialog showDialog(String title,View view,DialogInterface.OnClickListener mOkOnClickListener) {
 		 AlertDialog.Builder builder = new Builder(this);
@@ -427,8 +430,10 @@ public abstract class AbActivity extends FragmentActivity {
 	
 	/**
 	 * 描述：对话框dialog （无按钮）.
+	 *
 	 * @param title 对话框标题内容
 	 * @param msg  对话框提示内容
+	 * @return the alert dialog
 	 */
 	public AlertDialog showDialog(String title,String msg) {
 		 AlertDialog.Builder builder = new Builder(this);
@@ -442,8 +447,10 @@ public abstract class AbActivity extends FragmentActivity {
 	
 	/**
 	 * 描述：对话框dialog （无按钮）.
+	 *
 	 * @param title 对话框标题内容
 	 * @param view  对话框提示内容
+	 * @return the alert dialog
 	 */
 	public AlertDialog showDialog(String title,View view) {
 		 AlertDialog.Builder builder = new Builder(this);
@@ -730,10 +737,9 @@ public abstract class AbActivity extends FragmentActivity {
 	}
 	
 	/**
-	 * 
-	 * 描述：设置绝对定位的主标题栏覆盖到内容的上边
-	 * @param above
-	 * @throws 
+	 * 描述：设置绝对定位的主标题栏覆盖到内容的上边.
+	 *
+	 * @param above the new title bar above
 	 */
 	public void setTitleBarAbove(boolean above) {
 		ab_base.removeAllViews();
@@ -764,7 +770,9 @@ public abstract class AbActivity extends FragmentActivity {
 	}
 	
 	/**
-	 * 描述：设置界面显示（忽略标题栏）
+	 * 描述：设置界面显示（忽略标题栏）.
+	 *
+	 * @param layoutResID the new content view
 	 * @see android.app.Activity#setContentView(int)
 	 */
 	@Override
@@ -774,7 +782,10 @@ public abstract class AbActivity extends FragmentActivity {
 	}
 
 	/**
-	 * 描述：设置界面显示（忽略标题栏）
+	 * 描述：设置界面显示（忽略标题栏）.
+	 *
+	 * @param view the view
+	 * @param params the params
 	 * @see android.app.Activity#setContentView(android.view.View, android.view.ViewGroup.LayoutParams)
 	 */
 	@Override
@@ -785,7 +796,9 @@ public abstract class AbActivity extends FragmentActivity {
 	}
 
 	/**
-	 * 描述：设置界面显示（忽略标题栏）
+	 * 描述：设置界面显示（忽略标题栏）.
+	 *
+	 * @param view the new content view
 	 * @see android.app.Activity#setContentView(android.view.View)
 	 */
 	public void setContentView(View view) {
@@ -812,10 +825,10 @@ public abstract class AbActivity extends FragmentActivity {
 						int viewId = viewInject.id();
 					    field.set(this,findViewById(viewId));
 					
-						setListener(field,viewInject.click(),Method.Click);
-						setListener(field,viewInject.longClick(),Method.LongClick);
-						setListener(field,viewInject.itemClick(),Method.ItemClick);
-						setListener(field,viewInject.itemLongClick(),Method.itemLongClick);
+						setListener(field,viewInject.click(),AbIocEventListener.CLICK);
+						setListener(field,viewInject.longClick(),AbIocEventListener.LONGCLICK);
+						setListener(field,viewInject.itemClick(),AbIocEventListener.ITEMCLICK);
+						setListener(field,viewInject.itemLongClick(),AbIocEventListener.ITEMLONGCLICK);
 						
 						AbIocSelect select = viewInject.select();
 						if(!TextUtils.isEmpty(select.selected())){
@@ -853,29 +866,29 @@ public abstract class AbActivity extends FragmentActivity {
 	 * @param method the method
 	 * @throws Exception the exception
 	 */
-	private void setListener(Field field,String methodName,Method method)throws Exception{
+	private void setListener(Field field,String methodName,int method)throws Exception{
 		if(methodName == null || methodName.trim().length() == 0)
 			return;
 		
 		Object obj = field.get(this);
 		
 		switch (method) {
-			case Click:
+			case AbIocEventListener.CLICK:
 				if(obj instanceof View){
 					((View)obj).setOnClickListener(new AbIocEventListener(this).click(methodName));
 				}
 				break;
-			case ItemClick:
+			case AbIocEventListener.ITEMCLICK:
 				if(obj instanceof AbsListView){
 					((AbsListView)obj).setOnItemClickListener(new AbIocEventListener(this).itemClick(methodName));
 				}
 				break;
-			case LongClick:
+			case AbIocEventListener.LONGCLICK:
 				if(obj instanceof View){
 					((View)obj).setOnLongClickListener(new AbIocEventListener(this).longClick(methodName));
 				}
 				break;
-			case itemLongClick:
+			case AbIocEventListener.ITEMLONGCLICK:
 				if(obj instanceof AbsListView){
 					((AbsListView)obj).setOnItemLongClickListener(new AbIocEventListener(this).itemLongClick(methodName));
 				}
@@ -884,21 +897,5 @@ public abstract class AbActivity extends FragmentActivity {
 				break;
 		}
 	}
-	
-	/**
-	 * The Enum Method.
-	 */
-	public enum Method{
-		
-		/** The Click. */
-		Click,
-		/** The Long click. */
-		LongClick,
-		/** The Item click. */
-		ItemClick,
-		/** The item long click. */
-		itemLongClick
-	}
-
 	
 }

@@ -17,13 +17,13 @@ package com.ab.model;
 
 // TODO: Auto-generated Javadoc
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbResult.java 
  * 描述：结果
+ *
  * @author 还如一梦中
- * @date：2013-11-13 上午9:00:52
  * @version v1.0
+ * @date：2013-11-13 上午9:00:52
  */
 public class AbResult {
 

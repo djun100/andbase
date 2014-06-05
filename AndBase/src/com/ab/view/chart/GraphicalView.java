@@ -179,11 +179,11 @@ public class GraphicalView extends View {
   /**
    * 描述：TODO.
    *
+   * @version v1.0
    * @param canvas the canvas
    * @see android.view.View#onDraw(android.graphics.Canvas)
    * @author: amsoft.cn
    * @date：2013-6-17 上午9:04:51
-   * @version v1.0
    */
   @Override
   protected void onDraw(Canvas canvas) {
@@ -502,12 +502,12 @@ public class GraphicalView extends View {
   /**
    * 描述：TODO.
    *
+   * @version v1.0
    * @param event the event
    * @return true, if successful
    * @see android.view.View#onTouchEvent(android.view.MotionEvent)
    * @author: amsoft.cn
    * @date：2013-6-17 上午9:04:51
-   * @version v1.0
    */
   @Override
   public boolean onTouchEvent(MotionEvent event) {

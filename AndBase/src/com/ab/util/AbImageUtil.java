@@ -49,13 +49,13 @@ import com.ab.util.dct.FDCT;
 // TODO: Auto-generated Javadoc
 
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbImageUtil.java 
  * 描述：图片处理类.
+ *
  * @author 还如一梦中
- * @date：2013-01-17 下午11:52:13
  * @version v1.0
+ * @date：2013-01-17 下午11:52:13
  */
 public class AbImageUtil {
 	
@@ -117,10 +117,11 @@ public class AbImageUtil {
    }   
 	
 	/**
-    * 描述：获取原图
-	* @param file File对象
-	* @return Bitmap 图片
-	*/
+	 * 描述：获取原图.
+	 *
+	 * @param file File对象
+	 * @return Bitmap 图片
+	 */
 	public static Bitmap originalImg(File file){ 
 		Bitmap resizeBmp = null;
 	    try {
@@ -828,10 +829,10 @@ public class AbImageUtil {
 	}
 	
 	/**
-	 * 描述：简单的图像的特征值，用于缩略图找原图比较好
-	 * @param bitmap
-	 * @return
-	 * @throws 
+	 * 描述：简单的图像的特征值，用于缩略图找原图比较好.
+	 *
+	 * @param bitmap the bitmap
+	 * @return the hash code
 	 */
     public static String getHashCode(Bitmap bitmap){
     	//第一步，缩小尺寸。
@@ -887,11 +888,11 @@ public class AbImageUtil {
     
     
     /**
-	 * 描述：图像的特征值余弦相似度
-	 * @param bitmap
-	 * @return
-	 * @throws 
-	 */
+     * 描述：图像的特征值余弦相似度.
+     *
+     * @param bitmap the bitmap
+     * @return the DCT hash code
+     */
     public static String getDCTHashCode(Bitmap bitmap){
     	
     	//将图片缩小到32x32的尺寸
@@ -948,11 +949,12 @@ public class AbImageUtil {
     }
     
     /**
-	 * 描述：图像的特征值颜色分布
-	 * 将颜色分4个区，0,1,2,3   区组合共64组，计算每个像素点属于哪个区
-	 * @param bitmap
-	 * @return
-	 */
+     * 描述：图像的特征值颜色分布
+     * 将颜色分4个区，0,1,2,3   区组合共64组，计算每个像素点属于哪个区.
+     *
+     * @param bitmap the bitmap
+     * @return the color histogram
+     */
     public static int[] getColorHistogram(Bitmap bitmap){
     	
         int width = bitmap.getWidth();
@@ -1010,11 +1012,13 @@ public class AbImageUtil {
     }
     
     /**
-	 * 计算"汉明距离"（Hamming distance）。
-	 * 如果不相同的数据位不超过5，就说明两张图片很相似；如果大于10，就说明这是两张不同的图片。
-	 * @param sourceHashCode 源hashCode
-	 * @param hashCode 与之比较的hashCode
-	 */
+     * 计算"汉明距离"（Hamming distance）。
+     * 如果不相同的数据位不超过5，就说明两张图片很相似；如果大于10，就说明这是两张不同的图片。.
+     *
+     * @param sourceHashCode 源hashCode
+     * @param hashCode 与之比较的hashCode
+     * @return the int
+     */
 	public static int hammingDistance(String sourceHashCode, String hashCode) {
 		int difference = 0;
 		int len = sourceHashCode.length();
@@ -1027,7 +1031,8 @@ public class AbImageUtil {
 	}
 	
 	/**
-	 * 灰度值计算
+	 * 灰度值计算.
+	 *
 	 * @param pixels 像素
 	 * @return int 灰度值
 	 */

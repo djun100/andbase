@@ -1,3 +1,18 @@
+/*
+ * Copyright (C) 2012 www.amsoft.cn
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.ab.util;
 
 
@@ -10,25 +25,27 @@ import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.view.animation.Animation.AnimationListener;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbAnimationUtil.java 
  * 描述：动画工具类.
+ *
  * @author 还如一梦中
- * @date：2011-11-10 下午11:52:13
  * @version v1.0
+ * @date：2011-11-10 下午11:52:13
  */
 public class AbAnimationUtil {
 	
-	/**
-	 * 定义动画的时间
-	 */
+	/** 定义动画的时间. */
 	public final static long aniDurationMillis = 1L;
 
 	/**
 	 * 用来改变当前选中区域的放大动画效果
 	 * 从1.0f放大1.2f倍数
+	 *
+	 * @param view the view
+	 * @param scale the scale
 	 */
 	public static void largerView(View view, float scale) {
 		if (view == null)
@@ -42,7 +59,10 @@ public class AbAnimationUtil {
 	}
 
 	/**
-	 * 用来还原当前选中区域的还原动画效果
+	 * 用来还原当前选中区域的还原动画效果.
+	 *
+	 * @param view the view
+	 * @param scale the scale
 	 */
 	public static void restoreLargerView(View view, float scale) {
 		if (view == null)
@@ -54,7 +74,8 @@ public class AbAnimationUtil {
 	}
 
 	/**
-	 * 缩放View的显示
+	 * 缩放View的显示.
+	 *
 	 * @param view 需要改变的View
 	 * @param toSize 缩放的大小，其中正值代表放大，负值代表缩小，数值代表缩放的倍数
 	 */
@@ -78,9 +99,10 @@ public class AbAnimationUtil {
 	}
 	
 	/**
-	 * 跳动-跳起动画
-	 * @param view
-	 * @param offsetY
+	 * 跳动-跳起动画.
+	 *
+	 * @param view the view
+	 * @param offsetY the offset y
 	 */
     private void playJumpAnimation(final View view,final float offsetY) {
         float originalY = 0;
@@ -111,9 +133,10 @@ public class AbAnimationUtil {
     }
 
     /**
-     * 跳动-落下动画
-     * @param view
-     * @param offsetY
+     * 跳动-落下动画.
+     *
+     * @param view the view
+     * @param offsetY the offset y
      */
     private void playLandAnimation(final View view,final float offsetY) {
         float originalY =  - offsetY;

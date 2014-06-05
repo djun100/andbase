@@ -1,3 +1,18 @@
+/*
+ * Copyright (C) 2012 www.amsoft.cn
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.ab.view.pullview;
 
 import android.content.Context;
@@ -10,17 +25,19 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbPullToRefreshView.java 
  * 描述：下拉刷新和加载更多的View.
+ *
  * @author 还如一梦中
- * @date：2014-06-04 下午11:52:13
  * @version v1.0
+ * @date：2014-06-04 下午11:52:13
  */
 public class AbPullToRefreshView extends LinearLayout {
 	
+	/** 日志标记. */
 	private static final String TAG = "AbPullToRefreshView";
 	
 	/** 上下文. */
@@ -35,39 +52,25 @@ public class AbPullToRefreshView extends LinearLayout {
     /** y上一次保存的. */
 	private int mLastMotionY;
 	
-	/**
-	 * header view
-	 */
+	/** header view. */
 	private AbListViewHeader mHeaderView;
 	
-	/**
-	 * footer view
-	 */
+	/** footer view. */
 	private AbListViewFooter mFooterView;
 	
-	/**
-	 * list or grid
-	 */
+	/** list or grid. */
 	private AdapterView<?> mAdapterView;
 	
-	/**
-	 * Scrollview
-	 */
+	/** Scrollview. */
 	private ScrollView mScrollView;
 	
-	/**
-	 * header view 高度
-	 */
+	/** header view 高度. */
 	private int mHeaderViewHeight;
 	
-	/**
-	 * footer view 高度
-	 */
+	/** footer view 高度. */
 	private int mFooterViewHeight;
 
-	/**
-	 * 滑动状态
-	 */
+	/** 滑动状态. */
 	private int mPullState;
 	
 	/** 上滑动作. */
@@ -76,10 +79,10 @@ public class AbPullToRefreshView extends LinearLayout {
 	/** 下拉动作. */
 	private static final int PULL_DOWN_STATE = 1;
 	
-	/**上一次的数量*/
+	/** 上一次的数量. */
 	private int mCount = 0;
 	
-	/** 是否还有数据 */
+	/**  是否还有数据. */
 	private boolean isAll = false;
 	
 	/** 正在下拉刷新. */
@@ -88,13 +91,10 @@ public class AbPullToRefreshView extends LinearLayout {
 	/** 正在加载更多. */
 	private boolean mPullLoading = false;
 
-	/**
-	 * Footer加载更多监听器
-	 */
+	/** Footer加载更多监听器. */
 	private OnFooterLoadListener mOnFooterLoadListener;
-	/**
-	 * Header下拉刷新监听器
-	 */
+	
+	/** Header下拉刷新监听器. */
 	private OnHeaderRefreshListener mOnHeaderRefreshListener;
 
 	/**
@@ -128,7 +128,7 @@ public class AbPullToRefreshView extends LinearLayout {
 	}
 
 	/**
-	 * add HeaderView
+	 * add HeaderView.
 	 */
 	private void addHeaderView() {
         mHeaderView = new AbListViewHeader(mContext);
@@ -143,7 +143,7 @@ public class AbPullToRefreshView extends LinearLayout {
 	}
 
 	/**
-	 * add FooterView
+	 * add FooterView.
 	 */
 	private void addFooterView() {
 	    
@@ -155,7 +155,7 @@ public class AbPullToRefreshView extends LinearLayout {
 	}
 
 	/**
-	 * 在此添加footer view保证添加到linearlayout中的最后
+	 * 在此添加footer view保证添加到linearlayout中的最后.
 	 */
 	@Override
 	protected void onFinishInflate() {
@@ -167,7 +167,7 @@ public class AbPullToRefreshView extends LinearLayout {
 	/**
 	 * init AdapterView like ListView,
 	 * GridView and so on;
-	 * or init ScrollView
+	 * or init ScrollView.
 	 */
 	private void initContentAdapterView() {
 		int count = getChildCount();
@@ -190,6 +190,9 @@ public class AbPullToRefreshView extends LinearLayout {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see android.view.ViewGroup#onInterceptTouchEvent(android.view.MotionEvent)
+	 */
 	@Override
 	public boolean onInterceptTouchEvent(MotionEvent e) {
 		int y = (int) e.getRawY();
@@ -215,6 +218,9 @@ public class AbPullToRefreshView extends LinearLayout {
 	/*
 	 * 如果在onInterceptTouchEvent()方法中没有拦截(即onInterceptTouchEvent()方法中 return
 	 * false)则由PullToRefreshView 的子View来处理;否则由下面的方法来处理(即由PullToRefreshView自己来处理)
+	 */
+	/* (non-Javadoc)
+	 * @see android.view.View#onTouchEvent(android.view.MotionEvent)
 	 */
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
@@ -261,10 +267,10 @@ public class AbPullToRefreshView extends LinearLayout {
 	}
 
 	/**
-	 * 判断滑动方向，和是否响应事件
-	 * 
+	 * 判断滑动方向，和是否响应事件.
+	 *
 	 * @param deltaY  deltaY > 0 是向下运动,< 0是向上运动
-	 * @return
+	 * @return true, if is refresh view scroll
 	 */
 	private boolean isRefreshViewScroll(int deltaY) {
 		
@@ -329,8 +335,8 @@ public class AbPullToRefreshView extends LinearLayout {
 	}
 
 	/**
-	 * header 准备刷新,手指移动过程,还没有释放
-	 * 
+	 * header 准备刷新,手指移动过程,还没有释放.
+	 *
 	 * @param deltaY 手指滑动的距离
 	 */
 	private void headerPrepareToRefresh(int deltaY) {
@@ -352,8 +358,8 @@ public class AbPullToRefreshView extends LinearLayout {
 
 	/**
 	 * footer 准备刷新,手指移动过程,还没有释放 移动footer view高度同样和移动header view
-	 * 高度是一样，都是通过修改header view的topmargin的值来达到
-	 * 
+	 * 高度是一样，都是通过修改header view的topmargin的值来达到.
+	 *
 	 * @param deltaY  手指滑动的距离
 	 */
 	private void footerPrepareToRefresh(int deltaY) {
@@ -371,8 +377,10 @@ public class AbPullToRefreshView extends LinearLayout {
 	}
 
 	/**
-	 * 修改Header view top margin的值
-	 * @param deltaY
+	 * 修改Header view top margin的值.
+	 *
+	 * @param deltaY the delta y
+	 * @return the int
 	 */
 	private int updateHeaderViewTopMargin(int deltaY) {
 		LayoutParams params = (LayoutParams) mHeaderView.getLayoutParams();
@@ -393,7 +401,7 @@ public class AbPullToRefreshView extends LinearLayout {
 	}
 
 	/**
-	 * 下拉刷新
+	 * 下拉刷新.
 	 */
 	public void headerRefreshing() {
 		mPullRefreshing = true;
@@ -405,7 +413,7 @@ public class AbPullToRefreshView extends LinearLayout {
 	}
 
 	/**
-	 * 加载更多
+	 * 加载更多.
 	 */
 	private void footerLoading() {
 		mPullLoading = true;
@@ -417,10 +425,9 @@ public class AbPullToRefreshView extends LinearLayout {
 	}
 
 	/**
-	 * 设置header view 的topMargin的值
-	 * @param topMargin，为0时，说明header view 刚好完全显示出来；
-	 * 为-mHeaderViewHeight时，说明完全隐藏了
-	 * 
+	 * 设置header view 的topMargin的值.
+	 *
+	 * @param topMargin the new header top margin
 	 */
 	private void setHeaderTopMargin(int topMargin) {
 		LayoutParams params = (LayoutParams) mHeaderView.getLayoutParams();
@@ -430,8 +437,7 @@ public class AbPullToRefreshView extends LinearLayout {
 	}
 
 	/**
-	 * header view 完成更新后恢复初始状态
-	 * 
+	 * header view 完成更新后恢复初始状态.
 	 */
 	public void onHeaderRefreshFinish() {
 		setHeaderTopMargin(-mHeaderViewHeight);
@@ -452,7 +458,7 @@ public class AbPullToRefreshView extends LinearLayout {
 	}
 
 	/**
-	 * footer view 完成更新后恢复初始状态
+	 * footer view 完成更新后恢复初始状态.
 	 */
 	public void onFooterLoadFinish() {
 		setHeaderTopMargin(-mHeaderViewHeight);
@@ -475,8 +481,9 @@ public class AbPullToRefreshView extends LinearLayout {
 
 
 	/**
-	 * 获取当前header view 的topMargin
-	 * 
+	 * 获取当前header view 的topMargin.
+	 *
+	 * @return the header top margin
 	 */
 	private int getHeaderTopMargin() {
 		LayoutParams params = (LayoutParams) mHeaderView.getLayoutParams();
@@ -485,16 +492,18 @@ public class AbPullToRefreshView extends LinearLayout {
 
 
 	/**
-	 * 设置下拉刷新的监听器
-	 * @param headerRefreshListener
+	 * 设置下拉刷新的监听器.
+	 *
+	 * @param headerRefreshListener the new on header refresh listener
 	 */
 	public void setOnHeaderRefreshListener(OnHeaderRefreshListener headerRefreshListener) {
 		mOnHeaderRefreshListener = headerRefreshListener;
 	}
 
 	/**
-	 * 设置加载更多的监听器
-	 * @param footerLoadListener
+	 * 设置加载更多的监听器.
+	 *
+	 * @param footerLoadListener the new on footer load listener
 	 */
 	public void setOnFooterLoadListener(OnFooterLoadListener footerLoadListener) {
 		mOnFooterLoadListener = footerLoadListener;
@@ -519,6 +528,8 @@ public class AbPullToRefreshView extends LinearLayout {
 
     /**
      * 下拉刷新是打开的吗.
+     *
+     * @return true, if is enable pull refresh
      */
     public boolean isEnablePullRefresh(){
         return mEnablePullRefresh;
@@ -526,36 +537,35 @@ public class AbPullToRefreshView extends LinearLayout {
 
     /**
      * 加载更多是打开的吗.
+     *
+     * @return true, if is enable load more
      */
     public boolean isEnableLoadMore(){
         return mEnableLoadMore;
     }
     
     /**
-     * 
-     * 描述：获取Header View
-     * @return
-     * @throws 
+     * 描述：获取Header View.
+     *
+     * @return the header view
      */
     public AbListViewHeader getHeaderView() {
         return mHeaderView;
     }
 
     /**
-     * 
-     * 描述：获取Footer View
-     * @return
-     * @throws 
+     * 描述：获取Footer View.
+     *
+     * @return the footer view
      */
     public AbListViewFooter getFooterView() {
         return mFooterView;
     }
     
     /**
-     * 
-     * 描述：获取Header ProgressBar，用于设置自定义样式
-     * @return
-     * @throws 
+     * 描述：获取Header ProgressBar，用于设置自定义样式.
+     *
+     * @return the header progress bar
      */
     public ProgressBar getHeaderProgressBar() {
         return mHeaderView.getHeaderProgressBar();
@@ -563,28 +573,43 @@ public class AbPullToRefreshView extends LinearLayout {
     
     
     /**
-     * 
-     * 描述：获取Footer ProgressBar，用于设置自定义样式
-     * @return
-     * @throws 
+     * 描述：获取Footer ProgressBar，用于设置自定义样式.
+     *
+     * @return the footer progress bar
      */
     public ProgressBar getFooterProgressBar() {
         return mFooterView.getFooterProgressBar();
     }
     
     /**
-	 * Interface definition for a callback to be invoked when list/grid footer
-	 * view should be refreshed.
-	 */
+     * Interface definition for a callback to be invoked when list/grid footer
+     * view should be refreshed.
+     *
+     * @see OnFooterLoadEvent
+     */
 	public interface OnFooterLoadListener {
+		
+		/**
+		 * On footer load.
+		 *
+		 * @param view the view
+		 */
 		public void onFooterLoad(AbPullToRefreshView view);
 	}
 
 	/**
 	 * Interface definition for a callback to be invoked when list/grid header
 	 * view should be refreshed.
+	 *
+	 * @see OnHeaderRefreshEvent
 	 */
 	public interface OnHeaderRefreshListener {
+		
+		/**
+		 * On header refresh.
+		 *
+		 * @param view the view
+		 */
 		public void onHeaderRefresh(AbPullToRefreshView view);
 	}
     

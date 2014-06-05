@@ -31,14 +31,15 @@ import android.view.View;
 
 import com.ab.global.AbAppData;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbAnalogClock.java 
  * 描述：自定义模拟时钟
+ *
  * @author 还如一梦中
- * @date：2013-11-6 上午9:13:49
  * @version v1.0
+ * @date：2013-11-6 上午9:13:49
  */
 public class AbAnalogClock extends View {
 	
@@ -48,34 +49,60 @@ public class AbAnalogClock extends View {
 	/** 日志标记. */
 	private static final boolean D = AbAppData.DEBUG;
 	
+	/** The m calendar. */
 	private Time mCalendar;
 
 	//时针图标
+	/** The m hour hand. */
 	private Drawable mHourHand;
 	
 	//分针图标
+	/** The m minute hand. */
 	private Drawable mMinuteHand;
 	
 	//秒针图标
+	/** The m second hand. */
 	private Drawable mSecondHand;
 		
 	//表盘图标
+	/** The m dial. */
 	private Drawable mDial;
 
 	//表盘图片的大小
+	/** The m dial width. */
 	private int mDialWidth;
+	
+	/** The m dial height. */
 	private int mDialHeight;
 
+	/** The m attached. */
 	private boolean mAttached;
 	
 	//当前时间
+	/** The m minutes. */
 	private float mMinutes;
+	
+	/** The m hour. */
 	private float mHour;
+	
+	/** The m second. */
 	private float mSecond;
 	
+	/** The m handler. */
 	private final Handler mHandler = new Handler();
+	
+	/** The m changed. */
 	private boolean mChanged;
 
+	/**
+	 * Instantiates a new ab analog clock.
+	 *
+	 * @param context the context
+	 * @param dial the dial
+	 * @param hourHand the hour hand
+	 * @param minuteHand the minute hand
+	 * @param secondHand the second hand
+	 */
 	public AbAnalogClock(Context context, Drawable dial, Drawable hourHand,
 			Drawable minuteHand,Drawable secondHand) {
 		super(context);
@@ -91,6 +118,9 @@ public class AbAnalogClock extends View {
 		mDialHeight = mDial.getIntrinsicHeight();
 	}
 
+	/* (non-Javadoc)
+	 * @see android.view.View#onAttachedToWindow()
+	 */
 	@Override
 	protected void onAttachedToWindow() {
 		super.onAttachedToWindow();
@@ -120,6 +150,9 @@ public class AbAnalogClock extends View {
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see android.view.View#onDetachedFromWindow()
+	 */
 	@Override
 	protected void onDetachedFromWindow() {
 		super.onDetachedFromWindow();
@@ -129,6 +162,9 @@ public class AbAnalogClock extends View {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see android.view.View#onMeasure(int, int)
+	 */
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 
@@ -153,12 +189,18 @@ public class AbAnalogClock extends View {
 		setMeasuredDimension(mDialWidth * (int)scale,mDialHeight * (int)scale);
 	}
 
+	/* (non-Javadoc)
+	 * @see android.view.View#onSizeChanged(int, int, int, int)
+	 */
 	@Override
 	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
 		mChanged = true;
 	}
 
+	/* (non-Javadoc)
+	 * @see android.view.View#onDraw(android.graphics.Canvas)
+	 */
 	@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
@@ -239,6 +281,9 @@ public class AbAnalogClock extends View {
 		}
 	}
 
+	/**
+	 * On time changed.
+	 */
 	private void onTimeChanged() {
 		mCalendar.setToNow();
 
@@ -261,6 +306,7 @@ public class AbAnalogClock extends View {
         invalidate();
 	}
 
+	/** The m intent receiver. */
 	private final BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
 		@Override
 		public void onReceive(Context context, Intent intent) {
@@ -271,6 +317,11 @@ public class AbAnalogClock extends View {
 		}
 	};
 
+	/**
+	 * Update content description.
+	 *
+	 * @param time the time
+	 */
 	private void updateContentDescription(Time time) {
 		final int flags = DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_24HOUR;
 		String contentDescription = DateUtils.formatDateTime(getContext(),

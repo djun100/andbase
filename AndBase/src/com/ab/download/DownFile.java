@@ -21,8 +21,8 @@ package com.ab.download;
  * 描述：下载文件.
  *
  * @author 还如一梦中
- * @date：2012-6-25 下午4:20:55
  * @version v1.0
+ * @date：2012-6-25 下午4:20:55
  */
 public class DownFile {
 	

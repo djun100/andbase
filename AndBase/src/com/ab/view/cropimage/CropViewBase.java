@@ -113,6 +113,7 @@ public abstract class CropViewBase extends ImageView {
 	/**
 	 * 描述：TODO.
 	 *
+	 * @version v1.0
 	 * @param changed the changed
 	 * @param left the left
 	 * @param top the top
@@ -121,7 +122,6 @@ public abstract class CropViewBase extends ImageView {
 	 * @see android.view.View#onLayout(boolean, int, int, int, int)
 	 * @author: amsoft.cn
 	 * @date：2013-6-17 上午9:04:50
-	 * @version v1.0
 	 */
 	@Override
 	protected void onLayout(boolean changed, int left, int top, int right,
@@ -143,13 +143,13 @@ public abstract class CropViewBase extends ImageView {
 	/**
 	 * 描述：TODO.
 	 *
+	 * @version v1.0
 	 * @param keyCode the key code
 	 * @param event the event
 	 * @return true, if successful
 	 * @see android.view.View#onKeyDown(int, android.view.KeyEvent)
 	 * @author: amsoft.cn
 	 * @date：2013-6-17 上午9:04:50
-	 * @version v1.0
 	 */
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -174,11 +174,11 @@ public abstract class CropViewBase extends ImageView {
 	/**
 	 * 描述：TODO.
 	 *
+	 * @version v1.0
 	 * @param bitmap the new image bitmap
 	 * @see android.widget.ImageView#setImageBitmap(android.graphics.Bitmap)
 	 * @author: amsoft.cn
 	 * @date：2013-6-17 上午9:04:50
-	 * @version v1.0
 	 */
 	@Override
 	public void setImageBitmap(Bitmap bitmap) {

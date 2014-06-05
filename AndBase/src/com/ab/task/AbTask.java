@@ -32,24 +32,35 @@ package com.ab.task;
 import java.util.List;
 
 import android.os.AsyncTask;
+// TODO: Auto-generated Javadoc
+
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbAsyncTask.java 
  * 描述：下载数据的任务实现，单次下载
+ *
  * @author 还如一梦中
- * @date：2013-9-2 下午12:52:13
  * @version v1.0
+ * @date：2013-9-2 下午12:52:13
  */
 public class AbTask extends AsyncTask<AbTaskItem, Integer, AbTaskItem> {
 	
+	/** The listener. */
 	private AbTaskListener listener; 
+	
+	/** The result. */
 	private Object result;
 	
+	/**
+	 * Instantiates a new ab task.
+	 */
 	public AbTask() {
 		super();
 	}
 
+	/* (non-Javadoc)
+	 * @see android.os.AsyncTask#doInBackground(Params[])
+	 */
 	@Override
 	protected AbTaskItem doInBackground(AbTaskItem... items) {
 		AbTaskItem item = items[0];
@@ -66,11 +77,17 @@ public class AbTask extends AsyncTask<AbTaskItem, Integer, AbTaskItem> {
 		return item;
 	}
 
+	/* (non-Javadoc)
+	 * @see android.os.AsyncTask#onCancelled()
+	 */
 	@Override
 	protected void onCancelled() {
 		super.onCancelled();
 	}
 
+	/* (non-Javadoc)
+	 * @see android.os.AsyncTask#onPostExecute(java.lang.Object)
+	 */
 	@Override
 	protected void onPostExecute(AbTaskItem item) {
 		if (this.listener != null) {
@@ -84,11 +101,17 @@ public class AbTask extends AsyncTask<AbTaskItem, Integer, AbTaskItem> {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see android.os.AsyncTask#onPreExecute()
+	 */
 	@Override
 	protected void onPreExecute() {
 		super.onPreExecute();
 	}
 
+	/* (non-Javadoc)
+	 * @see android.os.AsyncTask#onProgressUpdate(Progress[])
+	 */
 	@Override
 	protected void onProgressUpdate(Integer... values) {
 		super.onProgressUpdate(values);

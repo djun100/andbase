@@ -29,15 +29,18 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ab.global.AbAppData;
-import com.ab.view.listener.AbOnItemClickListener;
+import com.ab.view.table.AbTable.AbOnItemClickListener;
 
 // TODO: Auto-generated Javadoc
+
 /**
+ * © 2012 amsoft.cn
+ * 名称：AbTableItemView.java 
  * 描述：表格一行的视图.
  *
  * @author 还如一梦中
- * @date：2013-1-28 下午3:56:29
  * @version v1.0
+ * @date：2013-01-18 下午11:52:13
  */
 public class AbTableItemView extends LinearLayout {
 	
@@ -47,22 +50,22 @@ public class AbTableItemView extends LinearLayout {
 	/** 日志标记. */
 	private static final boolean D = AbAppData.DEBUG;
 	
-	/** The m context. */
+	/** 上下文. */
 	private Context mContext;
-	//该行的单元格数量
-	/** The cell count. */
+	
+	/** 该行的单元格数量. */
 	private int cellCount;
-	//该行单元格文本数组
-	/** The row cell. */
+	
+	/** 该行单元格文本数组. */
 	private View[] rowCell;
 	
 	/** View在列表中的位置. */
 	private int mPosition;
 	
-	/** The m table. */
+	/** 表格. */
 	private AbTable mTable = null;
 	
-	/** The m adapter. */
+	/** 适配器. */
 	private AbTableArrayAdapter mAdapter = null;
 	
 	/**

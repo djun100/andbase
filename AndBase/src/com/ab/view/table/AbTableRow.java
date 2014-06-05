@@ -16,12 +16,15 @@
 package com.ab.view.table;
 
 // TODO: Auto-generated Javadoc
+
 /**
+ * © 2012 amsoft.cn
+ * 名称：AbTableItemView.java 
  * 描述：表格的一行.
  *
  * @author 还如一梦中
- * @date：2013-1-28 下午3:57:44
  * @version v1.0
+ * @date：2013-01-18 下午11:52:13
  */
 public class AbTableRow {
 	

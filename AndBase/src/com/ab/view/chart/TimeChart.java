@@ -155,6 +155,7 @@ public class TimeChart extends LineChart {
   /**
    * 描述：TODO.
    *
+   * @version v1.0
    * @param min the min
    * @param max the max
    * @param count the count
@@ -162,7 +163,6 @@ public class TimeChart extends LineChart {
    * @see com.ab.view.chart.XYChart#getXLabels(double, double, int)
    * @author: amsoft.cn
    * @date：2013-6-17 上午9:04:48
-   * @version v1.0
    */
   protected List<Double> getXLabels(double min, double max, int count) {
     final List<Double> result = new ArrayList<Double>();

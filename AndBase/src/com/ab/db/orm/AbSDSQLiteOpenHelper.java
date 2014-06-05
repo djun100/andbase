@@ -29,13 +29,13 @@ import com.ab.util.AbStrUtil;
 
 // TODO: Auto-generated Javadoc
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbSDSQLiteOpenHelper.java 
  * 描述：SD卡中保存数据库
+ *
  * @author 还如一梦中
- * @date：2013-7-23 上午9:47:10
  * @version v1.0
+ * @date：2013-7-23 上午9:47:10
  */
 
 public abstract class AbSDSQLiteOpenHelper extends SQLiteOpenHelper{

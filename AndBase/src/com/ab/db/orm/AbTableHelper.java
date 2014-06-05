@@ -36,9 +36,10 @@ import com.ab.util.AbStrUtil;
  * © 2012 amsoft.cn
  * 名称：AbTableHelper.java 
  * 描述：数据库辅助类
+ *
  * @author 还如一梦中
- * @date：2013-5-23 上午10:10:53
  * @version v1.0
+ * @date：2013-5-23 上午10:10:53
  */
 public class AbTableHelper {
 	

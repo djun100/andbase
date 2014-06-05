@@ -23,13 +23,13 @@ import android.widget.ProgressBar;
 
 // TODO: Auto-generated Javadoc
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbLoadingView.java 
  * 描述：loading.
+ *
  * @author 还如一梦中
- * @date：2013-01-17 下午11:52:13
  * @version v1.0
+ * @date：2013-01-17 下午11:52:13
  */
 public class AbLoadingView extends LinearLayout {
 	
@@ -88,15 +88,19 @@ public class AbLoadingView extends LinearLayout {
 	
 
 	/**
-	 * 
-	 * 描述：获取ProgressBar，用于设置自定义样式
-	 * @return
-	 * @throws 
+	 * 描述：获取ProgressBar，用于设置自定义样式.
+	 *
+	 * @return the footer progress bar
 	 */
 	public ProgressBar getFooterProgressBar() {
 		return loadingProgressBar;
 	}
 
+	/**
+	 * Sets the loading progress bar.
+	 *
+	 * @param loadingProgressBar the new loading progress bar
+	 */
 	public void setLoadingProgressBar(ProgressBar loadingProgressBar) {
 		this.loadingProgressBar = loadingProgressBar;
 	}

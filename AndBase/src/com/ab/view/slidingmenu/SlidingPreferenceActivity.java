@@ -21,8 +21,13 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SlidingPreferenceActivity.
+ */
 public class SlidingPreferenceActivity extends PreferenceActivity implements SlidingActivityBase {
 
+	/** The m helper. */
 	private SlidingActivityHelper mHelper;
 
 	/* (non-Javadoc)

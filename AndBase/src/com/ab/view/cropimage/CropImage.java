@@ -399,10 +399,10 @@ public class CropImage{
 	    /**
     	 * 描述：TODO.
     	 *
+    	 * @version v1.0
     	 * @see java.lang.Runnable#run()
     	 * @author: amsoft.cn
     	 * @date：2013-6-17 上午9:04:47
-    	 * @version v1.0
     	 */
 	    public void run(){
     		final CountDownLatch latch = new CountDownLatch(1);

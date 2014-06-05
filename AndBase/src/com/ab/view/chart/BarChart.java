@@ -76,6 +76,7 @@ public class BarChart extends XYChart {
   /**
    * 描述：TODO.
    *
+   * @version v1.0
    * @param points the points
    * @param values the values
    * @param yAxisValue the y axis value
@@ -85,7 +86,6 @@ public class BarChart extends XYChart {
    * @see com.ab.view.chart.XYChart#clickableAreasForPoints(float[], double[], float, int, int)
    * @author: amsoft.cn
    * @date：2013-6-17 上午9:04:48
-   * @version v1.0
    */
   @Override
   protected ClickableArea[] clickableAreasForPoints(float[] points, double[] values,

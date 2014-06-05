@@ -143,12 +143,12 @@ public class TouchHandler implements ITouchHandler {
   /**
    * 描述：标尺滑动和比例缩放的点击的事件.
    *
+   * @version v1.0
    * @param event the event
    * @return true, if successful
    * @see com.ab.view.chart.ITouchHandler#handleTouchControl(android.view.MotionEvent)
    * @author: amsoft.cn
    * @date：2013-6-7 上午9:56:06
-   * @version v1.0
    */
   @Override
   public boolean handleTouchControl(MotionEvent event) {

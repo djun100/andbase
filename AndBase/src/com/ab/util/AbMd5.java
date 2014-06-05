@@ -20,13 +20,13 @@ import java.security.MessageDigest;
 // TODO: Auto-generated Javadoc
 
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbMd5.java 
  * 描述：MD5加密.
+ *
  * @author 还如一梦中
- * @date：2013-01-17 下午11:52:13
  * @version v1.0
+ * @date：2013-01-17 下午11:52:13
  */
 public class AbMd5 {
 	

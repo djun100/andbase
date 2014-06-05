@@ -23,13 +23,13 @@ import android.view.MotionEvent;
 import android.widget.ScrollView;
 // TODO: Auto-generated Javadoc
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbOuterScrollView.java 
  * 描述：这个ScrollView与内部的滑动不冲突
+ *
  * @author 还如一梦中
- * @date：2013-5-21 下午3:59:38
  * @version v1.0
+ * @date：2013-5-21 下午3:59:38
  */
 public class AbOuterScrollView extends ScrollView {
 

@@ -15,8 +15,18 @@
  */
 package com.ab.util.dct;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class FDCT.
+ */
 public class FDCT implements DCT {
 
+	/**
+	 * F dct transform.
+	 *
+	 * @param ablk the ablk
+	 * @return the double[][]
+	 */
 	public static double[][] fDctTransform(double[][] ablk) {
 		double[][] blk = new double[8][8];
 		for (int i = 0; i < 8; i++) {

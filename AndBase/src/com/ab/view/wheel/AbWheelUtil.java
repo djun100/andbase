@@ -29,11 +29,20 @@ import com.ab.activity.AbActivity;
 import com.ab.global.AbConstant;
 import com.ab.util.AbDateUtil;
 import com.ab.util.AbStrUtil;
+import com.ab.view.wheel.AbWheelView.AbOnWheelChangedListener;
 
 // TODO: Auto-generated Javadoc
+
 /**
- * The Class AbViewUtil.
+ * © 2012 amsoft.cn
+ * 名称：AbWheelUtil.java 
+ * 描述：轮子工具类
+ *
+ * @author 还如一梦中
+ * @version v1.0
+ * @date：2013-05-17 下午6:46:29
  */
+
 public class AbWheelUtil {
 	
 	/**
@@ -196,6 +205,7 @@ public class AbWheelUtil {
 	/**
 	 * 描述：默认的月日时分的时间选择器.
 	 *
+	 * @version v1.0
 	 * @param activity     AbActivity对象
 	 * @param mText the m text
 	 * @param mWheelViewMD  选择月日的轮子
@@ -210,7 +220,6 @@ public class AbWheelUtil {
 	 * @param defaultMinute the default minute
 	 * @param initStart the init start
 	 * @date：2013-7-16 上午10:19:01
-	 * @version v1.0
 	 */
 	public static void initWheelTimePicker(final AbActivity activity,final TextView mText,final AbWheelView mWheelViewMD,final AbWheelView mWheelViewHH,final AbWheelView mWheelViewMM,
 			 Button okBtn,Button cancelBtn,

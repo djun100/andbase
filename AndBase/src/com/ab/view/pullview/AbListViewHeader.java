@@ -37,13 +37,13 @@ import com.ab.util.AbViewUtil;
 // TODO: Auto-generated Javadoc
 
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbListViewHeader.java 
  * 描述：下拉刷新的Header View类.
+ *
  * @author 还如一梦中
- * @date：2013-01-17 下午11:52:13
  * @version v1.0
+ * @date：2013-01-17 下午11:52:13
  */
 public class AbListViewHeader extends LinearLayout {
 	
@@ -92,7 +92,7 @@ public class AbListViewHeader extends LinearLayout {
 	/** 保存上一次的刷新时间. */
 	private String lastRefreshTime = null;
 	
-	/** Header的高度 */
+	/**  Header的高度. */
 	private int headerHeight;
 
 	/**
@@ -201,7 +201,7 @@ public class AbListViewHeader extends LinearLayout {
 	}
 
 	/**
-	 * 设置状态
+	 * 设置状态.
 	 *
 	 * @param state the new state
 	 */
@@ -305,9 +305,9 @@ public class AbListViewHeader extends LinearLayout {
 	}
 	
 	/**
-	 * 
-	 * 描述：设置字体颜色
-	 * @param color
+	 * 描述：设置字体颜色.
+	 *
+	 * @param color the new text color
 	 */
 	public void setTextColor(int color){
 		tipsTextview.setTextColor(color);
@@ -315,36 +315,36 @@ public class AbListViewHeader extends LinearLayout {
 	}
 	
 	/**
-	 * 
-	 * 描述：设置背景颜色
-	 * @param color
+	 * 描述：设置背景颜色.
+	 *
+	 * @param color the new background color
 	 */
 	public void setBackgroundColor(int color){
 		headerView.setBackgroundColor(color);
 	}
 
 	/**
-	 * 
-	 * 描述：获取Header ProgressBar，用于设置自定义样式
-	 * @return
+	 * 描述：获取Header ProgressBar，用于设置自定义样式.
+	 *
+	 * @return the header progress bar
 	 */
 	public ProgressBar getHeaderProgressBar() {
 		return headerProgressBar;
 	}
 
 	/**
-	 * 
-	 * 描述：设置Header ProgressBar样式
-	 * @return
+	 * 描述：设置Header ProgressBar样式.
+	 *
+	 * @param indeterminateDrawable the new header progress bar drawable
 	 */
 	public void setHeaderProgressBarDrawable(Drawable indeterminateDrawable) {
 		headerProgressBar.setIndeterminateDrawable(indeterminateDrawable);
 	}
 
 	/**
-	 * 
-	 * 描述：得到当前状态
-	 * @return
+	 * 描述：得到当前状态.
+	 *
+	 * @return the state
 	 */
     public int getState(){
         return mState;

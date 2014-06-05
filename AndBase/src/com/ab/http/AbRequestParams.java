@@ -33,13 +33,13 @@ import org.apache.http.protocol.HTTP;
 
 // TODO: Auto-generated Javadoc
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbRequestParams.java 
  * 描述：Http请求参数
+ *
  * @author 还如一梦中
- * @date：2013-11-13 上午10:28:55
  * @version v1.0
+ * @date：2013-11-13 上午10:28:55
  */
 public class AbRequestParams {
 
@@ -51,6 +51,9 @@ public class AbRequestParams {
     
     /** 文件参数. */
     protected ConcurrentHashMap<String, FileWrapper> fileParams;
+    
+    /** 流常量. */
+    private static final String APPLICATION_OCTET_STREAM = "application/octet-stream";
 
     /**
      * 构造一个空的请求参数.
@@ -60,8 +63,9 @@ public class AbRequestParams {
     }
 
     /**
-     * 用一个map构造请求参数
-     * @param source
+     * 用一个map构造请求参数.
+     *
+     * @param source the source
      */
     public AbRequestParams(Map<String, String> source) {
         init();
@@ -72,9 +76,10 @@ public class AbRequestParams {
     }
 
     /**
-     * 用一个key和value构造请求参数
-     * @param key
-     * @param value
+     * 用一个key和value构造请求参数.
+     *
+     * @param key the key
+     * @param value the value
      */
     public AbRequestParams(String key, String value) {
         init();
@@ -92,8 +97,9 @@ public class AbRequestParams {
 
     /**
      * 增加一对请求参数.
-     * @param key
-     * @param value
+     *
+     * @param key the key
+     * @param value the value
      */
     public void put(String key, String value) {
         if (key != null && value != null) {
@@ -103,8 +109,9 @@ public class AbRequestParams {
     
     /**
      * 增加一个文件域.
-     * @param key
-     * @param value
+     *
+     * @param key the key
+     * @param file the file
      * @param contentType the content type of the file, eg. application/json
      */
     public void put(String key, File file,String contentType) {
@@ -115,17 +122,19 @@ public class AbRequestParams {
     
     /**
      * 增加一个文件域.
-     * @param key
-     * @param file
+     *
+     * @param key the key
+     * @param file the file
      */
     public void put(String key, File file) {
-    	put(key,file,"application/octet-stream");
+    	put(key,file,APPLICATION_OCTET_STREAM);
     }
     
     
     /**
      * 删除一个请求参数.
-     * @param key.
+     *
+     * @param key the key
      */
     public void remove(String key) {
         urlParams.remove(key);
@@ -133,7 +142,9 @@ public class AbRequestParams {
     }
 
     /**
-     * 描述：转换为参数字符串
+     * 描述：转换为参数字符串.
+     *
+     * @return the string
      */
     @Override
     public String toString() {
@@ -173,9 +184,10 @@ public class AbRequestParams {
     
    /**
     * 获取HttpEntity.
-    * @param responseListener
-    * @return
-    * @throws IOException
+    *
+    * @param responseListener the response listener
+    * @return the entity
+    * @throws IOException Signals that an I/O exception has occurred.
     */
     public HttpEntity getEntity(AbHttpResponseListener responseListener) throws IOException {
         if (fileParams.isEmpty()) {
@@ -198,11 +210,11 @@ public class AbRequestParams {
     }
     
     /**
-     * 
-     * 描述：创建文件域HttpEntity
-     * @param responseListener
-     * @return
-     * @throws IOException
+     * 描述：创建文件域HttpEntity.
+     *
+     * @param responseListener the response listener
+     * @return the http entity
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     private HttpEntity createMultipartEntity(AbHttpResponseListener responseListener) throws IOException {
         AbMultipartEntity entity = new AbMultipartEntity(responseListener);
@@ -222,16 +234,18 @@ public class AbRequestParams {
     }
 
     /**
-     * 获取url参数
-     * @return
+     * 获取url参数.
+     *
+     * @return the url params
      */
 	public ConcurrentHashMap<String, String> getUrlParams() {
 		return urlParams;
 	}
 
 	/**
-	 * 设置url参数
-	 * @param urlParams
+	 * 设置url参数.
+	 *
+	 * @param urlParams the url params
 	 */
 	public void setUrlParams(ConcurrentHashMap<String, String> urlParams) {
 		this.urlParams = urlParams;

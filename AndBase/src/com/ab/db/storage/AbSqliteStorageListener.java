@@ -19,13 +19,13 @@ import java.util.List;
 
 // TODO: Auto-generated Javadoc
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbSqliteStorageListener.java 
  * 描述：数据操作结构监听器
+ *
  * @author 还如一梦中
- * @date：2013-10-16 下午1:33:39
  * @version v1.0
+ * @date：2013-10-16 下午1:33:39
  */
 public class AbSqliteStorageListener {
 

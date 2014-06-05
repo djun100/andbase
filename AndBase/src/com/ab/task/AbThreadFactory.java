@@ -26,14 +26,16 @@ import java.util.concurrent.atomic.AtomicInteger;
 import android.os.Process;
 
 import com.ab.util.AbAppUtil;
+// TODO: Auto-generated Javadoc
+
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbThreadFactory.java 
  * 描述：线程工厂.
+ *
  * @author 还如一梦中
- * @date：2011-11-10 下午11:52:13
  * @version v1.0
+ * @date：2011-11-10 下午11:52:13
  */
 public class AbThreadFactory {
 	
@@ -63,8 +65,10 @@ public class AbThreadFactory {
             new LinkedBlockingQueue<Runnable>(10);
     
     /**
-	 * 获取执行器.
-	 */
+     * 获取执行器.
+     *
+     * @return the executor service
+     */
     public static Executor getExecutorService() { 
         if (mExecutorService == null) { 
         	int numCores = AbAppUtil.getNumCores();

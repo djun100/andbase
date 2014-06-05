@@ -21,18 +21,20 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 
 // TODO: Auto-generated Javadoc
+
 /**
+ * © 2012 amsoft.cn
+ * 名称：AbUnSlideViewPager.java 
  * 描述：不能滑动的ViewPager.
  *
  * @author 还如一梦中
- * @date：2013-5-17 下午6:46:29
  * @version v1.0
+ * @date：2013-05-17 下午6:46:29
  */
 public class AbUnSlideViewPager extends ViewPager {
 
 	/** The enabled. */
 	private boolean enabled;
-
 	
 	/**
 	 * Instantiates a new ab un slide view pager.
@@ -74,12 +76,12 @@ public class AbUnSlideViewPager extends ViewPager {
 	/**
 	 * 描述：TODO.
 	 *
+	 * @version v1.0
 	 * @param event the event
 	 * @return true, if successful
 	 * @see android.support.v4.view.ViewPager#onInterceptTouchEvent(android.view.MotionEvent)
 	 * @author: amsoft.cn
 	 * @date：2013-6-17 上午9:04:50
-	 * @version v1.0
 	 */
 	@Override
 	public boolean onInterceptTouchEvent(MotionEvent event) {

@@ -26,13 +26,13 @@ import com.ab.bitmap.AbImageDownloader;
 
 // TODO: Auto-generated Javadoc
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbNetworkImageView.java 
  * 描述：根据url下载图片的网络ImageView
+ *
  * @author 还如一梦中
- * @date：2013-11-12 上午10:09:55
  * @version v1.0
+ * @date：2013-11-12 上午10:09:55
  */
 public class AbNetworkImageView extends ImageView {
 	
@@ -113,11 +113,17 @@ public class AbNetworkImageView extends ImageView {
     }
 
     /**
-     * 描述：TODO
+     * 描述：TODO.
+     *
+     * @version v1.0
+     * @param changed the changed
+     * @param left the left
+     * @param top the top
+     * @param right the right
+     * @param bottom the bottom
      * @see android.view.View#onLayout(boolean, int, int, int, int)
      * @author: amsoft.cn
      * @date：2013-11-12 下午3:12:06
-     * @version v1.0
      */
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
@@ -126,11 +132,12 @@ public class AbNetworkImageView extends ImageView {
     }
 
     /**
-     * 描述：TODO
+     * 描述：TODO.
+     *
+     * @version v1.0
      * @see android.view.View#onDetachedFromWindow()
      * @author: amsoft.cn
      * @date：2013-11-12 下午3:12:06
-     * @version v1.0
      */
     @Override
     protected void onDetachedFromWindow() {
@@ -138,11 +145,12 @@ public class AbNetworkImageView extends ImageView {
     }
 
     /**
-     * 描述：TODO
+     * 描述：TODO.
+     *
+     * @version v1.0
      * @see android.widget.ImageView#drawableStateChanged()
      * @author: amsoft.cn
      * @date：2013-11-12 下午3:12:06
-     * @version v1.0
      */
     @Override
     protected void drawableStateChanged() {

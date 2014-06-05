@@ -21,8 +21,13 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 
+	// TODO: Auto-generated Javadoc
+/**
+	 * The Class SlidingFragmentActivity.
+	 */
 	public class SlidingFragmentActivity extends FragmentActivity implements SlidingActivityBase { 
 
+	/** The m helper. */
 	private SlidingActivityHelper mHelper;
 
 	/* (non-Javadoc)

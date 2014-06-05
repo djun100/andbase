@@ -30,19 +30,22 @@ import com.ab.global.AbAppData;
 import com.ab.util.AbGraphical;
 
 // TODO: Auto-generated Javadoc
+
 /**
+ * © 2012 amsoft.cn
+ * 名称：AbMonitorView.java 
  * 描述：阻塞测试View(显示页面停留时间，测试主界面阻塞情况).
- * 
+ *
  * @author 还如一梦中
- * @date：2013-1-15 下午2:50:44
  * @version v1.0
+ * @date：2013-8-23 下午2:03:29
  */
 public class AbMonitorView extends View  {
 	
-	/** The tag. */
+	/** 日志标记. */
 	private static String TAG = "AbMonitorView";
 	
-	/** 日志标记. */
+	/** 日志标记开关. */
 	private static final boolean D = AbAppData.DEBUG;
 
 	/** The m start time. */
@@ -84,11 +87,11 @@ public class AbMonitorView extends View  {
 	/**
 	 * 描述：TODO.
 	 *
+	 * @version v1.0
 	 * @param canvas the canvas
 	 * @see android.view.View#onDraw(android.graphics.Canvas)
 	 * @author: amsoft.cn
 	 * @date：2013-6-17 上午9:04:49
-	 * @version v1.0
 	 */
 	@Override
 	protected void onDraw(Canvas canvas) {

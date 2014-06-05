@@ -20,13 +20,13 @@ import android.database.sqlite.SQLiteDatabase;
 
 // TODO: Auto-generated Javadoc
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbSDDBHelper.java 
  * 描述：SD卡中保存数据库辅助类
+ *
  * @author 还如一梦中
- * @date：2013-7-23 上午9:47:10
  * @version v1.0
+ * @date：2013-7-23 上午9:47:10
  */
 public class AbSDDBHelper extends AbSDSQLiteOpenHelper {
 	

@@ -32,13 +32,13 @@ import com.ab.model.AbDisplayMetrics;
 
 // TODO: Auto-generated Javadoc
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbViewUtil.java 
  * 描述：View工具类.
+ *
  * @author 还如一梦中
- * @date：2013-01-17 下午11:52:13
  * @version v1.0
+ * @date：2013-01-17 下午11:52:13
  */
 
 public class AbViewUtil {
@@ -67,13 +67,11 @@ public class AbViewUtil {
 
 	/**
 	 * 描述：获取AbsListView的高度.
-	 * 
-	 * @param absListView
-	 *            the abs list view
-	 * @param lineNumber
-	 *            每行几个 ListView一行一个item
-	 * @param verticalSpace
-	 *            the vertical space
+	 *
+	 * @param absListView            the abs list view
+	 * @param lineNumber            每行几个 ListView一行一个item
+	 * @param verticalSpace            the vertical space
+	 * @return the abs list view height
 	 */
 	public static int getAbsListViewHeight(AbsListView absListView,
 			int lineNumber, int verticalSpace) {
@@ -150,13 +148,11 @@ public class AbViewUtil {
 	}
 
 	/**
-	 * 
-	 * 描述：dip转换为px
-	 * 
-	 * @param context
-	 * @param dipValue
-	 * @return
-	 * @throws
+	 * 描述：dip转换为px.
+	 *
+	 * @param context the context
+	 * @param dipValue the dip value
+	 * @return the int
 	 */
 	public static int dip2px(Context context, float dipValue) {
 		final float scale = context.getResources().getDisplayMetrics().density;
@@ -164,13 +160,11 @@ public class AbViewUtil {
 	}
 
 	/**
-	 * 
-	 * 描述：px转换为dip
-	 * 
-	 * @param context
-	 * @param pxValue
-	 * @return
-	 * @throws
+	 * 描述：px转换为dip.
+	 *
+	 * @param context the context
+	 * @param pxValue the px value
+	 * @return the int
 	 */
 	public static int px2dip(Context context, float pxValue) {
 		final float scale = context.getResources().getDisplayMetrics().density;
@@ -179,11 +173,10 @@ public class AbViewUtil {
 
 	/**
 	 * 描述：根据屏幕大小缩放.
-	 * 
-	 * @param screenWidth
-	 * @param screenHeight
-	 * @param size
-	 * @return
+	 *
+	 * @param context the context
+	 * @param pxValue the px value
+	 * @return the int
 	 */
 	public static int resize(Context context, float pxValue) {
 		AbDisplayMetrics mDisplayMetrics = AbAppUtil.getDisplayMetrics(context);
@@ -193,11 +186,11 @@ public class AbViewUtil {
 
 	/**
 	 * 描述：根据屏幕大小缩放.
-	 * 
-	 * @param screenWidth
-	 * @param screenHeight
-	 * @param size
-	 * @return
+	 *
+	 * @param displayWidth the display width
+	 * @param displayHeight the display height
+	 * @param pxValue the px value
+	 * @return the int
 	 */
 	public static int resize(int displayWidth, int displayHeight, float pxValue) {
 		float scale = 1;
@@ -211,7 +204,11 @@ public class AbViewUtil {
 	}
 
 	/**
-	 * 适配大小
+	 * 适配大小.
+	 *
+	 * @param context the context
+	 * @param pxSize the px size
+	 * @return the dip size
 	 */
 	public static float getDipSize(Context context, float pxSize) {
 		Resources mResources = context.getResources();
@@ -220,7 +217,10 @@ public class AbViewUtil {
 	}
 
 	/**
-	 * 适配大小
+	 * 适配大小.
+	 *
+	 * @param pxSize the px size
+	 * @return the dip size
 	 */
 	public static float getDipSize(float pxSize) {
 		Resources mResources = Resources.getSystem();
@@ -228,6 +228,16 @@ public class AbViewUtil {
 				mResources.getDisplayMetrics());
 	}
 
+	/**
+	 * Sets the padding.
+	 *
+	 * @param context the context
+	 * @param view the view
+	 * @param left the left
+	 * @param top the top
+	 * @param right the right
+	 * @param bottom the bottom
+	 */
 	public static void setPadding(Context context, View view, int left,
 			int top, int right, int bottom) {
 		int paramLeft = resize(context, left);
@@ -237,6 +247,16 @@ public class AbViewUtil {
 		view.setPadding(paramLeft, paramTop, paramRight, paramBottom);
 	}
 
+	/**
+	 * Sets the margin.
+	 *
+	 * @param context the context
+	 * @param view the view
+	 * @param left the left
+	 * @param top the top
+	 * @param right the right
+	 * @param bottom the bottom
+	 */
 	public static void setMargin(Context context, View view, int left, int top,
 			int right, int bottom) {
 		int paramLeft = resize(context, left);

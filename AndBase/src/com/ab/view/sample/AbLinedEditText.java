@@ -24,20 +24,30 @@ import android.util.AttributeSet;
 import android.widget.EditText;
 
 //TODO: Auto-generated Javadoc
-/**
-* 
-* © 2012 amsoft.cn
-* AbLinedEditText.java
-* 带下横线的EditText
-* @author 还如一梦中
-* @date 2013-11-12 10:09:55
-* @version v1.0
-*/
 
+/**
+ * © 2012 amsoft.cn
+ * 名称：AbLinedEditText.java 
+ * 描述：带下横线的EditText
+ *
+ * @author 还如一梦中
+ * @version v1.0
+ * @date：2013-10-24 下午1:39:31
+ */
 public  class AbLinedEditText extends EditText {
+  
+  /** The m rect. */
   private Rect mRect;
+  
+  /** The m paint. */
   private Paint mPaint;
 
+  /**
+   * Instantiates a new ab lined edit text.
+   *
+   * @param context the context
+   * @param attrs the attrs
+   */
   public AbLinedEditText(Context context, AttributeSet attrs) {
       super(context, attrs);
       mRect = new Rect();
@@ -46,6 +56,9 @@ public  class AbLinedEditText extends EditText {
       mPaint.setColor(0x800000FF);
   }
   
+  /* (non-Javadoc)
+   * @see android.widget.TextView#onDraw(android.graphics.Canvas)
+   */
   @Override
   protected void onDraw(Canvas canvas) {
       int count = getLineCount();

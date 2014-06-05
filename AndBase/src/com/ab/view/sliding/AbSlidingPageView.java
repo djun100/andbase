@@ -41,11 +41,15 @@ import android.view.ViewGroup;
 import android.widget.Scroller;
 
 // TODO: Auto-generated Javadoc
+
 /**
- * 描述：页面滚动切换,实现焦点触发和Touch，适用于电视开发
+ * © 2012 amsoft.cn
+ * 名称：AbSlidingPageView.java 
+ * 描述：页面滚动切换,实现焦点触发和Touch，适用于电视开发.
+ *
  * @author 还如一梦中
- * @date：2014-4-10 下午3:46:47
  * @version v1.0
+ * @date：2013-05-17 下午6:46:29
  */
 public class AbSlidingPageView extends ViewGroup {
 	
@@ -100,6 +104,12 @@ public class AbSlidingPageView extends ViewGroup {
 
 	/**
 	 * 描述：View的位置设定.
+	 *
+	 * @param changed the changed
+	 * @param l the l
+	 * @param t the t
+	 * @param r the r
+	 * @param b the b
 	 */
 	@Override
 	protected void onLayout(boolean changed, int l, int t, int r, int b) {
@@ -218,7 +228,8 @@ public class AbSlidingPageView extends ViewGroup {
 
 	/**
 	 * 设置主View.
-	 * @param view
+	 *
+	 * @param view the view
 	 */
 	public void addContentView(View view) {
 		addView(view,0, getLayoutParams());
@@ -247,7 +258,8 @@ public class AbSlidingPageView extends ViewGroup {
 	
 	/**
 	 * 设置下一个View.
-	 * @param view
+	 *
+	 * @param view the view
 	 */
 	public void addNextView(View view) {
 		addView(view,1, getLayoutParams());
@@ -274,26 +286,38 @@ public class AbSlidingPageView extends ViewGroup {
 		});
 	}
 
+	/**
+	 * Gets the next view offset.
+	 *
+	 * @return the next view offset
+	 */
 	public int getNextViewOffset() {
 		return nextViewOffset;
 	}
 
 	/**
-	 * 设置遮挡距离
-	 * @param nextViewOffset
+	 * 设置遮挡距离.
+	 *
+	 * @param nextViewOffset the new next view offset
 	 */
 	public void setNextViewOffset(int nextViewOffset) {
 		this.nextViewOffset = nextViewOffset;
 	}
 
 	
+	/**
+	 * Gets the on page change listener.
+	 *
+	 * @return the on page change listener
+	 */
 	public OnPageChangeListener getOnPageChangeListener() {
 		return onPageChangeListener;
 	}
 
     /**
-     * 设置页面改变监听器
-     * @param onPageChangeListener
+     * 设置页面改变监听器.
+     *
+     * @param onPageChangeListener the new on page change listener
      */
 	public void setOnPageChangeListener(OnPageChangeListener onPageChangeListener) {
 		this.onPageChangeListener = onPageChangeListener;

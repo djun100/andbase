@@ -47,13 +47,13 @@ import com.ab.global.AbAppData;
 // TODO: Auto-generated Javadoc
 
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbFileUtil.java 
  * 描述：文件操作类.
+ *
  * @author 还如一梦中
- * @date：2013-01-18 下午11:52:13
  * @version v1.0
+ * @date：2013-01-18 下午11:52:13
  */
 public class AbFileUtil {
 	
@@ -72,16 +72,16 @@ public class AbFileUtil {
     /** 默认下载文件地址. */
 	private static  String downPathFileDir = downPathRootDir + "cache_files" + File.separator;
 	
-	/**MB  单位B*/
+	/** MB  单位B. */
 	private static int MB = 1024*1024;
 	
-	/** 设置好的图片存储目录*/
+	/**  设置好的图片存储目录. */
 	private static String imageDownFullDir = null;
 	
-	/** 设置好的文件存储目录*/
+	/**  设置好的文件存储目录. */
 	private static String fileDownFullDir = null;
 	
-    /**剩余空间大于200M才使用缓存*/
+    /** 剩余空间大于200M才使用缓存. */
 	private static int freeSdSpaceNeededToCache = 200*MB;
 	
 	static{
@@ -91,7 +91,9 @@ public class AbFileUtil {
 	
 	/**
 	 * 下载网络文件到SD卡中.如果SD中存在同名文件将不再下载
+	 *
 	 * @param url 要下载文件的网络地址
+	 * @param dirPath the dir path
 	 * @return 下载好的本地文件地址
 	 */
 	 public static String downFileToSD(String url,String dirPath){
@@ -491,10 +493,11 @@ public class AbFileUtil {
     }
 	
 	/**
-     * 获取真实文件名（xx.后缀），通过网络获取.
-     * @param connection 连接
-     * @return 文件名
-     */
+	 * 获取真实文件名（xx.后缀），通过网络获取.
+	 *
+	 * @param response the response
+	 * @return 文件名
+	 */
     public static String getRealFileName(HttpResponse response){
         String name = null;
         try {
@@ -517,7 +520,8 @@ public class AbFileUtil {
     }
     
     /**
-     * 获取文件名（不含后缀）
+     * 获取文件名（不含后缀）.
+     *
      * @param url 文件地址
      * @return 文件名
      */
@@ -536,10 +540,12 @@ public class AbFileUtil {
     
 	
 	/**
-     * 获取文件名（.后缀），外链模式和通过网络获取.
-     * @param url 文件地址
-     * @return 文件名
-     */
+	 * 获取文件名（.后缀），外链模式和通过网络获取.
+	 *
+	 * @param url 文件地址
+	 * @param response the response
+	 * @return 文件名
+	 */
     public static String getCacheFileNameFromUrl(String url,HttpResponse response){
         if(AbStrUtil.isEmpty(url)){
             return null;
@@ -561,7 +567,9 @@ public class AbFileUtil {
 	
 	/**
 	 * 获取文件名（.后缀），外链模式和通过网络获取.
+	 *
 	 * @param url 文件地址
+	 * @param connection the connection
 	 * @return 文件名
 	 */
 	public static String getCacheFileNameFromUrl(String url,HttpURLConnection connection){
@@ -585,7 +593,9 @@ public class AbFileUtil {
 	
 	/**
 	 * 获取文件后缀，本地.
+	 *
 	 * @param url 文件地址
+	 * @param connection the connection
 	 * @return 文件后缀
 	 */
 	public static String getMIMEFromUrl(String url,HttpURLConnection connection){
@@ -616,10 +626,12 @@ public class AbFileUtil {
     }
 	
 	/**
-     * 获取文件后缀，本地和网络.
-     * @param url 文件地址
-     * @return 文件后缀
-     */
+	 * 获取文件后缀，本地和网络.
+	 *
+	 * @param url 文件地址
+	 * @param response the response
+	 * @return 文件后缀
+	 */
     public static String getMIMEFromUrl(String url,HttpResponse response){
         
         if(AbStrUtil.isEmpty(url)){
@@ -836,7 +848,9 @@ public class AbFileUtil {
 	
 	
    /**
-    * 初始化缓存
+    * 初始化缓存.
+    *
+    * @return true, if successful
     */
     public static boolean initFileCache() {
     	
@@ -867,10 +881,12 @@ public class AbFileUtil {
     }
 	
 	/**
-    * 释放部分文件，
-    * 当文件总大小大于规定的AbFileCache.maxCacheSize或者sdcard剩余空间小于FREE_SD_SPACE_NEEDED_TO_CACHE的规定
-    * 那么删除40%最近没有被使用的文件
-    */
+	 * 释放部分文件，
+	 * 当文件总大小大于规定的AbFileCache.maxCacheSize或者sdcard剩余空间小于FREE_SD_SPACE_NEEDED_TO_CACHE的规定
+	 * 那么删除40%最近没有被使用的文件
+	 *
+	 * @return true, if successful
+	 */
     public static boolean freeCacheFiles() {
     	
        try {
@@ -903,7 +919,9 @@ public class AbFileUtil {
 	
     
     /**
-     * 计算sdcard上的剩余空间
+     * 计算sdcard上的剩余空间.
+     *
+     * @return the int
      */
     public static int freeSpaceOnSD() {
        StatFs stat = new StatFs(Environment.getExternalStorageDirectory().getPath());
@@ -912,9 +930,13 @@ public class AbFileUtil {
     }
 	
     /**
-     * 根据文件的最后修改时间进行排序
+     * 根据文件的最后修改时间进行排序.
      */
     public static class FileLastModifSort implements Comparator<File> {
+        
+        /* (non-Javadoc)
+         * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
+         */
         public int compare(File arg0, File arg1) {
             if (arg0.lastModified() > arg1.lastModified()) {
                 return 1;
@@ -927,28 +949,28 @@ public class AbFileUtil {
     }
 
 	/**
-	 * 
-	 * 描述：剩余空间大于多少B才使用缓存
-	 * @return
-	 * @throws 
+	 * 描述：剩余空间大于多少B才使用缓存.
+	 *
+	 * @return the free sd space needed to cache
 	 */
 	public static int getFreeSdSpaceNeededToCache() {
 		return freeSdSpaceNeededToCache;
 	}
 
 	/**
-	 * 
-	 * 描述：剩余空间大于多少B才使用缓存
-	 * @param freeSdSpaceNeededToCache
-	 * @throws 
+	 * 描述：剩余空间大于多少B才使用缓存.
+	 *
+	 * @param freeSdSpaceNeededToCache the new free sd space needed to cache
 	 */
 	public static void setFreeSdSpaceNeededToCache(int freeSdSpaceNeededToCache) {
 		AbFileUtil.freeSdSpaceNeededToCache = freeSdSpaceNeededToCache;
 	}
 	
 	/**
-     * 删除所有缓存文件
-    */
+	 * 删除所有缓存文件.
+	 *
+	 * @return true, if successful
+	 */
     public static boolean removeAllFileCache() {
     	
        try {
@@ -974,12 +996,12 @@ public class AbFileUtil {
     
     
     /**
-     * 
-     * 描述：读取Assets目录的文件内容
-     * @param context
-     * @param name
-     * @return
-     * @throws 
+     * 描述：读取Assets目录的文件内容.
+     *
+     * @param context the context
+     * @param name the name
+     * @param encoding the encoding
+     * @return the string
      */
     public static String readAssetsByName(Context context,String name,String encoding){
     	String text = null;
@@ -1012,12 +1034,12 @@ public class AbFileUtil {
     }
     
     /**
-     * 
-     * 描述：读取Raw目录的文件内容
-     * @param context
-     * @param id
-     * @return
-     * @throws 
+     * 描述：读取Raw目录的文件内容.
+     *
+     * @param context the context
+     * @param id the id
+     * @param encoding the encoding
+     * @return the string
      */
     public static String readRawByName(Context context,int id,String encoding){
     	String text = null;
@@ -1049,18 +1071,38 @@ public class AbFileUtil {
         return text;
     }
 
+	/**
+	 * Gets the image down full dir.
+	 *
+	 * @return the image down full dir
+	 */
 	public static String getImageDownFullDir() {
 		return imageDownFullDir;
 	}
 
+	/**
+	 * Sets the image down full dir.
+	 *
+	 * @param imageDownFullDir the new image down full dir
+	 */
 	public static void setImageDownFullDir(String imageDownFullDir) {
 		AbFileUtil.imageDownFullDir = imageDownFullDir;
 	}
 
+	/**
+	 * Gets the file down full dir.
+	 *
+	 * @return the file down full dir
+	 */
 	public static String getFileDownFullDir() {
 		return fileDownFullDir;
 	}
 
+	/**
+	 * Sets the file down full dir.
+	 *
+	 * @param fileDownFullDir the new file down full dir
+	 */
 	public static void setFileDownFullDir(String fileDownFullDir) {
 		AbFileUtil.fileDownFullDir = fileDownFullDir;
 	}

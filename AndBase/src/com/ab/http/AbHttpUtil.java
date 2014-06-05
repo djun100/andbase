@@ -17,21 +17,22 @@ package com.ab.http;
 
 import android.content.Context;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbHttpUtil.java 
  * 描述：Http执行工具类，可处理get，post，以及异步处理文件的上传下载
+ *
  * @author 还如一梦中
- * @date：2013-10-22 下午4:15:52
  * @version v1.0
+ * @date：2013-10-22 下午4:15:52
  */
 public class AbHttpUtil {
 	
 	/** 上下文. */
 	private Context mContext;
 
-	/**实例话对象*/
+	/** 实例话对象. */
 	private AbHttpClient client = null;
 	
 	/** 工具类. */
@@ -69,6 +70,11 @@ public class AbHttpUtil {
 	    return mAbHttpUtil;
 	}
 	
+	/**
+	 * Instantiates a new ab http util.
+	 *
+	 * @param context the context
+	 */
 	private AbHttpUtil(Context context) {
 		super();
 		this.mContext = context;
@@ -77,23 +83,21 @@ public class AbHttpUtil {
 	
 
 	/**
-	 * 
-	 * 描述：无参数的get请求
-	 * @param url
-	 * @param responseHandler
-	 * @throws 
+	 * 描述：无参数的get请求.
+	 *
+	 * @param url the url
+	 * @param responseListener the response listener
 	 */
 	public void get(String url, AbHttpResponseListener responseListener) {
 		client.get(url, responseListener);
 	}
 
 	/**
-	 * 
-	 * 描述：带参数的get请求
-	 * @param url
-	 * @param params
-	 * @param responseHandler
-	 * @throws 
+	 * 描述：带参数的get请求.
+	 *
+	 * @param url the url
+	 * @param params the params
+	 * @param responseListener the response listener
 	 */
 	public void get(String url, AbRequestParams params,
 			AbHttpResponseListener responseListener) {
@@ -102,22 +106,21 @@ public class AbHttpUtil {
 	
 	/**
 	 *  
-	 * 描述：下载数据使用，会返回byte数据(下载文件或图片)
-	 * @param url
-	 * @param responseHandler
-	 * @throws 
+	 * 描述：下载数据使用，会返回byte数据(下载文件或图片).
+	 *
+	 * @param url the url
+	 * @param responseListener the response listener
 	 */
 	public void get(String url, AbBinaryHttpResponseListener responseListener) {
 		client.get(url, responseListener);
 	}
 	
 	/**
-	 * 
-	 * 描述：文件下载的get
-	 * @param url
-	 * @param params
-	 * @param responseHandler
-	 * @throws 
+	 * 描述：文件下载的get.
+	 *
+	 * @param url the url
+	 * @param params the params
+	 * @param responseListener the response listener
 	 */
 	public void get(String url, AbRequestParams params,
 			AbFileHttpResponseListener responseListener) {
@@ -126,11 +129,10 @@ public class AbHttpUtil {
 	
 	
 	/**
-	 * 
-	 * 描述：无参数的post请求
-	 * @param url
-	 * @param responseHandler
-	 * @throws 
+	 * 描述：无参数的post请求.
+	 *
+	 * @param url the url
+	 * @param responseListener the response listener
 	 */
 	public void post(String url, AbHttpResponseListener responseListener) {
 		client.post(url, responseListener);
@@ -138,12 +140,11 @@ public class AbHttpUtil {
 	
 	
 	/**
-	 * 
-	 * 描述：带参数的post请求
-	 * @param url
-	 * @param params
-	 * @param responseHandler
-	 * @throws 
+	 * 描述：带参数的post请求.
+	 *
+	 * @param url the url
+	 * @param params the params
+	 * @param responseListener the response listener
 	 */
 	public void post(String url, AbRequestParams params,
 			AbHttpResponseListener responseListener) {
@@ -152,12 +153,11 @@ public class AbHttpUtil {
 	
 	
 	/**
-	 * 
-	 * 描述：文件下载的post
-	 * @param url
-	 * @param params
-	 * @param responseHandler
-	 * @throws 
+	 * 描述：文件下载的post.
+	 *
+	 * @param url the url
+	 * @param params the params
+	 * @param responseListener the response listener
 	 */
 	public void post(String url, AbRequestParams params,
 			AbFileHttpResponseListener responseListener) {
@@ -165,20 +165,18 @@ public class AbHttpUtil {
 	}
 	
 	/**
-	 * 
-	 * 描述：设置连接超时时间
+	 * 描述：设置连接超时时间.
+	 *
 	 * @param timeout 毫秒
-	 * @throws 
 	 */
 	public void setTimeout(int timeout) {
 		client.setTimeout(timeout);
 	}
 	
 	/**
-	 * 
-	 * 描述：设置调试模式
+	 * 描述：设置调试模式.
+	 *
 	 * @param debug 开关
-	 * @throws 
 	 */
 	public void setDebug(boolean debug) {
 		client.setDebug(debug);

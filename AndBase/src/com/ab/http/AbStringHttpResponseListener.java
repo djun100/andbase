@@ -17,13 +17,13 @@ package com.ab.http;
 
 // TODO: Auto-generated Javadoc
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbStringHttpResponseListener.java 
  * 描述：Http字符串响应监听器
+ *
  * @author 还如一梦中
- * @date：2013-11-13 上午9:00:52
  * @version v1.0
+ * @date：2013-11-13 上午9:00:52
  */
 public class AbStringHttpResponseListener extends AbHttpResponseListener{
 	
@@ -31,7 +31,7 @@ public class AbStringHttpResponseListener extends AbHttpResponseListener{
     private static final String TAG = "AbStringHttpResponseListener";
 	
     /**
-     * 构造
+     * 构造.
      */
 	public AbStringHttpResponseListener() {
 		super();
@@ -39,12 +39,18 @@ public class AbStringHttpResponseListener extends AbHttpResponseListener{
 
 	/**
 	 * 描述：获取数据成功会调用这里.
+	 *
+	 * @param statusCode the status code
+	 * @param content the content
 	 */
     public void onSuccess(int statusCode,String content) {};
     
     
     /**
      * 成功消息.
+     *
+     * @param statusCode the status code
+     * @param content the content
      */
     public void sendSuccessMessage(int statusCode,String content){
     	sendMessage(obtainMessage(AbHttpUtil.SUCCESS_MESSAGE, new Object[]{statusCode, content}));

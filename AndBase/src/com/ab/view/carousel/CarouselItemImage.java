@@ -23,13 +23,13 @@ import android.util.Log;
 import android.widget.ImageView;
 // TODO: Auto-generated Javadoc
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：CarouselItemImage.java 
  * 描述：旋转木马的图片View
+ *
  * @author 还如一梦中
- * @date：2013-8-23 下午2:01:42
  * @version v1.0
+ * @date：2013-8-23 下午2:01:42
  */
 public class CarouselItemImage extends ImageView 
 	implements Comparable<CarouselItemImage> {
@@ -108,11 +108,14 @@ public class CarouselItemImage extends ImageView
 	}
 
 	/**
-	 * 描述：TODO
+	 * 描述：TODO.
+	 *
+	 * @version v1.0
+	 * @param another the another
+	 * @return the int
 	 * @see java.lang.Comparable#compareTo(java.lang.Object)
 	 * @author: amsoft.cn
 	 * @date：2013-11-28 上午11:14:34
-	 * @version v1.0
 	 */
 	public int compareTo(CarouselItemImage another) {
 		return (int)(another.itemZ - this.itemZ);

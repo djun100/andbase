@@ -31,13 +31,13 @@ import com.ab.task.AbTaskQueue;
 // TODO: Auto-generated Javadoc
 
 /**
- * 
  * © 2012 amsoft.cn
  * 名称：AbSqliteStorage.java 
  * 描述：数据库对象操作类
+ *
  * @author 还如一梦中
- * @date：2013-10-16 下午1:33:39
  * @version v1.0
+ * @date：2013-10-16 下午1:33:39
  */
 public class AbSqliteStorage {
 	
