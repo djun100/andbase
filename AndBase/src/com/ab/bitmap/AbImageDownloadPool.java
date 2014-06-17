@@ -104,17 +104,17 @@ public class AbImageDownloadPool{
 	    				if(runnable != null){
 	    					
 	    	            	//线程等待通知后显示
-    	                	if(D) Log.d(TAG, "线程等待:"+item.imageUrl+","+cacheKey);
+    	                	//if(D) Log.d(TAG, "线程等待:"+item.imageUrl+","+cacheKey);
     	                	AbImageCache.addToWaitRunnableCache(cacheKey, this);
     	                	synchronized(this){
     	                		this.wait();
     	                	}
-    	                	if(D) Log.d(TAG, "线程被唤醒:"+item.imageUrl);
+    	                	//if(D) Log.d(TAG, "线程被唤醒:"+item.imageUrl);
     	    				//直接获取
     	    				item.bitmap =  AbImageCache.getBitmapFromCache(cacheKey);
 	    				}else{
 	    					//增加下载中的线程记录
-	    					if(D) Log.d(TAG, "从内存取或者下载:"+item.imageUrl+","+cacheKey);
+	    					//if(D) Log.d(TAG, "从内存取或者下载:"+item.imageUrl+","+cacheKey);
 	    					AbImageCache.addToRunRunnableCache(cacheKey, this);
     	    				item.bitmap = AbFileUtil.getBitmapFromSDCache(item.imageUrl,item.type,item.width,item.height);
     	    				//增加到下载完成的缓存，删除下载中的记录和等待的记录，同时唤醒所有等待列表中key与其key相同的线程
@@ -136,7 +136,7 @@ public class AbImageDownloadPool{
 	    	});  
     		
     	}else{
-    		if(D) Log.d(TAG, "从内存缓存中得到图片:"+cacheKey+","+item.bitmap);
+    		//if(D) Log.d(TAG, "从内存缓存中得到图片:"+cacheKey+","+item.bitmap);
     		if (item.getListener() != null) { 
                 Message msg = handler.obtainMessage(); 
                 msg.obj = item; 

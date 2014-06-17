@@ -55,6 +55,9 @@ public class AbHttpUtil {
     
     /** 重试. */
     public static final int RETRY_MESSAGE = 5;
+    
+    /** 通用证书. 如果要求HTTPS连接，则使用SSL打开连接*/
+    private boolean easySSLEnabled = true;
 	
 	/**
 	 * 描述：获取实例.
@@ -181,5 +184,15 @@ public class AbHttpUtil {
 	public void setDebug(boolean debug) {
 		client.setDebug(debug);
 	}
+	
+
+    /**
+     * 打开ssl 自签名
+     * @param enabled
+     */
+    public void setEasySSLEnabled(boolean enabled){
+        this.easySSLEnabled = enabled;
+        client.setOpenEasySSL(enabled);
+    }
 	
 }

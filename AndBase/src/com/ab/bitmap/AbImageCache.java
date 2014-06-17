@@ -92,7 +92,7 @@ public class AbImageCache {
 	 */
 	public  static void addBitmapToCache(String key,Bitmap bitmap){
 		try {
-			if(D) Log.d(TAG, "图片下载完成:"+key);
+			//if(D) Log.d(TAG, "图片下载完成:"+key);
 			lock.lock();
 			if(AbStrUtil.isEmpty(key)){
 				return;
@@ -100,12 +100,12 @@ public class AbImageCache {
 			
 			if (getBitmapFromCache(key) == null && bitmap!=null) {
 				bitmapCache.put(key, bitmap);
-				if(D) Log.d(TAG, "存入缓存:"+key+","+bitmap);
-				if(D) Log.d(TAG, "测试存入缓存是否成功:"+key+","+getBitmapFromCache(key));
+				//if(D) Log.d(TAG, "存入缓存:"+key+","+bitmap);
+				//if(D) Log.d(TAG, "测试存入缓存是否成功:"+key+","+getBitmapFromCache(key));
 			}
 			//表示下载中的缓存清除
 			removeRunRunnableFromCache(key);
-			if(D) Log.d(TAG, "检查挂起线程:"+waitRunnableList.size());
+			//if(D) Log.d(TAG, "检查挂起线程:"+waitRunnableList.size());
 			//唤醒等待线程并移除列表
 			removeWaitRunnableFromCache(key);
 		} catch (Exception e) {
@@ -241,7 +241,7 @@ public class AbImageCache {
 				HashMap<String, Runnable> runnableMap = waitRunnableList.get(i);
 				Runnable runnable = runnableMap.get(key);
 				if (runnable != null) {  
-					if(D) Log.d(TAG, "从缓存删除并唤醒:"+runnable);
+					//if(D) Log.d(TAG, "从缓存删除并唤醒:"+runnable);
 					synchronized(runnable){
 					   runnable.notify();
 					}

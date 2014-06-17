@@ -500,6 +500,7 @@ public class AbSlidingTabView extends LinearLayout {
 		pagerItemList.remove(index);
 		tabItemList.remove(index);
 		tabItemDrawableList.remove(index);
+		tabItemTextList.remove(index); 
 		mFragmentPagerAdapter.notifyDataSetChanged();
 		notifyTabDataSetChanged();
 	}
@@ -512,6 +513,7 @@ public class AbSlidingTabView extends LinearLayout {
 		pagerItemList.clear();
 		tabItemList.clear();
 		tabItemDrawableList.clear();
+		tabItemTextList.clear(); 
 		mFragmentPagerAdapter.notifyDataSetChanged();
 		notifyTabDataSetChanged();
 	}

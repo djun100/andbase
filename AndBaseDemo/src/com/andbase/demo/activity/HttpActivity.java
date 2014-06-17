@@ -85,6 +85,7 @@ public class HttpActivity extends AbActivity {
 				
 				// 一个url地址
 				String urlString = "http://www.amsoft.cn/rss.php"; 
+				mAbHttpUtil.setDebug(true);
 				mAbHttpUtil.get(urlString, new AbStringHttpResponseListener() {
 					
 					//获取数据成功会调用这里

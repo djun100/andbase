@@ -21,13 +21,23 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.concurrent.Executor;
 
+import javax.net.ssl.SSLHandshakeException;
+
+import org.apache.http.Header;
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpEntityEnclosingRequest;
+import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.HttpVersion;
+import org.apache.http.NoHttpResponseException;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.HttpRequestRetryHandler;
+import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.params.CookiePolicy;
 import org.apache.http.client.params.HttpClientParams;
 import org.apache.http.conn.ClientConnectionManager;
@@ -43,6 +53,10 @@ import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpProtocolParams;
+import org.apache.http.protocol.BasicHttpContext;
+import org.apache.http.protocol.ExecutionContext;
+import org.apache.http.protocol.HTTP;
+import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EntityUtils;
 
 import android.content.Context;
@@ -76,6 +90,12 @@ public class AbHttpClient {
 	
 	/** 线程执行器. */
 	public static Executor mExecutorService = null;
+	
+	private static final String ENCODE = HTTP.UTF_8;
+    private static final String USER_AGENT = "User-Agent";
+    private static final String HTTP_GET = "GET";
+    private static final String HTTP_POST = "POST";
+    private static final String AGENT = "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 BIDUBrowser/6.x Safari/537.31";
     
     /** 最大连接数. */
     private static final int DEFAULT_MAX_CONNECTIONS = 10;
@@ -118,6 +138,10 @@ public class AbHttpClient {
 	
 	/** 通用证书. 如果要求HTTPS连接，则使用SSL打开连接*/
 	private boolean isOpenEasySSL = true;
+	
+	/** HTTP 上下文*/
+	private HttpContext mHttpContext = null;
+	
     
     /**
      * 初始化.
@@ -127,6 +151,7 @@ public class AbHttpClient {
 	public AbHttpClient(Context context) {
 	    mContext = context;
 		mExecutorService =  AbThreadFactory.getExecutorService();
+		mHttpContext = new BasicHttpContext();
 	}
 	
 	
@@ -623,5 +648,103 @@ public class AbHttpClient {
     	 
  	    return httpClient;
     }
+
+    /**
+     * 是否打开ssl 自签名
+     */
+    public boolean isOpenEasySSL(){
+        return isOpenEasySSL;
+    }
+
+
+    /**
+     * 打开ssl 自签名
+     * @param isOpenEasySSL
+     */
+    public void setOpenEasySSL(boolean isOpenEasySSL){
+        this.isOpenEasySSL = isOpenEasySSL;
+    }
+    
+    /**
+     * 使用ResponseHandler接口处理响应,支持重定向
+     */
+    private class RedirectionResponseHandler implements ResponseHandler<String>{
+        @Override
+        public String handleResponse(HttpResponse response)
+                throws ClientProtocolException, IOException{
+            HttpUriRequest request = (HttpUriRequest) mHttpContext.getAttribute(ExecutionContext.HTTP_REQUEST);
+            //200
+            if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+                HttpEntity entity = response.getEntity();
+                if (entity != null){
+                    //如果压缩要解压
+                    Header header = entity.getContentEncoding();
+                    if (header != null){
+                        String contentEncoding = header.getValue();
+                        if (contentEncoding != null){
+                            if (contentEncoding.contains("gzip")){
+                                entity = new AbGzipDecompressingEntity(entity);
+                            }
+                        }
+                    }
+                    String charset = EntityUtils.getContentCharSet(entity) == null ? ENCODE : EntityUtils.getContentCharSet(entity);
+                    
+                    String responseBody = new String(EntityUtils.toByteArray(entity), charset);
+                    
+                    return responseBody;
+                }
+                
+            }
+            //301 302
+            else if (response.getStatusLine().getStatusCode() == HttpStatus.SC_MOVED_TEMPORARILY
+                    || response.getStatusLine().getStatusCode() == HttpStatus.SC_MOVED_PERMANENTLY){
+                // 从头中取出转向的地址
+                Header locationHeader = response.getLastHeader("location");
+                String location = locationHeader.getValue();
+                if (request.getMethod().equalsIgnoreCase(HTTP_POST)){
+                    //return post(location, null, "");
+                }
+                else if (request.getMethod().equalsIgnoreCase(HTTP_GET)){
+                    //return getWithoutCache(location, null, "");
+                }
+            }
+            return null;
+        }
+    }
+    
+    /**
+     * 自动重试处理
+     */
+    private HttpRequestRetryHandler mRequestRetryHandler = new HttpRequestRetryHandler(){
+        // 自定义的恢复策略
+        public boolean retryRequest(IOException exception, int executionCount,
+                HttpContext context){
+            // 设置恢复策略，在发生异常时候将自动重试3次
+            if (executionCount >= 3){
+                // Do not retry if over max retry count
+                return false;
+            }
+            if (exception instanceof NoHttpResponseException){
+                // Retry if the server dropped connection on us
+                return true;
+            }
+            if (exception instanceof SSLHandshakeException){
+                // Do not retry on SSL handshake exception
+                return false;
+            }
+            HttpRequest request = (HttpRequest) context
+                    .getAttribute(ExecutionContext.HTTP_REQUEST);
+            boolean idempotent = (request instanceof HttpEntityEnclosingRequest);
+            if (!idempotent){
+                // Retry if the request is considered idempotent
+                return true;
+            }
+            if (exception != null){
+                return true;
+            }
+            return false;
+        }
+    };
+    
 	
 }

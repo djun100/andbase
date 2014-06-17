@@ -49,14 +49,14 @@ public class AbImageDownloadItem {
 	private AbImageDownloadListener listener;
 	
 	/**
-	 * Instantiates a new ab image download item.
+	 * 构造.
 	 */
 	public AbImageDownloadItem() {
 		super();
 	}
 
 	/**
-	 * Instantiates a new ab image download item.
+	 * 用监听器构造.
 	 *
 	 * @param listener the listener
 	 */
@@ -66,7 +66,7 @@ public class AbImageDownloadItem {
 	}
 
 	/**
-	 * Gets the image url.
+	 * 获取图片请求URL.
 	 *
 	 * @return the image url
 	 */
@@ -75,7 +75,7 @@ public class AbImageDownloadItem {
 	}
 
 	/**
-	 * Sets the image url.
+	 * 设置图片请求的URL.
 	 *
 	 * @param imageUrl the new image url
 	 */
@@ -84,7 +84,7 @@ public class AbImageDownloadItem {
 	}
 
 	/**
-	 * Gets the width.
+	 * 获取图片宽度.
 	 *
 	 * @return the width
 	 */
@@ -93,7 +93,7 @@ public class AbImageDownloadItem {
 	}
 
 	/**
-	 * Sets the width.
+	 * 设置图片宽度.
 	 *
 	 * @param width the new width
 	 */
@@ -102,7 +102,7 @@ public class AbImageDownloadItem {
 	}
 
 	/**
-	 * Gets the height.
+	 * 获取图片高度.
 	 *
 	 * @return the height
 	 */
@@ -111,7 +111,7 @@ public class AbImageDownloadItem {
 	}
 
 	/**
-	 * Sets the height.
+	 * 设置图片高度.
 	 *
 	 * @param height the new height
 	 */
@@ -120,7 +120,7 @@ public class AbImageDownloadItem {
 	}
 
 	/**
-	 * Gets the type.
+	 * 获取处理类型.
 	 *
 	 * @return the type
 	 */
@@ -129,7 +129,7 @@ public class AbImageDownloadItem {
 	}
 
 	/**
-	 * Sets the type.
+	 * 设置图片处理类型.
 	 *
 	 * @param type the new type
 	 */
@@ -138,7 +138,7 @@ public class AbImageDownloadItem {
 	}
 
 	/**
-	 * Gets the bitmap.
+	 * 获取下载后结果的Bitmap.
 	 *
 	 * @return the bitmap
 	 */
@@ -147,7 +147,7 @@ public class AbImageDownloadItem {
 	}
 
 	/**
-	 * Sets the bitmap.
+	 * 设置结果Bitmap置.
 	 *
 	 * @param bitmap the new bitmap
 	 */
@@ -156,7 +156,7 @@ public class AbImageDownloadItem {
 	}
 
 	/**
-	 * Gets the listener.
+	 * 获取监听器.
 	 *
 	 * @return the listener
 	 */
@@ -165,13 +165,12 @@ public class AbImageDownloadItem {
 	}
 
 	/**
-	 * Sets the listener.
+	 * 设置监听器.
 	 *
 	 * @param listener the new listener
 	 */
 	public void setListener(AbImageDownloadListener listener) {
 		this.listener = listener;
 	}
-	
 
 }
