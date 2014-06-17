@@ -188,7 +188,7 @@ public class ListNestViewPagerActivity extends AbActivity implements OnHeaderRef
 	   		    	
 	   		    	for (int i = 0; i < 10; i++) {
 	   		    		map = new HashMap<String, Object>();
-	   					map.put("itemsIcon",mPhotoList.get(new Random().nextInt(mPhotoList.size())));
+	   					map.put("itemsIcon",mPhotoList.get(i));
 		   		    	map.put("itemsTitle", "item"+i);
 		   		    	map.put("itemsText", "item..."+i);
 		   		    	newList.add(map);
