@@ -125,14 +125,7 @@ public class PullToRefreshListActivity extends AbActivity implements OnHeaderRef
                     
                     for (int i = 0; i < pageSize; i++) {
                         map = new HashMap<String, Object>();
-                        if(i>=mPhotoList.size()){
-                            map.put("itemsIcon",mPhotoList.get(
-                                    mPhotoList.size()-1));
-                        }else{
-                            map.put("itemsIcon",mPhotoList.get(
-                                    new Random().nextInt(mPhotoList.size())));
-                        }
-                        
+                        map.put("itemsIcon",mPhotoList.get(i));
                         map.put("itemsTitle", "item"+(i+1));
                         map.put("itemsText", "item..."+(i+1));
                         newList.add(map);
@@ -191,8 +184,7 @@ public class PullToRefreshListActivity extends AbActivity implements OnHeaderRef
                     
                     for (int i = 0; i < pageSize; i++) {
                         map = new HashMap<String, Object>();
-                        map.put("itemsIcon",mPhotoList.get(new Random()
-                                              .nextInt(mPhotoList.size())));
+                        map.put("itemsIcon",mPhotoList.get(i));
                         map.put("itemsTitle", 
                                 "item上拉"+((currentPage-1)*pageSize+(i+1)));
                         map.put("itemsText", 
