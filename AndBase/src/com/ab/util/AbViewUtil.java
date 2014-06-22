@@ -17,18 +17,21 @@ package com.ab.util;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.MeasureSpec;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.AbsListView;
 import android.widget.GridView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.ab.global.AbAppData;
-import com.ab.model.AbDisplayMetrics;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -42,6 +45,17 @@ import com.ab.model.AbDisplayMetrics;
  */
 
 public class AbViewUtil {
+    
+    /** 日志标记. */
+    private static String TAG = "AbViewUtil";
+    
+    /** 日志标记开关. */
+    private static final boolean D = AbAppData.DEBUG;
+    
+    /**
+     * 无效值
+     */
+    public static final int INVALID = Integer.MIN_VALUE;
 
 	/**
 	 * 描述：重置AbsListView的高度. item 的最外层布局要用
@@ -147,29 +161,54 @@ public class AbViewUtil {
 		v.measure(childWidthSpec, childHeightSpec);
 	}
 
+	
 	/**
-	 * 描述：dip转换为px.
-	 *
-	 * @param context the context
-	 * @param dipValue the dip value
-	 * @return the int
-	 */
-	public static int dip2px(Context context, float dipValue) {
-		final float scale = context.getResources().getDisplayMetrics().density;
-		return (int) (dipValue * scale + 0.5f);
-	}
+     * 描述：dip转换为px.
+     *
+     * @param context the context
+     * @param dipValue the dip value
+     * @return px值
+     */
+    public static float dip2px(Context context, float dipValue) {
+        DisplayMetrics mDisplayMetrics = AbAppUtil.getDisplayMetrics(context);
+        return applyDimension(TypedValue.COMPLEX_UNIT_DIP,dipValue,mDisplayMetrics);
+    }
 
-	/**
-	 * 描述：px转换为dip.
-	 *
-	 * @param context the context
-	 * @param pxValue the px value
-	 * @return the int
-	 */
-	public static int px2dip(Context context, float pxValue) {
-		final float scale = context.getResources().getDisplayMetrics().density;
-		return (int) (pxValue / scale + 0.5f);
-	}
+    /**
+     * 描述：px转换为dip.
+     *
+     * @param context the context
+     * @param pxValue the px value
+     * @return dip值
+     */
+    public static float px2dip(Context context, float pxValue) {
+        DisplayMetrics mDisplayMetrics = AbAppUtil.getDisplayMetrics(context);
+        return pxValue / mDisplayMetrics.density;
+    }
+    
+    /**
+     * 描述：sp转换为px.
+     *
+     * @param context the context
+     * @param spValue the sp value
+     * @return sp值
+     */
+    public static float sp2px(Context context, float spValue) {
+        DisplayMetrics mDisplayMetrics = AbAppUtil.getDisplayMetrics(context);
+        return applyDimension(TypedValue.COMPLEX_UNIT_SP,spValue,mDisplayMetrics);
+    }
+    
+    /**
+     * 描述：px转换为sp.
+     *
+     * @param context the context
+     * @param spValue the sp value
+     * @return sp值
+     */
+    public static float px2sp(Context context, float pxValue) {
+        DisplayMetrics mDisplayMetrics = AbAppUtil.getDisplayMetrics(context);
+        return pxValue / mDisplayMetrics.scaledDensity;
+    }
 
 	/**
 	 * 描述：根据屏幕大小缩放.
@@ -178,10 +217,10 @@ public class AbViewUtil {
 	 * @param pxValue the px value
 	 * @return the int
 	 */
-	public static int resize(Context context, float pxValue) {
-		AbDisplayMetrics mDisplayMetrics = AbAppUtil.getDisplayMetrics(context);
-		return resize(mDisplayMetrics.displayWidth,
-				mDisplayMetrics.displayHeight, pxValue);
+	public static int resize(Context context, float value) {
+		DisplayMetrics mDisplayMetrics = AbAppUtil.getDisplayMetrics(context);
+		return resize(mDisplayMetrics.widthPixels,
+				mDisplayMetrics.heightPixels, value);
 	}
 
 	/**
@@ -207,77 +246,188 @@ public class AbViewUtil {
 	 * 适配大小.
 	 *
 	 * @param context the context
-	 * @param pxSize the px size
-	 * @return the dip size
+	 * @param unit TypedValue.COMPLEX_UNIT_DIP
+	 * @param value 单位值
+	 * @return the px size
 	 */
-	public static float getDipSize(Context context, float pxSize) {
-		Resources mResources = context.getResources();
-		return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, pxSize,
-				mResources.getDisplayMetrics());
+	public static float getPXValue(Context context,int unit,float value) {
+	    DisplayMetrics mDisplayMetrics = AbAppUtil.getDisplayMetrics(context);
+		return TypedValue.applyDimension(unit, value,mDisplayMetrics);
 	}
 
 	/**
-	 * 适配大小.
-	 *
-	 * @param pxSize the px size
-	 * @return the dip size
-	 */
-	public static float getDipSize(float pxSize) {
+     * 适配大小.
+     *
+     * @param unit TypedValue.COMPLEX_UNIT_DIP
+     * @param value 单位值
+     * @return the px size
+     */
+	public static float getPXValue(int unit,float value) {
 		Resources mResources = Resources.getSystem();
-		return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, pxSize,
+		return TypedValue.applyDimension(unit, value,
 				mResources.getDisplayMetrics());
 	}
+	
+	/**
+	 * TypedValue官方源码中的算法，任意单位转换为PX单位
+	 * @param unit  TypedValue.COMPLEX_UNIT_DIP
+	 * @param value 对应单位的值
+	 * @param metrics 密度
+	 * @return px值
+	 */
+    public static float applyDimension(int unit, float value,
+                                       DisplayMetrics metrics){
+        switch (unit) {
+        case TypedValue.COMPLEX_UNIT_PX:
+            return value;
+        case TypedValue.COMPLEX_UNIT_DIP:
+            return value * metrics.density;
+        case TypedValue.COMPLEX_UNIT_SP:
+            return value * metrics.scaledDensity;
+        case TypedValue.COMPLEX_UNIT_PT:
+            return value * metrics.xdpi * (1.0f/72);
+        case TypedValue.COMPLEX_UNIT_IN:
+            return value * metrics.xdpi;
+        case TypedValue.COMPLEX_UNIT_MM:
+            return value * metrics.xdpi * (1.0f/25.4f);
+        }
+        return 0;
+    }
+    
+    /**
+     * 按比例缩放View，布局中的尺寸需要设置为px单位
+     * @param view
+     */
+    public static void initPXView(View view){
+        if (view instanceof TextView){
+            TextView textView = (TextView) view;
+            setPXTextSize(textView,textView.getTextSize());
+        }
+
+        ViewGroup.LayoutParams params = (ViewGroup.LayoutParams) view.getLayoutParams();
+        if (null != params){
+            int width = INVALID;
+            int height = INVALID;
+            if (params.width != ViewGroup.LayoutParams.WRAP_CONTENT
+                && params.width != ViewGroup.LayoutParams.FILL_PARENT){
+                width = params.width;
+            }
+
+            if (params.height != ViewGroup.LayoutParams.WRAP_CONTENT
+                && params.height != ViewGroup.LayoutParams.FILL_PARENT){
+                height = params.height;
+            }
+            
+            //size
+            setPXViewSize(view,width,height);
+
+            // Padding
+            setPXPadding(view,view.getPaddingLeft(),view.getPaddingTop(),view.getPaddingRight(),view.getPaddingBottom());
+        }
+        
+        // Margin
+        if(view.getLayoutParams() instanceof ViewGroup.MarginLayoutParams){
+            ViewGroup.MarginLayoutParams mMarginLayoutParams = (ViewGroup.MarginLayoutParams) view
+                    .getLayoutParams();
+            if (mMarginLayoutParams != null){
+                setPXMargin(view,mMarginLayoutParams.leftMargin,mMarginLayoutParams.topMargin,mMarginLayoutParams.rightMargin,mMarginLayoutParams.bottomMargin);
+            }
+        }
+       
+    }
+    
+    /**
+     * 设置px尺寸文字大小
+     * @param textView button
+     * @param pxSize
+     * @return
+     */
+    public static void setPXTextSize(TextView textView,float pxSize) {
+        
+        int size = resize(textView.getContext(),pxSize);
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_PX,size);
+        //等价于
+        //int size = resize(textView.getContext(), px2sp(textView.getContext(),pxSize));
+        //textView.setTextSize(size);
+    }
+    
+   /**
+    * 设置View的PX尺寸
+    * @param view  如果是代码new出来的View，需要设置一个适合的LayoutParams
+    * @param widthPixels
+    * @param heightPixels
+    */
+    public static void setPXViewSize(View view,int widthPixels, int heightPixels){
+        int paramWidth = resize(view.getContext(), widthPixels);
+        int paramHeight = resize(view.getContext(), heightPixels);
+        ViewGroup.LayoutParams params = view.getLayoutParams();
+        if(params == null){
+            Log.e(TAG, "setPXViewSize出错,如果是代码new出来的View，需要设置一个适合的LayoutParams");
+            return;
+        }
+        if (widthPixels != INVALID){
+            params.width = paramWidth;
+        }
+        if (heightPixels != INVALID){
+            params.height = paramHeight;
+        }
+        view.setLayoutParams(params);
+    }
 
 	/**
-	 * Sets the padding.
+	 * 设置PX padding.
 	 *
-	 * @param context the context
 	 * @param view the view
-	 * @param left the left
-	 * @param top the top
-	 * @param right the right
-	 * @param bottom the bottom
+	 * @param left the left padding in pixels
+     * @param top the top padding in pixels
+     * @param right the right padding in pixels
+     * @param bottom the bottom padding in pixels
 	 */
-	public static void setPadding(Context context, View view, int left,
+	public static void setPXPadding(View view, int left,
 			int top, int right, int bottom) {
-		int paramLeft = resize(context, left);
-		int paramTop = resize(context, top);
-		int paramRight = resize(context, right);
-		int paramBottom = resize(context, bottom);
+		int paramLeft = resize(view.getContext(), left);
+		int paramTop = resize(view.getContext(), top);
+		int paramRight = resize(view.getContext(), right);
+		int paramBottom = resize(view.getContext(), bottom);
 		view.setPadding(paramLeft, paramTop, paramRight, paramBottom);
 	}
 
 	/**
-	 * Sets the margin.
-	 *
-	 * @param context the context
+	 * 设置 PX margin.
+	 * 
 	 * @param view the view
-	 * @param left the left
-	 * @param top the top
-	 * @param right the right
-	 * @param bottom the bottom
+	 * @param left the left margin in pixels
+	 * @param top the top margin in pixels
+	 * @param right the right margin in pixels
+	 * @param bottom the bottom margin in pixels
 	 */
-	public static void setMargin(Context context, View view, int left, int top,
+	public static void setPXMargin(View view, int left, int top,
 			int right, int bottom) {
-		int paramLeft = resize(context, left);
-		int paramTop = resize(context, top);
-		int paramRight = resize(context, right);
-		int paramBottom = resize(context, bottom);
-		ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) view
-				.getLayoutParams();
-		if (left != Integer.MAX_VALUE && left != Integer.MIN_VALUE) {
-			params.leftMargin = paramLeft;
-		}
-		if (right != Integer.MAX_VALUE && left != Integer.MIN_VALUE) {
-			params.rightMargin = paramRight;
-		}
-		if (top != Integer.MAX_VALUE && left != Integer.MIN_VALUE) {
-			params.topMargin = paramTop;
-		}
-		if (bottom != Integer.MAX_VALUE && left != Integer.MIN_VALUE) {
-			params.bottomMargin = paramBottom;
-		}
-		view.setLayoutParams(params);
+		int paramLeft = resize(view.getContext(), left);
+		int paramTop = resize(view.getContext(), top);
+		int paramRight = resize(view.getContext(), right);
+		int paramBottom = resize(view.getContext(), bottom);
+		
+		if(view.getLayoutParams() instanceof ViewGroup.MarginLayoutParams){
+            ViewGroup.MarginLayoutParams mMarginLayoutParams = (ViewGroup.MarginLayoutParams) view
+                    .getLayoutParams();
+            if (mMarginLayoutParams != null){
+                if (left != INVALID) {
+                    mMarginLayoutParams.leftMargin = paramLeft;
+                }
+                if (right != INVALID) {
+                    mMarginLayoutParams.rightMargin = paramRight;
+                }
+                if (top != INVALID) {
+                    mMarginLayoutParams.topMargin = paramTop;
+                }
+                if (bottom != INVALID) {
+                    mMarginLayoutParams.bottomMargin = paramBottom;
+                }
+                view.setLayoutParams(mMarginLayoutParams);
+            }
+        }
+		
 	}
 
 }

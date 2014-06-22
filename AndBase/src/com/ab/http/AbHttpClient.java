@@ -92,10 +92,9 @@ public class AbHttpClient {
 	public static Executor mExecutorService = null;
 	
 	private static final String ENCODE = HTTP.UTF_8;
-    private static final String USER_AGENT = "User-Agent";
     private static final String HTTP_GET = "GET";
     private static final String HTTP_POST = "POST";
-    private static final String AGENT = "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 BIDUBrowser/6.x Safari/537.31";
+    private static final String USER_AGENT = "User-Agent";
     
     /** 最大连接数. */
     private static final int DEFAULT_MAX_CONNECTIONS = 10;
@@ -133,8 +132,10 @@ public class AbHttpClient {
     /** 超时时间. */
 	private int timeout = DEFAULT_SOCKET_TIMEOUT;
 	
-	/** debug true表示是内网. */
+	/** debug true表示是局域网. */
 	private boolean debug = false;
+	
+	private String userAgent = "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 BIDUBrowser/6.x Safari/537.31";
 	
 	/** 通用证书. 如果要求HTTPS连接，则使用SSL打开连接*/
 	private boolean isOpenEasySSL = true;
@@ -611,7 +612,7 @@ public class AbHttpClient {
 	    HttpConnectionParams.setSocketBufferSize(httpParams, DEFAULT_SOCKET_BUFFER_SIZE);
 
 	    HttpProtocolParams.setVersion(httpParams, HttpVersion.HTTP_1_1);
-	    HttpProtocolParams.setUserAgent(httpParams, String.format("andbase-http/%s (http://www.amsoft.cn/)", 1.0));
+	    HttpProtocolParams.setUserAgent(httpParams,userAgent);
 	    // 设置请求参数
 		return httpParams;
 	      
@@ -745,6 +746,24 @@ public class AbHttpClient {
             return false;
         }
     };
+
+
+    /**
+     * 获取用户代理
+     * @return
+     */
+    public String getUserAgent(){
+        return userAgent;
+    }
+
+
+    /**
+     * 设置用户代理
+     * @param userAgent
+     */
+	public void setUserAgent(String userAgent) {
+		this.userAgent = userAgent;
+	}
     
 	
 }

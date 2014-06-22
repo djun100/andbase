@@ -26,6 +26,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -36,7 +37,6 @@ import android.widget.TextView;
 
 import com.ab.adapter.AbFragmentPagerAdapter;
 import com.ab.global.AbAppData;
-import com.ab.model.AbDisplayMetrics;
 import com.ab.util.AbAppUtil;
 
 // TODO: Auto-generated Javadoc
@@ -155,8 +155,8 @@ public class AbSlidingSmoothFixTabView extends LinearLayout {
 			Log.e(TAG, "构造AbSlidingSmoothTabView的参数context,必须是FragmentActivity的实例。");
 		}
 		
-		AbDisplayMetrics mDisplayMetrics = AbAppUtil.getDisplayMetrics(context);
-		mWidth = mDisplayMetrics.displayWidth;
+		DisplayMetrics mDisplayMetrics = AbAppUtil.getDisplayMetrics(context);
+		mWidth = mDisplayMetrics.widthPixels;
 		
 		FragmentManager mFragmentManager = ((FragmentActivity)this.context).getSupportFragmentManager();
 		mFragmentPagerAdapter = new AbFragmentPagerAdapter(

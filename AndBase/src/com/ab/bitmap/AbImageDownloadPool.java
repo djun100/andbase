@@ -38,10 +38,10 @@ import com.ab.util.AbStrUtil;
 
 public class AbImageDownloadPool{
 	
-	/** The tag. */
+	/** 日志标记. */
 	private static String TAG = "AbImageDownloadPool";
 	
-	/** 日志标记. */
+	/** 日志标记开关. */
 	private static final boolean D = AbAppData.DEBUG;
 	
 	/** The image download. 单例对象*/

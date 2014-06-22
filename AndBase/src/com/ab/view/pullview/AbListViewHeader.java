@@ -130,7 +130,7 @@ public class AbListViewHeader extends LinearLayout {
 		headerView.setOrientation(LinearLayout.HORIZONTAL);
 		headerView.setGravity(Gravity.CENTER); 
 		
-		AbViewUtil.setPadding(mContext, headerView, 0, 10, 0, 10);
+		AbViewUtil.setPXPadding(headerView, 0, 10, 0, 10);
 		
 		//显示箭头与进度
 		FrameLayout headImage =  new FrameLayout(context);
@@ -156,7 +156,7 @@ public class AbListViewHeader extends LinearLayout {
 		headerTimeView = new TextView(context);
 		headTextLayout.setOrientation(LinearLayout.VERTICAL);
 		headTextLayout.setGravity(Gravity.CENTER_VERTICAL);
-		AbViewUtil.setPadding(mContext, headTextLayout,0, 0, 0, 0);
+		AbViewUtil.setPXPadding(headTextLayout,0, 0, 0, 0);
 		LinearLayout.LayoutParams layoutParamsWW2 = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 		headTextLayout.addView(tipsTextview,layoutParamsWW2);
 		headTextLayout.addView(headerTimeView,layoutParamsWW2);

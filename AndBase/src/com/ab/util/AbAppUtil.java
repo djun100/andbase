@@ -29,6 +29,7 @@ import android.app.ActivityManager;
 import android.app.ActivityManager.RunningServiceInfo;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -36,12 +37,9 @@ import android.net.Uri;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Display;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
 import com.ab.global.AbAppData;
-import com.ab.model.AbDisplayMetrics;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -333,18 +331,15 @@ public class AbAppUtil {
      * @param context the context
      * @return mDisplayMetrics
      */
-    public static AbDisplayMetrics getDisplayMetrics(Context context) {
-    	AbDisplayMetrics mDisplayMetrics = new AbDisplayMetrics();
-    	WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        Display d = windowManager.getDefaultDisplay();
-        mDisplayMetrics.displayWidth = d.getWidth();
-        mDisplayMetrics.displayHeight = d.getHeight();
-        DisplayMetrics dm = context.getResources().getDisplayMetrics();
-        mDisplayMetrics.density = dm.density;
-        mDisplayMetrics.widthPixels = dm.widthPixels;
-        mDisplayMetrics.heightPixels = dm.heightPixels;
-        mDisplayMetrics.scaledDensity = dm.scaledDensity;
-        
+    public static DisplayMetrics getDisplayMetrics(Context context) {
+        Resources mResources;
+        if (context == null){
+            mResources = Resources.getSystem();
+            
+        }else{
+            mResources = context.getResources();
+        }
+        DisplayMetrics mDisplayMetrics = mResources.getDisplayMetrics();
         return mDisplayMetrics;
     }
     

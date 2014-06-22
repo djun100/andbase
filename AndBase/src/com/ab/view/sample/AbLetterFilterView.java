@@ -28,8 +28,6 @@ import android.widget.ListView;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
 
-import com.ab.util.AbViewUtil;
-
 // TODO: Auto-generated Javadoc
 /**
  * © 2012 amsoft.cn 名称：AbLetterFilterView.java 描述：字母索引条
@@ -96,7 +94,7 @@ public class AbLetterFilterView extends View {
 		paint = new Paint();
 		paint.setColor(Color.parseColor("#333333"));
 		paint.setTypeface(Typeface.DEFAULT);
-		paint.setTextSize(AbViewUtil.getDipSize(12));
+		paint.setTextSize(12);
 		paint.setAntiAlias(true);
 		paint.setTextAlign(Paint.Align.CENTER);
 

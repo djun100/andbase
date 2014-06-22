@@ -110,7 +110,7 @@ public class AbListViewFooter extends LinearLayout {
 		setTextColor(Color.rgb(107, 107, 107));
 		footerTextView.setTextSize(AbViewUtil.resize(mContext, 10));
 		
-		AbViewUtil.setPadding(mContext, footerView, 0, 10, 0, 10);
+		AbViewUtil.setPXPadding(footerView, 0, 10, 0, 10);
 		
 		footerProgressBar = new ProgressBar(context,null,android.R.attr.progressBarStyle);
 		footerProgressBar.setVisibility(View.GONE);
