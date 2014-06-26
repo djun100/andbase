@@ -141,12 +141,12 @@ public class HttpActivity extends AbActivity {
 			@Override
 			public void onClick(View v) {
 				
-				String url = "http://www.amsoft.cn/xxx.jsp?";
+				String url = "http://www.amsoft.cn/sort/10";
 				// 绑定参数
 		        AbRequestParams params = new AbRequestParams(); 
-		        params.put("type", "1");
-		        params.put("p", "2");
-		        params.put("size", "10");
+		        params.put("param1", "1");
+		        params.put("param2", "2");
+		        params.put("param3", "10");
 		        mAbHttpUtil.post(url,params, new AbStringHttpResponseListener() {
 		        	
 		        	// 获取数据成功会调用这里

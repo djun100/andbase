@@ -55,9 +55,6 @@ public class AbHttpUtil {
     
     /** 重试. */
     public static final int RETRY_MESSAGE = 5;
-    
-    /** 通用证书. 如果要求HTTPS连接，则使用SSL打开连接*/
-    private boolean easySSLEnabled = true;
 	
 	/**
 	 * 描述：获取实例.
@@ -74,7 +71,7 @@ public class AbHttpUtil {
 	}
 	
 	/**
-	 * Instantiates a new ab http util.
+	 * 初始化AbHttpUtil.
 	 *
 	 * @param context the context
 	 */
@@ -168,7 +165,7 @@ public class AbHttpUtil {
 	}
 	
 	/**
-	 * 描述：设置连接超时时间.
+	 * 描述：设置连接超时时间(第一次请求前设置).
 	 *
 	 * @param timeout 毫秒
 	 */
@@ -177,7 +174,7 @@ public class AbHttpUtil {
 	}
 	
 	/**
-	 * 描述：设置调试模式.
+	 * 描述：设置调试模式(第一次请求前设置).
 	 *
 	 * @param debug 开关
 	 */
@@ -187,12 +184,37 @@ public class AbHttpUtil {
 	
 
     /**
-     * 打开ssl 自签名
+     * 打开ssl 自签名(第一次请求前设置).
      * @param enabled
      */
     public void setEasySSLEnabled(boolean enabled){
-        this.easySSLEnabled = enabled;
         client.setOpenEasySSL(enabled);
     }
+
+    /**
+	 * 设置编码(第一次请求前设置).
+	 * @param encode
+	 */
+	public void setEncode(String encode) {
+		client.setEncode(encode);
+	}
+	
+	/**
+     * 设置用户代理(第一次请求前设置).
+     * @param userAgent
+     */
+	public void setUserAgent(String userAgent) {
+		client.setUserAgent(userAgent);
+	}
+	
+	/**
+	 * 关闭HttpClient
+	 * 当HttpClient实例不再需要是，确保关闭connection manager，以释放其系统资源  
+	 */
+	private void shutdownHttpClient(){
+	    if(client != null){
+	    	client.shutdown();
+	    }
+	}
 	
 }

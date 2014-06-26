@@ -21,6 +21,7 @@ import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
 import org.apache.http.client.ClientProtocolException;
+import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.http.conn.HttpHostConnectException;
 
 import com.ab.util.AbStrUtil;
@@ -57,6 +58,8 @@ public class AbAppException extends Exception {
 			if( e instanceof HttpHostConnectException) {  
 				msg = AbConstant.UNKNOWNHOSTEXCEPTION;
 			}else if (e instanceof ConnectException) {
+				msg = AbConstant.CONNECTEXCEPTION;
+			}else if (e instanceof ConnectTimeoutException) {
 				msg = AbConstant.CONNECTEXCEPTION;
 			}else if (e instanceof UnknownHostException) {
 				msg = AbConstant.UNKNOWNHOSTEXCEPTION;

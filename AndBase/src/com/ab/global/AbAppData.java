@@ -38,7 +38,6 @@ public class AbAppData {
 	/** 起始执行时间. */
 	public static long startLogTimeInMillis = 0;
 	
-	
 	/**  UI设计的基准宽度. */
 	public static int uiWidth = 480;
 	

@@ -64,11 +64,13 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
+import com.ab.global.AbAppData;
 import com.ab.global.AbAppException;
 import com.ab.global.AbConstant;
 import com.ab.task.AbThreadFactory;
 import com.ab.util.AbAppUtil;
 import com.ab.util.AbFileUtil;
+import com.ab.util.AbLogUtil;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -91,11 +93,16 @@ public class AbHttpClient {
 	/** 线程执行器. */
 	public static Executor mExecutorService = null;
 	
-	private static final String ENCODE = HTTP.UTF_8;
+	/** 编码. */
+	private String encode = HTTP.UTF_8;
+	
+	/** 用户代理. */
+	private String userAgent = "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 BIDUBrowser/6.x Safari/537.31";
+	
     private static final String HTTP_GET = "GET";
     private static final String HTTP_POST = "POST";
     private static final String USER_AGENT = "User-Agent";
-    
+    private static final String ACCEPT_ENCODING = "Accept-Encoding";
     /** 最大连接数. */
     private static final int DEFAULT_MAX_CONNECTIONS = 10;
     
@@ -135,10 +142,11 @@ public class AbHttpClient {
 	/** debug true表示是局域网. */
 	private boolean debug = false;
 	
-	private String userAgent = "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 BIDUBrowser/6.x Safari/537.31";
-	
 	/** 通用证书. 如果要求HTTPS连接，则使用SSL打开连接*/
 	private boolean isOpenEasySSL = true;
+	
+	/** HTTP Client*/
+	private DefaultHttpClient mHttpClient = null;
 	
 	/** HTTP 上下文*/
 	private HttpContext mHttpContext = null;
@@ -241,43 +249,14 @@ public class AbHttpClient {
 				  url += params.getParamString();
 			  }
 			  HttpGet httpRequest = new HttpGet(url);  
-			  
-              BasicHttpParams httpParams = getHttpParams();
-		      
-		      // 设置请求参数
-			  httpRequest.setParams(httpParams);
-			  
-			  //默认参数
-              HttpClientParams.setRedirecting(httpParams, false);
-              HttpClientParams.setCookiePolicy(httpParams,
-                      CookiePolicy.BROWSER_COMPATIBILITY);
-              httpParams.setParameter(ConnRoutePNames.DEFAULT_PROXY, null);
-
-              //取得默认的HttpClient
-      	      HttpClient httpClient = getHttpClient(httpParams); 
-      	      
-			  //请求HttpClient，取得HttpResponse  
-			  HttpResponse httpResponse = httpClient.execute(httpRequest);  
-			  //请求成功  
-			  int statusCode = httpResponse.getStatusLine().getStatusCode();
-			  
-			  //取得返回的字符串  
-			  HttpEntity  mHttpEntity = httpResponse.getEntity();
-			  if (statusCode == HttpStatus.SC_OK){  
-				  if(responseListener instanceof AbStringHttpResponseListener){
-					  String content = EntityUtils.toString(mHttpEntity);
-					  ((AbStringHttpResponseListener)responseListener).sendSuccessMessage(statusCode, content);
-				  }else if(responseListener instanceof AbBinaryHttpResponseListener){
-					  readResponseData(mHttpEntity,((AbBinaryHttpResponseListener)responseListener));
-				  }else if(responseListener instanceof AbFileHttpResponseListener){
-					  //获取文件名
-					  String fileName = AbFileUtil.getCacheFileNameFromUrl(url, httpResponse);
-					  writeResponseData(mHttpEntity,fileName,((AbFileHttpResponseListener)responseListener));
-				  }
-			  }else{
-				  String content = EntityUtils.toString(mHttpEntity);
-				  responseListener.sendFailureMessage(statusCode, content, new AbAppException(AbConstant.UNKNOWNHOSTEXCEPTION));
-			  }
+			  httpRequest.addHeader(USER_AGENT, userAgent);
+			  //压缩
+			  httpRequest.addHeader(ACCEPT_ENCODING, "gzip");
+			  //取得默认的HttpClient
+      	      HttpClient httpClient = getHttpClient();  
+		      //取得HttpResponse
+		      String  response = httpClient.execute(httpRequest,new RedirectionResponseHandler(url,responseListener),mHttpContext);  
+			  Log.i(TAG, "[HTTP Request]："+url+",result："+response);
 		} catch (Exception e) {
 			e.printStackTrace();
 			//发送失败消息
@@ -305,47 +284,21 @@ public class AbHttpClient {
 			  
 			  //HttpPost连接对象  
 		      HttpPost httpRequest = new HttpPost(url);  
+		      httpRequest.addHeader(USER_AGENT, userAgent);
+			  //压缩
+			  httpRequest.addHeader(ACCEPT_ENCODING, "gzip");
 		      if(params != null){
 		    	  //使用NameValuePair来保存要传递的Post参数设置字符集 
 			      HttpEntity httpentity = params.getEntity(responseListener);
 			      //请求httpRequest  
 			      httpRequest.setEntity(httpentity); 
 			  }
-		      
-		      BasicHttpParams httpParams = getHttpParams();
-		      
-		      httpRequest.setParams(httpParams);
-              
-      	      //默认参数
-              HttpClientParams.setRedirecting(httpParams, false);
-              HttpClientParams.setCookiePolicy(httpParams,
-                      CookiePolicy.BROWSER_COMPATIBILITY);
-              httpParams.setParameter(ConnRoutePNames.DEFAULT_PROXY, null);
 
               //取得默认的HttpClient
-      	      HttpClient httpClient = getHttpClient(httpParams);  
-		      
+      	      HttpClient httpClient = getHttpClient();  
 		      //取得HttpResponse
-		      HttpResponse httpResponse = httpClient.execute(httpRequest);  
-			  //请求成功  
-			  int statusCode = httpResponse.getStatusLine().getStatusCode();
-			  //取得返回的字符串  
-			  HttpEntity  mHttpEntity = httpResponse.getEntity();
-			  if (statusCode == HttpStatus.SC_OK){  
-				  if(responseListener instanceof AbStringHttpResponseListener){
-					  String content = EntityUtils.toString(mHttpEntity);
-					  ((AbStringHttpResponseListener)responseListener).sendSuccessMessage(statusCode, content);
-				  }else if(responseListener instanceof AbBinaryHttpResponseListener){
-					  readResponseData(mHttpEntity,((AbBinaryHttpResponseListener)responseListener));
-				  }else if(responseListener instanceof AbFileHttpResponseListener){
-					  //获取文件名
-					  String fileName = AbFileUtil.getCacheFileNameFromUrl(url, httpResponse);
-					  writeResponseData(mHttpEntity,fileName,((AbFileHttpResponseListener)responseListener));
-				  }
-			  }else{
-				  String content = EntityUtils.toString(mHttpEntity);
-				  responseListener.sendFailureMessage(statusCode, content, new AbAppException(AbConstant.UNKNOWNHOSTEXCEPTION));
-			  }
+		      String  response = httpClient.execute(httpRequest,new RedirectionResponseHandler(url,responseListener),mHttpContext);  
+		      AbLogUtil.i(TAG, "request："+url+",result："+response);
 			  
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -442,7 +395,7 @@ public class AbHttpClient {
 
 			     } 
 			  }
-			 responseListener.sendSuccessMessage(200,outSteam.toByteArray());
+			 responseListener.sendSuccessMessage(HttpStatus.SC_OK,outSteam.toByteArray());
 		} catch (Exception e) {
 			e.printStackTrace();
 			//发送失败消息
@@ -502,15 +455,15 @@ public class AbHttpClient {
 	 */
     private static class ResponderHandler extends Handler {
 		
-		/** The response. */
+		/** 响应数据. */
 		private Object[] response;
 		
-		/** The response listener. */
+		/** 响应消息监听. */
 		private AbHttpResponseListener responseListener;
 		
 
 		/**
-		 * Instantiates a new responder handler.
+		 * 响应消息处理.
 		 *
 		 * @param responseListener the response listener
 		 */
@@ -613,9 +566,26 @@ public class AbHttpClient {
 
 	    HttpProtocolParams.setVersion(httpParams, HttpVersion.HTTP_1_1);
 	    HttpProtocolParams.setUserAgent(httpParams,userAgent);
-	    // 设置请求参数
+	    //默认参数
+        HttpClientParams.setRedirecting(httpParams, false);
+        HttpClientParams.setCookiePolicy(httpParams,
+                CookiePolicy.BROWSER_COMPATIBILITY);
+        httpParams.setParameter(ConnRoutePNames.DEFAULT_PROXY, null);
 		return httpParams;
 	      
+    }
+    
+    /**
+     * 获取HttpClient，自签名的证书，如果想做签名参考AuthSSLProtocolSocketFactory类
+     * @return
+     */
+    public HttpClient getHttpClient(){
+    	
+    	if(mHttpClient != null){
+    		return mHttpClient;
+    	}else{
+    		return createHttpClient();
+    	}
     }
     
     /**
@@ -623,31 +593,30 @@ public class AbHttpClient {
      * @param httpParams
      * @return
      */
-    public HttpClient getHttpClient(BasicHttpParams httpParams){
-    	HttpClient httpClient = null;
+    public HttpClient createHttpClient(){
+    	BasicHttpParams httpParams = getHttpParams();
     	if(isOpenEasySSL){
     		 // 支持https的   SSL自签名的实现类
-    	     EasySSLProtocolSocketFactory easySSL = new EasySSLProtocolSocketFactory();
-    	      
-    	     // Sets up the http part of the service.
+    	     EasySSLProtocolSocketFactory easySSLProtocolSocketFactory = new EasySSLProtocolSocketFactory();
              SchemeRegistry supportedSchemes = new SchemeRegistry();
-
-             // Register the "http" protocol scheme, it is required
-             // by the default operator to look up socket factories.
-             SocketFactory sf = PlainSocketFactory.getSocketFactory();
-             supportedSchemes.register(new Scheme("http", sf, 80));
-             supportedSchemes.register(new Scheme("https",easySSL, 443));
-
+             SocketFactory socketFactory = PlainSocketFactory.getSocketFactory();
+             supportedSchemes.register(new Scheme("http", socketFactory, 80));
+             supportedSchemes.register(new Scheme("https",easySSLProtocolSocketFactory, 443));
+             
              ClientConnectionManager connectionManager = new ThreadSafeClientConnManager(
-                    httpParams, supportedSchemes);
-            
+                     httpParams, supportedSchemes);
              //取得HttpClient
-             httpClient = new DefaultHttpClient(connectionManager, httpParams);
+             mHttpClient = new DefaultHttpClient(connectionManager, httpParams);
+             //自动重试
+             mHttpClient.setHttpRequestRetryHandler(mRequestRetryHandler);
     	}else{
-    		 httpClient = new DefaultHttpClient();  
+    		 //线程安全的HttpClient
+    		 mHttpClient = new DefaultHttpClient(httpParams);
+    		 //自动重试
+    		 mHttpClient.setHttpRequestRetryHandler(mRequestRetryHandler);
     	}
     	 
- 	    return httpClient;
+ 	    return mHttpClient;
     }
 
     /**
@@ -670,43 +639,86 @@ public class AbHttpClient {
      * 使用ResponseHandler接口处理响应,支持重定向
      */
     private class RedirectionResponseHandler implements ResponseHandler<String>{
-        @Override
+        
+    	private AbHttpResponseListener mResponseListener = null;
+    	private String mUrl = null;
+    	
+		public RedirectionResponseHandler(String url,
+				AbHttpResponseListener responseListener) {
+			super();
+			this.mUrl = url;
+			this.mResponseListener = responseListener;
+		}
+
+
+		@Override
         public String handleResponse(HttpResponse response)
                 throws ClientProtocolException, IOException{
             HttpUriRequest request = (HttpUriRequest) mHttpContext.getAttribute(ExecutionContext.HTTP_REQUEST);
-            //200
-            if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+            //请求成功  
+  			int statusCode = response.getStatusLine().getStatusCode();
+            //200直接返回结果
+            if (statusCode == HttpStatus.SC_OK) {
                 HttpEntity entity = response.getEntity();
+                String responseBody = null;
+                // 不打算读取response body   
+                // 调用request的abort方法  
+                // request.abort();  
+                
                 if (entity != null){
-                    //如果压缩要解压
-                    Header header = entity.getContentEncoding();
-                    if (header != null){
-                        String contentEncoding = header.getValue();
-                        if (contentEncoding != null){
-                            if (contentEncoding.contains("gzip")){
-                                entity = new AbGzipDecompressingEntity(entity);
-                            }
-                        }
-                    }
-                    String charset = EntityUtils.getContentCharSet(entity) == null ? ENCODE : EntityUtils.getContentCharSet(entity);
-                    
-                    String responseBody = new String(EntityUtils.toByteArray(entity), charset);
-                    
-                    return responseBody;
+	      			if (statusCode == HttpStatus.SC_OK){  
+	      				
+	      				  if(mResponseListener instanceof AbStringHttpResponseListener){
+	      					  //entity中的内容只能读取一次,否则Content has been consumed
+	      					  //如果压缩要解压
+	                          Header header = entity.getContentEncoding();
+	                          if (header != null){
+	                              String contentEncoding = header.getValue();
+	                              if (contentEncoding != null){
+	                                  if (contentEncoding.contains("gzip")){
+	                                      entity = new AbGzipDecompressingEntity(entity);
+	                                  }
+	                              }
+	                          }
+	                          String charset = EntityUtils.getContentCharSet(entity) == null ? encode : EntityUtils.getContentCharSet(entity);
+		      	              responseBody = new String(EntityUtils.toByteArray(entity), charset);
+	      					  
+		      	              ((AbStringHttpResponseListener)mResponseListener).sendSuccessMessage(statusCode, responseBody);
+	      				  }else if(mResponseListener instanceof AbBinaryHttpResponseListener){
+	      					  responseBody = "这是二进制数据";
+	      					  readResponseData(entity,((AbBinaryHttpResponseListener)mResponseListener));
+	      				  }else if(mResponseListener instanceof AbFileHttpResponseListener){
+	      					  //获取文件名
+	      					  String fileName = AbFileUtil.getCacheFileNameFromUrl(mUrl, response);
+	      					  writeResponseData(entity,fileName,((AbFileHttpResponseListener)mResponseListener));
+	      				  }
+	      			}else{
+	      				String charset = EntityUtils.getContentCharSet(entity) == null ? encode : EntityUtils.getContentCharSet(entity);
+	      	            responseBody = new String(EntityUtils.toByteArray(entity), charset);
+	      				mResponseListener.sendFailureMessage(statusCode, responseBody, new AbAppException(AbConstant.UNKNOWNHOSTEXCEPTION));
+	      				
+	      			}
+	      		    //资源释放!!!
+	            	try {
+						entity.consumeContent();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+	      			return responseBody;
                 }
                 
             }
-            //301 302
-            else if (response.getStatusLine().getStatusCode() == HttpStatus.SC_MOVED_TEMPORARILY
-                    || response.getStatusLine().getStatusCode() == HttpStatus.SC_MOVED_PERMANENTLY){
+            //301 302进行重定向请求
+            else if (statusCode == HttpStatus.SC_MOVED_TEMPORARILY
+                    || statusCode == HttpStatus.SC_MOVED_PERMANENTLY){
                 // 从头中取出转向的地址
                 Header locationHeader = response.getLastHeader("location");
                 String location = locationHeader.getValue();
                 if (request.getMethod().equalsIgnoreCase(HTTP_POST)){
-                    //return post(location, null, "");
+                    doPost(location, null, mResponseListener);
                 }
                 else if (request.getMethod().equalsIgnoreCase(HTTP_GET)){
-                    //return getWithoutCache(location, null, "");
+                    doGet(location, null, mResponseListener);
                 }
             }
             return null;
@@ -717,27 +729,31 @@ public class AbHttpClient {
      * 自动重试处理
      */
     private HttpRequestRetryHandler mRequestRetryHandler = new HttpRequestRetryHandler(){
-        // 自定义的恢复策略
+        
+    	// 自定义的恢复策略
         public boolean retryRequest(IOException exception, int executionCount,
                 HttpContext context){
             // 设置恢复策略，在发生异常时候将自动重试3次
             if (executionCount >= 3){
-                // Do not retry if over max retry count
+                // 如果超过最大重试次数，那么就不要继续了
+            	AbLogUtil.d(TAG, "超过最大重试次数，不重试");
                 return false;
             }
             if (exception instanceof NoHttpResponseException){
-                // Retry if the server dropped connection on us
+                // 如果服务器丢掉了连接，那么就重试
+            	AbLogUtil.d(TAG, "服务器丢掉了连接，重试");
                 return true;
             }
             if (exception instanceof SSLHandshakeException){
-                // Do not retry on SSL handshake exception
+                // SSL握手异常，不重试
+            	AbLogUtil.d(TAG, "ssl 异常 不重试");
                 return false;
             }
-            HttpRequest request = (HttpRequest) context
-                    .getAttribute(ExecutionContext.HTTP_REQUEST);
+            HttpRequest request = (HttpRequest) context.getAttribute(ExecutionContext.HTTP_REQUEST);
             boolean idempotent = (request instanceof HttpEntityEnclosingRequest);
             if (!idempotent){
-                // Retry if the request is considered idempotent
+            	// 如果请求被认为是幂等的，那么就重试
+            	AbLogUtil.d(TAG, "请求被认为是幂等的，重试");
                 return true;
             }
             if (exception != null){
@@ -764,6 +780,31 @@ public class AbHttpClient {
 	public void setUserAgent(String userAgent) {
 		this.userAgent = userAgent;
 	}
-    
 	
+	
+	/**
+     * 获取编码
+     * @return
+     */
+	public String getEncode() {
+		return encode;
+	}
+
+	/**
+	 * 设置编码
+	 * @param encode
+	 */
+	public void setEncode(String encode) {
+		this.encode = encode;
+	}
+
+
+	/**
+	 * 关闭HttpClient
+	 */
+	public void shutdown(){
+	    if(mHttpClient != null && mHttpClient.getConnectionManager() != null){
+	    	mHttpClient.getConnectionManager().shutdown();
+	    }
+	}
 }
