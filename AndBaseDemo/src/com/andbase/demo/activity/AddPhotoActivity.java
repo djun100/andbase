@@ -19,9 +19,10 @@ import android.widget.Button;
 import android.widget.GridView;
 
 import com.ab.activity.AbActivity;
-import com.ab.global.AbConstant;
+import com.ab.util.AbDialogUtil;
 import com.ab.util.AbFileUtil;
 import com.ab.util.AbStrUtil;
+import com.ab.util.AbToastUtil;
 import com.ab.util.AbViewUtil;
 import com.ab.view.titlebar.AbTitleBar;
 import com.andbase.R;
@@ -76,7 +77,7 @@ public class AddPhotoActivity extends AbActivity {
 		//初始化图片保存路径
 	    String photo_dir = AbFileUtil.getImageDownFullDir();
 	    if(AbStrUtil.isEmpty(photo_dir)){
-	    	showToast("存储卡不存在");
+	    	AbToastUtil.showToast(AddPhotoActivity.this,"存储卡不存在");
 	    }else{
 	    	PHOTO_DIR = new File(photo_dir);
 	    }
@@ -89,14 +90,14 @@ public class AddPhotoActivity extends AbActivity {
 
 			@Override
 			public void onClick(View v) {
-				removeDialog(AbConstant.DIALOGBOTTOM);
+				AbDialogUtil.removeDialog(v.getContext());
 				// 从相册中去获取
 				try {
 					Intent intent = new Intent(Intent.ACTION_GET_CONTENT, null);
 					intent.setType("image/*");
 					startActivityForResult(intent, PHOTO_PICKED_WITH_DATA);
 				} catch (ActivityNotFoundException e) {
-					showToast("没有找到照片");
+					AbToastUtil.showToast(AddPhotoActivity.this,"没有找到照片");
 				}
 			}
 			
@@ -106,7 +107,7 @@ public class AddPhotoActivity extends AbActivity {
 
 			@Override
 			public void onClick(View v) {
-				removeDialog(AbConstant.DIALOGBOTTOM);
+				AbDialogUtil.removeDialog(v.getContext());
 				doPickPhotoAction();
 			}
 			
@@ -116,7 +117,7 @@ public class AddPhotoActivity extends AbActivity {
 
 			@Override
 			public void onClick(View v) {
-				removeDialog(AbConstant.DIALOGBOTTOM);
+				AbDialogUtil.removeDialog(v.getContext());
 			}
 			
 		});
@@ -129,7 +130,7 @@ public class AddPhotoActivity extends AbActivity {
 					int position, long id) {
 				selectIndex = position;
 				if(selectIndex == camIndex){
-					showDialog(1,mAvatarView);
+					AbDialogUtil.showFragment(mAvatarView);
 				}else{
 					for(int i=0;i<mImagePathAdapter.getCount();i++){
 						ImageShowAdapter.ViewHolder mViewHolder = (ImageShowAdapter.ViewHolder)mGridView.getChildAt(i).getTag();
@@ -160,7 +161,7 @@ public class AddPhotoActivity extends AbActivity {
 		if (status.equals(Environment.MEDIA_MOUNTED)) {
 			doTakePhoto();
 		} else {
-			showToast("没有可用的存储卡");
+			AbToastUtil.showToast(AddPhotoActivity.this,"没有可用的存储卡");
 		}
 	}
 
@@ -175,7 +176,7 @@ public class AddPhotoActivity extends AbActivity {
 			intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(mCurrentPhotoFile));
 			startActivityForResult(intent, CAMERA_WITH_DATA);
 		} catch (Exception e) {
-			showToast("未找到系统相机程序");
+			AbToastUtil.showToast(AddPhotoActivity.this,"未找到系统相机程序");
 		}
 	}
 	
@@ -196,7 +197,7 @@ public class AddPhotoActivity extends AbActivity {
 					intent1.putExtra("PATH", currentFilePath);
 					startActivityForResult(intent1, CAMERA_CROP_DATA);
 		        }else{
-		        	showToast("未在存储卡中找到这个文件");
+		        	AbToastUtil.showToast(AddPhotoActivity.this,"未在存储卡中找到这个文件");
 		        }
 				break;
 			case CAMERA_WITH_DATA:

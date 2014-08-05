@@ -52,6 +52,7 @@ import com.ab.global.AbAppData;
  * @date：2011-11-10 下午11:52:13
  */
 public class AbAppUtil {
+	
 
 	/**
 	 * 描述：打开并安装文件.
@@ -226,12 +227,12 @@ public class AbAppUtil {
 	}
 
 	/**
-	 * 判断当前网络是否是3G网络.
+	 * 判断当前网络是否是移动数据网络.
 	 *
 	 * @param context the context
 	 * @return boolean
 	 */
-	public static boolean is3G(Context context) {
+	public static boolean isMobile(Context context) {
 		ConnectivityManager connectivityManager = (ConnectivityManager) context
 				.getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo activeNetInfo = connectivityManager.getActiveNetworkInfo();
@@ -240,36 +241,6 @@ public class AbAppUtil {
 			return true;
 		}
 		return false;
-	}
-	
-	/**
-	 * 描述：设置为调试模式.
-	 *
-	 * @param debug the new debug
-	 */
-	public static void setDebug(boolean debug){
-		AbAppData.DEBUG = debug;
-	}
-	
-	
-	/**
-	 * 描述：记录当前时间毫秒.
-	 */
-	public static void prepareLog() {
-		Calendar current = Calendar.getInstance();
-		AbAppData.startLogTimeInMillis = current.getTimeInMillis();
-	}
-	
-	/**
-	 * 描述：打印这次的执行时间毫秒，需要首先调用prepareLog().
-	 *
-	 * @param tag 标记
-	 * @param msg 描述
-	 */
-	public static void logD(String tag, String msg) {
-		Calendar current = Calendar.getInstance();
-		long endLogTimeInMillis = current.getTimeInMillis();
-		Log.d(tag,msg+":"+(endLogTimeInMillis-AbAppData.startLogTimeInMillis)+"ms");
 	}
 	
 	/**
@@ -339,6 +310,8 @@ public class AbAppUtil {
         }else{
             mResources = context.getResources();
         }
+        //DisplayMetrics{density=1.5, width=480, height=854, scaledDensity=1.5, xdpi=160.421, ydpi=159.497}
+        //DisplayMetrics{density=2.0, width=720, height=1280, scaledDensity=2.0, xdpi=160.42105, ydpi=160.15764}
         DisplayMetrics mDisplayMetrics = mResources.getDisplayMetrics();
         return mDisplayMetrics;
     }

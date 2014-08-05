@@ -6,9 +6,12 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.ab.activity.AbActivity;
+import com.ab.fragment.AbDialogFragment.AbDialogOnLoadListener;
+import com.ab.fragment.AbLoadDialogFragment;
 import com.ab.task.AbTask;
 import com.ab.task.AbTaskItem;
 import com.ab.task.AbTaskListener;
+import com.ab.util.AbDialogUtil;
 import com.ab.view.pullview.AbPullToRefreshView;
 import com.ab.view.pullview.AbPullToRefreshView.OnFooterLoadListener;
 import com.ab.view.pullview.AbPullToRefreshView.OnHeaderRefreshListener;
@@ -21,6 +24,7 @@ public class PullToRefreshViewActivity extends AbActivity implements OnHeaderRef
 	private MyApplication application;
 	private AbPullToRefreshView mAbPullToRefreshView = null;
 	private TextView mTextView = null;
+	private AbLoadDialogFragment  mDialogFragment = null;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,10 +51,18 @@ public class PullToRefreshViewActivity extends AbActivity implements OnHeaderRef
         mAbPullToRefreshView.getHeaderView().setHeaderProgressBarDrawable(this.getResources().getDrawable(R.drawable.progress_circular));
         mAbPullToRefreshView.getFooterView().setFooterProgressBarDrawable(this.getResources().getDrawable(R.drawable.progress_circular));
         
-    	showProgressDialog();
+        //显示进度框
+  		mDialogFragment = AbDialogUtil.showLoadDialog(this, R.drawable.ic_load, "查询中,请等一小会");
+  		mDialogFragment
+  		.setAbDialogOnLoadListener(new AbDialogOnLoadListener() {
 
-    	//第一次下载数据
-		refreshTask();
+  			@Override
+  			public void onLoad() {
+  				// 下载网络数据
+  				refreshTask();
+  			}
+
+  		});
 	    
     }
 
@@ -81,7 +93,7 @@ public class PullToRefreshViewActivity extends AbActivity implements OnHeaderRef
 
             @Override
             public void update() {
-                removeProgressDialog();
+            	AbDialogUtil.removeDialog(PullToRefreshViewActivity.this);
                 mTextView.setText("This is "+new Random().nextInt(100));
                 mAbPullToRefreshView.onHeaderRefreshFinish();
             }
@@ -105,7 +117,7 @@ public class PullToRefreshViewActivity extends AbActivity implements OnHeaderRef
 
             @Override
             public void update() {
-                removeProgressDialog();
+            	AbDialogUtil.removeDialog(PullToRefreshViewActivity.this);
                 mTextView.append("+"+new Random().nextInt(100));
                 mAbPullToRefreshView.onFooterLoadFinish();
             }

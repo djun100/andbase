@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.ab.activity.AbActivity;
+import com.ab.util.AbToastUtil;
 import com.ab.view.carousel.CarouselAdapter;
 import com.ab.view.carousel.CarouselAdapter.OnItemClickListener;
 import com.ab.view.carousel.CarouselAdapter.OnItemSelectedListener;
@@ -52,7 +53,7 @@ public class CarouselImageActivity extends AbActivity {
 			@Override
 			public void onItemClick(CarouselAdapter<?> parent, View view,
 					int position, long id) {
-				showToast("Click Position=" + position);
+				AbToastUtil.showToast(CarouselImageActivity.this,"Click Position=" + position);
 				
 			}
 
@@ -63,7 +64,7 @@ public class CarouselImageActivity extends AbActivity {
 			@Override
 			public void onItemSelected(CarouselAdapter<?> parent, View view,
 					int position, long id) {
-				showToast("Selected Position=" + position);
+				AbToastUtil.showToast(CarouselImageActivity.this,"Selected Position=" + position);
 			}
 
 			@Override

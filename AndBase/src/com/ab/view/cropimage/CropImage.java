@@ -33,6 +33,7 @@ import android.os.Environment;
 import android.os.Handler;
 
 import com.ab.global.AbConstant;
+import com.ab.util.AbDialogUtil;
 import com.ab.util.AbFileUtil;
 
 
@@ -396,37 +397,23 @@ public class CropImage{
     		mHandler = handler;
     	}
     	
-	    /**
-    	 * 描述：TODO.
-    	 *
-    	 * @version v1.0
-    	 * @see java.lang.Runnable#run()
-    	 * @author: amsoft.cn
-    	 * @date：2013-6-17 上午9:04:47
-    	 */
 	    public void run(){
     		final CountDownLatch latch = new CountDownLatch(1);
     		mHandler.post(new Runnable() {
                 public void run() {
-                    try{
-                    	mHandler.sendMessage(mHandler.obtainMessage(AbConstant.SHOW_PROGRESS));
-                    }catch (Exception e) {
-					}
                     latch.countDown();
                 }
             });
-    		 try {
+    		try {
                  latch.await();
-             } catch (Exception e) {
+            } catch (Exception e) {
                  throw new RuntimeException(e);
-             }
+            }
     		try {
     			mJob.run();
     		}catch (Exception e) {
     			e.printStackTrace();
-            }finally{
-    			mHandler.sendMessage(mHandler.obtainMessage(AbConstant.REMOVE_PROGRESS));
-    		}
+            }
     	}
     }
 }

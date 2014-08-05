@@ -35,23 +35,22 @@ package com.ab.view.sliding;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ab.adapter.AbFragmentPagerAdapter;
-import com.ab.global.AbAppData;
+import com.ab.util.AbLogUtil;
   
 // TODO: Auto-generated Javadoc
 
@@ -66,12 +65,6 @@ import com.ab.global.AbAppData;
  */
 public class AbBottomTabView extends LinearLayout {
 	
-	/** The tag. */
-	private static String TAG = "AbSlidingTabView";
-	
-	/** 日志标记. */
-	private static final boolean D = AbAppData.DEBUG;
-
 	/** The context. */
 	private Context context;
 	
@@ -96,16 +89,6 @@ public class AbBottomTabView extends LinearLayout {
 	/** tab的图标. */
 	private List<Drawable> tabItemDrawableList = null;
 	
-	
-	/** The layout params ff. */
-	public LinearLayout.LayoutParams layoutParamsFF = null;
-	
-	/** The layout params fw. */
-	public LinearLayout.LayoutParams layoutParamsFW = null;
-	
-	/** The layout params ww. */
-	public LinearLayout.LayoutParams layoutParamsWW = null;
-	
 	/** 当前选中编号. */
 	private int mSelectedTabIndex = 0;
 	
@@ -116,7 +99,7 @@ public class AbBottomTabView extends LinearLayout {
     private int tabBackgroundResource = -1;
     
 	/** tab的文字大小. */
-	private int tabTextSize = 16;
+	private int tabTextSize = 30;
 	
 	/** tab的文字颜色. */
 	private int tabTextColor = Color.BLACK;
@@ -143,10 +126,6 @@ public class AbBottomTabView extends LinearLayout {
 		super(context, attrs);
 		this.context = context;
 		
-		layoutParamsFW = new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
-		layoutParamsFF = new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);
-		layoutParamsWW = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-		
 		this.setOrientation(LinearLayout.VERTICAL);
 		this.setBackgroundColor(Color.rgb(255, 255, 255));
 		
@@ -159,8 +138,8 @@ public class AbBottomTabView extends LinearLayout {
 		//手动创建的ViewPager,必须调用setId()方法设置一个id
 		mViewPager.setId(1985);
 		pagerItemList = new ArrayList<Fragment>();
-		this.addView(mViewPager,new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT,0,1));
-		addView(mTabLayout, layoutParamsFW);
+		this.addView(mViewPager,new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,0,1));
+		addView(mTabLayout, new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 		
 		//定义Tab栏
   		tabItemList = new ArrayList<TextView>();
@@ -168,10 +147,10 @@ public class AbBottomTabView extends LinearLayout {
   		tabItemDrawableList = new ArrayList<Drawable>();
 		//要求必须是FragmentActivity的实例
 		if(!(this.context instanceof FragmentActivity)){
-			Log.e(TAG, "构造AbSlidingTabView的参数context,必须是FragmentActivity的实例。");
+			AbLogUtil.e(AbBottomTabView.class, "构造AbSlidingTabView的参数context,必须是FragmentActivity的实例。");
 		}
 		
-		FragmentManager mFragmentManager = ((FragmentActivity)this.context).getSupportFragmentManager();
+		FragmentManager mFragmentManager = ((FragmentActivity)this.context).getFragmentManager();
 		mFragmentPagerAdapter = new AbFragmentPagerAdapter(
 				mFragmentManager, pagerItemList);
 		mViewPager.setAdapter(mFragmentPagerAdapter);

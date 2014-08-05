@@ -20,7 +20,7 @@
         android:layout_toRightOf="@+id/itemsIcon"
         android:paddingLeft="5dip"
         android:paddingTop="3dip"
-        android:textColor="@color/gray_black"
+        android:textColor="@color/gray_dark"
         android:textSize="18dip" />
 
     <TextView

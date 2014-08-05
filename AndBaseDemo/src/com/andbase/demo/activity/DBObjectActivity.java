@@ -19,6 +19,7 @@ import com.ab.db.storage.AbSqliteStorageListener.AbDataInfoListener;
 import com.ab.db.storage.AbSqliteStorageListener.AbDataInsertListener;
 import com.ab.db.storage.AbSqliteStorageListener.AbDataOperationListener;
 import com.ab.db.storage.AbStorageQuery;
+import com.ab.util.AbToastUtil;
 import com.ab.view.titlebar.AbTitleBar;
 import com.andbase.R;
 import com.andbase.demo.adapter.UserDBListAdapter;
@@ -116,7 +117,7 @@ public class DBObjectActivity extends AbActivity {
 					u.setName(name);
 					saveData(u);
 				}else{
-					showToast("请输入名称!");
+					AbToastUtil.showToast(DBObjectActivity.this,"请输入名称!");
 				}
 			}
         });
@@ -248,7 +249,7 @@ public class DBObjectActivity extends AbActivity {
 
 			@Override
 			public void onFailure(int errorCode, String errorMessage) {
-				showToast(errorMessage);
+				AbToastUtil.showToast(DBObjectActivity.this,errorMessage);
 			}
 			
 		});
@@ -265,7 +266,7 @@ public class DBObjectActivity extends AbActivity {
 
 			@Override
 			public void onFailure(int errorCode, String errorMessage) {
-				showToast(errorMessage);
+				AbToastUtil.showToast(DBObjectActivity.this,errorMessage);
 			}
 
 			@Override
@@ -291,7 +292,7 @@ public class DBObjectActivity extends AbActivity {
 
 			@Override
 			public void onFailure(int errorCode, String errorMessage) {
-				showToast(errorMessage);
+				AbToastUtil.showToast(DBObjectActivity.this,errorMessage);
 			}
 
 			@Override
@@ -323,7 +324,7 @@ public class DBObjectActivity extends AbActivity {
 
 			@Override
 			public void onFailure(int errorCode, String errorMessage) {
-				showToast(errorMessage);
+				AbToastUtil.showToast(DBObjectActivity.this,errorMessage);
 			}
 
 			@Override
@@ -353,14 +354,14 @@ public class DBObjectActivity extends AbActivity {
 
 			@Override
 			public void onFailure(int errorCode, String errorMessage) {
-				showToast(errorMessage);
+				AbToastUtil.showToast(DBObjectActivity.this,errorMessage);
 			}
 
 			@Override
 			public void onSuccess(List<?> paramList) {
 				if(paramList!=null && paramList.size()>0){
 					LocalUser u = (LocalUser)paramList.get(0);
-					showToast("结果：_id:"+u.get_id()+",name:"+u.getName());
+					AbToastUtil.showToast(DBObjectActivity.this,"结果：_id:"+u.get_id()+",name:"+u.getName());
 				}
 			}
 			
@@ -389,7 +390,7 @@ public class DBObjectActivity extends AbActivity {
 
 			@Override
 			public void onFailure(int errorCode, String errorMessage) {
-				showToast(errorMessage);
+				AbToastUtil.showToast(DBObjectActivity.this,errorMessage);
 			}
 			
 		});

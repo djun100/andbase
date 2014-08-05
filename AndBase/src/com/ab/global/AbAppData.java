@@ -21,7 +21,7 @@ package com.ab.global;
 /**
  * © 2012 amsoft.cn
  * 名称：AbAppData.java 
- * 描述：变量类.
+ * 描述：全局的数据变量保存类.
  *
  * @author 还如一梦中
  * @version v1.0
@@ -29,19 +29,5 @@ package com.ab.global;
  */
 public class AbAppData {
 	
-	/** 日志开关. */
-	public static  boolean DEBUG = true;
-	
-	/** 性能测试. */
-	public static boolean mMonitorOpened = false;
-	
-	/** 起始执行时间. */
-	public static long startLogTimeInMillis = 0;
-	
-	/**  UI设计的基准宽度. */
-	public static int uiWidth = 480;
-	
-	/**  UI设计的基准高度. */
-	public static int uiHeight = 800;
 
 }

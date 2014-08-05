@@ -31,11 +31,8 @@ import com.ab.util.AbFileUtil;
  * @version v1.0
  * @date：2013-11-13 上午9:00:52
  */
-public class AbFileHttpResponseListener extends AbHttpResponseListener{
+public abstract class AbFileHttpResponseListener extends AbHttpResponseListener{
 	
-	/** 日志标记. */
-    private static final String TAG = "AbFileHttpResponseListener";
-    
     /** 当前缓存文件. */
     private File mFile;
     
@@ -70,14 +67,14 @@ public class AbFileHttpResponseListener extends AbHttpResponseListener{
 	 * @param statusCode the status code
 	 * @param file the file
 	 */
-    public void onSuccess(int statusCode,File file) {};
+    public void onSuccess(int statusCode,File file){};
     
     /**
      * 描述：多文件上传成功调用.
      *
      * @param statusCode the status code
      */
-    public void onSuccess(int statusCode) {};
+    public void onSuccess(int statusCode){};
     
     
     /**
@@ -87,7 +84,7 @@ public class AbFileHttpResponseListener extends AbHttpResponseListener{
      * @param content the content
      * @param error the error
      */
-    public void onFailure(int statusCode, String content,Throwable error) {}
+    public abstract void onFailure(int statusCode, String content,Throwable error);
    
    /**
     * 成功消息.
@@ -95,7 +92,7 @@ public class AbFileHttpResponseListener extends AbHttpResponseListener{
     * @param statusCode the status code
     */
     public void sendSuccessMessage(int statusCode){
-    	sendMessage(obtainMessage(AbHttpUtil.SUCCESS_MESSAGE, new Object[]{statusCode}));
+    	sendMessage(obtainMessage(AbHttpClient.SUCCESS_MESSAGE, new Object[]{statusCode}));
     }
     
     /**
@@ -105,7 +102,7 @@ public class AbFileHttpResponseListener extends AbHttpResponseListener{
      * @param error the error
      */
     public void sendFailureMessage(int statusCode,Throwable error){
-    	sendMessage(obtainMessage(AbHttpUtil.FAILURE_MESSAGE, new Object[]{statusCode, error}));
+    	sendMessage(obtainMessage(AbHttpClient.FAILURE_MESSAGE, new Object[]{statusCode, error}));
     }
     
 

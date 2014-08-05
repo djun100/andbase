@@ -1,6 +1,8 @@
 package com.andbase.main;
 
 import android.app.Activity;
+import android.app.LoaderManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,12 +16,13 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
+import android.widget.SearchView.OnQueryTextListener;
 
 import com.andbase.R;
 import com.andbase.global.Constant;
 import com.andbase.global.MyApplication;
 
-public class MainContentFragment extends Fragment {
+public class MainContentFragment extends Fragment{
 
 	private MyApplication application;
 	private Activity mActivity = null;
@@ -130,6 +133,8 @@ public class MainContentFragment extends Fragment {
 				super.onReceivedTitle(view, title);
 			}
 		});
+		
+		
 
 		return view;
 	}

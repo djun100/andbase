@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.ab.activity.AbActivity;
-import com.ab.global.AbConstant;
+import com.ab.util.AbDialogUtil;
 import com.ab.view.titlebar.AbTitleBar;
 import com.ab.view.wheel.AbNumericWheelAdapter;
 import com.ab.view.wheel.AbWheelUtil;
@@ -43,11 +43,6 @@ public class WheelActivity extends AbActivity {
 	    
         application = (MyApplication)abApplication;
         
-        if(diaplayWidth<400){
-			this.setDialogPadding(30);
-		}
-        
-        
         mTimeView1 = mInflater.inflate(R.layout.choose_three, null);
         mTimeView2 = mInflater.inflate(R.layout.choose_three, null);
         mTimeView3 = mInflater.inflate(R.layout.choose_two, null);
@@ -62,7 +57,7 @@ public class WheelActivity extends AbActivity {
 
 			@Override
 			public void onClick(View v) {
-				showDialog(AbConstant.DIALOGBOTTOM,mTimeView1);
+				AbDialogUtil.showFragment(mTimeView1);
 			}
 			
 		});
@@ -71,7 +66,7 @@ public class WheelActivity extends AbActivity {
 
 			@Override
 			public void onClick(View v) {
-				showDialog(AbConstant.DIALOGBOTTOM,mTimeView2);
+				AbDialogUtil.showFragment(mTimeView2);
 			}
 			
 		});
@@ -80,7 +75,7 @@ public class WheelActivity extends AbActivity {
 
 			@Override
 			public void onClick(View v) {
-				showDialog(AbConstant.DIALOGBOTTOM,mTimeView3);
+				AbDialogUtil.showFragment(mTimeView3);
 			}
 			
 		});
@@ -89,7 +84,7 @@ public class WheelActivity extends AbActivity {
 
 			@Override
 			public void onClick(View v) {
-				showDialog(AbConstant.DIALOGBOTTOM,mDataView1);
+				AbDialogUtil.showFragment(mDataView1);
 			}
 			
 		});
@@ -122,7 +117,7 @@ public class WheelActivity extends AbActivity {
 
 			@Override
 			public void onClick(View v) {
-				removeDialog(1);
+				AbDialogUtil.removeDialog(v.getContext());
 				int index = mWheelView1.getCurrentItem();
 				String val = mWheelView1.getAdapter().getItem(index);
 				mDataTextView1.setText(val);
@@ -134,7 +129,7 @@ public class WheelActivity extends AbActivity {
 
 			@Override
 			public void onClick(View v) {
-				removeDialog(1);
+				AbDialogUtil.removeDialog(v.getContext());
 			}
 			
 		});

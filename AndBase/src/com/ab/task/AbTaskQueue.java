@@ -22,9 +22,8 @@ import java.util.concurrent.Executor;
 
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 
-import com.ab.global.AbAppData;
+import com.ab.util.AbLogUtil;
 
 // TODO: Auto-generated Javadoc
 
@@ -38,12 +37,6 @@ import com.ab.global.AbAppData;
  * @date：2011-11-10 下午11:52:13
  */
 public class AbTaskQueue extends Thread { 
-	
-    /** 日志标记. */
-	private static String TAG = "AbTaskQueue";
-	
-	/** 日志标记开关. */
-	private static final boolean D = AbAppData.DEBUG;
 	
 	/** 等待执行的任务. 用 LinkedList增删效率高*/
 	private static LinkedList<AbTaskItem> mAbTaskItemList = null;
@@ -127,10 +120,8 @@ public class AbTaskQueue extends Thread {
     private synchronized void addTaskItem(AbTaskItem item) { 
     	if (abTaskQueue == null) { 
     	    abTaskQueue = new AbTaskQueue();
-        	mAbTaskItemList.add(item);
-        } else{
-        	mAbTaskItemList.add(item);
         }
+    	mAbTaskItemList.add(item);
     	//添加了执行项就激活本线程 
         this.notify();
         
@@ -176,7 +167,7 @@ public class AbTaskQueue extends Thread {
 					    this.wait();
 					}
 				} catch (InterruptedException e) {
-					Log.e(TAG, "收到线程中断请求");
+					AbLogUtil.e("AbTaskQueue","收到线程中断请求");
 					e.printStackTrace();
 					//被中断的是退出就结束，否则继续
 					if (mQuit) {

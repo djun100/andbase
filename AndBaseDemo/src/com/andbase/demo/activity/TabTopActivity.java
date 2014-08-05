@@ -3,9 +3,9 @@ package com.andbase.demo.activity;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.Fragment;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 
 import com.ab.activity.AbActivity;
 import com.ab.view.sliding.AbSlidingTabView;
@@ -53,14 +53,14 @@ public class TabTopActivity extends AbActivity {
 			
 		});*/
 
-		Fragment1 page1 = new Fragment1();
-		Fragment2 page2 = new Fragment2();
-		Fragment4 page3 = new Fragment4();
-		Fragment5 page4 = new Fragment5();
-		Fragment1 page5 = new Fragment1();
-		Fragment2 page6 = new Fragment2();
-		Fragment4 page7 = new Fragment4();
-		Fragment5 page8 = new Fragment5();
+		FragmentLoad page1 = new FragmentLoad();
+		FragmentLoad2 page2 = new FragmentLoad2();
+		FragmentLoad page3 = new FragmentLoad();
+		FragmentLoad2 page4 = new FragmentLoad2();
+		FragmentLoad page5 = new FragmentLoad();
+		FragmentLoad2 page6 = new FragmentLoad2();
+		FragmentLoad page7 = new FragmentLoad();
+		FragmentLoad2 page8 = new FragmentLoad2();
 		
 		List<Fragment> mFragments = new ArrayList<Fragment>();
 		mFragments.add(page1);

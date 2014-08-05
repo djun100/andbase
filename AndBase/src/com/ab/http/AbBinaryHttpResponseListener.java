@@ -25,10 +25,7 @@ package com.ab.http;
  * @version v1.0
  * @date：2013-11-13 上午9:00:52
  */
-public class AbBinaryHttpResponseListener extends AbHttpResponseListener{
-	
-	/** 日志标记. */
-    private static final String TAG = "AbBinaryHttpResponseListener";
+public abstract class AbBinaryHttpResponseListener extends AbHttpResponseListener{
 	
     /**
      * 构造.
@@ -43,17 +40,17 @@ public class AbBinaryHttpResponseListener extends AbHttpResponseListener{
 	 * @param statusCode the status code
 	 * @param content the content
 	 */
-    public void onSuccess(int statusCode,byte[] content) {};
+    public abstract void onSuccess(int statusCode,byte[] content);
     
-    
-    /**
+
+	/**
      * 成功消息.
      *
      * @param statusCode the status code
      * @param content the content
      */
     public void sendSuccessMessage(int statusCode,byte[] content){
-    	sendMessage(obtainMessage(AbHttpUtil.SUCCESS_MESSAGE, new Object[]{statusCode, content}));
+    	sendMessage(obtainMessage(AbHttpClient.SUCCESS_MESSAGE, new Object[]{statusCode, content}));
     }
     
 

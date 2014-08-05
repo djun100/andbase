@@ -14,6 +14,7 @@ import android.widget.PopupWindow;
 
 import com.ab.activity.AbActivity;
 import com.ab.model.AbMenuItem;
+import com.ab.util.AbToastUtil;
 import com.ab.view.titlebar.AbBottomBar;
 import com.ab.view.titlebar.AbTitleBar;
 import com.andbase.R;
@@ -52,7 +53,7 @@ public class TitleBarActivity extends AbActivity {
 			
 			@Override
 			public void onClick(View v) {
-				showToast("点了返回哦");
+				AbToastUtil.showToast(TitleBarActivity.this,"点了返回哦");
 				finish();
 			}
 		});
@@ -103,7 +104,7 @@ public class TitleBarActivity extends AbActivity {
 
 		 			@Override
 		 			public void onClick(View v) {
-		 				showToast("别点了");
+		 				AbToastUtil.showToast(TitleBarActivity.this,"别点了");
 		 			}
 		         });
 		    	
@@ -111,7 +112,7 @@ public class TitleBarActivity extends AbActivity {
 
 		 			@Override
 		 			public void onClick(View v) {
-		 				showToast("还点");
+		 				AbToastUtil.showToast(TitleBarActivity.this,"还点");
 		 			}
 		         	
 		         });

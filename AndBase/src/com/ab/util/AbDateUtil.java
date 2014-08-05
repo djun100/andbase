@@ -22,10 +22,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import com.ab.global.AbAppData;
-
-import android.util.Log;
-
 // TODO: Auto-generated Javadoc
 
 /**
@@ -38,12 +34,6 @@ import android.util.Log;
  * @date：2013-01-18 下午11:52:13
  */
 public class AbDateUtil {
-	
-	/** The tag. */
-	private static String TAG = "AbDateUtil";
-	
-	/** 日志标记. */
-	private static final boolean D = AbAppData.DEBUG;
 	
 	/** 时间日期格式化到年月日时分秒. */
 	public static final String dateFormatYMDHMS = "yyyy-MM-dd HH:mm:ss";
@@ -220,7 +210,7 @@ public class AbDateUtil {
 	 * @return String String类型的当前日期时间
 	 */
 	public static String getCurrentDate(String format) {
-		if(D)Log.d(TAG, "getCurrentDate:"+format);
+		AbLogUtil.d(AbDateUtil.class, "getCurrentDate:"+format);
 		String curDateTime = null;
 		try {
 			SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat(format);

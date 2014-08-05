@@ -21,10 +21,9 @@ import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 
 import android.graphics.Bitmap;
-import android.support.v4.util.LruCache;
-import android.util.Log;
+import android.util.LruCache;
 
-import com.ab.global.AbAppData;
+import com.ab.util.AbLogUtil;
 import com.ab.util.AbMd5;
 import com.ab.util.AbStrUtil;
 
@@ -41,12 +40,6 @@ import com.ab.util.AbStrUtil;
  */
 public class AbImageCache {
 	
-	/** The tag. */
-	private static String TAG = "AbImageCache";
-	
-	/** 日志标记. */
-	private static final boolean D = AbAppData.DEBUG;
-	
 	/** 缓存空间大小8MB. */
 	public static int cacheSize = 8 * 1024 * 1024; 
 	
@@ -59,7 +52,7 @@ public class AbImageCache {
 		@Override
 		protected void entryRemoved(boolean evicted, String key,
 				Bitmap oldValue, Bitmap newValue) {
-			if(D) Log.d(TAG, "LruCache:移除了"+key);
+			AbLogUtil.d(AbImageCache.class, "LruCache:移除了"+key);
 		}
 		
 		

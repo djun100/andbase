@@ -17,9 +17,14 @@ import com.ab.activity.AbActivity;
 import com.ab.db.storage.AbSqliteStorage;
 import com.ab.db.storage.AbSqliteStorageListener.AbDataInfoListener;
 import com.ab.db.storage.AbStorageQuery;
+import com.ab.global.AbAppConfig;
 import com.ab.task.AbTask;
 import com.ab.task.AbTaskItem;
 import com.ab.task.AbTaskObjectListener;
+import com.ab.util.AbDialogUtil;
+import com.ab.util.AbLogUtil;
+import com.ab.util.AbMonitorUtil;
+import com.ab.util.AbToastUtil;
 import com.ab.view.slidingmenu.SlidingMenu;
 import com.ab.view.titlebar.AbTitleBar;
 import com.andbase.R;
@@ -50,6 +55,7 @@ public class MainActivity extends AbActivity {
 	public final int LOGIN_CODE = 0;
 	public final int FRIEND_CODE = 1;
 	public final int CHAT_CODE = 2;
+	private Boolean isExit = false;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -151,15 +157,6 @@ public class MainActivity extends AbActivity {
         }
 	}
 
-    @Override
-	public void onBackPressed() {
-		if (menu.isMenuShowing()) {
-			menu.showContent();
-		} else {
-			super.onBackPressed();
-		}
-	}
-
 	// 显示app
 	public void showApp() {
 		list.showlist(this);
@@ -200,45 +197,24 @@ public class MainActivity extends AbActivity {
 		});
 	}
 
+	/**
+	 * 描述：返回.
+	 */
 	@Override
-	protected void onResume() {
-		super.onResume();
-		initTitleRightLayout();
-
-	}
-
-	public void onPause() {
-		super.onPause();
-	}
-
-	private static Boolean isExit = false;
-	private static Boolean hasTask = false;
-	private Timer tExit = new Timer();
-	private TimerTask task = new TimerTask() {
-		@Override
-		public void run() {
-			isExit = true;
-			hasTask = true;
-		}
-	};
-
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if (keyCode == KeyEvent.KEYCODE_BACK) {
+	public void onBackPressed() {
+		if (menu.isMenuShowing()) {
+			menu.showContent();
+		} else {
 			if (mMainContentFragment.canBack()) {
 				if (isExit == false) {
 					isExit = true;
-					showToast("再按一次退出程序");
-					if (!hasTask) {
-						tExit.schedule(task, 2000);
-					}
+					AbToastUtil.showToast(MainActivity.this,"再按一次退出程序");
 				} else {
-					finish();
+					super.onBackPressed();
 				}
 			}
+			
 		}
-		return false;
-
 	}
 
 	/**
@@ -255,7 +231,7 @@ public class MainActivity extends AbActivity {
 
 				@Override
 				public void onFailure(int errorCode, String errorMessage) {
-					showToast(errorMessage);
+					AbToastUtil.showToast(MainActivity.this,errorMessage);
 				}
 
 				@Override
@@ -264,7 +240,7 @@ public class MainActivity extends AbActivity {
 					    //登录IM
 						loginIMTask((User) paramList.get(0));
 					}else{
-						showToast("IM信息缺失");
+						AbToastUtil.showToast(MainActivity.this,"IM信息缺失");
 					}
 				}
 
@@ -344,24 +320,24 @@ public class MainActivity extends AbActivity {
 		   if(IMUtil.isLogin()){
 		       return;
 		   }
-		   showProgressDialog("登录到IM");
+		   AbDialogUtil.showProgressDialog(MainActivity.this,R.drawable.progress_circular,"登录到IM");
 	       AbTask task = new AbTask();
 	       final AbTaskItem item = new AbTaskItem();
 	       item.setListener(new AbTaskObjectListener(){
 
 	           @Override
 	           public <T> void update(T entity) {
-	               removeProgressDialog();
+	        	   AbDialogUtil.removeDialog(MainActivity.this);
 	               Log.d("TAG", "登录执行完成");
 	               int code = (Integer)entity;
 	               if(code == IMUtil.SUCCESS_CODE || code == IMUtil.LOGGED_CODE){
-	                   showToast("IM登录成功");
+	            	   AbToastUtil.showToast(MainActivity.this,"IM登录成功");
 	                    //启动IM服务
                        startIMService();
                        //要跳转到哪里
                        toByIntent(getIntent());
 	               }else if(code == IMUtil.FAIL_CODE){
-	                   showToast("IM登录失败");
+	            	   AbToastUtil.showToast(MainActivity.this,"IM登录失败");
 	               }
  
 	           }
@@ -403,6 +379,21 @@ public class MainActivity extends AbActivity {
         startActivity(friendIntent);
     }
 	
+	@Override
+	protected void onPause() {
+		initTitleRightLayout();
+		AbLogUtil.d(this, "--onPause--");
+		AbMonitorUtil.closeMonitor();
+		super.onPause();
+	}
+
+	@Override
+	protected void onResume() {
+		AbLogUtil.d(this, "--onResume--");
+		//如果debug模式被打开，显示监控
+        AbMonitorUtil.openMonitor(this);
+		super.onResume();
+	}
 
 	@Override
 	public void finish() {

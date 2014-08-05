@@ -15,6 +15,8 @@
  */
 package com.ab.view.sliding;
 
+import com.ab.util.AbViewUtil;
+
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
@@ -64,9 +66,9 @@ public class AbTabItemView extends LinearLayout {
         this.mContext = context;
         mTextView = new TextView(context);
         mTextView.setGravity(Gravity.CENTER);
-        mTextView.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,LayoutParams.FILL_PARENT));
+        mTextView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT));
         mTextView.setFocusable(true);
-        mTextView.setPadding(12, 5, 12, 5);
+        mTextView.setPadding(10, 0, 10, 0);
         mTextView.setSingleLine();
         this.addView(mTextView);
     }
@@ -108,7 +110,7 @@ public class AbTabItemView extends LinearLayout {
      * @param tabTextSize the new tab text size
      */
 	public void setTabTextSize(int tabTextSize) {
-		mTextView.setTextSize(tabTextSize);
+		AbViewUtil.setTextSize(mTextView, tabTextSize);
 	}
 
 	/**
@@ -130,16 +132,16 @@ public class AbTabItemView extends LinearLayout {
 	 */
 	public void setTabCompoundDrawables(Drawable left, Drawable top, Drawable right, Drawable bottom) {
 		if(left!=null){
-			left.setBounds(0, 0, left.getIntrinsicWidth(), left.getIntrinsicHeight()); 
+			left.setBounds(0, 0, AbViewUtil.scale(mContext, left.getIntrinsicWidth()), AbViewUtil.scale(mContext, left.getIntrinsicHeight())); 
 		}
 		if(top!=null){
-		    top.setBounds(0, 0, top.getIntrinsicWidth(), top.getIntrinsicHeight()); 
+		    top.setBounds(0, 0, AbViewUtil.scale(mContext, top.getIntrinsicWidth()), AbViewUtil.scale(mContext, top.getIntrinsicHeight())); 
 		}
 		if(right!=null){
-		    right.setBounds(0, 0, right.getIntrinsicWidth(), right.getIntrinsicHeight());
+		    right.setBounds(0, 0, AbViewUtil.scale(mContext, right.getIntrinsicWidth()), AbViewUtil.scale(mContext, right.getIntrinsicHeight()));
 		}
 		if(bottom!=null){
-		    bottom.setBounds(0, 0, bottom.getIntrinsicWidth(), bottom.getIntrinsicHeight()); 
+		    bottom.setBounds(0, 0, AbViewUtil.scale(mContext, bottom.getIntrinsicWidth()), AbViewUtil.scale(mContext, bottom.getIntrinsicHeight())); 
 		}
 		mTextView.setCompoundDrawables(left, top, right, bottom);
 	}

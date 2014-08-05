@@ -18,7 +18,6 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.ab.activity.AbActivity;
 import com.ab.download.AbDownloadProgressListener;
 import com.ab.download.AbDownloadThread;
 import com.ab.download.AbFileDownloader;
@@ -28,6 +27,7 @@ import com.ab.task.AbTaskItem;
 import com.ab.task.AbTaskListener;
 import com.ab.util.AbFileUtil;
 import com.ab.util.AbStrUtil;
+import com.ab.util.AbToastUtil;
 import com.andbase.R;
 import com.andbase.global.Constant;
 
@@ -176,7 +176,7 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
 					public void onClick(View v) {
 						if(!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){
 							//无sd卡
-							((AbActivity)mContext).showToast("没找到存储卡");
+							AbToastUtil.showToast(mContext,"没找到存储卡");
 							return;
 						}
 						

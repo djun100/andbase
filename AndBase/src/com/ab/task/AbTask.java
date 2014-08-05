@@ -31,8 +31,11 @@ package com.ab.task;
  */
 import java.util.List;
 
+import com.ab.fragment.AbLoadDialogFragment;
+
 import android.os.AsyncTask;
 // TODO: Auto-generated Javadoc
+import android.os.Bundle;
 
 /**
  * © 2012 amsoft.cn
@@ -57,7 +60,15 @@ public class AbTask extends AsyncTask<AbTaskItem, Integer, AbTaskItem> {
 	public AbTask() {
 		super();
 	}
-
+	
+	/**
+	 * Instantiates a new ab task.
+	 */
+	public static AbTask newInstance() {
+		AbTask mAbTask = new AbTask();
+		return mAbTask;
+	}
+	
 	/* (non-Javadoc)
 	 * @see android.os.AsyncTask#doInBackground(Params[])
 	 */

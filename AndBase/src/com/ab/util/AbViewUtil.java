@@ -16,22 +16,22 @@
 package com.ab.util;
 
 import android.content.Context;
-import android.content.res.Resources;
+import android.graphics.Paint;
+import android.text.TextPaint;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
+import android.view.ViewParent;
 import android.widget.AbsListView;
 import android.widget.GridView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.ab.global.AbAppData;
+import com.ab.global.AbAppConfig;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -46,16 +46,11 @@ import com.ab.global.AbAppData;
 
 public class AbViewUtil {
     
-    /** 日志标记. */
-    private static String TAG = "AbViewUtil";
-    
-    /** 日志标记开关. */
-    private static final boolean D = AbAppData.DEBUG;
-    
     /**
      * 无效值
      */
     public static final int INVALID = Integer.MIN_VALUE;
+    
 
 	/**
 	 * 描述：重置AbsListView的高度. item 的最外层布局要用
@@ -144,7 +139,7 @@ public class AbViewUtil {
 	public static void measureView(View v) {
 		ViewGroup.LayoutParams p = v.getLayoutParams();
 		if (p == null) {
-			p = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,
+			p = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
 					ViewGroup.LayoutParams.WRAP_CONTENT);
 		}
 
@@ -159,6 +154,19 @@ public class AbViewUtil {
 					MeasureSpec.UNSPECIFIED);
 		}
 		v.measure(childWidthSpec, childHeightSpec);
+	}
+	
+	/**
+	 * 从父亲布局中移除自己
+	 * @param v
+	 */
+	public static void removeSelfFromParent(View v) {
+		ViewParent parent = v.getParent();
+		if(parent != null){
+			if(parent instanceof ViewGroup){
+				((ViewGroup)parent).removeView(v);
+			}
+		}
 	}
 
 	
@@ -217,12 +225,12 @@ public class AbViewUtil {
 	 * @param pxValue the px value
 	 * @return the int
 	 */
-	public static int resize(Context context, float value) {
+	public static int scale(Context context, float value) {
 		DisplayMetrics mDisplayMetrics = AbAppUtil.getDisplayMetrics(context);
-		return resize(mDisplayMetrics.widthPixels,
+		return scale(mDisplayMetrics.widthPixels,
 				mDisplayMetrics.heightPixels, value);
 	}
-
+	
 	/**
 	 * 描述：根据屏幕大小缩放.
 	 *
@@ -231,41 +239,15 @@ public class AbViewUtil {
 	 * @param pxValue the px value
 	 * @return the int
 	 */
-	public static int resize(int displayWidth, int displayHeight, float pxValue) {
+	public static int scale(int displayWidth, int displayHeight, float pxValue) {
 		float scale = 1;
 		try {
-			float scaleWidth = (float) displayWidth / AbAppData.uiWidth;
-			float scaleHeight = (float) displayHeight / AbAppData.uiHeight;
+			float scaleWidth = (float) displayWidth / AbAppConfig.uiWidth;
+			float scaleHeight = (float) displayHeight / AbAppConfig.uiHeight;
 			scale = Math.min(scaleWidth, scaleHeight);
 		} catch (Exception e) {
 		}
-		return Math.round(pxValue * scale);
-	}
-
-	/**
-	 * 适配大小.
-	 *
-	 * @param context the context
-	 * @param unit TypedValue.COMPLEX_UNIT_DIP
-	 * @param value 单位值
-	 * @return the px size
-	 */
-	public static float getPXValue(Context context,int unit,float value) {
-	    DisplayMetrics mDisplayMetrics = AbAppUtil.getDisplayMetrics(context);
-		return TypedValue.applyDimension(unit, value,mDisplayMetrics);
-	}
-
-	/**
-     * 适配大小.
-     *
-     * @param unit TypedValue.COMPLEX_UNIT_DIP
-     * @param value 单位值
-     * @return the px size
-     */
-	public static float getPXValue(int unit,float value) {
-		Resources mResources = Resources.getSystem();
-		return TypedValue.applyDimension(unit, value,
-				mResources.getDisplayMetrics());
+		return Math.round(pxValue * scale + 0.5f);
 	}
 	
 	/**
@@ -295,13 +277,13 @@ public class AbViewUtil {
     }
     
     /**
-     * 按比例缩放View，布局中的尺寸需要设置为px单位
+     * 按比例缩放View，以布局中的尺寸为基准
      * @param view
      */
-    public static void initPXView(View view){
+    public static void scaleView(View view){
         if (view instanceof TextView){
             TextView textView = (TextView) view;
-            setPXTextSize(textView,textView.getTextSize());
+            setTextSize(textView,textView.getTextSize());
         }
 
         ViewGroup.LayoutParams params = (ViewGroup.LayoutParams) view.getLayoutParams();
@@ -309,20 +291,20 @@ public class AbViewUtil {
             int width = INVALID;
             int height = INVALID;
             if (params.width != ViewGroup.LayoutParams.WRAP_CONTENT
-                && params.width != ViewGroup.LayoutParams.FILL_PARENT){
+                && params.width != ViewGroup.LayoutParams.MATCH_PARENT){
                 width = params.width;
             }
 
             if (params.height != ViewGroup.LayoutParams.WRAP_CONTENT
-                && params.height != ViewGroup.LayoutParams.FILL_PARENT){
+                && params.height != ViewGroup.LayoutParams.MATCH_PARENT){
                 height = params.height;
             }
             
             //size
-            setPXViewSize(view,width,height);
+            setViewSize(view,width,height);
 
             // Padding
-            setPXPadding(view,view.getPaddingLeft(),view.getPaddingTop(),view.getPaddingRight(),view.getPaddingBottom());
+            setPadding(view,view.getPaddingLeft(),view.getPaddingTop(),view.getPaddingRight(),view.getPaddingBottom());
         }
         
         // Margin
@@ -330,25 +312,57 @@ public class AbViewUtil {
             ViewGroup.MarginLayoutParams mMarginLayoutParams = (ViewGroup.MarginLayoutParams) view
                     .getLayoutParams();
             if (mMarginLayoutParams != null){
-                setPXMargin(view,mMarginLayoutParams.leftMargin,mMarginLayoutParams.topMargin,mMarginLayoutParams.rightMargin,mMarginLayoutParams.bottomMargin);
+                setMargin(view,mMarginLayoutParams.leftMargin,mMarginLayoutParams.topMargin,mMarginLayoutParams.rightMargin,mMarginLayoutParams.bottomMargin);
             }
         }
        
     }
     
     /**
-     * 设置px尺寸文字大小
+     * 缩放文字大小
      * @param textView button
-     * @param pxSize
+     * @param size sp值
      * @return
      */
-    public static void setPXTextSize(TextView textView,float pxSize) {
-        
-        int size = resize(textView.getContext(),pxSize);
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_PX,size);
-        //等价于
-        //int size = resize(textView.getContext(), px2sp(textView.getContext(),pxSize));
-        //textView.setTextSize(size);
+    public static void setSPTextSize(TextView textView,float size) {
+    	float scaledSize = scale(textView.getContext(),size);
+        textView.setTextSize(scaledSize);
+    }
+    
+    /**
+     * 缩放文字大小,这样设置的好处是文字的大小不和密度有关，
+     * 能够使文字大小在不同的屏幕上显示比例正确
+     * @param textView button
+     * @param sizePixels px值
+     * @return
+     */
+    public static void setTextSize(TextView textView,float sizePixels) {
+    	float scaledSize = scale(textView.getContext(),sizePixels);
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_PX,scaledSize);
+    }
+    
+    /**
+     * 缩放文字大小
+     * @param context
+     * @param textPaint
+     * @param sizePixels px值
+     * @return
+     */
+    public static void setTextSize(Context context,TextPaint textPaint,float sizePixels) {
+    	float scaledSize = scale(context,sizePixels);
+    	textPaint.setTextSize(scaledSize);
+    }
+    
+    /**
+     * 缩放文字大小
+     * @param context
+     * @param paint
+     * @param sizePixels px值
+     * @return
+     */
+    public static void setTextSize(Context context,Paint paint,float sizePixels) {
+    	float scaledSize = scale(context,sizePixels);
+    	paint.setTextSize(scaledSize);
     }
     
    /**
@@ -357,19 +371,19 @@ public class AbViewUtil {
     * @param widthPixels
     * @param heightPixels
     */
-    public static void setPXViewSize(View view,int widthPixels, int heightPixels){
-        int paramWidth = resize(view.getContext(), widthPixels);
-        int paramHeight = resize(view.getContext(), heightPixels);
+    public static void setViewSize(View view,int widthPixels, int heightPixels){
+        int scaledWidth = scale(view.getContext(), widthPixels);
+        int scaledHeight = scale(view.getContext(), heightPixels);
         ViewGroup.LayoutParams params = view.getLayoutParams();
         if(params == null){
-            Log.e(TAG, "setPXViewSize出错,如果是代码new出来的View，需要设置一个适合的LayoutParams");
+            AbLogUtil.e(AbViewUtil.class, "setViewSize出错,如果是代码new出来的View，需要设置一个适合的LayoutParams");
             return;
         }
         if (widthPixels != INVALID){
-            params.width = paramWidth;
+            params.width = scaledWidth;
         }
         if (heightPixels != INVALID){
-            params.height = paramHeight;
+            params.height = scaledHeight;
         }
         view.setLayoutParams(params);
     }
@@ -383,13 +397,13 @@ public class AbViewUtil {
      * @param right the right padding in pixels
      * @param bottom the bottom padding in pixels
 	 */
-	public static void setPXPadding(View view, int left,
+	public static void setPadding(View view, int left,
 			int top, int right, int bottom) {
-		int paramLeft = resize(view.getContext(), left);
-		int paramTop = resize(view.getContext(), top);
-		int paramRight = resize(view.getContext(), right);
-		int paramBottom = resize(view.getContext(), bottom);
-		view.setPadding(paramLeft, paramTop, paramRight, paramBottom);
+		int scaledLeft = scale(view.getContext(), left);
+		int scaledTop = scale(view.getContext(), top);
+		int scaledRight = scale(view.getContext(), right);
+		int scaledBottom = scale(view.getContext(), bottom);
+		view.setPadding(scaledLeft, scaledTop, scaledRight, scaledBottom);
 	}
 
 	/**
@@ -401,28 +415,28 @@ public class AbViewUtil {
 	 * @param right the right margin in pixels
 	 * @param bottom the bottom margin in pixels
 	 */
-	public static void setPXMargin(View view, int left, int top,
+	public static void setMargin(View view, int left, int top,
 			int right, int bottom) {
-		int paramLeft = resize(view.getContext(), left);
-		int paramTop = resize(view.getContext(), top);
-		int paramRight = resize(view.getContext(), right);
-		int paramBottom = resize(view.getContext(), bottom);
+		int scaledLeft = scale(view.getContext(), left);
+		int scaledTop = scale(view.getContext(), top);
+		int scaledRight = scale(view.getContext(), right);
+		int scaledBottom = scale(view.getContext(), bottom);
 		
 		if(view.getLayoutParams() instanceof ViewGroup.MarginLayoutParams){
             ViewGroup.MarginLayoutParams mMarginLayoutParams = (ViewGroup.MarginLayoutParams) view
                     .getLayoutParams();
             if (mMarginLayoutParams != null){
                 if (left != INVALID) {
-                    mMarginLayoutParams.leftMargin = paramLeft;
+                    mMarginLayoutParams.leftMargin = scaledLeft;
                 }
                 if (right != INVALID) {
-                    mMarginLayoutParams.rightMargin = paramRight;
+                    mMarginLayoutParams.rightMargin = scaledRight;
                 }
                 if (top != INVALID) {
-                    mMarginLayoutParams.topMargin = paramTop;
+                    mMarginLayoutParams.topMargin = scaledTop;
                 }
                 if (bottom != INVALID) {
-                    mMarginLayoutParams.bottomMargin = paramBottom;
+                    mMarginLayoutParams.bottomMargin = scaledBottom;
                 }
                 view.setLayoutParams(mMarginLayoutParams);
             }

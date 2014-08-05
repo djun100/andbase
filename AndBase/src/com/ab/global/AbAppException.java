@@ -56,24 +56,24 @@ public class AbAppException extends Exception {
 
 		try {
 			if( e instanceof HttpHostConnectException) {  
-				msg = AbConstant.UNKNOWNHOSTEXCEPTION;
+				msg = AbAppConfig.UNKNOWNHOSTEXCEPTION;
 			}else if (e instanceof ConnectException) {
-				msg = AbConstant.CONNECTEXCEPTION;
+				msg = AbAppConfig.CONNECTEXCEPTION;
 			}else if (e instanceof ConnectTimeoutException) {
-				msg = AbConstant.CONNECTEXCEPTION;
+				msg = AbAppConfig.CONNECTEXCEPTION;
 			}else if (e instanceof UnknownHostException) {
-				msg = AbConstant.UNKNOWNHOSTEXCEPTION;
+				msg = AbAppConfig.UNKNOWNHOSTEXCEPTION;
 			}else if (e instanceof SocketException) {
-				msg = AbConstant.SOCKETEXCEPTION;
+				msg = AbAppConfig.SOCKETEXCEPTION;
 			}else if (e instanceof SocketTimeoutException) {
-				msg = AbConstant.SOCKETTIMEOUTEXCEPTION;
+				msg = AbAppConfig.SOCKETTIMEOUTEXCEPTION;
 			}else if( e instanceof NullPointerException) {  
-				msg = AbConstant.NULLPOINTEREXCEPTION;
+				msg = AbAppConfig.NULLPOINTEREXCEPTION;
 			}else if( e instanceof ClientProtocolException) {  
-				msg = AbConstant.CLIENTPROTOCOLEXCEPTION;
+				msg = AbAppConfig.CLIENTPROTOCOLEXCEPTION;
 			}else {
 				if (e == null || AbStrUtil.isEmpty(e.getMessage())) {
-					msg = AbConstant.NULLMESSAGEEXCEPTION;
+					msg = AbAppConfig.NULLMESSAGEEXCEPTION;
 				}else{
 				    msg = e.getMessage();
 				}

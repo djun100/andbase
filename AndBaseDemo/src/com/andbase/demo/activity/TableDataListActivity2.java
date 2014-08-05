@@ -12,9 +12,11 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.ab.activity.AbActivity;
+import com.ab.task.AbTask;
 import com.ab.task.AbTaskItem;
 import com.ab.task.AbTaskListListener;
-import com.ab.task.AbTaskPool;
+import com.ab.util.AbDialogUtil;
+import com.ab.util.AbToastUtil;
 import com.ab.view.table.AbCellType;
 import com.ab.view.table.AbTable;
 import com.ab.view.table.AbTable.AbOnItemClickListener;
@@ -51,7 +53,6 @@ public class TableDataListActivity2 extends AbActivity {
 	///////////////////////////////////////////////
 	
 	private View noView = null;
-	private com.ab.task.AbTaskPool mAbTaskPool = null;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -68,8 +69,6 @@ public class TableDataListActivity2 extends AbActivity {
         
 		noView = LayoutInflater.from(this).inflate(R.layout.no_data, null);
 		
-		mAbTaskPool = AbTaskPool.getInstance();
-		
 		// (1)标题配置  如果checkbox，值为0表示默认不选中，1表示选中
 		titles = new String[] { "标题1", "标题2", "标题3","图标","0"};
 		// (2)内容列表配置
@@ -79,9 +78,9 @@ public class TableDataListActivity2 extends AbActivity {
 		// (4)列宽配置(%) 超过100% 可以横向滑动
 		cellWidth = new int[] {25,25,25,25,25};
 		// (5)行高（索引0：标题高，1：内容列表高）
-		rowHeight = new int[] { 90, 80 };
+		rowHeight = new int[] { 60, 50 };
 		// (6)行文字大小（索引0标题，1内容列表）
-		rowTextSize = new int[] { 18, 15};
+		rowTextSize = new int[] { 15, 13};
 		// (7)行文字颜色（索引0标题，1内容列表）
 		rowTextColor = new int[] {Color.rgb(255, 255, 255),Color.rgb(113, 113, 113) };
 		// (8)背景资源
@@ -101,7 +100,7 @@ public class TableDataListActivity2 extends AbActivity {
 
 			@Override
 			public void onClick(int position) {
-				showToast("点击了第"+position+"行的图标");
+				AbToastUtil.showToast(TableDataListActivity2.this,"点击了第"+position+"行的图标");
 			}
 			
 		};
@@ -111,7 +110,7 @@ public class TableDataListActivity2 extends AbActivity {
 
 			@Override
 			public void onClick(int position) {
-				showToast("点击了第"+position+"行的复选框");
+				AbToastUtil.showToast(TableDataListActivity2.this,"点击了第"+position+"行的复选框");
 				// 计算是有多少被选中的
 				String stateStr = "";
 				for (int j = 0; j < tableAdapter.getCount()-1; j++) {
@@ -122,7 +121,7 @@ public class TableDataListActivity2 extends AbActivity {
 						stateStr += ","+oldState1;
 					}
 				}
-				showToast("选择情况："+stateStr);
+				AbToastUtil.showToast(TableDataListActivity2.this,"选择情况："+stateStr);
 			}
 			
 		};
@@ -141,7 +140,7 @@ public class TableDataListActivity2 extends AbActivity {
 
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-				showToast("点击了list的第"+arg2+"行");
+				AbToastUtil.showToast(TableDataListActivity2.this,"点击了list的第"+arg2+"行");
 			}
 		});
 		
@@ -152,14 +151,15 @@ public class TableDataListActivity2 extends AbActivity {
 	public void loadData(){
 		
 		//查询数据
-		showProgressDialog();
+		AbDialogUtil.showProgressDialog(this,0,"正在查询...");
+		AbTask mAbTask = AbTask.newInstance();
 		final AbTaskItem item = new AbTaskItem();
 		item.setListener(new AbTaskListListener() {
 		    
 
             @Override
             public void update(List<?> paramList){
-				removeProgressDialog();
+            	AbDialogUtil.removeDialog(TableDataListActivity2.this);
 				ArrayList<Stock> mStockList = (ArrayList<Stock>)paramList;
 				if (mStockList != null && mStockList.size() > 0) {
 					contents.clear();
@@ -195,12 +195,12 @@ public class TableDataListActivity2 extends AbActivity {
 					
 				} catch (Exception e) {
 					e.printStackTrace();
-					showToastInThread(e.getMessage());
+					AbToastUtil.showToastInThread(TableDataListActivity2.this,e.getMessage());
 				}
 				return mStockList;
 		  };
 		});
-		mAbTaskPool.execute(item);
+		mAbTask.execute(item);
 		
 	}
 	

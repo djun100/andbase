@@ -5,9 +5,7 @@ import java.net.URLEncoder;
 
 import org.apache.http.protocol.HTTP;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.DialogFragment;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
@@ -19,13 +17,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ab.activity.AbActivity;
+import com.ab.fragment.AbAlertDialogFragment.AbDialogOnClickListener;
 import com.ab.http.AbBinaryHttpResponseListener;
 import com.ab.http.AbFileHttpResponseListener;
 import com.ab.http.AbHttpUtil;
 import com.ab.http.AbRequestParams;
 import com.ab.http.AbStringHttpResponseListener;
+import com.ab.util.AbDialogUtil;
 import com.ab.util.AbFileUtil;
 import com.ab.util.AbImageUtil;
+import com.ab.util.AbToastUtil;
 import com.ab.view.progress.AbHorizontalProgressBar;
 import com.ab.view.titlebar.AbTitleBar;
 import com.andbase.R;
@@ -52,7 +53,7 @@ public class HttpActivity extends AbActivity {
 	private int max = 100;	
 	private int progress = 0;
 	private TextView numberText, maxText;
-	private AlertDialog  mAlertDialog  = null;
+	private DialogFragment  mAlertDialog  = null;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -76,7 +77,6 @@ public class HttpActivity extends AbActivity {
         
         //获取Http工具类
         mAbHttpUtil = AbHttpUtil.getInstance(this);
-        mAbHttpUtil.setDebug(true);
         //get请求
         getBtn.setOnClickListener(new View.OnClickListener() {
 			
@@ -85,7 +85,6 @@ public class HttpActivity extends AbActivity {
 				
 				// 一个url地址
 				String urlString = "http://www.amsoft.cn/rss.php"; 
-				mAbHttpUtil.setDebug(true);
 				mAbHttpUtil.get(urlString, new AbStringHttpResponseListener() {
 					
 					//获取数据成功会调用这里
@@ -93,11 +92,20 @@ public class HttpActivity extends AbActivity {
 					public void onSuccess(int statusCode, String content) {
 		        		Log.d(TAG, "onSuccess");
 		        		
-		        		showDialog("返回结果",content,new OnClickListener(){
+		        		AbDialogUtil.showAlertDialog(HttpActivity.this,"返回结果",content,new AbDialogOnClickListener(){
 
 							@Override
-							public void onClick(DialogInterface arg0, int arg1) {
+							public void onNegativeClick() {
+								// TODO Auto-generated method stub
+								
 							}
+
+							@Override
+							public void onPositiveClick() {
+								// TODO Auto-generated method stub
+								
+							}
+							
 		            		
 		            	});
 		        	
@@ -110,7 +118,7 @@ public class HttpActivity extends AbActivity {
 							Throwable error) {
 		            	
 		            	Log.d(TAG, "onFailure");
-		            	showToast(error.getMessage());
+		            	AbToastUtil.showToast(HttpActivity.this,error.getMessage());
 					}
 
 		            // 开始执行前
@@ -118,7 +126,7 @@ public class HttpActivity extends AbActivity {
 					public void onStart() {
 		            	Log.d(TAG, "onStart");
 		            	//显示进度框
-		            	showProgressDialog();
+		            	AbDialogUtil.showProgressDialog(HttpActivity.this,0,"正在查询...");
 					}
 
 
@@ -127,7 +135,7 @@ public class HttpActivity extends AbActivity {
 		            public void onFinish() { 
 		            	Log.d(TAG, "onFinish");
 		            	//移除进度框
-		            	removeProgressDialog();
+		            	AbDialogUtil.removeDialog(HttpActivity.this);
 		            };
 		            
 		        });
@@ -153,10 +161,18 @@ public class HttpActivity extends AbActivity {
 		        	@Override
 		        	public void onSuccess(int statusCode, String content) {
 		        		Log.d(TAG, "onSuccess");
-		            	showDialog("返回结果",content,new OnClickListener(){
+		        		AbDialogUtil.showAlertDialog(HttpActivity.this,"返回结果",content,new AbDialogOnClickListener(){
 
 							@Override
-							public void onClick(DialogInterface arg0, int arg1) {
+							public void onPositiveClick() {
+								// TODO Auto-generated method stub
+								
+							}
+
+							@Override
+							public void onNegativeClick() {
+								// TODO Auto-generated method stub
+								
 							}
 		            		
 		            	});
@@ -167,14 +183,14 @@ public class HttpActivity extends AbActivity {
 					public void onStart() {
 		            	Log.d(TAG, "onStart");
 		            	//显示进度框
-		            	showProgressDialog();
+		            	AbDialogUtil.showProgressDialog(HttpActivity.this,0,"正在查询...");
 					}
 		            
 		            // 失败，调用
 		            @Override
 					public void onFailure(int statusCode, String content,
 							Throwable error) {
-		            	showToast(error.getMessage());
+		            	AbToastUtil.showToast(HttpActivity.this,error.getMessage());
 					}
 
 					// 完成后调用，失败，成功
@@ -182,7 +198,7 @@ public class HttpActivity extends AbActivity {
 		            public void onFinish() { 
 		            	Log.d(TAG, "onFinish");
 		            	//移除进度框
-		            	removeProgressDialog();
+		            	AbDialogUtil.removeDialog(HttpActivity.this);
 		            };
 		            
 		        });
@@ -206,10 +222,18 @@ public class HttpActivity extends AbActivity {
 		            	ImageView view = new ImageView(HttpActivity.this);
 		            	view.setImageBitmap(bitmap);
 		            	
-		            	showDialog("返回结果",view,new OnClickListener(){
+		            	AbDialogUtil.showAlertDialog("返回结果",view,new AbDialogOnClickListener(){
 
 							@Override
-							public void onClick(DialogInterface arg0, int arg1) {
+							public void onPositiveClick() {
+								// TODO Auto-generated method stub
+								
+							}
+
+							@Override
+							public void onNegativeClick() {
+								// TODO Auto-generated method stub
+								
 							}
 		            		
 		            	});
@@ -220,14 +244,14 @@ public class HttpActivity extends AbActivity {
 					public void onStart() {
 		            	Log.d(TAG, "onStart");
 		            	//显示进度框
-		            	showProgressDialog();
+		            	AbDialogUtil.showProgressDialog(HttpActivity.this,0,"正在查询...");
 					}
 
 		            // 失败，调用
 		            @Override
 					public void onFailure(int statusCode, String content,
 							Throwable error) {
-		            	showToast(error.getMessage());
+		            	AbToastUtil.showToast(HttpActivity.this,error.getMessage());
 					}
 
 					// 完成后调用，失败，成功
@@ -235,7 +259,7 @@ public class HttpActivity extends AbActivity {
 		            public void onFinish() { 
 		            	Log.d(TAG, "onFinish");
 		            	//移除进度框
-		            	removeProgressDialog();
+		            	AbDialogUtil.removeDialog(HttpActivity.this);
 		            };
 		            
 		        });
@@ -261,11 +285,20 @@ public class HttpActivity extends AbActivity {
 		            	ImageView view = new ImageView(HttpActivity.this);
 		            	view.setImageBitmap(bitmap);
 		            	
-		            	showDialog("返回结果",view,new OnClickListener(){
+		            	AbDialogUtil.showAlertDialog("返回结果",view,new AbDialogOnClickListener(){
 
 							@Override
-							public void onClick(DialogInterface arg0, int arg1) {
+							public void onPositiveClick() {
+								// TODO Auto-generated method stub
+								
 							}
+
+							@Override
+							public void onNegativeClick() {
+								// TODO Auto-generated method stub
+								
+							}
+							
 		            		
 		            	});
 					}
@@ -284,7 +317,7 @@ public class HttpActivity extends AbActivity {
 		        		mAbProgressBar.setMax(max);
 		        		mAbProgressBar.setProgress(progress);
 		            	
-		        		mAlertDialog = showDialog("正在下载",v);
+		        		mAlertDialog = AbDialogUtil.showAlertDialog("正在下载",v);
 					}
 
 		        	// 失败，调用
@@ -292,7 +325,7 @@ public class HttpActivity extends AbActivity {
 					public void onFailure(int statusCode, String content,
 							Throwable error) {
 						Log.d(TAG, "onFailure");
-						showToast(error.getMessage());
+						AbToastUtil.showToast(HttpActivity.this,error.getMessage());
 					}
 					
 					// 下载进度
@@ -306,7 +339,7 @@ public class HttpActivity extends AbActivity {
 		            public void onFinish() { 
 		            	//下载完成取消进度框
 		            	if(mAlertDialog!=null){
-		            		mAlertDialog.cancel();
+		            		mAlertDialog.dismiss();
 			            	mAlertDialog  = null;
 		            	}
 		            	
@@ -324,7 +357,7 @@ public class HttpActivity extends AbActivity {
 			public void onClick(View v) {
 				//已经在后台上传
 				if(mAlertDialog!=null){
-					mAlertDialog.show();
+					mAlertDialog.show(getFragmentManager(), "dialog");
 					return;
 				}
 				String url = "http://192.168.19.78:8080/demo/addOverlayMobile.do";
@@ -351,7 +384,7 @@ public class HttpActivity extends AbActivity {
 					
 					@Override
 					public void onSuccess(int statusCode, String content) {
-						showToast("onSuccess");
+						AbToastUtil.showToast(HttpActivity.this,"onSuccess");
 					}
 
 					// 开始执行前
@@ -368,13 +401,13 @@ public class HttpActivity extends AbActivity {
 		        		mAbProgressBar.setMax(max);
 		        		mAbProgressBar.setProgress(progress);
 		            	
-		        		mAlertDialog = showDialog("正在上传",v);
+		        		mAlertDialog = AbDialogUtil.showAlertDialog("正在上传",v);
 					}
 
 					@Override
 					public void onFailure(int statusCode, String content,
 							Throwable error) {
-						showToast(error.getMessage());
+						AbToastUtil.showToast(HttpActivity.this,error.getMessage());
 					}
 
 					// 进度
@@ -389,7 +422,7 @@ public class HttpActivity extends AbActivity {
 		            	Log.d(TAG, "onFinish");
 		            	//下载完成取消进度框
 		            	if(mAlertDialog!=null){
-		            	    mAlertDialog.cancel();
+		            	    mAlertDialog.dismiss();
 		            	    mAlertDialog  = null;
 		            	}
 		            };

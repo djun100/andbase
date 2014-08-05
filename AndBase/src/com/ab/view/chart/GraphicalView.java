@@ -19,7 +19,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -29,15 +28,13 @@ import android.graphics.Paint.FontMetrics;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Typeface;
-import android.os.Build;
 import android.os.Handler;
 import android.text.TextPaint;
-import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 
 import com.ab.util.AbFileUtil;
-import com.ab.util.AbGraphical;
+import com.ab.util.AbGraphicUtil;
 import com.ab.util.AbViewUtil;
 
 // TODO: Auto-generated Javadoc
@@ -126,30 +123,30 @@ public class GraphicalView extends View {
         int scaleRectWidth = mXYMultipleSeriesRenderer.getScaleRectWidth();
         int scaleRectHeight = mXYMultipleSeriesRenderer.getScaleRectHeight();
         //按分辨率转换
-        mXYMultipleSeriesRenderer.setExplainTextSize1(AbViewUtil.resize(mContext, explainTextSize1));
-        mXYMultipleSeriesRenderer.setExplainTextSize2(AbViewUtil.resize(mContext, explainTextSize2));
-        mXYMultipleSeriesRenderer.setScaleCircleRadius(AbViewUtil.resize(mContext, scaleCircleRadius));
-        mXYMultipleSeriesRenderer.setScaleRectWidth(AbViewUtil.resize(mContext, scaleRectWidth));
-        mXYMultipleSeriesRenderer.setScaleRectHeight(AbViewUtil.resize(mContext, scaleRectHeight));
+        mXYMultipleSeriesRenderer.setExplainTextSize1(AbViewUtil.scale(mContext, explainTextSize1));
+        mXYMultipleSeriesRenderer.setExplainTextSize2(AbViewUtil.scale(mContext, explainTextSize2));
+        mXYMultipleSeriesRenderer.setScaleCircleRadius(AbViewUtil.scale(mContext, scaleCircleRadius));
+        mXYMultipleSeriesRenderer.setScaleRectWidth(AbViewUtil.scale(mContext, scaleRectWidth));
+        mXYMultipleSeriesRenderer.setScaleRectHeight(AbViewUtil.scale(mContext, scaleRectHeight));
         
         SimpleSeriesRenderer[]  mSimpleSeriesRenderers = mRenderer.getSeriesRenderers();
         if(mSimpleSeriesRenderers!=null && mSimpleSeriesRenderers.length>0){
         	for(int i=0;i<mSimpleSeriesRenderers.length;i++){
         		SimpleSeriesRenderer mSimpleSeriesRenderer = mSimpleSeriesRenderers[i];
         		int mChartValuesTextSize  = (int)mSimpleSeriesRenderer.getChartValuesTextSize();
-        		mSimpleSeriesRenderer.setChartValuesTextSize(AbViewUtil.resize(mContext, mChartValuesTextSize));
+        		mSimpleSeriesRenderer.setChartValuesTextSize(AbViewUtil.scale(mContext, mChartValuesTextSize));
         	}
         }
     }
     
     int chartTitleTextSize = (int)mRenderer.getChartTitleTextSize();
-    mRenderer.setChartTitleTextSize(AbViewUtil.resize(mContext, chartTitleTextSize));
+    mRenderer.setChartTitleTextSize(AbViewUtil.scale(mContext, chartTitleTextSize));
     //轴线上标签文字大小
     int mLabelsTextSize  = (int)mRenderer.getLabelsTextSize();
-    mRenderer.setLabelsTextSize(AbViewUtil.resize(mContext, mLabelsTextSize));
+    mRenderer.setLabelsTextSize(AbViewUtil.scale(mContext, mLabelsTextSize));
   	//说明文字大小
     int mLegendTextSize  =  (int)mRenderer.getLegendTextSize();
-    mRenderer.setLabelsTextSize(AbViewUtil.resize(mContext, mLegendTextSize));
+    mRenderer.setLabelsTextSize(AbViewUtil.scale(mContext, mLegendTextSize));
     
   }
 
@@ -225,8 +222,8 @@ public class GraphicalView extends View {
 	        int explainTextSize2 = mXYMultipleSeriesRenderer.getExplainTextSize2();
 	        int scaleCircleRadius = mXYMultipleSeriesRenderer.getScaleCircleRadius();
 	        //按分辨率转换
-	        scaleTopPadding = AbViewUtil.resize(mContext, scaleTopPadding);
-	        scaleBottomPadding = AbViewUtil.resize(mContext, scaleBottomPadding);
+	        scaleTopPadding = AbViewUtil.scale(mContext, scaleTopPadding);
+	        scaleBottomPadding = AbViewUtil.scale(mContext, scaleBottomPadding);
 	        
 	        
 	        //Y轴位置
@@ -333,8 +330,8 @@ public class GraphicalView extends View {
 	                  int hSize2 = (int)Math.ceil(fm2.descent - fm2.ascent)+2;
 	                  //设置个新的长方形  
 	                  //判断文字是否超出设置的框框
-	                  int row1 = AbGraphical.getDrawRowCount(showValue,mXYMultipleSeriesRenderer.getScaleRectWidth()-10,mTextPaint1);
-	                  int row2 = AbGraphical.getDrawRowCount(showExplain,mXYMultipleSeriesRenderer.getScaleRectWidth()-10,mTextPaint2);
+	                  int row1 = AbGraphicUtil.getDrawRowCount(showValue,mXYMultipleSeriesRenderer.getScaleRectWidth()-10,mTextPaint1);
+	                  int row2 = AbGraphicUtil.getDrawRowCount(showExplain,mXYMultipleSeriesRenderer.getScaleRectWidth()-10,mTextPaint2);
 	                  RectF mRectF = null;
 	                  int  textHeight = row1*hSize1+row2*hSize2+10;
 	                  int realScaleRectHeight = mXYMultipleSeriesRenderer.getScaleRectHeight();
@@ -378,10 +375,10 @@ public class GraphicalView extends View {
 	                  canvas.drawRoundRect(mRectF, 5, 5, mPaint);
 	                  
 	                  int textTopPadding = 15;
-	                  textTopPadding = AbViewUtil.resize(mContext, textTopPadding);
+	                  textTopPadding = AbViewUtil.scale(mContext, textTopPadding);
 	                  
-	                  AbGraphical.drawText(canvas,showValue,mXYMultipleSeriesRenderer.getScaleRectWidth()-10,mTextPaint1,mRectLeft+5, mRectTop+textTopPadding);
-	                  AbGraphical.drawText(canvas,showExplain,mXYMultipleSeriesRenderer.getScaleRectWidth()-10,mTextPaint2,mRectLeft+5, mRectTop+textTopPadding+row1*hSize1);
+	                  AbGraphicUtil.drawText(canvas,showValue,mXYMultipleSeriesRenderer.getScaleRectWidth()-10,mTextPaint1,mRectLeft+5, mRectTop+textTopPadding);
+	                  AbGraphicUtil.drawText(canvas,showExplain,mXYMultipleSeriesRenderer.getScaleRectWidth()-10,mTextPaint2,mRectLeft+5, mRectTop+textTopPadding+row1*hSize1);
 	                  //System.out.println("::::"+row*hSize);
 	                  //canvas.drawText(showValue,mRectLeft+10, mRectTop+20, mPaint);
 	                  //canvas.drawText(showExplain,mRectLeft+10, mRectTop+40, mPaint);

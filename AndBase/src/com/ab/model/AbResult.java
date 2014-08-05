@@ -31,7 +31,7 @@ public class AbResult {
 	private int resultCode;
 	
 	/** 结果 message. */
-	private String resultMsg;
+	private String resultMessage;
 
 	/**
 	 * Gets the result code.
@@ -52,21 +52,21 @@ public class AbResult {
 	}
 
 	/**
-	 * Gets the result msg.
+	 * Gets the result message.
 	 *
-	 * @return the result msg
+	 * @return the result message
 	 */
-	public String getResultMsg() {
-		return resultMsg;
+	public String getResultMessage() {
+		return resultMessage;
 	}
 
 	/**
-	 * Sets the result msg.
+	 * Sets the result message.
 	 *
-	 * @param resultMsg the new result msg
+	 * @param resultMessage the new result message
 	 */
-	public void setResultMsg(String resultMsg) {
-		this.resultMsg = resultMsg;
+	public void setResultMessage(String resultMessage) {
+		this.resultMessage = resultMessage;
 	}
 
 }

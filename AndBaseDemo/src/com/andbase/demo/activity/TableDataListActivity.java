@@ -12,9 +12,12 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.ab.activity.AbActivity;
+import com.ab.task.AbTask;
 import com.ab.task.AbTaskItem;
 import com.ab.task.AbTaskListener;
 import com.ab.task.AbTaskPool;
+import com.ab.util.AbDialogUtil;
+import com.ab.util.AbToastUtil;
 import com.ab.view.table.AbCellType;
 import com.ab.view.table.AbTable;
 import com.ab.view.table.AbTableArrayAdapter;
@@ -51,7 +54,6 @@ public class TableDataListActivity extends AbActivity {
 	
 	private View noView = null;
 	private ArrayList<Stock> mStockList = null;
-	private com.ab.task.AbTaskPool mAbTaskPool = null;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -65,8 +67,6 @@ public class TableDataListActivity extends AbActivity {
 		mAbTitleBar.setTitleBarBackground(R.drawable.top_bg);
 		mAbTitleBar.setTitleTextMargin(10, 0, 0, 0);
 		mAbTitleBar.setLogoLine(R.drawable.line);
-        
-        mAbTaskPool = AbTaskPool.getInstance();
 		
 		noView = LayoutInflater.from(this).inflate(R.layout.no_data, null);
 		
@@ -79,9 +79,9 @@ public class TableDataListActivity extends AbActivity {
 		// (4)列宽配置(%) 超过100% 可以横向滑动
 		cellWidth = new int[] {50,25,25,25,25};
 		// (5)行高（索引0：标题高，1：内容列表高）
-		rowHeight = new int[] { 90, 80 };
+		rowHeight = new int[] { 60, 50 };
 		// (6)行文字大小（索引0标题，1内容列表）
-		rowTextSize = new int[] { 18, 15};
+		rowTextSize = new int[] { 15, 13};
 		// (7)行文字颜色（索引0标题，1内容列表）
 		rowTextColor = new int[] {Color.rgb(255, 255, 255),Color.rgb(113, 113, 113) };
 		// (8)背景资源
@@ -121,13 +121,15 @@ public class TableDataListActivity extends AbActivity {
 	public void loadData(){
 		
 		//查询数据
-		showProgressDialog();
+		AbDialogUtil.showProgressDialog(this,0,"正在查询...");
+		AbTask mAbTask = AbTask.newInstance();
+		
 		final AbTaskItem item = new AbTaskItem();
 		item.setListener(new AbTaskListener() {
 
 			@Override
 			public void update() {
-				removeProgressDialog();
+				AbDialogUtil.removeDialog(TableDataListActivity.this);
 				
 				if (mStockList != null && mStockList.size() > 0) {
 					contents.clear();
@@ -163,11 +165,11 @@ public class TableDataListActivity extends AbActivity {
 					
 				} catch (Exception e) {
 					e.printStackTrace();
-					showToastInThread(e.getMessage());
+					AbToastUtil.showToastInThread(TableDataListActivity.this,e.getMessage());
 				}
 		  };
 		});
-		mAbTaskPool.execute(item);
+		mAbTask.execute(item);
 		
 	}
 	

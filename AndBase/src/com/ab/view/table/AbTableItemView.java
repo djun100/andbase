@@ -17,7 +17,6 @@ package com.ab.view.table;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -28,7 +27,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.ab.global.AbAppData;
+import com.ab.util.AbLogUtil;
 import com.ab.view.table.AbTable.AbOnItemClickListener;
 
 // TODO: Auto-generated Javadoc
@@ -43,12 +42,6 @@ import com.ab.view.table.AbTable.AbOnItemClickListener;
  * @date：2013-01-18 下午11:52:13
  */
 public class AbTableItemView extends LinearLayout {
-	
-	/** The tag. */
-	private static String TAG = "AbTableItemView";
-	
-	/** 日志标记. */
-	private static final boolean D = AbAppData.DEBUG;
 	
 	/** 上下文. */
 	private Context mContext;
@@ -100,12 +93,12 @@ public class AbTableItemView extends LinearLayout {
 						TextView textCell = new TextView(mContext);
 						textCell.setMinimumWidth(tableCell.width);
 						textCell.setMinimumHeight(tableRow.height);
-						if(D)Log.d(TAG, "行高："+tableRow.height);
+						AbLogUtil.d(AbTableItemView.class, "行高："+tableRow.height);
 						textCell.setLines(1);
 						textCell.setGravity(Gravity.CENTER);
 						textCell.setTextColor(tableRow.textColor);
 						if(mPosition==0){
-						   if(D)Log.d(TAG, "标题栏的颜色："+tableRow.textColor);
+							AbLogUtil.d(AbTableItemView.class, "标题栏的颜色："+tableRow.textColor);
 						   //粗体
 					       textCell.setTypeface(Typeface.DEFAULT_BOLD);
 					       textCell.setBackgroundResource(mTable.getTableResource()[1]);

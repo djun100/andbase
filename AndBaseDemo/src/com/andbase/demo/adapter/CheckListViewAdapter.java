@@ -12,7 +12,7 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 
-import com.ab.activity.AbActivity;
+import com.ab.util.AbToastUtil;
 import com.ab.view.sliding.AbSlidingButton;
 import com.andbase.R;
 
@@ -108,8 +108,7 @@ public class CheckListViewAdapter extends BaseAdapter{
 			
 			@Override
 			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
-				// TODO Auto-generated method stub
-				((AbActivity)mContext).showToast("开关变化");
+				AbToastUtil.showToast(mContext,"开关变化");
 			}
 		});
           

@@ -17,7 +17,6 @@ package com.ab.view.sliding;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
@@ -26,7 +25,7 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.Scroller;
 
-import com.ab.global.AbAppData;
+import com.ab.util.AbLogUtil;
 
 // TODO: Auto-generated Javadoc
 
@@ -42,12 +41,6 @@ import com.ab.global.AbAppData;
  */
 public class AbSlidingMenuView extends ViewGroup {
 	
-	/** 记录日志的标记. */
-	private String TAG = AbSlidingMenuView.class.getSimpleName();
-	
-	/** 记录日志的开关. */
-	private boolean D = AbAppData.DEBUG;
-
 	/** The m scroller. */
 	private Scroller mScroller;
 	
@@ -158,7 +151,7 @@ public class AbSlidingMenuView extends ViewGroup {
 		obtainVelocityTracker(ev);
 		switch (ev.getAction()) {
 		case MotionEvent.ACTION_DOWN:
-			if(D) Log.d(TAG, "--dispatchTouchEvent ACTION_DOWN--");
+			AbLogUtil.d(AbSlidingMenuView.class, "--dispatchTouchEvent ACTION_DOWN--");
 			mTouchState = mScroller.isFinished() ? TOUCH_STATE_RESTART: TOUCH_STATE_SCROLLING;
 			if (mTouchState == TOUCH_STATE_RESTART) {
 				int x = (int) ev.getX();
@@ -174,15 +167,15 @@ public class AbSlidingMenuView extends ViewGroup {
 					mScrollState = SCROLL_STATE_NO_ALLOW;
 				}
 			} else {
-				if(D) Log.d(TAG, "--dispatchTouchEvent ACTION_DOWN return false--");
+				AbLogUtil.d(AbSlidingMenuView.class, "--dispatchTouchEvent ACTION_DOWN return false--");
 				return false;
 			}
 			break;
 		case MotionEvent.ACTION_MOVE:
-			if(D) Log.d(TAG, "--dispatchTouchEvent ACTION_MOVE--");
+			AbLogUtil.d(AbSlidingMenuView.class, "--dispatchTouchEvent ACTION_MOVE--");
 			mVelocityTracker.computeCurrentVelocity(1000,ViewConfiguration.getMaximumFlingVelocity());
 			if (mScrollState == SCROLL_STATE_ALLOW && getWidth() - (int) ev.getX() < mWidth) {
-				if(D) Log.d(TAG, "--dispatchTouchEvent ACTION_MOVE return true--");
+				AbLogUtil.d(AbSlidingMenuView.class, "--dispatchTouchEvent ACTION_MOVE return true--");
 				return true;
 			}
 			break;
@@ -210,20 +203,20 @@ public class AbSlidingMenuView extends ViewGroup {
 		obtainVelocityTracker(ev);
 		switch (ev.getAction()) {
 		case MotionEvent.ACTION_DOWN:
-			if(D) Log.d(TAG, "--onInterceptTouchEvent ACTION_DOWN--");
+			AbLogUtil.d(AbSlidingMenuView.class, "--onInterceptTouchEvent ACTION_DOWN--");
 			mTouchState = mScroller.isFinished() ? TOUCH_STATE_RESTART : TOUCH_STATE_SCROLLING;
 			if (mTouchState==TOUCH_STATE_SCROLLING) {
-				if(D) Log.d(TAG, "--onInterceptTouchEvent ACTION_DOWN return false--");
+				AbLogUtil.d(AbSlidingMenuView.class, "--onInterceptTouchEvent ACTION_DOWN return false--");
 				return false;
 			}
 			break;
 
 		case MotionEvent.ACTION_MOVE:
-			if(D) Log.d(TAG, "--onInterceptTouchEvent ACTION_MOVE--");
+			AbLogUtil.d(AbSlidingMenuView.class, "--onInterceptTouchEvent ACTION_MOVE--");
 			mOnClick = false;
 			mVelocityTracker.computeCurrentVelocity(1000,ViewConfiguration.getMaximumFlingVelocity());
 			if (mScrollState == SCROLL_STATE_ALLOW && Math.abs(mVelocityTracker.getXVelocity()) > 200) {
-				if(D) Log.d(TAG, "--onInterceptTouchEvent ACTION_MOVE return true--");
+				AbLogUtil.d(AbSlidingMenuView.class, "--onInterceptTouchEvent ACTION_MOVE return true--");
 				return true;
 			}
 			break;
@@ -249,16 +242,16 @@ public class AbSlidingMenuView extends ViewGroup {
 		obtainVelocityTracker(event);
 		switch (event.getAction()) {
 		case MotionEvent.ACTION_DOWN:
-			if(D) Log.d(TAG, "--onTouchEvent ACTION_DOWN--");
+			AbLogUtil.d(AbSlidingMenuView.class, "--onTouchEvent ACTION_DOWN--");
 			mTouchState = mScroller.isFinished() ? TOUCH_STATE_RESTART : TOUCH_STATE_SCROLLING;
 			if (mTouchState==TOUCH_STATE_SCROLLING) {
-				if(D) Log.d(TAG, "--onTouchEvent ACTION_DOWN return false--");
+				AbLogUtil.d(AbSlidingMenuView.class, "--onTouchEvent ACTION_DOWN return false--");
 				return false;
 			}
 			break;
 
 		case MotionEvent.ACTION_MOVE:
-			if(D) Log.d(TAG, "--onTouchEvent ACTION_MOVE--");
+			AbLogUtil.d(AbSlidingMenuView.class, "--onTouchEvent ACTION_MOVE--");
 			mVelocityTracker.computeCurrentVelocity(1000,ViewConfiguration.getMaximumFlingVelocity());
 			mVelocityValue = (int) mVelocityTracker.getXVelocity();
 			getChildAt(1).scrollTo(-(int) event.getX(), 0);

@@ -43,6 +43,7 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.widget.ImageView;
 
+import com.ab.global.AbAppConfig;
 import com.ab.global.AbAppData;
 import com.ab.util.dct.FDCT;
 
@@ -58,12 +59,6 @@ import com.ab.util.dct.FDCT;
  * @date：2013-01-17 下午11:52:13
  */
 public class AbImageUtil {
-	
-	/** 日志标记. */
-	private static String TAG = "AbImageUtil";
-	
-	/** 日志标记开关. */
-	private static final boolean D = AbAppData.DEBUG;
 	
 	/** 图片处理：裁剪. */
     public static final int CUTIMG = 0;
@@ -103,7 +98,7 @@ public class AbImageUtil {
 		 		bm = wholeBm;
 		 	}
 		} catch (Exception e) {
-			if(D) Log.d(TAG, ""+e.getMessage());
+			AbLogUtil.d(AbImageUtil.class,""+e.getMessage());
 		}finally{
 			try {
 				if(is!=null){
@@ -801,7 +796,7 @@ public class AbImageUtil {
 		if(bitmap!=null){
 			try {
 				if(!bitmap.isRecycled()){
-					if(D) Log.d(TAG, "Bitmap释放"+bitmap.toString());
+					AbLogUtil.d(AbImageUtil.class,"Bitmap释放"+bitmap.toString());
 					bitmap.recycle();
 				}
 			} catch (Exception e) {
@@ -819,7 +814,7 @@ public class AbImageUtil {
 			try {
 				for(Bitmap bitmap:bitmaps){
 					if(bitmap!=null && !bitmap.isRecycled()){
-						if(D) Log.d(TAG, "Bitmap释放"+bitmap.toString());
+						AbLogUtil.d(AbImageUtil.class,"Bitmap释放"+bitmap.toString());
 						bitmap.recycle();
 					}
 				}

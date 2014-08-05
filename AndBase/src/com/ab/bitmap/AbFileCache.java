@@ -19,7 +19,6 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.concurrent.locks.ReentrantLock;
 
-import com.ab.global.AbAppData;
 import com.ab.util.AbFileUtil;
 import com.ab.util.AbStrUtil;
 
@@ -35,12 +34,6 @@ import com.ab.util.AbStrUtil;
  */
 
 public class AbFileCache {
-	
-	/** The tag. */
-	private static String TAG = "AbFileCache";
-	
-	/** 日志标记. */
-	private static final boolean D = AbAppData.DEBUG;
 	
 	/** 10MB. */
 	public static int maxCacheSize = 10 * 1024 * 1024; 

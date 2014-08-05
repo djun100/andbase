@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ab.activity.AbActivity;
+import com.ab.util.AbToastUtil;
 import com.ab.view.sliding.AbSlidingPlayView;
 import com.ab.view.titlebar.AbTitleBar;
 import com.andbase.R;
@@ -118,7 +119,7 @@ public class SlidingPlayViewActivity extends AbActivity {
 			
 			@Override
 			public void onClick(int position) {
-				showToast("点击"+position);
+				AbToastUtil.showToast(SlidingPlayViewActivity.this,"点击"+position);
 			}
 		});
         
@@ -126,7 +127,7 @@ public class SlidingPlayViewActivity extends AbActivity {
 			
 			@Override
 			public void onChange(int position) {
-				showToast("改变"+position);
+				AbToastUtil.showToast(SlidingPlayViewActivity.this,"改变"+position);
 			}
 		});
         

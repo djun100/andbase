@@ -11,6 +11,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 
 import com.ab.activity.AbActivity;
+import com.ab.util.AbDialogUtil;
 import com.ab.view.sliding.AbSlidingPlayView;
 import com.ab.view.titlebar.AbTitleBar;
 import com.andbase.R;
@@ -41,7 +42,8 @@ public class FriendActivity extends AbActivity {
 		
 		mFriendDao = new FriendDao(this);
 		
-  	    showProgressDialog();
+  	    AbDialogUtil.showProgressDialog(this,R.drawable.progress_circular,"正在查询好友...");
+  	    
   	    showFriend();
   	    
   	  /*List<Friend> friends = new ArrayList<Friend>();

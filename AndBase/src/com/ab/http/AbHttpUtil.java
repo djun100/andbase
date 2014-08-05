@@ -38,23 +38,6 @@ public class AbHttpUtil {
 	/** 工具类. */
 	private static AbHttpUtil mAbHttpUtil = null;
 	
-	/** 成功. */
-    public static final int SUCCESS_MESSAGE = 0;
-    
-    /** 失败. */
-    public static final int FAILURE_MESSAGE = 1;
-    
-    /** 开始. */
-    public static final int START_MESSAGE = 2;
-    
-    /** 完成. */
-    public static final int FINISH_MESSAGE = 3;
-    
-    /** 进行中. */
-    public static final int PROGRESS_MESSAGE = 4;
-    
-    /** 重试. */
-    public static final int RETRY_MESSAGE = 5;
 	
 	/**
 	 * 描述：获取实例.
@@ -173,16 +156,6 @@ public class AbHttpUtil {
 		client.setTimeout(timeout);
 	}
 	
-	/**
-	 * 描述：设置调试模式(第一次请求前设置).
-	 *
-	 * @param debug 开关
-	 */
-	public void setDebug(boolean debug) {
-		client.setDebug(debug);
-	}
-	
-
     /**
      * 打开ssl 自签名(第一次请求前设置).
      * @param enabled

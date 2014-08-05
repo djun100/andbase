@@ -21,6 +21,8 @@ import com.ab.activity.AbActivity;
 import com.ab.task.AbTask;
 import com.ab.task.AbTaskItem;
 import com.ab.task.AbTaskListener;
+import com.ab.util.AbDialogUtil;
+import com.ab.util.AbToastUtil;
 import com.ab.view.pullview.AbPullToRefreshView;
 import com.ab.view.pullview.AbPullToRefreshView.OnFooterLoadListener;
 import com.ab.view.pullview.AbPullToRefreshView.OnHeaderRefreshListener;
@@ -125,7 +127,7 @@ public class ListNestViewPagerActivity extends AbActivity implements OnHeaderRef
 			
 			@Override
 			public void onClick(int position) {
-				showToast("点击"+position);
+				AbToastUtil.showToast(ListNestViewPagerActivity.this,"点击"+position);
 			}
 		});
 	    
@@ -133,13 +135,13 @@ public class ListNestViewPagerActivity extends AbActivity implements OnHeaderRef
 			
 			@Override
 			public void onChange(int position) {
-				showToast("改变"+position);
+				AbToastUtil.showToast(ListNestViewPagerActivity.this,"改变"+position);
 			}
 		});
         
         mListView.setAdapter(myListViewAdapter);
         
-        showProgressDialog();
+        AbDialogUtil.showProgressDialog(ListNestViewPagerActivity.this,R.drawable.progress_circular,"正在查询...");
 
     	//第一次下载数据
     	refreshTask();
@@ -168,7 +170,7 @@ public class ListNestViewPagerActivity extends AbActivity implements OnHeaderRef
 
 			@Override
 			public void update() {
-				removeProgressDialog();
+				AbDialogUtil.removeDialog(ListNestViewPagerActivity.this);
 				list.clear();
 				if(newList!=null && newList.size()>0){
 	                list.addAll(newList);
@@ -236,7 +238,7 @@ public class ListNestViewPagerActivity extends AbActivity implements OnHeaderRef
 	   		    } catch (Exception e) {
 	   		    	currentPage--;
 	   		    	newList.clear();
-	   		    	showToastInThread(e.getMessage());
+	   		    	AbToastUtil.showToastInThread(ListNestViewPagerActivity.this,e.getMessage());
 	   		    }
 		  };
 		});

@@ -18,12 +18,11 @@ package com.ab.bitmap;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.ab.global.AbAppData;
 import com.ab.util.AbImageUtil;
+import com.ab.util.AbLogUtil;
 import com.ab.util.AbStrUtil;
 
 // TODO: Auto-generated Javadoc
@@ -39,12 +38,6 @@ import com.ab.util.AbStrUtil;
  */
 public class AbImageDownloader { 
 	
-	/** The tag. */
-	private static String TAG = "AbImageDownloader";
-	
-	/** 日志标记. */
-	private static final boolean D = AbAppData.DEBUG;
-	
     /** Context. */
     private static Context mContext = null;
     
@@ -54,7 +47,7 @@ public class AbImageDownloader {
 	/** 显示的图片的高. */
     private int height;
 	
-	/** 图片的处理类型（剪切或者缩放到指定大小，参考AbConstant类）. */
+	/** 图片的处理类型（剪切或者缩放到指定大小）. */
     private int type  = AbImageUtil.ORIGINALIMG;
     
     /** 显示为下载中的图片. */
@@ -79,7 +72,7 @@ public class AbImageDownloader {
      */
     public AbImageDownloader(Context context) {
     	this.mContext = context;
-    	this.mAbImageDownloadPool = AbImageDownloadPool.getInstance();
+    	this.mAbImageDownloadPool = AbImageDownloadPool.getInstance(mContext);
     } 
      
     /**
@@ -140,7 +133,7 @@ public class AbImageDownloader {
             		//要判断这个imageView的url有变化，如果没有变化才set，
                     //有变化就取消，解决列表的重复利用View的问题
                 	if(bitmap!=null && imageUrl.equals(imageView.getTag())){
-                	    if(D) Log.d(TAG, "图片下载，设置:"+imageUrl);
+                	    AbLogUtil.d(mContext, "图片下载，设置:"+imageUrl);
                 		imageView.setImageBitmap(bitmap);
                 	}else{
                 		if(errorImage != null && imageUrl.equals(imageView.getTag())){
@@ -149,7 +142,7 @@ public class AbImageDownloader {
                 	}
                 } 
             }); 
-            if(D) Log.d(TAG, "图片下载，执行:"+url);
+            AbLogUtil.d(mContext, "图片下载，执行:"+url);
             mAbImageDownloadPool.execute(item);
     	}else{
     		if(loadingView != null){

@@ -20,6 +20,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
@@ -130,7 +131,7 @@ public class AbListViewHeader extends LinearLayout {
 		headerView.setOrientation(LinearLayout.HORIZONTAL);
 		headerView.setGravity(Gravity.CENTER); 
 		
-		AbViewUtil.setPXPadding(headerView, 0, 10, 0, 10);
+		AbViewUtil.setPadding(headerView, 0, 10, 0, 10);
 		
 		//显示箭头与进度
 		FrameLayout headImage =  new FrameLayout(context);
@@ -145,8 +146,8 @@ public class AbListViewHeader extends LinearLayout {
 		
 		LinearLayout.LayoutParams layoutParamsWW = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 		layoutParamsWW.gravity = Gravity.CENTER;
-		layoutParamsWW.width = AbViewUtil.resize(mContext, 30);
-		layoutParamsWW.height = AbViewUtil.resize(mContext, 30);
+		layoutParamsWW.width = AbViewUtil.scale(mContext, 50);
+		layoutParamsWW.height = AbViewUtil.scale(mContext, 50);
 		headImage.addView(arrowImageView,layoutParamsWW);
 		headImage.addView(headerProgressBar,layoutParamsWW);
 		
@@ -156,18 +157,18 @@ public class AbListViewHeader extends LinearLayout {
 		headerTimeView = new TextView(context);
 		headTextLayout.setOrientation(LinearLayout.VERTICAL);
 		headTextLayout.setGravity(Gravity.CENTER_VERTICAL);
-		AbViewUtil.setPXPadding(headTextLayout,0, 0, 0, 0);
+		AbViewUtil.setPadding(headTextLayout,0, 0, 0, 0);
 		LinearLayout.LayoutParams layoutParamsWW2 = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 		headTextLayout.addView(tipsTextview,layoutParamsWW2);
 		headTextLayout.addView(headerTimeView,layoutParamsWW2);
 		tipsTextview.setTextColor(Color.rgb(107, 107, 107));
 		headerTimeView.setTextColor(Color.rgb(107, 107, 107));
-		tipsTextview.setTextSize(AbViewUtil.resize(mContext, 10));
-		headerTimeView.setTextSize(AbViewUtil.resize(mContext, 9));
+		AbViewUtil.setTextSize(tipsTextview,30);
+		AbViewUtil.setTextSize(headerTimeView,27);
 		
 		LinearLayout.LayoutParams layoutParamsWW3 = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 		layoutParamsWW3.gravity = Gravity.CENTER;
-		layoutParamsWW3.rightMargin = AbViewUtil.resize(mContext, 10);
+		layoutParamsWW3.rightMargin = AbViewUtil.scale(mContext, 10);
 		
 		LinearLayout headerLayout = new LinearLayout(context);
 		headerLayout.setOrientation(LinearLayout.HORIZONTAL);
@@ -349,5 +350,22 @@ public class AbListViewHeader extends LinearLayout {
     public int getState(){
         return mState;
     }
+
+	/**
+     * 设置提示状态文字的大小
+     * @return
+     */
+	public void setStateTextSize(int size) {
+		tipsTextview.setTextSize(size);
+	}
+
+	/**
+	 * 设置提示时间文字的大小
+	 * @return
+	 */
+	public void setTimeTextSize(int size) {
+		headerTimeView.setTextSize(size);
+	}
+    
 
 }

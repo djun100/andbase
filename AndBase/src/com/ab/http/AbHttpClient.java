@@ -62,11 +62,9 @@ import org.apache.http.util.EntityUtils;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 
-import com.ab.global.AbAppData;
+import com.ab.global.AbAppConfig;
 import com.ab.global.AbAppException;
-import com.ab.global.AbConstant;
 import com.ab.task.AbThreadFactory;
 import com.ab.util.AbAppUtil;
 import com.ab.util.AbFileUtil;
@@ -84,11 +82,8 @@ import com.ab.util.AbLogUtil;
  */
 public class AbHttpClient {
 	
-	/** 日志标记. */
-    private static final String TAG = "AbHttpClient";
-    
     /** 上下文. */
-	private Context mContext;
+	private static Context mContext;
 	
 	/** 线程执行器. */
 	public static Executor mExecutorService = null;
@@ -124,23 +119,26 @@ public class AbHttpClient {
     /** 失败. */
     protected static final int FAILURE_MESSAGE = 1;
     
+    /** 和网络相关的失败. */
+    protected static final int FAILURE_MESSAGE_CONNECT = 2;
+    
+    /** 和服务相关的失败. */
+    protected static final int FAILURE_MESSAGE_SERVICE = 3;
+    
     /** 开始. */
-    protected static final int START_MESSAGE = 2;
+    protected static final int START_MESSAGE = 4;
     
     /** 完成. */
-    protected static final int FINISH_MESSAGE = 3;
+    protected static final int FINISH_MESSAGE = 5;
     
     /** 进行中. */
-    protected static final int PROGRESS_MESSAGE = 4;
+    protected static final int PROGRESS_MESSAGE = 6;
     
     /** 重试. */
-    protected static final int RETRY_MESSAGE = 5;
+    protected static final int RETRY_MESSAGE = 7;
     
     /** 超时时间. */
 	private int timeout = DEFAULT_SOCKET_TIMEOUT;
-	
-	/** debug true表示是局域网. */
-	private boolean debug = false;
 	
 	/** 通用证书. 如果要求HTTPS连接，则使用SSL打开连接*/
 	private boolean isOpenEasySSL = true;
@@ -239,8 +237,8 @@ public class AbHttpClient {
 			  
 			  responseListener.sendStartMessage();
 			  
-			  if(!debug && !AbAppUtil.isNetworkAvailable(mContext)){
-					responseListener.sendFailureMessage(AbConstant.CONNECT_FAILURE_CODE,AbConstant.CONNECTEXCEPTION, new AbAppException(AbConstant.CONNECTEXCEPTION));
+			  if(!AbAppUtil.isNetworkAvailable(mContext)){
+					responseListener.sendFailureMessage(AbHttpStatus.CONNECT_FAILURE_CODE,AbAppConfig.CONNECTEXCEPTION, new AbAppException(AbAppConfig.CONNECTEXCEPTION));
 			        return;
 			  }
 			  
@@ -256,11 +254,11 @@ public class AbHttpClient {
       	      HttpClient httpClient = getHttpClient();  
 		      //取得HttpResponse
 		      String  response = httpClient.execute(httpRequest,new RedirectionResponseHandler(url,responseListener),mHttpContext);  
-			  Log.i(TAG, "[HTTP Request]："+url+",result："+response);
+			  AbLogUtil.i(mContext, "[HTTP Request]："+url+",result："+response);
 		} catch (Exception e) {
 			e.printStackTrace();
 			//发送失败消息
-			responseListener.sendFailureMessage(AbConstant.UNTREATED_CODE,e.getMessage(),new AbAppException(e));
+			responseListener.sendFailureMessage(AbHttpStatus.UNTREATED_CODE,e.getMessage(),new AbAppException(e));
 		}finally{
 			responseListener.sendFinishMessage();
 		}
@@ -277,8 +275,8 @@ public class AbHttpClient {
 		  try {
 			  responseListener.sendStartMessage();
 			  
-			  if(!debug && !AbAppUtil.isNetworkAvailable(mContext)){
-					responseListener.sendFailureMessage(AbConstant.CONNECT_FAILURE_CODE,AbConstant.CONNECTEXCEPTION, new AbAppException(AbConstant.CONNECTEXCEPTION));
+			  if(!AbAppUtil.isNetworkAvailable(mContext)){
+					responseListener.sendFailureMessage(AbHttpStatus.CONNECT_FAILURE_CODE,AbAppConfig.CONNECTEXCEPTION, new AbAppException(AbAppConfig.CONNECTEXCEPTION));
 			        return;
 			  }
 			  
@@ -298,12 +296,12 @@ public class AbHttpClient {
       	      HttpClient httpClient = getHttpClient();  
 		      //取得HttpResponse
 		      String  response = httpClient.execute(httpRequest,new RedirectionResponseHandler(url,responseListener),mHttpContext);  
-		      AbLogUtil.i(TAG, "request："+url+",result："+response);
+		      AbLogUtil.i(mContext, "request："+url+",result："+response);
 			  
 		} catch (Exception e) {
 			e.printStackTrace();
 			//发送失败消息
-			responseListener.sendFailureMessage(AbConstant.UNTREATED_CODE,e.getMessage(),new AbAppException(e));
+			responseListener.sendFailureMessage(AbHttpStatus.UNTREATED_CODE,e.getMessage(),new AbAppException(e));
 		}finally{
 			responseListener.sendFinishMessage();
 		}
@@ -348,7 +346,7 @@ public class AbHttpClient {
 	    }catch(Exception e){
 	        e.printStackTrace();
 	        //发送失败消息
-			responseListener.sendFailureMessage(AbConstant.RESPONSE_TIMEOUT_CODE,AbConstant.SOCKETTIMEOUTEXCEPTION,e);
+			responseListener.sendFailureMessage(AbHttpStatus.RESPONSE_TIMEOUT_CODE,AbAppConfig.SOCKETTIMEOUTEXCEPTION,e);
 	    } finally {
         	try {
         		if(inStream!=null){
@@ -399,7 +397,7 @@ public class AbHttpClient {
 		} catch (Exception e) {
 			e.printStackTrace();
 			//发送失败消息
-			responseListener.sendFailureMessage(AbConstant.RESPONSE_TIMEOUT_CODE,AbConstant.SOCKETTIMEOUTEXCEPTION,e);
+			responseListener.sendFailureMessage(AbHttpStatus.RESPONSE_TIMEOUT_CODE,AbAppConfig.SOCKETTIMEOUTEXCEPTION,e);
 		}finally{
 			try {
 				if(inStream!=null){
@@ -423,25 +421,6 @@ public class AbHttpClient {
      */
     public void setTimeout(int timeout) {
     	this.timeout = timeout;
-	}
-    
-    
-    /**
-     * 描述：调试模式.
-     *
-     * @return true, if is debug
-     */
-    public boolean isDebug() {
-		return debug;
-	}
-
-    /**
-     * 描述：是否为调试模式.
-     *
-     * @param debug the new debug
-     */
-	public void setDebug(boolean debug) {
-		this.debug = debug;
 	}
 
 	/**
@@ -487,14 +466,14 @@ public class AbHttpClient {
 						if(response.length >= 2){
 							((AbStringHttpResponseListener)responseListener).onSuccess((Integer) response[0],(String)response[1]);
 						}else{
-							Log.e(TAG, "SUCCESS_MESSAGE "+AbConstant.MISSINGPARAMETERS);
+							AbLogUtil.e(mContext, "SUCCESS_MESSAGE "+AbAppConfig.MISSINGPARAMETERS);
 						}
 						
 					}else if(responseListener instanceof AbBinaryHttpResponseListener){
 						if(response.length >= 2){ 
 						    ((AbBinaryHttpResponseListener)responseListener).onSuccess((Integer) response[0],(byte[])response[1]);
 						}else{
-							Log.e(TAG, "SUCCESS_MESSAGE "+AbConstant.MISSINGPARAMETERS);
+							AbLogUtil.e(mContext, "SUCCESS_MESSAGE "+AbAppConfig.MISSINGPARAMETERS);
 						}
 					}else if(responseListener instanceof AbFileHttpResponseListener){
 						
@@ -502,7 +481,7 @@ public class AbHttpClient {
 							AbFileHttpResponseListener mAbFileHttpResponseListener = ((AbFileHttpResponseListener)responseListener);
 							mAbFileHttpResponseListener.onSuccess((Integer) response[0],mAbFileHttpResponseListener.getFile());
 						}else{
-							Log.e(TAG, "SUCCESS_MESSAGE "+AbConstant.MISSINGPARAMETERS);
+							AbLogUtil.e(mContext, "SUCCESS_MESSAGE "+AbAppConfig.MISSINGPARAMETERS);
 						}
 						
 					}
@@ -515,7 +494,7 @@ public class AbHttpClient {
                 	 AbAppException exception = new AbAppException((Exception) response[2]);
 					 responseListener.onFailure((Integer) response[0], (String) response[1], exception);
                  }else{
-                    Log.e(TAG, "FAILURE_MESSAGE "+AbConstant.MISSINGPARAMETERS);
+                	 AbLogUtil.e(mContext, "FAILURE_MESSAGE "+AbAppConfig.MISSINGPARAMETERS);
                  }
 	             break;
 			case START_MESSAGE:
@@ -529,7 +508,7 @@ public class AbHttpClient {
 	             if (response != null && response.length >= 2){
 	            	 responseListener.onProgress((Integer) response[0], (Integer) response[1]);
 			     }else{
-	                 Log.e(TAG, "PROGRESS_MESSAGE "+AbConstant.MISSINGPARAMETERS);
+			    	 AbLogUtil.e(mContext, "PROGRESS_MESSAGE "+AbAppConfig.MISSINGPARAMETERS);
 			     }
 	             break;
 			case RETRY_MESSAGE:
@@ -657,54 +636,47 @@ public class AbHttpClient {
             HttpUriRequest request = (HttpUriRequest) mHttpContext.getAttribute(ExecutionContext.HTTP_REQUEST);
             //请求成功  
   			int statusCode = response.getStatusLine().getStatusCode();
+  			HttpEntity entity = response.getEntity();
+  			String responseBody = null;
             //200直接返回结果
             if (statusCode == HttpStatus.SC_OK) {
-                HttpEntity entity = response.getEntity();
-                String responseBody = null;
+                
                 // 不打算读取response body   
                 // 调用request的abort方法  
                 // request.abort();  
                 
                 if (entity != null){
-	      			if (statusCode == HttpStatus.SC_OK){  
-	      				
-	      				  if(mResponseListener instanceof AbStringHttpResponseListener){
-	      					  //entity中的内容只能读取一次,否则Content has been consumed
-	      					  //如果压缩要解压
-	                          Header header = entity.getContentEncoding();
-	                          if (header != null){
-	                              String contentEncoding = header.getValue();
-	                              if (contentEncoding != null){
-	                                  if (contentEncoding.contains("gzip")){
-	                                      entity = new AbGzipDecompressingEntity(entity);
-	                                  }
+	  				  if(mResponseListener instanceof AbStringHttpResponseListener){
+	  					  //entity中的内容只能读取一次,否则Content has been consumed
+	  					  //如果压缩要解压
+	                      Header header = entity.getContentEncoding();
+	                      if (header != null){
+	                          String contentEncoding = header.getValue();
+	                          if (contentEncoding != null){
+	                              if (contentEncoding.contains("gzip")){
+	                                  entity = new AbGzipDecompressingEntity(entity);
 	                              }
 	                          }
-	                          String charset = EntityUtils.getContentCharSet(entity) == null ? encode : EntityUtils.getContentCharSet(entity);
-		      	              responseBody = new String(EntityUtils.toByteArray(entity), charset);
-	      					  
-		      	              ((AbStringHttpResponseListener)mResponseListener).sendSuccessMessage(statusCode, responseBody);
-	      				  }else if(mResponseListener instanceof AbBinaryHttpResponseListener){
-	      					  responseBody = "这是二进制数据";
-	      					  readResponseData(entity,((AbBinaryHttpResponseListener)mResponseListener));
-	      				  }else if(mResponseListener instanceof AbFileHttpResponseListener){
-	      					  //获取文件名
-	      					  String fileName = AbFileUtil.getCacheFileNameFromUrl(mUrl, response);
-	      					  writeResponseData(entity,fileName,((AbFileHttpResponseListener)mResponseListener));
-	      				  }
-	      			}else{
-	      				String charset = EntityUtils.getContentCharSet(entity) == null ? encode : EntityUtils.getContentCharSet(entity);
-	      	            responseBody = new String(EntityUtils.toByteArray(entity), charset);
-	      				mResponseListener.sendFailureMessage(statusCode, responseBody, new AbAppException(AbConstant.UNKNOWNHOSTEXCEPTION));
-	      				
-	      			}
-	      		    //资源释放!!!
-	            	try {
-						entity.consumeContent();
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-	      			return responseBody;
+	                      }
+	                      String charset = EntityUtils.getContentCharSet(entity) == null ? encode : EntityUtils.getContentCharSet(entity);
+	      	              responseBody = new String(EntityUtils.toByteArray(entity), charset);
+	  					  
+	      	              ((AbStringHttpResponseListener)mResponseListener).sendSuccessMessage(statusCode, responseBody);
+	  				  }else if(mResponseListener instanceof AbBinaryHttpResponseListener){
+	  					  responseBody = "Binary";
+	  					  readResponseData(entity,((AbBinaryHttpResponseListener)mResponseListener));
+	  				  }else if(mResponseListener instanceof AbFileHttpResponseListener){
+	  					  //获取文件名
+	  					  String fileName = AbFileUtil.getCacheFileNameFromUrl(mUrl, response);
+	  					  writeResponseData(entity,fileName,((AbFileHttpResponseListener)mResponseListener));
+	  				  }
+	      		      //资源释放!!!
+	            	  try {
+						  entity.consumeContent();
+					  } catch (Exception e) {
+						  e.printStackTrace();
+					  }
+	      			  return responseBody;
                 }
                 
             }
@@ -720,6 +692,8 @@ public class AbHttpClient {
                 else if (request.getMethod().equalsIgnoreCase(HTTP_GET)){
                     doGet(location, null, mResponseListener);
                 }
+            }else{
+  				mResponseListener.sendFailureMessage(statusCode, AbAppConfig.REMOTESERVICEEXCEPTION, new AbAppException(AbAppConfig.REMOTESERVICEEXCEPTION));
             }
             return null;
         }
@@ -736,24 +710,24 @@ public class AbHttpClient {
             // 设置恢复策略，在发生异常时候将自动重试3次
             if (executionCount >= 3){
                 // 如果超过最大重试次数，那么就不要继续了
-            	AbLogUtil.d(TAG, "超过最大重试次数，不重试");
+            	AbLogUtil.d(mContext, "超过最大重试次数，不重试");
                 return false;
             }
             if (exception instanceof NoHttpResponseException){
                 // 如果服务器丢掉了连接，那么就重试
-            	AbLogUtil.d(TAG, "服务器丢掉了连接，重试");
+            	AbLogUtil.d(mContext, "服务器丢掉了连接，重试");
                 return true;
             }
             if (exception instanceof SSLHandshakeException){
                 // SSL握手异常，不重试
-            	AbLogUtil.d(TAG, "ssl 异常 不重试");
+            	AbLogUtil.d(mContext, "ssl 异常 不重试");
                 return false;
             }
             HttpRequest request = (HttpRequest) context.getAttribute(ExecutionContext.HTTP_REQUEST);
             boolean idempotent = (request instanceof HttpEntityEnclosingRequest);
             if (!idempotent){
             	// 如果请求被认为是幂等的，那么就重试
-            	AbLogUtil.d(TAG, "请求被认为是幂等的，重试");
+            	AbLogUtil.d(mContext, "请求被认为是幂等的，重试");
                 return true;
             }
             if (exception != null){

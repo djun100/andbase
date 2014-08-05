@@ -22,9 +22,7 @@ import java.io.RandomAccessFile;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import android.util.Log;
-
-import com.ab.global.AbAppData;
+import com.ab.util.AbLogUtil;
 
 // TODO: Auto-generated Javadoc
 
@@ -38,12 +36,6 @@ import com.ab.global.AbAppData;
  * @date：2013-10-16 下午1:33:39
  */
 public class AbDownloadThread extends Thread {
-	
-	/** The Constant TAG. */
-	private static final String TAG = "DownloadThread";
-	
-	/** 日志标记. */
-	private static final boolean D = AbAppData.DEBUG;
 	
 	/** The save file. */
 	private File saveFile;
@@ -107,12 +99,12 @@ public class AbDownloadThread extends Thread {
 				threadfile.seek(mDownFile.getDownLength());
 				
 				while (flag && (offset = inStream.read(buffer, 0, 1024)) != -1) {
-					if(D)Log.d(TAG, "offset:"+offset);
+					AbLogUtil.d(AbDownloadThread.class, "offset:"+offset);
 					if(offset!=0){
 						threadfile.write(buffer, 0, offset);
 						mDownFile.setDownLength(mDownFile.getDownLength()+offset);
 						offset = 0;
-						if(D)Log.d(TAG, "DownLength:"+mDownFile.getDownLength()+"/"+mDownFile.getTotalLength());
+						AbLogUtil.d(AbDownloadThread.class, "DownLength:"+mDownFile.getDownLength()+"/"+mDownFile.getTotalLength());
 						downloader.update(mDownFile);
 						
 						if(mDownFile.getDownLength() == mDownFile.getTotalLength()){

@@ -1,7 +1,6 @@
 package com.andbase.im.service;
 
 import org.jivesoftware.smack.XMPPConnection;
-import org.jivesoftware.smack.XMPPException;
 import org.jivesoftware.smack.packet.Presence;
 
 import android.app.Service;

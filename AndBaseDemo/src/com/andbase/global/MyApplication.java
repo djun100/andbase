@@ -8,7 +8,6 @@ import android.content.SharedPreferences.Editor;
 import com.ab.global.AbConstant;
 import com.andbase.R;
 import com.andbase.im.IMConfig;
-import com.andbase.im.XmppConnectionManager;
 import com.andbase.im.global.IMConstant;
 import com.andbase.im.util.IMUtil;
 import com.andbase.model.User;

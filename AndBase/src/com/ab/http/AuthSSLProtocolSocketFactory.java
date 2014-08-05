@@ -53,9 +53,7 @@ import org.apache.http.conn.scheme.LayeredSocketFactory;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 
-import android.util.Log;
-
-import com.ab.global.AbAppData;
+import com.ab.util.AbLogUtil;
 
 /***
  * <p>
@@ -199,11 +197,6 @@ import com.ab.global.AbAppData;
 
 public class AuthSSLProtocolSocketFactory implements LayeredSocketFactory {
 
-	/** 日志标记. */
-    private static final String TAG = "AuthSSLX509TrustManager";
-    /** 记录日志的开关. */
-	private boolean D = AbAppData.DEBUG;
-
 	private URL keystoreUrl = null;
 	private String keystorePassword = null;
 	private URL truststoreUrl = null;
@@ -244,7 +237,7 @@ public class AuthSSLProtocolSocketFactory implements LayeredSocketFactory {
 		if (url == null) {
 			throw new IllegalArgumentException("Keystore url may not be null");
 		}
-		Log.d(TAG,"Initializing key store");
+		AbLogUtil.d(AuthSSLProtocolSocketFactory.class,"Initializing key store");
 		KeyStore keystore = KeyStore.getInstance("jks");
 		InputStream is = null;
 		try {
@@ -263,7 +256,7 @@ public class AuthSSLProtocolSocketFactory implements LayeredSocketFactory {
 		if (keystore == null) {
 			throw new IllegalArgumentException("Keystore may not be null");
 		}
-		Log.d(TAG,"Initializing key manager");
+		AbLogUtil.d(AuthSSLProtocolSocketFactory.class,"Initializing key manager");
 		KeyManagerFactory kmfactory = KeyManagerFactory
 				.getInstance(KeyManagerFactory.getDefaultAlgorithm());
 		kmfactory.init(keystore, password != null ? password.toCharArray()
@@ -276,7 +269,7 @@ public class AuthSSLProtocolSocketFactory implements LayeredSocketFactory {
 		if (keystore == null) {
 			throw new IllegalArgumentException("Keystore may not be null");
 		}
-		Log.d(TAG,"Initializing trust manager");
+		AbLogUtil.d(AuthSSLProtocolSocketFactory.class,"Initializing trust manager");
 		TrustManagerFactory tmfactory = TrustManagerFactory
 				.getInstance(TrustManagerFactory.getDefaultAlgorithm());
 		tmfactory.init(keystore);
@@ -297,27 +290,27 @@ public class AuthSSLProtocolSocketFactory implements LayeredSocketFactory {
 			if (this.keystoreUrl != null) {
 				KeyStore keystore = createKeyStore(this.keystoreUrl,
 						this.keystorePassword);
-				if (D) {
+				if (AbLogUtil.D) {
 					Enumeration aliases = keystore.aliases();
 					while (aliases.hasMoreElements()) {
 						String alias = (String) aliases.nextElement();
 						Certificate[] certs = keystore
 								.getCertificateChain(alias);
 						if (certs != null) {
-							Log.d(TAG,"Certificate chain '" + alias + "':");
+							AbLogUtil.d(AuthSSLProtocolSocketFactory.class,"Certificate chain '" + alias + "':");
 							for (int c = 0; c < certs.length; c++) {
 								if (certs[c] instanceof X509Certificate) {
 									X509Certificate cert = (X509Certificate) certs[c];
-									Log.d(TAG," Certificate " + (c + 1) + ":");
-									Log.d(TAG,"  Subject DN: "
+									AbLogUtil.d(AuthSSLProtocolSocketFactory.class," Certificate " + (c + 1) + ":");
+									AbLogUtil.d(AuthSSLProtocolSocketFactory.class,"  Subject DN: "
 											+ cert.getSubjectDN());
-									Log.d(TAG,"  Signature Algorithm: "
+									AbLogUtil.d(AuthSSLProtocolSocketFactory.class,"  Signature Algorithm: "
 											+ cert.getSigAlgName());
-									Log.d(TAG,"  Valid from: "
+									AbLogUtil.d(AuthSSLProtocolSocketFactory.class,"  Valid from: "
 											+ cert.getNotBefore());
-									Log.d(TAG,"  Valid until: "
+									AbLogUtil.d(AuthSSLProtocolSocketFactory.class,"  Valid until: "
 											+ cert.getNotAfter());
-									Log.d(TAG,"  Issuer: " + cert.getIssuerDN());
+									AbLogUtil.d(AuthSSLProtocolSocketFactory.class,"  Issuer: " + cert.getIssuerDN());
 								}
 							}
 						}
@@ -328,22 +321,22 @@ public class AuthSSLProtocolSocketFactory implements LayeredSocketFactory {
 			if (this.truststoreUrl != null) {
 				KeyStore keystore = createKeyStore(this.truststoreUrl,
 						this.truststorePassword);
-				if (D) {
+				if (AbLogUtil.D) {
 					Enumeration aliases = keystore.aliases();
 					while (aliases.hasMoreElements()) {
 						String alias = (String) aliases.nextElement();
-						Log.d(TAG,"Trusted certificate '" + alias + "':");
+						AbLogUtil.d(AuthSSLProtocolSocketFactory.class,"Trusted certificate '" + alias + "':");
 						Certificate trustedcert = keystore
 								.getCertificate(alias);
 						if (trustedcert != null
 								&& trustedcert instanceof X509Certificate) {
 							X509Certificate cert = (X509Certificate) trustedcert;
-							Log.d(TAG,"  Subject DN: " + cert.getSubjectDN());
-							Log.d(TAG,"  Signature Algorithm: "
+							AbLogUtil.d(AuthSSLProtocolSocketFactory.class,"  Subject DN: " + cert.getSubjectDN());
+							AbLogUtil.d(AuthSSLProtocolSocketFactory.class,"  Signature Algorithm: "
 									+ cert.getSigAlgName());
-							Log.d(TAG,"  Valid from: " + cert.getNotBefore());
-							Log.d(TAG,"  Valid until: " + cert.getNotAfter());
-							Log.d(TAG,"  Issuer: " + cert.getIssuerDN());
+							AbLogUtil.d(AuthSSLProtocolSocketFactory.class,"  Valid from: " + cert.getNotBefore());
+							AbLogUtil.d(AuthSSLProtocolSocketFactory.class,"  Valid until: " + cert.getNotAfter());
+							AbLogUtil.d(AuthSSLProtocolSocketFactory.class,"  Issuer: " + cert.getIssuerDN());
 						}
 					}
 				}
@@ -353,19 +346,19 @@ public class AuthSSLProtocolSocketFactory implements LayeredSocketFactory {
 			sslcontext.init(keymanagers, trustmanagers, null);
 			return sslcontext;
 		} catch (NoSuchAlgorithmException e) {
-			Log.e(TAG,e.getMessage());
+			AbLogUtil.e(AuthSSLProtocolSocketFactory.class,e.getMessage());
 			throw new AuthSSLInitializationError(
 					"Unsupported algorithm exception: " + e.getMessage());
 		} catch (KeyStoreException e) {
-			Log.e(TAG,e.getMessage());
+			AbLogUtil.e(AuthSSLProtocolSocketFactory.class,e.getMessage());
 			throw new AuthSSLInitializationError("Keystore exception: "
 					+ e.getMessage());
 		} catch (GeneralSecurityException e) {
-			Log.e(TAG,e.getMessage());
+			AbLogUtil.e(AuthSSLProtocolSocketFactory.class,e.getMessage());
 			throw new AuthSSLInitializationError("Key management exception: "
 					+ e.getMessage());
 		} catch (IOException e) {
-			Log.e(TAG,e.getMessage());
+			AbLogUtil.e(AuthSSLProtocolSocketFactory.class,e.getMessage());
 			throw new AuthSSLInitializationError(
 					"I/O error reading keystore/truststore file: "
 							+ e.getMessage());

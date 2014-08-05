@@ -13,6 +13,7 @@ import com.ab.activity.AbActivity;
 import com.ab.db.storage.AbSqliteStorage;
 import com.ab.db.storage.AbSqliteStorageListener.AbDataInfoListener;
 import com.ab.db.storage.AbStorageQuery;
+import com.ab.util.AbToastUtil;
 import com.ab.view.pullview.AbPullToRefreshView;
 import com.ab.view.pullview.AbPullToRefreshView.OnFooterLoadListener;
 import com.ab.view.pullview.AbPullToRefreshView.OnHeaderRefreshListener;
@@ -130,7 +131,7 @@ public class MessageActivity extends AbActivity implements OnHeaderRefreshListen
 
             @Override
             public void onFailure(int errorCode, String errorMessage) {
-                showToast(errorMessage);
+                AbToastUtil.showToast(MessageActivity.this,errorMessage);
             }
 
             @Override

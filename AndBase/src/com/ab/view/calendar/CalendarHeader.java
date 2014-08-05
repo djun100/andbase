@@ -30,7 +30,7 @@ import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.ab.util.AbGraphical;
+import com.ab.util.AbGraphicUtil;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -207,7 +207,7 @@ public class CalendarHeader extends View {
 	        FontMetrics fm  = mTextPaint.getFontMetrics();
 	        //得到行高
 	        int textHeight = (int)Math.ceil(fm.descent - fm.ascent);
-	        int textWidth = (int)AbGraphical.getStringWidth(sDayName,mTextPaint);
+	        int textWidth = (int)AbGraphicUtil.getStringWidth(sDayName,mTextPaint);
 			
 			final int iPosX = (int) rect.left +cellWidth*(iDay-1)+(cellWidth-textWidth)/2;
 			final int iPosY = (int) (this.getHeight()

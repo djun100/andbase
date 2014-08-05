@@ -26,13 +26,14 @@ import com.ab.db.storage.AbStorageQuery;
 import com.ab.task.AbTask;
 import com.ab.task.AbTaskItem;
 import com.ab.task.AbTaskObjectListener;
+import com.ab.util.AbDialogUtil;
 import com.ab.util.AbStrUtil;
+import com.ab.util.AbToastUtil;
 import com.ab.view.titlebar.AbTitleBar;
 import com.andbase.R;
 import com.andbase.friend.UserDao;
 import com.andbase.global.Constant;
 import com.andbase.global.MyApplication;
-import com.andbase.im.IMConfig;
 import com.andbase.im.util.IMUtil;
 import com.andbase.model.User;
 
@@ -150,7 +151,7 @@ public class LoginActivity extends AbActivity {
 						userName.setText(str);
 						String str1 = userName.getText().toString().trim();
 						userName.setSelection(str1.length());
-						showToast(R.string.error_name_expr);
+						AbToastUtil.showToast(LoginActivity.this,R.string.error_name_expr);
 					}
 					mClear1.postDelayed(new Runnable(){
 
@@ -190,7 +191,7 @@ public class LoginActivity extends AbActivity {
 						userPwd.setText(str);
 						String str1 = userPwd.getText().toString().trim();
 						userPwd.setSelection(str1.length());
-						showToast(R.string.error_pwd_expr);
+						AbToastUtil.showToast(LoginActivity.this,R.string.error_pwd_expr);
 					}
 					mClear2.postDelayed(new Runnable(){
 
@@ -244,56 +245,56 @@ public class LoginActivity extends AbActivity {
 				mStr_pwd = userPwd.getText().toString();
 				
 				if (TextUtils.isEmpty(mStr_name)) {
-					showToast(R.string.error_name);
+					AbToastUtil.showToast(LoginActivity.this,R.string.error_name);
 					userName.setFocusable(true);
 					userName.requestFocus();
 					return;
 				}
 				
 				if (!AbStrUtil.isNumberLetter(mStr_name)) {
-					showToast(R.string.error_name_expr);
+					AbToastUtil.showToast(LoginActivity.this,R.string.error_name_expr);
 					userName.setFocusable(true);
 					userName.requestFocus();
 					return;
 				}
 				
 				if (AbStrUtil.strLength(mStr_name)<3) {
-					showToast(R.string.error_name_length1);
+					AbToastUtil.showToast(LoginActivity.this,R.string.error_name_length1);
 					userName.setFocusable(true);
 					userName.requestFocus();
 					return;
 				}
 				
 				if (AbStrUtil.strLength(mStr_name)>20) {
-					showToast(R.string.error_name_length2);
+					AbToastUtil.showToast(LoginActivity.this,R.string.error_name_length2);
 					userName.setFocusable(true);
 					userName.requestFocus();
 					return;
 				}
 				
 				if (TextUtils.isEmpty(mStr_pwd)) {
-					showToast(R.string.error_pwd);
+					AbToastUtil.showToast(LoginActivity.this,R.string.error_pwd);
 					userPwd.setFocusable(true);
 					userPwd.requestFocus();
 					return;
 				}
 				
 				if (AbStrUtil.strLength(mStr_pwd)<6) {
-					showToast(R.string.error_pwd_length1);
+					AbToastUtil.showToast(LoginActivity.this,R.string.error_pwd_length1);
 					userPwd.setFocusable(true);
 					userPwd.requestFocus();
 					return;
 				}
 				
 				if (AbStrUtil.strLength(mStr_pwd)>20) {
-					showToast(R.string.error_pwd_length2);
+					AbToastUtil.showToast(LoginActivity.this,R.string.error_pwd_length2);
 					userPwd.setFocusable(true);
 					userPwd.requestFocus();
 					return;
 				}
 				
 				
-				showProgressDialog("登录到IM");
+				AbDialogUtil.showProgressDialog(LoginActivity.this,R.drawable.progress_circular,"登录到IM");
 				
 				loginIMTask(mStr_name,mStr_pwd);
 
@@ -310,11 +311,11 @@ public class LoginActivity extends AbActivity {
 
            @Override
            public <T> void update(T entity) {
-        	   removeProgressDialog();
+        	   AbDialogUtil.removeDialog(LoginActivity.this);
                Log.d("TAG", "登录执行完成");
                int code = (Integer)entity;
                if(code == IMUtil.SUCCESS_CODE || code == IMUtil.LOGGED_CODE){
-            	   showToast("IM登录成功");
+            	   AbToastUtil.showToast(LoginActivity.this,"IM登录成功");
             	   
             	   User user = new User();
             	   user.setUserName(userName);
@@ -325,7 +326,7 @@ public class LoginActivity extends AbActivity {
                    setResult(RESULT_OK);
                    finish();
                }else if(code == IMUtil.FAIL_CODE){
-            	   showToast("IM登录失败");
+            	   AbToastUtil.showToast(LoginActivity.this,"IM登录失败");
                }
                
            }
@@ -362,7 +363,7 @@ public class LoginActivity extends AbActivity {
 	
 				@Override
 				public void onFailure(int errorCode, String errorMessage) {
-					showToast(errorMessage);
+					AbToastUtil.showToast(LoginActivity.this,errorMessage);
 				}
 	
 				@Override
@@ -379,7 +380,7 @@ public class LoginActivity extends AbActivity {
 								@Override
 								public void onFailure(int errorCode,
 										String errorMessage) {
-									showToast(errorMessage);
+									AbToastUtil.showToast(LoginActivity.this,errorMessage);
 								}
 
 							});

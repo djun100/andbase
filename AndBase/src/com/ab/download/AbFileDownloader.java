@@ -22,10 +22,9 @@ import java.util.Map;
 
 import android.content.Context;
 import android.os.Environment;
-import android.util.Log;
 
-import com.ab.global.AbAppData;
 import com.ab.util.AbFileUtil;
+import com.ab.util.AbLogUtil;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -37,12 +36,6 @@ import com.ab.util.AbFileUtil;
  */
 public class AbFileDownloader {
 
-	/** The Constant TAG. */
-	private static final String TAG = "FileDownloader";
-	
-	/** 日志标记. */
-	private static final boolean D = AbAppData.DEBUG;
-	
 	/** The context. */
 	private Context context;
 	
@@ -164,7 +157,7 @@ public class AbFileDownloader {
 		Map<String, String> header = getHttpResponseHeader(http);
 		for (Map.Entry<String, String> entry : header.entrySet()) {
 			String key = entry.getKey() != null ? entry.getKey() + ":" : "";
-			Log.i(TAG, key + entry.getValue());
+			AbLogUtil.i(AbFileDownloader.class, key + entry.getValue());
 		}
 	}
 

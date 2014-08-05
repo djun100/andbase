@@ -11,13 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ab.bitmap.AbImageDownloader;
 import com.ab.util.AbImageUtil;
 import com.ab.util.AbViewHolder;
+import com.ab.util.AbViewUtil;
 import com.andbase.R;
 import com.andbase.global.Constant;
 /**
@@ -66,8 +66,8 @@ public class ImageListAdapter extends BaseAdapter{
         this.mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         //图片下载器
         mAbImageDownloader = new AbImageDownloader(mContext);
-        mAbImageDownloader.setWidth(100);
-        mAbImageDownloader.setHeight(100);
+        mAbImageDownloader.setWidth(AbViewUtil.scale(context,150));
+        mAbImageDownloader.setHeight(AbViewUtil.scale(context,150));
         mAbImageDownloader.setType(AbImageUtil.SCALEIMG);
         mAbImageDownloader.setLoadingImage(R.drawable.image_loading);
         mAbImageDownloader.setErrorImage(R.drawable.image_error);

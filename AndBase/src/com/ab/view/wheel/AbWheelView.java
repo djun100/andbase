@@ -34,7 +34,6 @@ import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
@@ -42,8 +41,7 @@ import android.view.View;
 import android.view.animation.Interpolator;
 import android.widget.Scroller;
 
-import com.ab.global.AbAppData;
-import com.ab.util.AbGraphical;
+import com.ab.util.AbGraphicUtil;
 import com.ab.util.AbViewUtil;
 
 // TODO: Auto-generated Javadoc
@@ -58,12 +56,6 @@ import com.ab.util.AbViewUtil;
  * @date：2013-05-17 下午6:46:29
  */
 public class AbWheelView extends View {
-	
-	/** 日志标记. */
-	private static String TAG = "AbWheelView";
-	
-	/** 日志标记开关. */
-	private static final boolean D = AbAppData.DEBUG;
 	
 	/** The m context. */
 	private Context mContext = null;
@@ -674,7 +666,7 @@ public class AbWheelView extends View {
 		int maxLength = getMaxTextLength();
 		if (maxLength > 0) {
 			//一个字符宽度
-			float textWidth = (int)AbGraphical.getStringWidth("0", labelPaint);
+			float textWidth = (int)AbGraphicUtil.getStringWidth("0", labelPaint);
 			//不算lable的宽度
 			itemsWidth = (int) (maxLength * textWidth);
 		} else {
@@ -687,8 +679,7 @@ public class AbWheelView extends View {
 		//label宽度的计算
 		labelWidth = 0;
 		if (label != null && label.length() > 0) {
-			labelWidth = (int)AbGraphical.getStringWidth(label, labelPaint);
-			if(D)Log.d(TAG, "itemsWidth:"+itemsWidth+",labelWidth:"+labelWidth);
+			labelWidth = (int)AbGraphicUtil.getStringWidth(label, labelPaint);
 		}
 
 		boolean recalculate = false;
@@ -812,7 +803,6 @@ public class AbWheelView extends View {
 				height = Math.min(height, heightSize);
 			}
 		}
-        if(D)Log.d(TAG, "onMeasure:"+width);
 		setMeasuredDimension(width, height);
 	}
 
@@ -1146,7 +1136,7 @@ public class AbWheelView extends View {
 	 * @param textSize the new value text size
 	 */
 	public void setValueTextSize(int textSize) {
-		this.valueTextSize = AbViewUtil.resize(mContext, textSize);
+		this.valueTextSize = AbViewUtil.scale(mContext, textSize);
 		this.itemOffset = valueTextSize/5;
 	}
 
@@ -1237,7 +1227,7 @@ public class AbWheelView extends View {
 	 * @param labelTextSize the new label text size
 	 */
 	public void setLabelTextSize(int labelTextSize) {
-		this.labelTextSize = AbViewUtil.resize(mContext, labelTextSize);
+		this.labelTextSize = AbViewUtil.scale(mContext, labelTextSize);
 	}
 
 	/**

@@ -17,13 +17,14 @@ package com.ab.bitmap;
 
 import java.util.concurrent.Executor;
 
+import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 
-import com.ab.global.AbAppData;
 import com.ab.task.AbThreadFactory;
+import com.ab.util.AbAppUtil;
 import com.ab.util.AbFileUtil;
+import com.ab.util.AbLogUtil;
 import com.ab.util.AbStrUtil;
 // TODO: Auto-generated Javadoc
 /**
@@ -38,11 +39,8 @@ import com.ab.util.AbStrUtil;
 
 public class AbImageDownloadPool{
 	
-	/** 日志标记. */
-	private static String TAG = "AbImageDownloadPool";
-	
-	/** 日志标记开关. */
-	private static final boolean D = AbAppData.DEBUG;
+	/** 上下文 */
+	private Context mContext = null;
 	
 	/** The image download. 单例对象*/
 	private static AbImageDownloadPool imageDownload = null; 
@@ -61,19 +59,21 @@ public class AbImageDownloadPool{
 	
 	/**
 	 * 构造图片下载器.
+	 * @param context
 	 */
-    protected AbImageDownloadPool() {
+    protected AbImageDownloadPool(Context context) {
+    	this.mContext = context;
     	mExecutorService = AbThreadFactory.getExecutorService();
     } 
 	
 	/**
 	 * 单例构造图片下载器.
-	 *
+	 * @param context
 	 * @return single instance of AbImageDownloadPool
 	 */
-    public static AbImageDownloadPool getInstance() { 
+    public static AbImageDownloadPool getInstance(Context context) { 
         if (imageDownload == null) { 
-        	imageDownload = new AbImageDownloadPool(); 
+        	imageDownload = new AbImageDownloadPool(context); 
         } 
         return imageDownload;
     } 
@@ -82,10 +82,11 @@ public class AbImageDownloadPool{
      * 执行下载.
      * @param item the item
      */
-    public void execute(final AbImageDownloadItem item) {    
+    public void execute(final AbImageDownloadItem item) {  
+    	
     	String imageUrl = item.imageUrl;
     	if(AbStrUtil.isEmpty(imageUrl)){
-    		if(D)Log.d(TAG, "图片URL为空，请先判断");
+    		AbLogUtil.d(mContext, "图片URL为空，请先判断");
     	}else{
     		imageUrl = imageUrl.trim();
     	}
@@ -95,6 +96,7 @@ public class AbImageDownloadPool{
 		item.bitmap =  AbImageCache.getBitmapFromCache(cacheKey);
     	
     	if(item.bitmap == null){
+    		
 			// 缓存中没有图像，则从网络上取出数据，并将取出的数据缓存到内存中
     		mExecutorService.execute(new Runnable() { 
 	    		public void run() {
@@ -123,7 +125,7 @@ public class AbImageDownloadPool{
 	    				}
 	    				
 	    			} catch (Exception e) { 
-	    				if(D) Log.d(TAG, "error:"+item.imageUrl);
+	    				AbLogUtil.d(mContext, "error:"+item.imageUrl);
 	    				e.printStackTrace();
 	    			} finally{ 
 		    			if (item.getListener() != null) { 

@@ -38,7 +38,6 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
 import com.ab.adapter.AbViewPagerAdapter;
-import com.ab.global.AbAppData;
 import com.ab.util.AbFileUtil;
 import com.ab.view.sample.AbInnerViewPager;
 
@@ -55,12 +54,6 @@ import com.ab.view.sample.AbInnerViewPager;
 
 public class AbSlidingPlayView extends LinearLayout {
 	
-	/** 日志标记. */
-	private static String TAG = "AbSlidingPlayView";
-	
-	/** 日志标记开关. */
-	private static final boolean D = AbAppData.DEBUG;
-
 	/** 上下文. */
 	private Context context;
 

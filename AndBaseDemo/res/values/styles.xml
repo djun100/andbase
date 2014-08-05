@@ -3,9 +3,7 @@
     <style name="Widget" parent="android:Widget"></style>
     
     <style name="mCustomWindowTitleBackground" parent="@style/Widget">
-        <item name="android:background">#00000000</item>
-        <item name="android:paddingLeft">10dip</item>
-        <item name="android:paddingTop">5dip</item>
+        <item name="android:background">@color/transparent</item>
     </style>
 
     <style name="mExpandableListView" parent="@style/Widget">

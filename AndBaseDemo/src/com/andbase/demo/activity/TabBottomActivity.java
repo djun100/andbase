@@ -4,10 +4,10 @@ package com.andbase.demo.activity;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.Fragment;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 
 import com.ab.activity.AbActivity;
 import com.ab.view.sliding.AbBottomTabView;
@@ -53,10 +53,10 @@ public class TabBottomActivity extends AbActivity {
 		
 		//mBottomTabView.setOnPageChangeListener(listener);
 
-		Fragment1 page1 = new Fragment1();
-		Fragment1 page2 = new Fragment1();
-		Fragment1 page3 = new Fragment1();
-		Fragment1 page4 = new Fragment1();
+		FragmentLoad page1 = new FragmentLoad();
+		FragmentLoad2 page2 = new FragmentLoad2();
+		FragmentRefresh page3 = new FragmentRefresh();
+		FragmentLoad2 page4 = new FragmentLoad2();
 		
 		List<Fragment> mFragments = new ArrayList<Fragment>();
 		mFragments.add(page1);

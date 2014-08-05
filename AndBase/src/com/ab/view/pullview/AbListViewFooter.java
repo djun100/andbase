@@ -19,6 +19,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -104,28 +105,28 @@ public class AbListViewFooter extends LinearLayout {
 		//设置布局 水平方向  
 		footerView.setOrientation(LinearLayout.HORIZONTAL);
 		footerView.setGravity(Gravity.CENTER); 
-		footerView.setMinimumHeight(AbViewUtil.resize(mContext,60));
+		footerView.setMinimumHeight(AbViewUtil.scale(mContext,100));
 		footerTextView = new TextView(context);  
 		footerTextView.setGravity(Gravity.CENTER_VERTICAL);
 		setTextColor(Color.rgb(107, 107, 107));
-		footerTextView.setTextSize(AbViewUtil.resize(mContext, 10));
+		AbViewUtil.setTextSize(footerTextView,30);
 		
-		AbViewUtil.setPXPadding(footerView, 0, 10, 0, 10);
+		AbViewUtil.setPadding(footerView, 0, 10, 0, 10);
 		
 		footerProgressBar = new ProgressBar(context,null,android.R.attr.progressBarStyle);
 		footerProgressBar.setVisibility(View.GONE);
 		
 		LinearLayout.LayoutParams layoutParamsWW = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 		layoutParamsWW.gravity = Gravity.CENTER;
-		layoutParamsWW.width = AbViewUtil.resize(mContext, 30);
-		layoutParamsWW.height = AbViewUtil.resize(mContext, 30);
-		layoutParamsWW.rightMargin = AbViewUtil.resize(mContext, 10);
+		layoutParamsWW.width = AbViewUtil.scale(mContext, 50);
+		layoutParamsWW.height = AbViewUtil.scale(mContext, 50);
+		layoutParamsWW.rightMargin = AbViewUtil.scale(mContext, 10);
 		footerView.addView(footerProgressBar,layoutParamsWW);
 		
 		LinearLayout.LayoutParams layoutParamsWW1 = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 		footerView.addView(footerTextView,layoutParamsWW1);
 		
-		LinearLayout.LayoutParams layoutParamsFW = new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
+		LinearLayout.LayoutParams layoutParamsFW = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 		addView(footerView,layoutParamsFW);
 		
 		//获取View的高度
@@ -204,6 +205,15 @@ public class AbListViewFooter extends LinearLayout {
 	}
 	
 	/**
+	 * 描述：设置字体大小.
+	 *
+	 * @param size the new text size
+	 */
+	public void setTextSize(int size){
+		footerTextView.setTextSize(size);
+	}
+	
+	/**
 	 * 描述：设置背景颜色.
 	 *
 	 * @param color the new background color
@@ -257,7 +267,7 @@ public class AbListViewFooter extends LinearLayout {
 	 * @return the state
 	 */
 	public int getState(){
-	        return mState;
+	    return mState;
 	}
 	
 

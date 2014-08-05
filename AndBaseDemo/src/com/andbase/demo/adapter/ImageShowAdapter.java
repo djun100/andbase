@@ -37,6 +37,7 @@ import com.ab.bitmap.AbImageDownloader;
 import com.ab.util.AbFileUtil;
 import com.ab.util.AbImageUtil;
 import com.ab.util.AbStrUtil;
+import com.ab.util.AbViewUtil;
 import com.andbase.R;
 
 // TODO: Auto-generated Javadoc
@@ -74,8 +75,8 @@ public class ImageShowAdapter extends BaseAdapter {
 		this.mHeight = height;
 		//图片下载器
         mAbImageDownloader = new AbImageDownloader(mContext);
-        mAbImageDownloader.setWidth(this.mWidth);
-        mAbImageDownloader.setHeight(this.mHeight);
+        mAbImageDownloader.setWidth(AbViewUtil.scale(context,this.mWidth));
+        mAbImageDownloader.setHeight(AbViewUtil.scale(context,this.mHeight));
         mAbImageDownloader.setLoadingImage(R.drawable.image_loading);
         mAbImageDownloader.setErrorImage(R.drawable.image_error);
         mAbImageDownloader.setNoImage(R.drawable.image_no);

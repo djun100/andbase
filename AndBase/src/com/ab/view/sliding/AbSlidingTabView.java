@@ -18,16 +18,15 @@ package com.ab.view.sliding;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +35,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ab.adapter.AbFragmentPagerAdapter;
-import com.ab.global.AbAppData;
+import com.ab.util.AbLogUtil;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -50,12 +49,6 @@ import com.ab.global.AbAppData;
  */
 public class AbSlidingTabView extends LinearLayout {
 	
-	/** The tag. */
-	private static String TAG = "AbSlidingTabView";
-	
-	/** 日志标记. */
-	private static final boolean D = AbAppData.DEBUG;
-  
 	/** The context. */
 	private Context context;
 	
@@ -75,7 +68,7 @@ public class AbSlidingTabView extends LinearLayout {
     private int tabBackgroundResource = -1;
     
     /** tab的文字大小. */
-	private int tabTextSize = 16;
+	private int tabTextSize = 30;
 	
 	/** tab的文字颜色. */
 	private int tabTextColor = Color.BLACK;
@@ -162,10 +155,10 @@ public class AbSlidingTabView extends LinearLayout {
   		
   	    //要求必须是FragmentActivity的实例
 		if(!(this.context instanceof FragmentActivity)){
-			Log.e(TAG, "构造AbSlidingTabView的参数context,必须是FragmentActivity的实例。");
+			AbLogUtil.e(AbSlidingTabView.class, "构造AbSlidingTabView的参数context,必须是FragmentActivity的实例。");
 		}
   			
-  		FragmentManager mFragmentManager = ((FragmentActivity)this.context).getSupportFragmentManager();
+  		FragmentManager mFragmentManager = ((FragmentActivity)this.context).getFragmentManager();
 		mFragmentPagerAdapter = new AbFragmentPagerAdapter(
 				mFragmentManager, pagerItemList);
 		mViewPager.setAdapter(mFragmentPagerAdapter);
@@ -327,7 +320,7 @@ public class AbSlidingTabView extends LinearLayout {
         tabView.init(index,text);
         tabItemList.add(tabView.getTextView());
         tabView.setOnClickListener(mTabClickListener);
-        mTabLayout.addView(tabView, new LayoutParams(0,LayoutParams.FILL_PARENT,1));
+        mTabLayout.addView(tabView, new LayoutParams(0,LayoutParams.MATCH_PARENT,1));
     }
 
     /**

@@ -21,8 +21,6 @@ import java.util.concurrent.Executor;
 
 import android.os.Handler;
 import android.os.Message;
-
-import com.ab.global.AbAppData;
 // TODO: Auto-generated Javadoc
 /**
  * © 2012 amsoft.cn
@@ -35,12 +33,6 @@ import com.ab.global.AbAppData;
  */
 
 public class AbTaskPool{
-	
-	/** 日志. */
-	private static String TAG = "AbTaskPool";
-	
-	/** debug开关. */
-	private static final boolean D = AbAppData.DEBUG;
 	
 	/** 单例对象 The http pool. */
 	private static AbTaskPool abTaskPool = null; 

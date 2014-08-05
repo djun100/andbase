@@ -11,9 +11,14 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 
 import com.ab.activity.AbActivity;
+import com.ab.fragment.AbDialogFragment.AbDialogOnLoadListener;
+import com.ab.fragment.AbLoadDialogFragment;
 import com.ab.task.AbTask;
 import com.ab.task.AbTaskItem;
 import com.ab.task.AbTaskListener;
+import com.ab.util.AbDialogUtil;
+import com.ab.util.AbToastUtil;
+import com.ab.util.AbViewUtil;
 import com.ab.view.pullview.AbPullToRefreshView;
 import com.ab.view.pullview.AbPullToRefreshView.OnFooterLoadListener;
 import com.ab.view.pullview.AbPullToRefreshView.OnHeaderRefreshListener;
@@ -36,6 +41,7 @@ public class PullToRefreshGridActivity extends AbActivity implements OnHeaderRef
 	private ArrayList<String> mPhotoList = new ArrayList<String>();
 	private int total = 250;
 	private int pageSize = 28;
+	private AbLoadDialogFragment  mDialogFragment = null;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,7 +75,7 @@ public class PullToRefreshGridActivity extends AbActivity implements OnHeaderRef
         //mAbPullListView.getHeaderView().setHeaderProgressBarDrawable(this.getResources().getDrawable(R.drawable.progress_circular2));
         //mAbPullListView.getFooterView().setFooterProgressBarDrawable(this.getResources().getDrawable(R.drawable.progress_circular2));
 		
-		mGridView.setColumnWidth(200);
+		mGridView.setColumnWidth(AbViewUtil.scale(this, 200));
 		mGridView.setGravity(Gravity.CENTER);
 		mGridView.setHorizontalSpacing(5);
 		
@@ -90,7 +96,7 @@ public class PullToRefreshGridActivity extends AbActivity implements OnHeaderRef
 		mGridView.setNumColumns(GridView.AUTO_FIT);
 		mGridView.setPadding(5, 5, 5, 5);
 		mGridView.setStretchMode(GridView.STRETCH_COLUMN_WIDTH);
-		mGridView.setVerticalSpacing(5);
+		mGridView.setVerticalSpacing(20);
 		// ListView数据
 		mUserList = new ArrayList<User>();
 		// 使用自定义的Adapter
@@ -99,17 +105,25 @@ public class PullToRefreshGridActivity extends AbActivity implements OnHeaderRef
 				new int[] { R.id.itemsIcon });
 		mGridView.setAdapter(myGridViewAdapter);
 		
-		showProgressDialog();
-		
-    	//第一次下载数据
-		refreshTask();
+		//显示进度框
+		mDialogFragment = AbDialogUtil.showLoadDialog(this, R.drawable.ic_load, "查询中,请等一小会");
+		mDialogFragment
+		.setAbDialogOnLoadListener(new AbDialogOnLoadListener() {
+
+			@Override
+			public void onLoad() {
+				// 下载网络数据
+				refreshTask();
+			}
+
+		});
 		
 		mGridView.setOnItemClickListener(new OnItemClickListener(){
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				showToast(""+position);
+				AbToastUtil.showToast(PullToRefreshGridActivity.this,""+position);
 			}
     		
     	});
@@ -135,7 +149,7 @@ public class PullToRefreshGridActivity extends AbActivity implements OnHeaderRef
 
             @Override
             public void update() {
-                removeProgressDialog();
+            	AbDialogUtil.removeDialog(PullToRefreshGridActivity.this);
                 mUserList.clear();
                 if(mNewUserList!=null && mNewUserList.size()>0){
                     mUserList.addAll(mNewUserList);
@@ -164,7 +178,7 @@ public class PullToRefreshGridActivity extends AbActivity implements OnHeaderRef
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                    showToastInThread(e.getMessage());
+                    AbToastUtil.showToastInThread(PullToRefreshGridActivity.this,e.getMessage());
                 }
           };
         });
@@ -204,7 +218,7 @@ public class PullToRefreshGridActivity extends AbActivity implements OnHeaderRef
                 } catch (Exception e) {
                     currentPage--;
                     mNewUserList.clear();
-                    showToastInThread(e.getMessage());
+                    AbToastUtil.showToastInThread(PullToRefreshGridActivity.this,e.getMessage());
                 }
                
           };

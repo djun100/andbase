@@ -33,7 +33,9 @@ import com.ab.db.storage.AbSqliteStorageListener.AbDataInsertListener;
 import com.ab.db.storage.AbSqliteStorageListener.AbDataOperationListener;
 import com.ab.db.storage.AbStorageQuery;
 import com.ab.util.AbDateUtil;
+import com.ab.util.AbDialogUtil;
 import com.ab.util.AbStrUtil;
+import com.ab.util.AbToastUtil;
 import com.ab.view.titlebar.AbTitleBar;
 import com.andbase.R;
 import com.andbase.friend.UserDao;
@@ -227,14 +229,14 @@ public class ChatActivity extends AbActivity {
 			@Override
 			public void onClick(View v) {
 				if(application.mUser == null){
-					showToast("请先返回登录");
+					AbToastUtil.showToast(ChatActivity.this,"请先返回登录");
 					return;
 				}
 				
 				mContentStr = mContentEdit.getText().toString().trim();
 				if(!AbStrUtil.isEmpty(mContentStr)){
 					if(!isSendEnable){
-						showToast("上一条正在发送，请稍等");
+						AbToastUtil.showToast(ChatActivity.this,"上一条正在发送，请稍等");
 						return;
 					}
 					
@@ -373,7 +375,7 @@ public class ChatActivity extends AbActivity {
 
 			@Override
 			public void onFailure(int errorCode, String errorMessage) {
-				showToast(errorMessage);
+				AbToastUtil.showToast(ChatActivity.this,errorMessage);
 			}
 			
 		});
@@ -403,7 +405,7 @@ public class ChatActivity extends AbActivity {
 
 			@Override
 			public void onFailure(int errorCode, String errorMessage) {
-				showToast(errorMessage);
+				AbToastUtil.showToast(ChatActivity.this,errorMessage);
 			}
 
 			@Override
@@ -427,7 +429,7 @@ public class ChatActivity extends AbActivity {
 
 			@Override
 			public void onFailure(int errorCode, String errorMessage) {
-				showToast(errorMessage);
+				AbToastUtil.showToast(ChatActivity.this,errorMessage);
 			}
 
 			@Override
@@ -449,7 +451,7 @@ public class ChatActivity extends AbActivity {
 
 			@Override
 			public void onFailure(int errorCode, String errorMessage) {
-				showToast(errorMessage);
+				AbToastUtil.showToast(ChatActivity.this,errorMessage);
 			}
 
 			@Override
@@ -476,22 +478,22 @@ public class ChatActivity extends AbActivity {
                 
                 @Override
                 public void onRecording(){
-                    showToast("正在录音");
+                	AbToastUtil.showToast(ChatActivity.this,"正在录音");
                 }
                 
                 @Override
                 public void onPreRecording(){
-                    showToast("准备录音");
+                	AbToastUtil.showToast(ChatActivity.this,"准备录音");
                 }
                 
                 @Override
                 public void onFinish(File file, long time){
-                    showDialog("录音完成", "录音完成,文件在"+file.getPath()+",长度为："+AbDateUtil.getTimeDescription(time));
+                    AbDialogUtil.showAlertDialog(ChatActivity.this,"录音完成", "录音完成,文件在"+file.getPath()+",长度为："+AbDateUtil.getTimeDescription(time));
                 }
                 
                 @Override
                 public void onError(int errorCode, String errorMessage){
-                    showToast("提示："+errorMessage);
+                    AbToastUtil.showToast(ChatActivity.this,"提示："+errorMessage);
                 }
                 
                 @Override

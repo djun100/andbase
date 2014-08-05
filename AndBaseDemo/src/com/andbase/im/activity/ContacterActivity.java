@@ -3,16 +3,16 @@ package com.andbase.im.activity;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.Fragment;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 
 import com.ab.activity.AbActivity;
 import com.ab.view.sliding.AbSlidingSmoothFixTabView;
 import com.ab.view.titlebar.AbTitleBar;
 import com.andbase.R;
-import com.andbase.demo.activity.Fragment1;
-import com.andbase.demo.activity.Fragment4;
+import com.andbase.demo.activity.FragmentLoad;
+import com.andbase.demo.activity.FragmentLoad2;
 
 public class ContacterActivity extends AbActivity {
 	
@@ -45,9 +45,9 @@ public class ContacterActivity extends AbActivity {
             
         });*/
 
-        Fragment1 page1 = new Fragment1();
+        FragmentLoad page1 = new FragmentLoad();
         ContacterFragment mContacterFragment = new ContacterFragment();
-        Fragment4 page3 = new Fragment4();
+        FragmentLoad2 page3 = new FragmentLoad2();
         
         List<Fragment> mFragments = new ArrayList<Fragment>();
         mFragments.add(page1);

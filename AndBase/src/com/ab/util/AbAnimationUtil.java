@@ -16,14 +16,17 @@
 package com.ab.util;
 
 
+import android.content.Context;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationSet;
+import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
-import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -172,5 +175,33 @@ public class AbAnimationUtil {
 
         view.startAnimation(animationSet);
     }
+    
+    /**
+     * 旋转动画
+     * @param v
+     * @param durationMillis
+     * @param repeatCount  Animation.INFINITE
+     * @param repeatMode  Animation.RESTART
+     */
+    public static void playRotateAnimation(View v,long durationMillis,int repeatCount,int repeatMode) {
+    	
+        //创建AnimationSet对象
+        AnimationSet animationSet = new AnimationSet(true);
+        //创建RotateAnimation对象
+        RotateAnimation rotateAnimation = new RotateAnimation(0f,+360f, 
+					Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF, 0.5f);
+        //设置动画持续
+        rotateAnimation.setDuration(durationMillis);
+        rotateAnimation.setRepeatCount(repeatCount);
+        //Animation.RESTART
+        rotateAnimation.setRepeatMode(repeatMode);
+        //动画插入器
+        rotateAnimation.setInterpolator(v.getContext(), android.R.anim.decelerate_interpolator);
+        //添加到AnimationSet
+        animationSet.addAnimation(rotateAnimation);
+        
+        //开始动画 
+        v.startAnimation(animationSet);
+	}
 
 }

@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.ab.activity.AbActivity;
+import com.ab.util.AbToastUtil;
 import com.ab.view.titlebar.AbTitleBar;
 import com.andbase.R;
 import com.andbase.demo.adapter.UserDBListAdapter;
@@ -120,7 +121,7 @@ public class DBSDSampleActivity extends AbActivity {
 					u.setName(name);
 					saveData(u);
 				}else{
-					showToast("请输入名称!");
+					AbToastUtil.showToast(DBSDSampleActivity.this,"请输入名称!");
 				}
 			}
         });

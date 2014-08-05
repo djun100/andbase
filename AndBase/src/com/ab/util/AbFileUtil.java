@@ -38,10 +38,12 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
+import android.os.Message;
 import android.os.StatFs;
 import android.util.Log;
 
 import com.ab.bitmap.AbFileCache;
+import com.ab.global.AbAppConfig;
 import com.ab.global.AbAppData;
 
 // TODO: Auto-generated Javadoc
@@ -56,12 +58,6 @@ import com.ab.global.AbAppData;
  * @date：2013-01-18 下午11:52:13
  */
 public class AbFileUtil {
-	
-	/** The tag. */
-	private static String TAG = "AbFileUtil";
-	
-	/** 日志标记. */
-	private static final boolean D = AbAppData.DEBUG;
 	
 	/** 默认下载文件地址. */
 	private static  String downPathRootDir = File.separator + "download" + File.separator;
@@ -142,9 +138,12 @@ public class AbFileUtil {
 			}
 		}catch(Exception e){
 			e.printStackTrace();
-			Log.e(TAG, "有文件下载出错了");
+			AbLogUtil.e(AbFileUtil.class, "有文件下载出错了");
 			//检查文件大小,如果文件为0B说明网络不好没有下载成功，要将建立的空文件删除
-			file.delete();
+			if(file != null){
+				file.delete();
+			}
+			file = null;
 			downFilePath = null;
 		}finally{
 			try {
@@ -169,8 +168,11 @@ public class AbFileUtil {
 				e.printStackTrace();
 			}
 		}
-		//加到缓存
-		AbFileCache.addFileToCache(file.getName(), file);
+		if(file != null){
+			//加到缓存
+			AbFileCache.addFileToCache(file.getName(), file);
+		}
+		
 		return downFilePath;
 	 }
 	 
@@ -336,7 +338,7 @@ public class AbFileUtil {
 		try {
 			bit = AbImageUtil.getBitmapFormURL(url, type, newWidth, newHeight);
 	    } catch (Exception e) {
-	    	 if(D)Log.d(TAG, "下载图片异常："+e.getMessage());
+	    	AbLogUtil.d(AbFileUtil.class, "下载图片异常："+e.getMessage());
 		}
 		return bit;
 	}
@@ -352,7 +354,7 @@ public class AbFileUtil {
 		try {
 			bit = BitmapFactory.decodeStream(AbFileUtil.class.getResourceAsStream(src));
 	    } catch (Exception e) {
-	    	 if(D)Log.d(TAG, "获取图片异常："+e.getMessage());
+	    	AbLogUtil.d(AbFileUtil.class, "获取图片异常："+e.getMessage());
 		}
 		return bit;
 	}
@@ -409,7 +411,7 @@ public class AbFileUtil {
 			 }
 	    } catch (Exception e) {
 	    	 e.printStackTrace();
-	    	 if(D)Log.d(TAG, "获取长度异常："+e.getMessage());
+	    	 AbLogUtil.d(AbFileUtil.class, "获取长度异常："+e.getMessage());
 		}
 		return mContentLength;
 	}
@@ -452,7 +454,7 @@ public class AbFileUtil {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            Log.e(TAG, "网络上获取文件名失败");
+            AbLogUtil.e(AbFileUtil.class, "网络上获取文件名失败");
         }
         return name;
     }
@@ -487,7 +489,7 @@ public class AbFileUtil {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			Log.e(TAG, "网络上获取文件名失败");
+			AbLogUtil.e(AbFileUtil.class, "网络上获取文件名失败");
 		}
 		return name;
     }
@@ -514,7 +516,7 @@ public class AbFileUtil {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            Log.e(TAG, "网络上获取文件名失败");
+            AbLogUtil.e(AbFileUtil.class, "网络上获取文件名失败");
         }
         return name;
     }

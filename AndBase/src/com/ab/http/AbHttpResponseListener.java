@@ -30,11 +30,8 @@ import android.os.Message;
  * @version v1.0
  * @date：2013-11-13 上午9:00:52
  */
-public class AbHttpResponseListener {
+public abstract class AbHttpResponseListener {
 	
-    /** 日志标记. */
-    private static final String TAG = "AbHttpResponseListener";
-    
     /** The handler. */
     private Handler mHandler;
     
@@ -48,13 +45,13 @@ public class AbHttpResponseListener {
 	/**
 	 * 描述：获取数据开始.
 	 */
-    public void onStart() {};
+    public abstract void onStart();
     
     
     /**
 	 * 完成后调用，失败，成功，调用.
 	 */
-    public void onFinish() {};
+    public abstract void onFinish();
     
     /**
 	 * 重试.
@@ -68,7 +65,7 @@ public class AbHttpResponseListener {
      * @param content the content
      * @param error the error
      */
-    public void onFailure(int statusCode, String content,Throwable error) {}
+    public abstract void onFailure(int statusCode, String content,Throwable error);
     
     /**
      * 进度.
@@ -82,14 +79,14 @@ public class AbHttpResponseListener {
      * 开始消息.
      */
     public void sendStartMessage(){
-    	sendMessage(obtainMessage(AbHttpUtil.START_MESSAGE, null));
+    	sendMessage(obtainMessage(AbHttpClient.START_MESSAGE, null));
     }
     
     /**
      * 完成消息.
      */
     public void sendFinishMessage(){
-    	sendMessage(obtainMessage(AbHttpUtil.FINISH_MESSAGE,null));
+    	sendMessage(obtainMessage(AbHttpClient.FINISH_MESSAGE,null));
     }
     
     /**
@@ -99,7 +96,7 @@ public class AbHttpResponseListener {
      * @param totalSize the total size
      */
     public void sendProgressMessage(int bytesWritten, int totalSize) {
-        sendMessage(obtainMessage(AbHttpUtil.PROGRESS_MESSAGE, new Object[]{bytesWritten, totalSize}));
+        sendMessage(obtainMessage(AbHttpClient.PROGRESS_MESSAGE, new Object[]{bytesWritten, totalSize}));
     }
     
     /**
@@ -110,14 +107,14 @@ public class AbHttpResponseListener {
      * @param error the error
      */
     public void sendFailureMessage(int statusCode,String content,Throwable error){
-    	sendMessage(obtainMessage(AbHttpUtil.FAILURE_MESSAGE, new Object[]{statusCode,content, error}));
+    	sendMessage(obtainMessage(AbHttpClient.FAILURE_MESSAGE, new Object[]{statusCode,content, error}));
     }
     
     /**
      * 重试消息.
      */
     public void sendRetryMessage() {
-        sendMessage(obtainMessage(AbHttpUtil.RETRY_MESSAGE, null));
+        sendMessage(obtainMessage(AbHttpClient.RETRY_MESSAGE, null));
     }
     
     /**

@@ -26,10 +26,9 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.text.format.DateUtils;
 import android.text.format.Time;
-import android.util.Log;
 import android.view.View;
 
-import com.ab.global.AbAppData;
+import com.ab.util.AbLogUtil;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -42,12 +41,6 @@ import com.ab.global.AbAppData;
  * @date：2013-11-6 上午9:13:49
  */
 public class AbAnalogClock extends View {
-	
-	/** The tag. */
-	private static String TAG = "AbAnalogClock";
-	
-	/** 日志标记. */
-	private static final boolean D = AbAppData.DEBUG;
 	
 	/** The m calendar. */
 	private Time mCalendar;
@@ -294,7 +287,7 @@ public class AbAnalogClock extends View {
 		mMinutes = minute + second / 60.0f;
 		mHour = hour + mMinutes / 60.0f;
 		mChanged = true;
-		if(D)Log.d(TAG, "时间改变:mHour:"+mHour+",mMinutes:"+mMinutes+",mSecond:"+mSecond);
+		AbLogUtil.d(AbAnalogClock.class, "时间改变:mHour:"+mHour+",mMinutes:"+mMinutes+",mSecond:"+mSecond);
 		updateContentDescription(mCalendar);
         new Handler().postDelayed(new Runnable() {
 			

@@ -31,7 +31,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.CheckBox;
 
-import com.ab.global.AbAppData;
+import com.ab.util.AbLogUtil;
 
 
 // TODO: Auto-generated Javadoc
@@ -46,12 +46,6 @@ import com.ab.global.AbAppData;
  */
 public class AbSlidingButton extends CheckBox  {
 	
-	/** 记录日志的标记. */
-	private String TAG = AbSlidingButton.class.getSimpleName();
-	
-	/** 记录日志的开关. */
-	private boolean D = AbAppData.DEBUG;
-
 	/** The context. */
 	private Context context;
 	//图片资源
@@ -362,15 +356,15 @@ public class AbSlidingButton extends CheckBox  {
 		    	 this.mBtnPos = this.mBtnOffPos;
 		     }
 		     mLastBtnPos = mBtnPos;
-		     if(D)Log.d(TAG, "原来的X位置："+this.mBtnPos);
+		     AbLogUtil.d(AbSlidingButton.class, "原来的X位置："+this.mBtnPos);
 		     break;
 		case MotionEvent.ACTION_MOVE:
-			 if(D)Log.d(TAG, "－－－－移动－－－－");
+			 AbLogUtil.d(AbSlidingButton.class, "－－－－移动－－－－");
 			 //当前点击位置
 			 float x = event.getX();
 			 //差
 			 float offsetX = x - this.mFirstDownX;
-			 if(D)Log.d(TAG, "X需要移动："+offsetX);
+			 AbLogUtil.d(AbSlidingButton.class, "X需要移动："+offsetX);
 		     
 		     //转换为点击事件
 		     if(Math.abs(offsetX) < 5){
@@ -383,7 +377,7 @@ public class AbSlidingButton extends CheckBox  {
 			 
 		     //移动后的应该在的位置
 		     this.mBtnPos = this.mBtnPos + offsetX;
-		     if(D)Log.d(TAG, "现在的X位置："+this.mBtnPos);
+		     AbLogUtil.d(AbSlidingButton.class, "现在的X位置："+this.mBtnPos);
 		     //超出控件的设置
 		     if (this.mBtnPos < this.mBtnOffPos){
 		          this.mBtnPos = this.mBtnOffPos;
@@ -397,7 +391,7 @@ public class AbSlidingButton extends CheckBox  {
 			 break;
 		default:
 			if(mMoveEvent){
-				 if(D)Log.d(TAG, "－－－－弹起－－－－");
+				 AbLogUtil.d(AbSlidingButton.class, "－－－－弹起－－－－");
 				 //弹起
 			     this.mCurBtnPic = this.mBtnNormal;
 			     //本次移动最后结果
@@ -456,7 +450,7 @@ public class AbSlidingButton extends CheckBox  {
 			return;
  	    }
 		this.mAnimating = true;
-		if(D)Log.d(TAG, "目标移动X到："+this.mBtnPos+",当前在:"+mLastBtnPos);
+		AbLogUtil.d(AbSlidingButton.class, "目标移动X到："+this.mBtnPos+",当前在:"+mLastBtnPos);
     	float mVelocity = this.mAnimatedVelocity;
  	    if(mLastBtnPos > this.mBtnPos){
  	    	 mVelocity = -this.mAnimatedVelocity;
@@ -465,7 +459,7 @@ public class AbSlidingButton extends CheckBox  {
  	    int i  = 0;
     	while(true){
     		this.mAnimationPosition = (this.mAnimationPosition + 16.0F * mVelocity / 1000.0F);
-    		if(D)Log.d(TAG, i+"次移动X到："+this.mAnimationPosition);
+    		AbLogUtil.d(AbSlidingButton.class, i+"次移动X到："+this.mAnimationPosition);
     		if(this.mAnimationPosition >= this.mBtnOnPos){
     			this.mAnimationPosition = this.mBtnOnPos;
     			moveView(this.mAnimationPosition,true);

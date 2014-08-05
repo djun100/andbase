@@ -132,8 +132,6 @@ public class AbBottomBar extends LinearLayout {
 		this.setBackgroundDrawable(d);
 	}
 	
-	
-	
 	/**
 	 * 描述：下拉菜单的的实现方法.
 	 *

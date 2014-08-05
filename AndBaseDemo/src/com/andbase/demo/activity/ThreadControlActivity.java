@@ -12,6 +12,8 @@ import com.ab.task.AbTaskListener;
 import com.ab.task.AbTaskObjectListener;
 import com.ab.task.AbTaskPool;
 import com.ab.task.AbTaskQueue;
+import com.ab.util.AbDialogUtil;
+import com.ab.util.AbToastUtil;
 import com.ab.view.titlebar.AbTitleBar;
 import com.andbase.R;
 import com.andbase.global.MyApplication;
@@ -53,7 +55,7 @@ public class ThreadControlActivity extends AbActivity {
 			@Override
 			public void onClick(View arg0) {
 				//显示进度框
-				showProgressDialog();
+				AbDialogUtil.showProgressDialog(ThreadControlActivity.this,R.drawable.progress_circular,"正在查询...");
 				AbTask mAbTask = new AbTask();
 				//定义异步执行的对象
 		    	final AbTaskItem item = new AbTaskItem();
@@ -61,14 +63,14 @@ public class ThreadControlActivity extends AbActivity {
 
 					@Override
 					public void update() {
-						removeProgressDialog();
-						showToast("执行完成");
+						AbDialogUtil.removeDialog(ThreadControlActivity.this);
+						AbToastUtil.showToast(ThreadControlActivity.this,"执行完成");
 					}
 
 					@Override
 					public void get() {
 			   		    try {
-			   		    	showToastInThread("开始执行");
+			   		    	AbToastUtil.showToastInThread(ThreadControlActivity.this,"开始执行");
 			   		    	Thread.sleep(3000);
 			   		    	//下面写要执行的代码，如下载数据
 			   		    } catch (Exception e) {
@@ -88,7 +90,7 @@ public class ThreadControlActivity extends AbActivity {
 			@Override
 			public void onClick(View arg0) {
 				//显示进度框
-				showProgressDialog();
+				AbDialogUtil.showProgressDialog(ThreadControlActivity.this,R.drawable.progress_circular,"正在查询...");
 				//获取队列
 				//定义异步执行的对象
 		    	AbTaskItem item1 = new AbTaskItem();
@@ -99,7 +101,7 @@ public class ThreadControlActivity extends AbActivity {
 					@Override
 					public String getObject() {
 						String msg1 = "amsoft";
-						showToastInThread("开始执行1,"+msg1);
+						AbToastUtil.showToastInThread(ThreadControlActivity.this,"开始执行1,"+msg1);
 		   		    	try {
 							Thread.sleep(2000);
 						} catch (Exception e) {
@@ -110,7 +112,7 @@ public class ThreadControlActivity extends AbActivity {
 
 					@Override
 					public <T> void update(T obj) {
-						showToast("执行完成1,"+(String)obj);
+						AbToastUtil.showToast(ThreadControlActivity.this,"执行完成1,"+(String)obj);
 					}
 
 				});
@@ -120,8 +122,8 @@ public class ThreadControlActivity extends AbActivity {
 
 					@Override
 					public void update() {
-						showToast("执行完成2");
-						removeProgressDialog();
+						AbToastUtil.showToast(ThreadControlActivity.this,"执行完成2");
+						AbDialogUtil.removeDialog(ThreadControlActivity.this);
 					}
 
 					@Override
@@ -129,7 +131,7 @@ public class ThreadControlActivity extends AbActivity {
 			   		    try {
 			   		    	String msg1 = "amsoft";
 			   		    	Thread.sleep(2000);
-			   		    	showToastInThread("开始执行2");
+			   		    	AbToastUtil.showToastInThread(ThreadControlActivity.this,"开始执行2");
 			   		    	//下面写要执行的代码，如下载数据
 			   		    } catch (Exception e) {
 			   		    }
@@ -156,7 +158,7 @@ public class ThreadControlActivity extends AbActivity {
 			@Override
 			public void onClick(View arg0) {
 				//显示进度框
-				showProgressDialog();
+				AbDialogUtil.showProgressDialog(ThreadControlActivity.this,R.drawable.progress_circular,"正在查询...");
 				AbTaskPool mAbTaskPool = AbTaskPool.getInstance();
 				//定义异步执行的对象
 		    	final AbTaskItem item = new AbTaskItem();
@@ -164,14 +166,14 @@ public class ThreadControlActivity extends AbActivity {
 
 					@Override
 					public void update() {
-						removeProgressDialog();
-						showToast("执行完成");
+						AbDialogUtil.removeDialog(ThreadControlActivity.this);
+						AbToastUtil.showToast(ThreadControlActivity.this,"执行完成");
 					}
 
 					@Override
 					public void get() {
 			   		    try {
-			   		    	showToastInThread("开始执行");
+			   		    	AbToastUtil.showToastInThread(ThreadControlActivity.this,"开始执行");
 			   		    	Thread.sleep(1000);
 			   		    	//下面写要执行的代码，如下载数据
 			   		    } catch (Exception e) {
@@ -189,7 +191,7 @@ public class ThreadControlActivity extends AbActivity {
 
 			@Override
 			public void onClick(View arg0) {
-				showProgressDialog();
+				AbDialogUtil.showProgressDialog(ThreadControlActivity.this,R.drawable.progress_circular,"正在查询...");
 				AbTask task = new AbTask();
 				//定义异步执行的对象
 		    	final AbTaskItem item = new AbTaskItem();
@@ -197,14 +199,14 @@ public class ThreadControlActivity extends AbActivity {
 
 					@Override
 					public void update() {
-						removeProgressDialog();
-						showToast("执行完成");
+						AbDialogUtil.removeDialog(ThreadControlActivity.this);
+						AbToastUtil.showToast(ThreadControlActivity.this,"执行完成");
 					}
 
 					@Override
 					public void get() {
 			   		    try {
-			   		    	showToastInThread("开始执行");
+			   		    	AbToastUtil.showToastInThread(ThreadControlActivity.this,"开始执行");
 			   		    	Thread.sleep(3000);
 			   		    	//下面写要执行的代码，如下载数据
 			   		    } catch (Exception e) {
@@ -221,7 +223,7 @@ public class ThreadControlActivity extends AbActivity {
 
 			@Override
 			public void onClick(View arg0) {
-			    showProgressDialog();
+				AbDialogUtil.showProgressDialog(ThreadControlActivity.this,R.drawable.progress_circular,"正在查询...");
 			    //执行任务
 			    loadObjectDataTask();
 			}
@@ -252,8 +254,8 @@ public class ThreadControlActivity extends AbActivity {
 
             @Override
             public <T> void update(T entity) {
-                removeProgressDialog();
-                showToast((String)entity);
+                AbDialogUtil.removeDialog(ThreadControlActivity.this);
+                AbToastUtil.showToast(ThreadControlActivity.this,(String)entity);
                 Log.d("TAG", "执行完成:"+(String)entity);
             }
 
