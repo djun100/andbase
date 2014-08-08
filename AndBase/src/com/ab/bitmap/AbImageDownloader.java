@@ -24,6 +24,7 @@ import android.widget.ImageView;
 import com.ab.util.AbImageUtil;
 import com.ab.util.AbLogUtil;
 import com.ab.util.AbStrUtil;
+import com.ab.util.AbViewUtil;
 
 // TODO: Auto-generated Javadoc
 
@@ -205,7 +206,7 @@ public class AbImageDownloader {
 	 * @param width the new width
 	 */
 	public void setWidth(int width) {
-		this.width = width;
+		this.width = AbViewUtil.scale(mContext, width);
 	}
 
 	/**
@@ -223,9 +224,8 @@ public class AbImageDownloader {
 	 * @param height the new height
 	 */
 	public void setHeight(int height) {
-		this.height = height;
+		this.height = AbViewUtil.scale(mContext, height);
 	}
-
 	
 	
 	/**
