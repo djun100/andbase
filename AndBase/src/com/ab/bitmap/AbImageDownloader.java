@@ -98,8 +98,8 @@ public class AbImageDownloader {
     	//设置下载项
         final AbImageDownloadItem item = new AbImageDownloadItem(); 
         //设置显示的大小
-        item.width = width;
-        item.height = height;
+        item.width = AbViewUtil.scale(mContext,width);
+        item.height = AbViewUtil.scale(mContext,height);
         //设置为缩放
         item.type = type;
         item.imageUrl = url;

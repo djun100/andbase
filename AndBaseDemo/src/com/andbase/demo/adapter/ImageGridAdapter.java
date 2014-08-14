@@ -58,8 +58,8 @@ public class ImageGridAdapter extends BaseAdapter{
         this.mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         //图片下载器
         mAbImageDownloader = new AbImageDownloader(mContext);
-        mAbImageDownloader.setWidth(AbViewUtil.scale(context,100));
-        mAbImageDownloader.setHeight(AbViewUtil.scale(context,100));
+        mAbImageDownloader.setWidth(100);
+        mAbImageDownloader.setHeight(100);
         mAbImageDownloader.setLoadingImage(R.drawable.image_loading);
         mAbImageDownloader.setErrorImage(R.drawable.image_error);
         mAbImageDownloader.setNoImage(R.drawable.image_no);

@@ -66,8 +66,8 @@ public class ImageListAdapter extends BaseAdapter{
         this.mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         //图片下载器
         mAbImageDownloader = new AbImageDownloader(mContext);
-        mAbImageDownloader.setWidth(AbViewUtil.scale(context,150));
-        mAbImageDownloader.setHeight(AbViewUtil.scale(context,150));
+        mAbImageDownloader.setWidth(150);
+        mAbImageDownloader.setHeight(150);
         mAbImageDownloader.setType(AbImageUtil.SCALEIMG);
         mAbImageDownloader.setLoadingImage(R.drawable.image_loading);
         mAbImageDownloader.setErrorImage(R.drawable.image_error);
