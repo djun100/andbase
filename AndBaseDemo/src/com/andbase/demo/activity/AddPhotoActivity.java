@@ -53,7 +53,6 @@ public class AddPhotoActivity extends AbActivity {
 	private File mCurrentPhotoFile;
 	private String mFileName;
  
-    测试版本
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
