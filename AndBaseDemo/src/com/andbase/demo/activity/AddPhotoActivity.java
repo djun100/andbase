@@ -52,9 +52,6 @@ public class AddPhotoActivity extends AbActivity {
 	// 照相机拍照得到的图片
 	private File mCurrentPhotoFile;
 	private String mFileName;
-	
-	
-	1111
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
