@@ -16,7 +16,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.ab.fragment.AbDialogFragment.AbDialogOnLoadListener;
 import com.ab.util.AbAnimationUtil;
 import com.ab.util.AbViewUtil;
 /**
