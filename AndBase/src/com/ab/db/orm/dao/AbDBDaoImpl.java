@@ -320,7 +320,7 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 								for (Field relationsEntityField : relationsEntityFields) {
 									Column relationsEntityColumn = (Column) relationsEntityField.getAnnotation(Column.class);
 									//获取外键的值作为关联表的查询条件
-									if (relationsEntityColumn.name().equals(foreignKey)) {
+									if (relationsEntityColumn != null && relationsEntityColumn.name().equals(foreignKey)) {
 										
 										//主表的用于关联表的foreignKey值
 										String value = "-1";
@@ -381,7 +381,7 @@ public class AbDBDaoImpl<T> extends AbBasicDBDao implements AbDBDao<T> {
 								for (Field relationsEntityField : relationsEntityFields) {
 									Column relationsEntityColumn = (Column) relationsEntityField.getAnnotation(Column.class);
 									//获取外键的值作为关联表的查询条件
-									if (relationsEntityColumn.name().equals(foreignKey)) {
+									if (relationsEntityColumn != null && relationsEntityColumn.name().equals(foreignKey)) {
 										
 										//主表的用于关联表的foreignKey值
 										String value = "-1";
