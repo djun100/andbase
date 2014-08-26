@@ -176,6 +176,7 @@ public class AbAppUtil {
 				}
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 		return false;

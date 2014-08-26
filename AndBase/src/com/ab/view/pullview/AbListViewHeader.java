@@ -366,6 +366,20 @@ public class AbListViewHeader extends LinearLayout {
 	public void setTimeTextSize(int size) {
 		headerTimeView.setTextSize(size);
 	}
+
+	public ImageView getArrowImageView() {
+		return arrowImageView;
+	}
+
+	/**
+	 * 
+	 * 描述：设置顶部刷新图标.
+	 * @param resId
+	 */
+	public void setArrowImage(int resId) {
+		this.arrowImageView.setImageResource(resId);
+	}
+	
     
 
 }
