@@ -194,38 +194,6 @@ public class AbAppUtil {
 	    return lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
 	}
 
-	/**
-	 * wifi是否打开.
-	 *
-	 * @param context the context
-	 * @return true, if is wifi enabled
-	 */
-	public static boolean isWifiEnabled(Context context) {
-		ConnectivityManager mgrConn = (ConnectivityManager) context
-				.getSystemService(Context.CONNECTIVITY_SERVICE);
-		TelephonyManager mgrTel = (TelephonyManager) context
-				.getSystemService(Context.TELEPHONY_SERVICE);
-		return ((mgrConn.getActiveNetworkInfo() != null && mgrConn
-				.getActiveNetworkInfo().getState() == NetworkInfo.State.CONNECTED) || mgrTel
-				.getNetworkType() == TelephonyManager.NETWORK_TYPE_UMTS);
-	}
-
-	/**
-	 * 判断当前网络是否是wifi网络.
-	 *
-	 * @param context the context
-	 * @return boolean
-	 */
-	public static boolean isWifi(Context context) {
-		ConnectivityManager connectivityManager = (ConnectivityManager) context
-				.getSystemService(Context.CONNECTIVITY_SERVICE);
-		NetworkInfo activeNetInfo = connectivityManager.getActiveNetworkInfo();
-		if (activeNetInfo != null
-				&& activeNetInfo.getType() == ConnectivityManager.TYPE_WIFI) {
-			return true;
-		}
-		return false;
-	}
 
 	/**
 	 * 判断当前网络是否是移动数据网络.
