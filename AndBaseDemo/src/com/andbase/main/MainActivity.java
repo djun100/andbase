@@ -383,7 +383,7 @@ public class MainActivity extends AbActivity {
 	protected void onPause() {
 		initTitleRightLayout();
 		AbLogUtil.d(this, "--onPause--");
-		AbMonitorUtil.closeMonitor();
+		//AbMonitorUtil.closeMonitor();
 		super.onPause();
 	}
 
@@ -391,7 +391,7 @@ public class MainActivity extends AbActivity {
 	protected void onResume() {
 		AbLogUtil.d(this, "--onResume--");
 		//如果debug模式被打开，显示监控
-        AbMonitorUtil.openMonitor(this);
+        //AbMonitorUtil.openMonitor(this);
 		super.onResume();
 	}
 

@@ -19,7 +19,6 @@ import java.io.File;
 import java.io.FileFilter;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -34,12 +33,8 @@ import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
-import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
-
-import com.ab.global.AbAppData;
 
 // TODO: Auto-generated Javadoc
 /**
