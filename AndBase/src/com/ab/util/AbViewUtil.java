@@ -291,7 +291,7 @@ public class AbViewUtil {
 		if(contentView.getChildCount()>0){
 			for(int i=0;i<contentView.getChildCount();i++){
 				if(contentView.getChildAt(i) instanceof ViewGroup){
-					scaleView((ViewGroup)(contentView.getChildAt(i)));
+					scaleContentView((ViewGroup)(contentView.getChildAt(i)));
 				}else{
 					scaleView(contentView.getChildAt(i));
 				}
