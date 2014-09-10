@@ -276,6 +276,33 @@ public class AbViewUtil {
         return 0;
     }
     
+	
+	/**
+	 * 
+	 * 描述：View树递归调用做适配.
+	 * AbAppConfig.uiWidth = 1080;
+	 * AbAppConfig.uiHeight = 700;
+	 * scaleContentView((RelativeLayout)findViewById(R.id.rootLayout));
+	 * 要求布局中的单位都用px并且和美工的设计图尺寸一致，包括所有宽高，Padding,Margin,文字大小
+	 * @param contentView
+	 */
+    public static void scaleContentView(ViewGroup contentView){
+        AbViewUtil.scaleView(contentView);
+		if(contentView.getChildCount()>0){
+			for(int i=0;i<contentView.getChildCount();i++){
+				if(contentView.getChildAt(i) instanceof ViewGroup){
+					scaleView((ViewGroup)(contentView.getChildAt(i)));
+				}else{
+					if(contentView.getChildAt(i) instanceof TextView){
+						TextView textView = (TextView)contentView.getChildAt(i);
+						scaleView(textView);
+					}
+					
+				}
+			}
+		}
+    }
+    
     /**
      * 按比例缩放View，以布局中的尺寸为基准
      * @param view
