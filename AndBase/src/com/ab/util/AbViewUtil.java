@@ -293,11 +293,7 @@ public class AbViewUtil {
 				if(contentView.getChildAt(i) instanceof ViewGroup){
 					scaleView((ViewGroup)(contentView.getChildAt(i)));
 				}else{
-					if(contentView.getChildAt(i) instanceof TextView){
-						TextView textView = (TextView)contentView.getChildAt(i);
-						scaleView(textView);
-					}
-					
+					scaleView(contentView.getChildAt(i));
 				}
 			}
 		}
