@@ -66,17 +66,28 @@ public class AbHttpUtil {
 	
 
 	/**
+	 * 描述：无参数的get请求,异步.
+	 *
+	 * @param url the url
+	 * @param responseListener the response listener
+	 * @param async
+	 */
+	public void get(String url, AbHttpResponseListener responseListener) {
+		get(url, responseListener,true);
+	}
+	
+	/**
 	 * 描述：无参数的get请求.
 	 *
 	 * @param url the url
 	 * @param responseListener the response listener
 	 */
-	public void get(String url, AbHttpResponseListener responseListener) {
-		client.get(url, responseListener);
+	public void get(String url, AbHttpResponseListener responseListener,boolean async) {
+		client.get(url, responseListener,async);
 	}
 
 	/**
-	 * 描述：带参数的get请求.
+	 * 描述：带参数的get请求,异步.
 	 *
 	 * @param url the url
 	 * @param params the params
@@ -84,7 +95,31 @@ public class AbHttpUtil {
 	 */
 	public void get(String url, AbRequestParams params,
 			AbHttpResponseListener responseListener) {
-		client.get(url, params, responseListener);
+		get(url, params, responseListener,true);
+	}
+	
+	/**
+	 * 描述：带参数的get请求.
+	 *
+	 * @param url the url
+	 * @param params the params
+	 * @param responseListener the response listener
+	 * @param async
+	 */
+	public void get(String url, AbRequestParams params,
+			AbHttpResponseListener responseListener,boolean async) {
+		client.get(url, params, responseListener,async);
+	}
+	
+	/**
+	 *  
+	 * 描述：下载数据使用，会返回byte数据(下载文件或图片),异步.
+	 *
+	 * @param url the url
+	 * @param responseListener the response listener
+	 */
+	public void get(String url, AbBinaryHttpResponseListener responseListener) {
+		get(url, responseListener,true);
 	}
 	
 	/**
@@ -93,9 +128,22 @@ public class AbHttpUtil {
 	 *
 	 * @param url the url
 	 * @param responseListener the response listener
+	 * @param async
 	 */
-	public void get(String url, AbBinaryHttpResponseListener responseListener) {
-		client.get(url, responseListener);
+	public void get(String url, AbBinaryHttpResponseListener responseListener,boolean async) {
+		client.get(url, responseListener,async);
+	}
+	
+	/**
+	 * 描述：文件下载的get,异步.
+	 *
+	 * @param url the url
+	 * @param params the params
+	 * @param responseListener the response listener
+	 */
+	public void get(String url, AbRequestParams params,
+			AbFileHttpResponseListener responseListener) {
+		get(url, params, responseListener,true);
 	}
 	
 	/**
@@ -104,26 +152,37 @@ public class AbHttpUtil {
 	 * @param url the url
 	 * @param params the params
 	 * @param responseListener the response listener
+	 * @param async
 	 */
 	public void get(String url, AbRequestParams params,
-			AbFileHttpResponseListener responseListener) {
-		client.get(url, params, responseListener);
+			AbFileHttpResponseListener responseListener,boolean async) {
+		client.get(url, params, responseListener,async);
 	}
 	
+	/**
+	 * 描述：无参数的post请求,异步.
+	 *
+	 * @param url the url
+	 * @param responseListener the response listener
+	 */
+	public void post(String url, AbHttpResponseListener responseListener) {
+		post(url, responseListener,true);
+	}
 	
 	/**
 	 * 描述：无参数的post请求.
 	 *
 	 * @param url the url
 	 * @param responseListener the response listener
+	 * @param async
 	 */
-	public void post(String url, AbHttpResponseListener responseListener) {
-		client.post(url, responseListener);
+	public void post(String url, AbHttpResponseListener responseListener,boolean async) {
+		client.post(url, responseListener,async);
 	}
 	
 	
 	/**
-	 * 描述：带参数的post请求.
+	 * 描述：带参数的post请求,异步.
 	 *
 	 * @param url the url
 	 * @param params the params
@@ -131,12 +190,25 @@ public class AbHttpUtil {
 	 */
 	public void post(String url, AbRequestParams params,
 			AbHttpResponseListener responseListener) {
-		client.post(url, params, responseListener);
+		post(url, params, responseListener,true);
+	}
+	
+	/**
+	 * 描述：带参数的post请求.
+	 *
+	 * @param url the url
+	 * @param params the params
+	 * @param responseListener the response listener
+	 * @param async
+	 */
+	public void post(String url, AbRequestParams params,
+			AbHttpResponseListener responseListener,boolean async) {
+		client.post(url, params, responseListener,async);
 	}
 	
 	
 	/**
-	 * 描述：文件下载的post.
+	 * 描述：文件下载的post,异步.
 	 *
 	 * @param url the url
 	 * @param params the params
@@ -144,7 +216,20 @@ public class AbHttpUtil {
 	 */
 	public void post(String url, AbRequestParams params,
 			AbFileHttpResponseListener responseListener) {
-		client.post(url, params, responseListener);
+		post(url, params, responseListener,true);
+	}
+	
+	/**
+	 * 描述：文件下载的post.
+	 *
+	 * @param url the url
+	 * @param params the params
+	 * @param responseListener the response listener
+	 * @param async
+	 */
+	public void post(String url, AbRequestParams params,
+			AbFileHttpResponseListener responseListener,boolean async) {
+		client.post(url, params, responseListener,async);
 	}
 	
 	/**

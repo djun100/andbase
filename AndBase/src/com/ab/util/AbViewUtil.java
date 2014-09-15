@@ -240,6 +240,9 @@ public class AbViewUtil {
 	 * @return the int
 	 */
 	public static int scale(int displayWidth, int displayHeight, float pxValue) {
+		if(pxValue == 0 ){
+			return 0;
+		}
 		float scale = 1;
 		try {
 			float scaleWidth = (float) displayWidth / AbAppConfig.uiWidth;

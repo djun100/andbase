@@ -168,8 +168,8 @@ public class AbHttpClient {
 	 * @param url the url
 	 * @param responseListener the response listener
 	 */
-	public void get(String url, AbHttpResponseListener responseListener) {
-		get(url,null,responseListener);          
+	public void get(String url, AbHttpResponseListener responseListener,boolean async) {
+		get(url,null,responseListener,async);          
 	}
 
 	/**
@@ -179,18 +179,23 @@ public class AbHttpClient {
 	 * @param params the params
 	 * @param responseListener the response listener
 	 */
-	public void get(final String url,final AbRequestParams params,final AbHttpResponseListener responseListener) {
+	public void get(final String url,final AbRequestParams params,final AbHttpResponseListener responseListener,boolean async) {
 		
 		responseListener.setHandler(new ResponderHandler(responseListener));
-		mExecutorService.execute(new Runnable() { 
-    		public void run() {
-    			try {
-    				doGet(url,params,responseListener);
-    			} catch (Exception e) { 
-    				e.printStackTrace();
-    			}
-    		}                 
-    	});                
+		if(async){
+			mExecutorService.execute(new Runnable() { 
+	    		public void run() {
+	    			try {
+	    				doGet(url,params,responseListener);
+	    			} catch (Exception e) { 
+	    				e.printStackTrace();
+	    			}
+	    		}                 
+	    	});      
+		}else{
+	    	doGet(url,params,responseListener);
+		}
+		          
 	}
 	
 	/**
@@ -199,8 +204,8 @@ public class AbHttpClient {
 	 * @param url the url
 	 * @param responseListener the response listener
 	 */
-	public void post(String url, AbHttpResponseListener responseListener) {
-		post(url,null,responseListener);          
+	public void post(String url, AbHttpResponseListener responseListener,boolean async) {
+		post(url,null,responseListener,async);          
 	}
 	
 	/**
@@ -211,17 +216,22 @@ public class AbHttpClient {
 	 * @param responseListener the response listener
 	 */
 	public void post(final String url,final AbRequestParams params,
-			final AbHttpResponseListener responseListener) {
+			final AbHttpResponseListener responseListener,boolean async) {
 		responseListener.setHandler(new ResponderHandler(responseListener));
-		mExecutorService.execute(new Runnable() { 
-    		public void run() {
-    			try {
-    				doPost(url,params,responseListener);
-    			} catch (Exception e) { 
-    				e.printStackTrace();
-    			}
-    		}                 
-    	});      
+		if(async){
+			mExecutorService.execute(new Runnable() { 
+	    		public void run() {
+	    			try {
+	    				doPost(url,params,responseListener);
+	    			} catch (Exception e) { 
+	    				e.printStackTrace();
+	    			}
+	    		}                 
+	    	});      
+		}else{
+			doPost(url,params,responseListener);
+		}
+		
 	}
 	
 	
