@@ -11,6 +11,7 @@ import com.ab.http.AbHttpListener;
 import com.ab.http.AbHttpUtil;
 import com.ab.http.AbStringHttpResponseListener;
 import com.ab.util.AbFileUtil;
+import com.ab.util.AbJsonUtil;
 import com.andbase.demo.model.Article;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -123,8 +124,6 @@ public class NetworkWeb {
 			@Override
 			public void onSuccess(int statusCode, String content) {
 				try {
-					GsonBuilder builder = new GsonBuilder();
-					Gson gson = builder.create();
 					//模拟数据
 					content = result;
 					// 解析返回头
@@ -133,7 +132,7 @@ public class NetworkWeb {
 					if ("200".equals(resultCode)) {
 						//解析结果
 						String list = jsonObject.getString("items");
-						List<Article> mArticleList = gson.fromJson(list, new TypeToken<ArrayList<Article>>() {}.getType());
+						List<Article> mArticleList = (List<Article>)AbJsonUtil.fromJson(list, new TypeToken<ArrayList<Article>>(){});
 					    //将结果传递回去
 						abHttpListener.onSuccess(mArticleList);
 					} else {
