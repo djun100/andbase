@@ -199,7 +199,7 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
 								public void get() {
 									try {
 										//检查文件总长度
-										int totalLength = AbFileUtil.getContentLengthFormUrl(mDownFile.getDownUrl());
+										int totalLength = AbFileUtil.getContentLengthFromUrl(mDownFile.getDownUrl());
 										mDownFile.setTotalLength(totalLength);
 										//开始下载文件
 										AbFileDownloader loader = new AbFileDownloader(mContext,mDownFile,1);
