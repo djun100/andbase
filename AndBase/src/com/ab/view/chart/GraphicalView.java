@@ -96,9 +96,9 @@ public class GraphicalView extends View {
       mRenderer = ((RoundChart) mChart).getRenderer();
     }
     if (mRenderer.isZoomButtonsVisible()) {
-      zoomInImage = AbFileUtil.getBitmapFormSrc("image/zoom_in.png");
-      zoomOutImage = AbFileUtil.getBitmapFormSrc("image/zoom_out.png");
-      fitZoomImage = AbFileUtil.getBitmapFormSrc("image/zoom-1.png");
+      zoomInImage = AbFileUtil.getBitmapFromSrc("image/zoom_in.png");
+      zoomOutImage = AbFileUtil.getBitmapFromSrc("image/zoom_out.png");
+      fitZoomImage = AbFileUtil.getBitmapFromSrc("image/zoom-1.png");
     }
 
     if (mRenderer instanceof XYMultipleSeriesRenderer

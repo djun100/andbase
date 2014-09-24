@@ -137,7 +137,7 @@ public class AbListViewHeader extends LinearLayout {
 		FrameLayout headImage =  new FrameLayout(context);
 		arrowImageView = new ImageView(context);
 		//从包里获取的箭头图片
-		arrowImage = AbFileUtil.getBitmapFormSrc("image/arrow.png");
+		arrowImage = AbFileUtil.getBitmapFromSrc("image/arrow.png");
 		arrowImageView.setImageBitmap(arrowImage);
 		
 		//style="?android:attr/progressBarStyleSmall" 默认的样式

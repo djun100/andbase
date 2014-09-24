@@ -15,6 +15,8 @@
  */
 package com.ab.model;
 
+import com.ab.util.AbJsonUtil;
+
 // TODO: Auto-generated Javadoc
 /**
  * © 2012 amsoft.cn
@@ -32,9 +34,38 @@ public class AbResult {
 	
 	/** 结果 message. */
 	private String resultMessage;
+	
+    /**
+     * 构造
+     */
+	public AbResult() {
+		super();
+	}
 
 	/**
-	 * Gets the result code.
+	 * 构造
+	 * @param resultCode
+	 * @param resultMessage
+	 */
+	public AbResult(int resultCode, String resultMessage) {
+		super();
+		this.resultCode = resultCode;
+		this.resultMessage = resultMessage;
+	}
+	
+	/**
+	 * 用json构造自己
+	 * @param json
+	 */
+	public AbResult(String json) {
+		super();
+		AbResult result = (AbResult)AbJsonUtil.fromJson(json, this.getClass());
+		this.resultCode = result.getResultCode();
+		this.resultMessage = result.getResultMessage();
+	}
+
+	/**
+	 * 获取返回码.
 	 *
 	 * @return the result code
 	 */
@@ -43,7 +74,7 @@ public class AbResult {
 	}
 
 	/**
-	 * Sets the result code.
+	 * 设置返回码.
 	 *
 	 * @param resultCode the new result code
 	 */
@@ -52,7 +83,7 @@ public class AbResult {
 	}
 
 	/**
-	 * Gets the result message.
+	 * 获取返回信息.
 	 *
 	 * @return the result message
 	 */
@@ -61,12 +92,22 @@ public class AbResult {
 	}
 
 	/**
-	 * Sets the result message.
+	 * 设置返回信息.
 	 *
 	 * @param resultMessage the new result message
 	 */
 	public void setResultMessage(String resultMessage) {
 		this.resultMessage = resultMessage;
 	}
+	
+	/**
+	 * 
+	 * 描述：转换成json.
+	 * @return
+	 */
+	public String toJson(){
+		return AbJsonUtil.toJson(this);
+	}
+	
 
 }

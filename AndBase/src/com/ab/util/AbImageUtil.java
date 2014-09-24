@@ -78,7 +78,7 @@ public class AbImageUtil {
 	 * @param newHeight 新图片的高
 	 * @return Bitmap 新图片
 	 */
-	public static Bitmap getBitmapFormURL(String imageUrl,int type,int newWidth,int newHeight){
+	public static Bitmap getBitmapFromURL(String imageUrl,int type,int newWidth,int newHeight){
 		Bitmap bm = null;
 		URLConnection con = null;
 		InputStream is = null;

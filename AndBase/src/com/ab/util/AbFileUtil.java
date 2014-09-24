@@ -35,16 +35,14 @@ import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Environment;
-import android.os.Message;
 import android.os.StatFs;
-import android.util.Log;
 
 import com.ab.bitmap.AbFileCache;
-import com.ab.global.AbAppConfig;
-import com.ab.global.AbAppData;
 
 // TODO: Auto-generated Javadoc
 
@@ -194,7 +192,7 @@ public class AbFileUtil {
 			 
 			 //SD卡不存在 或者剩余空间不足了就不缓存到SD卡了
 			 if(!isCanUseSD() || freeSdSpaceNeededToCache < freeSpaceOnSD()){
-				 bitmap = getBitmapFormURL(url,type,width,height);
+				 bitmap = getBitmapFromURL(url,type,width,height);
 				 return bitmap;
 		     }
 			 
@@ -269,7 +267,7 @@ public class AbFileUtil {
 	  * @param newHeight 新图片的高
 	  * @return Bitmap 新图片
 	  */
-     public static Bitmap getBitmapFormByte(byte[] imgByte,String fileName,int type,int newWidth, int newHeight){
+     public static Bitmap getBitmapFromByte(byte[] imgByte,String fileName,int type,int newWidth, int newHeight){
     	   FileOutputStream fos = null;
     	   DataInputStream dis = null;
     	   ByteArrayInputStream bis = null;
@@ -333,10 +331,10 @@ public class AbFileUtil {
 	 * @param newHeight 新图片的高
 	 * @return Bitmap 新图片
 	 */
-	public static Bitmap getBitmapFormURL(String url,int type,int newWidth, int newHeight){
+	public static Bitmap getBitmapFromURL(String url,int type,int newWidth, int newHeight){
 		Bitmap bit = null;
 		try {
-			bit = AbImageUtil.getBitmapFormURL(url, type, newWidth, newHeight);
+			bit = AbImageUtil.getBitmapFromURL(url, type, newWidth, newHeight);
 	    } catch (Exception e) {
 	    	AbLogUtil.d(AbFileUtil.class, "下载图片异常："+e.getMessage());
 		}
@@ -349,7 +347,7 @@ public class AbFileUtil {
 	 * @param src 图片的src路径，如（“image/arrow.png”）
 	 * @return Bitmap 图片
 	 */
-	public static Bitmap getBitmapFormSrc(String src){
+	public static Bitmap getBitmapFromSrc(String src){
 		Bitmap bit = null;
 		try {
 			bit = BitmapFactory.decodeStream(AbFileUtil.class.getResourceAsStream(src));
@@ -358,6 +356,43 @@ public class AbFileUtil {
 		}
 		return bit;
 	}
+	
+	/**
+	 * 描述：获取Asset中的图片资源.
+	 *
+	 * @param  fileName 图片的名称
+	 * @return Bitmap 图片
+	 */
+	public static Bitmap getBitmapFromAsset(Context context,String fileName){
+		Bitmap bit = null;
+		try {
+			AssetManager assetManager = context.getAssets();
+			InputStream is = assetManager.open(fileName);
+			bit = BitmapFactory.decodeStream(is);
+	    } catch (Exception e) {
+	    	AbLogUtil.d(AbFileUtil.class, "获取图片异常："+e.getMessage());
+		}
+		return bit;
+	}
+	
+	/**
+	 * 描述：获取Asset中的图片资源.
+	 *
+	 * @param  fileName 图片的名称
+	 * @return Drawable 图片
+	 */
+	public static Drawable getDrawableFromAsset(Context context,String fileName){
+		Drawable drawable = null;
+		try {
+			AssetManager assetManager = context.getAssets();
+			InputStream is = assetManager.open(fileName);
+			drawable = Drawable.createFromStream(is,null);
+	    } catch (Exception e) {
+	    	AbLogUtil.d(AbFileUtil.class, "获取图片异常："+e.getMessage());
+		}
+		return drawable;
+	}
+	
 	
 	/**
      * 描述：通过文件的本地地址从SD卡读取图片.
@@ -391,7 +426,7 @@ public class AbFileUtil {
 	 * @param Url 图片的网络路径
 	 * @return int 网络文件的大小
 	 */
-	public static int getContentLengthFormUrl(String Url){
+	public static int getContentLengthFromUrl(String Url){
 		int mContentLength = 0;
 		try {
 			 URL url = new URL(Url);

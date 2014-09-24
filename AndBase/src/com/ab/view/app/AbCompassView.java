@@ -17,10 +17,12 @@ package com.ab.view.app;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
 // TODO: Auto-generated Javadoc
+import android.widget.ImageView;
 
 /**
  * © 2012 amsoft.cn
@@ -31,25 +33,17 @@ import android.view.View;
  * @version v1.0
  * @date：2013-8-23 下午2:03:29
  */
-public class AbCompassView extends View {
+public class AbCompassView extends ImageView {
     
+	/** 上下文. */
+	private Context mContext = null;
+	
     /** 指南针图标. */
     private Drawable mCompassDrawable = null;
-    
-    /** 宽度. */
-    private int w = 40;
-    
-    /** 高度. */
-    private int h = 40;
     
     /** 方向. */
     private float mDirection = 0.0f;
     
-    /** The pos compass x. */
-    private float posCompassX = 20;
-    
-    /** The pos compass y. */
-    private float posCompassY = 20;
 	
     /**
      * Instantiates a new ab compass view.
@@ -57,7 +51,7 @@ public class AbCompassView extends View {
      * @param context the context
      */
     public AbCompassView(Context context) {
-        super(context);
+        this(context,null);
         
     }
 
@@ -69,6 +63,7 @@ public class AbCompassView extends View {
 	 */
 	public AbCompassView(Context context, AttributeSet attrs) {
 		super(context, attrs);
+		this.mContext = context;
 	}
 
 	/* (non-Javadoc)
@@ -76,58 +71,11 @@ public class AbCompassView extends View {
 	 */
 	@Override 
     protected void onDraw(Canvas canvas) {
-        w = canvas.getWidth();
-        h = canvas.getHeight();
-        posCompassX = w/2;
-        posCompassY = h/2;
-        drawPictures(canvas);
-    }
-	
-	/**
-	 * Draw pictures.
-	 *
-	 * @param canvas the canvas
-	 */
-	private void drawPictures(Canvas canvas) {
-		if (mCompassDrawable != null) {
-			// 图片资源在view的位置，此处相当于充满view
-			mCompassDrawable.setBounds(0, 0, w, h);
-			canvas.save();
-			// 绕图片中心点旋转
-			canvas.rotate(mDirection, posCompassX, posCompassY);
-			// 把旋转后的图片画在view上，即保持旋转后的样子
-			mCompassDrawable.draw(canvas);
-			// 保存一下
-			canvas.restore();
-		}
-
-    }
-
-	/* (non-Javadoc)
-	 * @see android.view.View#onMeasure(int, int)
-	 */
-	@Override  
-	protected void onMeasure (int widthMeasureSpec, int heightMeasureSpec){   
-	    int height = View.MeasureSpec.getSize(heightMeasureSpec);    
-	    int width = View.MeasureSpec.getSize(widthMeasureSpec);    
-	    setMeasuredDimension(width,height);
-	}  
-
-
-    /* (non-Javadoc)
-     * @see android.view.View#onAttachedToWindow()
-     */
-    @Override
-    protected void onAttachedToWindow() {
-        super.onAttachedToWindow();
-    }
-
-    /* (non-Javadoc)
-     * @see android.view.View#onDetachedFromWindow()
-     */
-    @Override
-    protected void onDetachedFromWindow() {
-        super.onDetachedFromWindow();
+		canvas.drawColor(Color.TRANSPARENT);
+		int h = getHeight();
+		int w = getWidth();
+		canvas.rotate(-(90 + this.mDirection), w / 2, h / 2);
+		super.onDraw(canvas);
     }
 
 	/**
@@ -156,6 +104,21 @@ public class AbCompassView extends View {
 	 */
 	public void setCompassDrawable(Drawable drawable) {
 		this.mCompassDrawable = drawable;
+		this.mCompassDrawable.setBounds(0, 0, this.mCompassDrawable .getIntrinsicWidth(), this.mCompassDrawable.getIntrinsicHeight());
+		this.setImageDrawable(this.mCompassDrawable);
+		this.invalidate();
+	}
+	
+	/**
+	 * 描述：设置指南针图片.
+	 *
+	 * @param id 
+	 */
+	public void setCompassDrawable(int id) {
+		this.mCompassDrawable = mContext.getResources().getDrawable(id);
+		this.mCompassDrawable.setBounds(0, 0, this.mCompassDrawable .getIntrinsicWidth(), this.mCompassDrawable.getIntrinsicHeight());
+		this.setImageDrawable(this.mCompassDrawable);
+		this.invalidate();
 	}
 	
     

@@ -158,8 +158,8 @@ public class AbSlidingPlayView extends LinearLayout {
 		mRelativeLayout.addView(mNavLayoutParent,lp2);
 		addView(mRelativeLayout,new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
 		
-		displayImage = AbFileUtil.getBitmapFormSrc("image/play_display.png");
-		hideImage = AbFileUtil.getBitmapFormSrc("image/play_hide.png");
+		displayImage = AbFileUtil.getBitmapFromSrc("image/play_display.png");
+		hideImage = AbFileUtil.getBitmapFromSrc("image/play_hide.png");
 		
 		mListViews = new ArrayList<View>();
 		mAbViewPagerAdapter = new AbViewPagerAdapter(context,mListViews);

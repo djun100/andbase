@@ -128,6 +128,8 @@ public abstract class AbActivity extends FragmentActivity {
         //填入View
 		ab_base.addView(mAbTitleBar,layoutParamsFW);
 		
+		mAbTitleBar.setVisibility(View.GONE);
+		
 		RelativeLayout.LayoutParams layoutParamsBottomBar = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 		layoutParamsBottomBar.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
 		ab_base.addView(mAbBottomBar, layoutParamsBottomBar);
@@ -172,6 +174,7 @@ public abstract class AbActivity extends FragmentActivity {
 	 * @return the title layout
 	 */
 	public AbTitleBar getTitleBar() {
+		mAbTitleBar.setVisibility(View.VISIBLE);
 		return mAbTitleBar;
 	}
 	

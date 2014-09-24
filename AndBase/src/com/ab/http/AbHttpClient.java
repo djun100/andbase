@@ -310,6 +310,7 @@ public class AbHttpClient {
 			  
 		} catch (Exception e) {
 			e.printStackTrace();
+			AbLogUtil.i(mContext, "request："+url+",error："+e.getMessage());
 			//发送失败消息
 			responseListener.sendFailureMessage(AbHttpStatus.UNTREATED_CODE,e.getMessage(),new AbAppException(e));
 		}finally{

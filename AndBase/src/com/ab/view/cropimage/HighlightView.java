@@ -79,8 +79,8 @@ public class HighlightView {
      * Inits the.
      */
     private void init() {
-        mResizeDrawableDiagonal = AbImageUtil.bitmapToDrawable(AbFileUtil.getBitmapFormSrc("image/crop_big.png"));
-        mResizeDrawableDiagonal2 = AbImageUtil.bitmapToDrawable(AbFileUtil.getBitmapFormSrc("image/crop_small.png"));
+        mResizeDrawableDiagonal = AbImageUtil.bitmapToDrawable(AbFileUtil.getBitmapFromSrc("image/crop_big.png"));
+        mResizeDrawableDiagonal2 = AbImageUtil.bitmapToDrawable(AbFileUtil.getBitmapFromSrc("image/crop_small.png"));
     }
 
     /** The m is focused. */

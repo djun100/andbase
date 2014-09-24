@@ -36,6 +36,24 @@ import com.google.gson.reflect.TypeToken;
  * @param <T>
  */
 public class AbJsonUtil<T> {
+	
+	/**
+	 * 
+	 * 描述：将对象转化为json.
+	 * @param list
+	 * @return
+	 */
+	public static String toJson(Object src) {
+		String json = null;
+		try {
+			GsonBuilder gsonb = new GsonBuilder();
+			Gson gson = gsonb.create();
+			json = gson.toJson(src);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return json;
+	}
 
 	/**
 	 * 
