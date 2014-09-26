@@ -58,7 +58,7 @@ public class AddPhotoActivity extends AbActivity {
 		super.onCreate(savedInstanceState);
 		setAbContentView(R.layout.add_photo);
 		application = (MyApplication) abApplication;
-		
+		   
 		AbTitleBar mAbTitleBar = this.getTitleBar();
 		mAbTitleBar.setTitleText(R.string.photo_add_name);
 		mAbTitleBar.setLogo(R.drawable.button_selector_back);
