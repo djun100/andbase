@@ -48,7 +48,7 @@ public class FindPwdActivity extends AbActivity {
 		mAbTitleBar.setTitleTextMargin(10, 0, 0, 0);
 		mAbTitleBar.setLogoLine(R.drawable.line);
 		//设置AbTitleBar在最上
-        this.setTitleBarAbove(true);
+		this.setTitleBarOverlay(true);
 		mAbTaskPool = AbTaskPool.getInstance();
 		userName = (EditText) this.findViewById(R.id.userName);
 		email = (EditText) this.findViewById(R.id.email);

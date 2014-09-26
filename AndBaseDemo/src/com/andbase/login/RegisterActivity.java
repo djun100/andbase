@@ -49,7 +49,7 @@ public class RegisterActivity extends AbActivity {
 		mAbTitleBar.setTitleTextMargin(10, 0, 0, 0);
 		mAbTitleBar.setLogoLine(R.drawable.line);
 		//设置AbTitleBar在最上
-        this.setTitleBarAbove(true);
+		this.setTitleBarOverlay(true);
         userName = (EditText)this.findViewById(R.id.userName);
 		userPwd = (EditText)this.findViewById(R.id.userPwd);
 		userPwd2 = (EditText)this.findViewById(R.id.userPwd2);

@@ -34,7 +34,7 @@ public class FriendActivity extends AbActivity {
         mAbTitleBar.setTitleBarBackground(R.drawable.top_bg);
         mAbTitleBar.setTitleTextMargin(10, 0, 0, 0);
         mAbTitleBar.setLogoLine(R.drawable.line);
-        this.setTitleBarAbove(true);
+        this.setTitleBarOverlay(true);
         mSlidingPlayView = (AbSlidingPlayView)findViewById(R.id.mAbSlidingPlayView);
         
 		mSlidingPlayView.setNavHorizontalGravity(Gravity.CENTER_HORIZONTAL);

@@ -141,7 +141,7 @@ public class ChatActivity extends AbActivity {
 		mAbTitleBar.setTitleTextBold(false);
 		mAbTitleBar.setTitleBarGravity(Gravity.CENTER,Gravity.CENTER);
 		//设置AbTitleBar在最上
-        this.setTitleBarAbove(true);
+		this.setTitleBarOverlay(true);
         
 		//获取传递的参数
 		Intent mIntent = this.getIntent();
