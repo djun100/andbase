@@ -199,11 +199,11 @@ public abstract class AbActivity extends FragmentActivity {
 	/**
 	 * 描述：设置绝对定位的主标题栏覆盖到内容的上边.
 	 *
-	 * @param above the new title bar above
+	 * @param overlay the new title bar overlay
 	 */
-	public void setTitleBarAbove(boolean above) {
+	public void setTitleBarOverlay(boolean overlay) {
 		ab_base.removeAllViews();
-		if(above){
+		if(overlay){
 			RelativeLayout.LayoutParams layoutParamsFW1 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 			layoutParamsFW1.addRule(RelativeLayout.ABOVE, mAbBottomBar.getId());
 			ab_base.addView(contentLayout,layoutParamsFW1);
