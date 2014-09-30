@@ -80,7 +80,7 @@ public class NetworkWeb {
 		
 		final String result = AbFileUtil.readAssetsByName(mContext, "article_list.json","UTF-8");
 		// 一个url地址
-	    String urlString = "http://www.amsoft.cn/rss.php";
+	    String urlString = "http://www.amsoft.cn/rss.php?";
 	    mAbHttpUtil.get(urlString,params,new AbStringHttpResponseListener(){
 
 			@Override
