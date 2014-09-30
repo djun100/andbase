@@ -320,7 +320,7 @@ public class MainActivity extends AbActivity {
 		   if(IMUtil.isLogin()){
 		       return;
 		   }
-		   AbDialogUtil.showProgressDialog(MainActivity.this,R.drawable.progress_circular,"登录到IM");
+		   AbDialogUtil.showProgressDialog(MainActivity.this,R.drawable.ic_load,"登录到IM");
 	       AbTask task = new AbTask();
 	       final AbTaskItem item = new AbTaskItem();
 	       item.setListener(new AbTaskObjectListener(){
