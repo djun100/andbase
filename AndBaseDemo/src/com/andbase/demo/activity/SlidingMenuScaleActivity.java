@@ -48,7 +48,7 @@ public class SlidingMenuScaleActivity extends AbActivity {
 		menu.setMenu(R.layout.sliding_menu_menu);
 		getFragmentManager()
 		.beginTransaction()
-		.replace(R.id.menu_frame, new FragmentLoad2())
+		.replace(R.id.menu_frame, new FragmentLoad())
 		.commit();
 		
 		//动画配置

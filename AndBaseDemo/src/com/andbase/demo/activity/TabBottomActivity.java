@@ -54,9 +54,9 @@ public class TabBottomActivity extends AbActivity {
 		//mBottomTabView.setOnPageChangeListener(listener);
 
 		FragmentLoad page1 = new FragmentLoad();
-		FragmentLoad2 page2 = new FragmentLoad2();
+		FragmentLoad page2 = new FragmentLoad();
 		FragmentRefresh page3 = new FragmentRefresh();
-		FragmentLoad2 page4 = new FragmentLoad2();
+		FragmentLoad page4 = new FragmentLoad();
 		
 		List<Fragment> mFragments = new ArrayList<Fragment>();
 		mFragments.add(page1);

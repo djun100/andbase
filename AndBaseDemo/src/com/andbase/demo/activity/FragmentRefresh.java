@@ -16,6 +16,7 @@ import android.widget.ListView;
 
 import com.ab.fragment.AbFragment;
 import com.ab.http.AbHttpListener;
+import com.ab.http.AbRequestParams;
 import com.ab.util.AbToastUtil;
 import com.ab.view.pullview.AbPullToRefreshView;
 import com.ab.view.pullview.AbPullToRefreshView.OnFooterLoadListener;
@@ -114,10 +115,15 @@ public class FragmentRefresh extends AbFragment {
 	 * 下载数据
 	 */
 	public void refreshTask() {
-		
+		currentPage = 1;
+		// 绑定参数
+		AbRequestParams params = new AbRequestParams();
+		params.put("cityCode", "11");
+		params.put("pageSize", String.valueOf(pageSize));
+		params.put("toPageNo",String.valueOf(currentPage));
 		// 下载网络数据
 		NetworkWeb web = NetworkWeb.newInstance(mActivity);
-		web.findLogList2("test1", "test1", new AbHttpListener(){
+		web.findLogList(params, new AbHttpListener(){
 
 			@Override
 			public void onSuccess(List<?> newList) {
@@ -153,9 +159,15 @@ public class FragmentRefresh extends AbFragment {
 	}
     
     public void loadMoreTask(){
+    	currentPage++;
+		// 绑定参数
+		AbRequestParams params = new AbRequestParams();
+		params.put("cityCode", "11");
+		params.put("pageSize", String.valueOf(pageSize));
+		params.put("toPageNo",String.valueOf(currentPage));
     	// 下载网络数据
 		NetworkWeb web = NetworkWeb.newInstance(this.getActivity());
-		web.findLogList2("test1", "test1", new AbHttpListener(){
+		web.findLogList(params, new AbHttpListener(){
 
 			@Override
 			public void onSuccess(List<?> newList) {

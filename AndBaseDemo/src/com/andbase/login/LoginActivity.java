@@ -294,7 +294,7 @@ public class LoginActivity extends AbActivity {
 				}
 				
 				
-				AbDialogUtil.showProgressDialog(LoginActivity.this,R.drawable.progress_circular,"登录到IM");
+				AbDialogUtil.showProgressDialog(LoginActivity.this,R.drawable.ic_load,"登录到IM");
 				
 				loginIMTask(mStr_name,mStr_pwd);
 

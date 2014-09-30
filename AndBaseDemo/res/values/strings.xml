@@ -155,8 +155,8 @@
     
     <!-- 缺省的服务器配置 --> 
     <integer name="xmpp_port">5222</integer> 
-    <string name="xmpp_host">172.13.2.172</string> 
-    <string name="xmpp_service_name">prchaz1337l</string>
+    <string name="xmpp_host">192.168.1.127</string> 
+    <string name="xmpp_service_name">amsoft</string>
     <bool name="is_remember">true</bool>
     <bool name="is_autologin">false</bool>
     <bool name="is_novisible">false</bool> 

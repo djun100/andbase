@@ -12,7 +12,6 @@ import com.ab.view.sliding.AbSlidingSmoothFixTabView;
 import com.ab.view.titlebar.AbTitleBar;
 import com.andbase.R;
 import com.andbase.demo.activity.FragmentLoad;
-import com.andbase.demo.activity.FragmentLoad2;
 
 public class ContacterActivity extends AbActivity {
 	
@@ -47,7 +46,7 @@ public class ContacterActivity extends AbActivity {
 
         FragmentLoad page1 = new FragmentLoad();
         ContacterFragment mContacterFragment = new ContacterFragment();
-        FragmentLoad2 page3 = new FragmentLoad2();
+        FragmentLoad page3 = new FragmentLoad();
         
         List<Fragment> mFragments = new ArrayList<Fragment>();
         mFragments.add(page1);

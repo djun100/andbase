@@ -54,13 +54,13 @@ public class TabTopActivity extends AbActivity {
 		});*/
 
 		FragmentLoad page1 = new FragmentLoad();
-		FragmentLoad2 page2 = new FragmentLoad2();
+		FragmentLoad page2 = new FragmentLoad();
 		FragmentLoad page3 = new FragmentLoad();
-		FragmentLoad2 page4 = new FragmentLoad2();
+		FragmentLoad page4 = new FragmentLoad();
 		FragmentLoad page5 = new FragmentLoad();
-		FragmentLoad2 page6 = new FragmentLoad2();
+		FragmentLoad page6 = new FragmentLoad();
 		FragmentLoad page7 = new FragmentLoad();
-		FragmentLoad2 page8 = new FragmentLoad2();
+		FragmentLoad page8 = new FragmentLoad();
 		
 		List<Fragment> mFragments = new ArrayList<Fragment>();
 		mFragments.add(page1);
