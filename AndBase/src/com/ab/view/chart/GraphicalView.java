@@ -146,7 +146,7 @@ public class GraphicalView extends View {
     mRenderer.setLabelsTextSize(AbViewUtil.scale(mContext, mLabelsTextSize));
   	//说明文字大小
     int mLegendTextSize  =  (int)mRenderer.getLegendTextSize();
-    mRenderer.setLabelsTextSize(AbViewUtil.scale(mContext, mLegendTextSize));
+    mRenderer.setLegendTextSize(AbViewUtil.scale(mContext, mLegendTextSize));
     
   }
 

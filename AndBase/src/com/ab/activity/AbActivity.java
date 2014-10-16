@@ -34,6 +34,7 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 
 import com.ab.global.AbConstant;
+import com.ab.util.AbSharedUtil;
 import com.ab.view.ioc.AbIocEventListener;
 import com.ab.view.ioc.AbIocSelect;
 import com.ab.view.ioc.AbIocView;
@@ -143,7 +144,7 @@ public abstract class AbActivity extends FragmentActivity {
 		abApplication = getApplication();
 		
 		//SharedPreferences初始化
-		abSharedPreferences = getSharedPreferences(AbConstant.SHAREPATH, Context.MODE_PRIVATE);
+		abSharedPreferences = AbSharedUtil.getDefaultSharedPreferences(this);
         
 		//设置ContentView
         setContentView(ab_base,layoutParamsFF);
