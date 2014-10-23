@@ -210,7 +210,7 @@ public class FindPwdActivity extends AbActivity {
 					AbResult mAbResult = (AbResult)obj;
 					if(mAbResult != null){
 						AbToastUtil.showToast(FindPwdActivity.this,mAbResult.getResultMessage());
-						if(mAbResult.getResultCode()==AbConstant.RESULRCODE_OK){
+						if(mAbResult.getResultCode()==AbResult.RESULR_OK){
 							finish();
 			        	}
 			        }

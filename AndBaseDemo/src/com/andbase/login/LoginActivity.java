@@ -27,6 +27,7 @@ import com.ab.task.AbTask;
 import com.ab.task.AbTaskItem;
 import com.ab.task.AbTaskObjectListener;
 import com.ab.util.AbDialogUtil;
+import com.ab.util.AbSharedUtil;
 import com.ab.util.AbStrUtil;
 import com.ab.util.AbToastUtil;
 import com.ab.view.titlebar.AbTitleBar;
@@ -115,16 +116,14 @@ public class LoginActivity extends AbActivity {
 
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				Editor editor = abSharedPreferences.edit();
-				editor.putBoolean(Constant.USERPASSWORDREMEMBERCOOKIE, isChecked);
-				editor.commit();
+				AbSharedUtil.putBoolean(LoginActivity.this, Constant.USERPASSWORDREMEMBERCOOKIE, isChecked);
 				application.userPasswordRemember = isChecked;
 			}
 		});
         
-        String name = abSharedPreferences.getString(Constant.USERNAMECOOKIE, "");
-        String password = abSharedPreferences.getString(Constant.USERPASSWORDCOOKIE, "");
-		boolean userPwdRemember = abSharedPreferences.getBoolean(Constant.USERPASSWORDREMEMBERCOOKIE, false);
+        String name = AbSharedUtil.getString(LoginActivity.this, Constant.USERNAMECOOKIE);
+        String password = AbSharedUtil.getString(LoginActivity.this, Constant.USERPASSWORDCOOKIE);
+		boolean userPwdRemember = AbSharedUtil.getBoolean(LoginActivity.this,Constant.USERPASSWORDREMEMBERCOOKIE, false);
         
 		if(userPwdRemember){
 			userName.setText(name);
