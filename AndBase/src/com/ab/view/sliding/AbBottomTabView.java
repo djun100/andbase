@@ -339,7 +339,7 @@ public class AbBottomTabView extends LinearLayout {
         tabView.init(index,text);
         tabItemList.add(tabView.getTextView());
         tabView.setOnClickListener(mTabClickListener);
-        mTabLayout.addView(tabView, new LayoutParams(0,LayoutParams.FILL_PARENT,1));
+        mTabLayout.addView(tabView, new LayoutParams(0,LayoutParams.WRAP_CONTENT,1));
     }
     
     /**

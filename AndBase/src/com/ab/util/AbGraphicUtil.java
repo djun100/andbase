@@ -82,19 +82,28 @@ public final class AbGraphicUtil {
      }
      
      /**
-      * Return how wide a layout must be in order to display
-      * the specified text with one line per paragraph.
+      * 获得文字的宽度
       * @param str the str
       * @param paint the paint
-      * @return the string width2
+      * @return the string width
       */
      public static float getDesiredWidth(String str,TextPaint paint) {
     	 float strWidth = Layout.getDesiredWidth(str, paint);
          return strWidth;
      }
+     
+     /**
+      * 获取文字的高度
+      * @param paint the textPaint
+      * @return the string height
+      */
+     public static float getDesiredHeight(TextPaint paint) {
+    	 FontMetrics  fm  = paint.getFontMetrics();
+         return (float)Math.ceil(fm.descent - fm.ascent);
+     }
 
      /**
-      * Gets the draw row string.
+      * 解析成行.
       * @param text the text
       * @param maxWPix the max w pix
       * @param paint the paint
@@ -141,14 +150,16 @@ public final class AbGraphicUtil {
      }
      
      /**
-      * Gets the draw row count.
-      * @param text the text
-      * @param maxWPix the max w pix
-      * @param paint the paint
-      * @return the draw row count
+      * 
+      * 描述：获取这段文本多少行.
+      * @param text
+      * @param textSize
+      * @param maxWPix
+      * @return
       */
      public static int getDrawRowCount(String text,int maxWPix,TextPaint paint) {
-     	String [] texts = null;
+    	
+    	String [] texts = null;
      	if(text.indexOf("\n")!=-1){
      		 texts = text.split("\n");
      	}else{
@@ -206,18 +217,17 @@ public final class AbGraphicUtil {
         //测量文字的长度
     	List<String> mStrList  = getDrawRowStr(text,maxWPix,paint);
          
-         FontMetrics fm  = paint.getFontMetrics();
-         int hSize = (int)Math.ceil(fm.descent - fm.ascent)+2;
+        int hSize = (int)getDesiredHeight(paint);
          
-         for(int i=0;i<mStrList.size();i++){
+        for(int i=0;i<mStrList.size();i++){
         	 //计算坐标
         	 int x = left;
              int y = top+hSize/2+hSize*i;
     		 String textLine = mStrList.get(i);
              canvas.drawText(textLine,x,y, paint); 
              
-         }
-         return mStrList.size();
+        }
+        return mStrList.size();
      }
      
 

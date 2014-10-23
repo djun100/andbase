@@ -37,9 +37,6 @@ import android.widget.ScrollView;
  */
 public class AbPullToRefreshView extends LinearLayout {
 	
-	/** 日志标记. */
-	private static final String TAG = "AbPullToRefreshView";
-	
 	/** 上下文. */
 	private Context mContext = null;
 	
@@ -48,6 +45,9 @@ public class AbPullToRefreshView extends LinearLayout {
     
     /** 加载更多的开关. */
     private boolean mEnableLoadMore = true;
+    
+    /** x上一次保存的. */
+	private int mLastMotionX;
     
     /** y上一次保存的. */
 	private int mLastMotionY;
@@ -81,9 +81,6 @@ public class AbPullToRefreshView extends LinearLayout {
 	
 	/** 上一次的数量. */
 	private int mCount = 0;
-	
-	/**  是否还有数据. */
-	private boolean isAll = false;
 	
 	/** 正在下拉刷新. */
 	private boolean mPullRefreshing = false;
@@ -195,21 +192,25 @@ public class AbPullToRefreshView extends LinearLayout {
 	 */
 	@Override
 	public boolean onInterceptTouchEvent(MotionEvent e) {
-		int y = (int) e.getRawY();
+		int x = (int) e.getX();
+		int y = (int) e.getY();
 		switch (e.getAction()) {
 		case MotionEvent.ACTION_DOWN:
 			// 首先拦截down事件,记录y坐标
+			mLastMotionX = x;
 			mLastMotionY = y;
 			break;
 		case MotionEvent.ACTION_MOVE:
 			// deltaY > 0 是向下运动,< 0是向上运动
+			int deltaX = x - mLastMotionX;
 			int deltaY = y - mLastMotionY;
-			if (isRefreshViewScroll(deltaY)) {
-				return true;
+			//解决点击与移动的冲突
+			if(Math.abs(deltaX)<Math.abs(deltaY) && Math.abs(deltaY) > 10){
+				if (isRefreshViewScroll(deltaY)) {
+					return true;
+				}
 			}
-			break;
-		case MotionEvent.ACTION_UP:
-		case MotionEvent.ACTION_CANCEL:
+			
 			break;
 		}
 		return false;
@@ -225,10 +226,10 @@ public class AbPullToRefreshView extends LinearLayout {
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		
-		int y = (int) event.getRawY();
+		int y = (int) event.getY();
+		
 		switch (event.getAction()) {
 		case MotionEvent.ACTION_DOWN:
-			// onInterceptTouchEvent已经记录 mLastMotionY = y;
 			break;
 		case MotionEvent.ACTION_MOVE:
 			int deltaY = y - mLastMotionY;
@@ -241,6 +242,7 @@ public class AbPullToRefreshView extends LinearLayout {
 			}
 			mLastMotionY = y;
 			break;
+		//UP和CANCEL执行相同的方法
 		case MotionEvent.ACTION_UP:
 		case MotionEvent.ACTION_CANCEL:
 			int topMargin = getHeaderTopMargin();
@@ -262,6 +264,7 @@ public class AbPullToRefreshView extends LinearLayout {
 				}
 			}
 			break;
+			
 		}
 		return super.onTouchEvent(event);
 	}
@@ -469,7 +472,6 @@ public class AbPullToRefreshView extends LinearLayout {
 			if(countNew > mCount){
 				mFooterView.setState(AbListViewFooter.STATE_READY);
 			}else{
-				isAll = true;
 				mFooterView.setState(AbListViewFooter.STATE_NO);
 			}
 		}else{

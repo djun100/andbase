@@ -28,13 +28,7 @@ package com.ab.global;
  */
 public class AbConstant {
 	
-	/** SharePreferences文件名. */
+	/** 默认 SharePreferences文件名. */
 	public static final String SHAREPATH = "app_share";
-    
-    /** 返回码：成功. */
-    public static final int RESULRCODE_OK = 0;
-    
-    /** 返回码：失败. */
-    public static final int RESULRCODE_ERROR = -1;
    
 }

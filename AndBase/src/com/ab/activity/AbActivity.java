@@ -18,7 +18,6 @@ package com.ab.activity;
 import java.lang.reflect.Field;
 
 import android.app.Application;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -33,7 +32,6 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 
-import com.ab.global.AbConstant;
 import com.ab.util.AbSharedUtil;
 import com.ab.view.ioc.AbIocEventListener;
 import com.ab.view.ioc.AbIocSelect;
@@ -60,29 +58,6 @@ public abstract class AbActivity extends FragmentActivity {
 	/** 全局的Application对象，已经完成初始化. */
 	public Application abApplication = null;
 	
-	/** 全局的SharedPreferences对象，已经完成初始化. */
-	public SharedPreferences  abSharedPreferences = null;
-	
-	/**
-	 * LinearLayout.LayoutParams，已经初始化为FILL_PARENT, FILL_PARENT
-	 */
-	public LinearLayout.LayoutParams layoutParamsFF = null;
-	
-	/**
-	 * LinearLayout.LayoutParams，已经初始化为FILL_PARENT, WRAP_CONTENT
-	 */
-	public LinearLayout.LayoutParams layoutParamsFW = null;
-	
-	/**
-	 * LinearLayout.LayoutParams，已经初始化为WRAP_CONTENT, FILL_PARENT
-	 */
-	public LinearLayout.LayoutParams layoutParamsWF = null;
-	
-	/**
-	 * LinearLayout.LayoutParams，已经初始化为WRAP_CONTENT, WRAP_CONTENT
-	 */
-	public LinearLayout.LayoutParams layoutParamsWW = null;
-	
 	/** 总布局. */
 	public RelativeLayout ab_base = null;
 	
@@ -107,11 +82,6 @@ public abstract class AbActivity extends FragmentActivity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		mInflater = LayoutInflater.from(this);
 		
-		layoutParamsFF = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-		layoutParamsFW = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-		layoutParamsWF = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
-		layoutParamsWW = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-		
 		//主标题栏
 		mAbTitleBar = new AbTitleBar(this);
 		
@@ -127,7 +97,7 @@ public abstract class AbActivity extends FragmentActivity {
 		mAbBottomBar = new AbBottomBar(this);
 		
         //填入View
-		ab_base.addView(mAbTitleBar,layoutParamsFW);
+		ab_base.addView(mAbTitleBar,new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 		
 		mAbTitleBar.setVisibility(View.GONE);
 		
@@ -142,12 +112,9 @@ public abstract class AbActivity extends FragmentActivity {
 		
 		//Application初始化
 		abApplication = getApplication();
-		
-		//SharedPreferences初始化
-		abSharedPreferences = AbSharedUtil.getDefaultSharedPreferences(this);
         
 		//设置ContentView
-        setContentView(ab_base,layoutParamsFF);
+        setContentView(ab_base,new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
         
 	}
 	
@@ -157,7 +124,7 @@ public abstract class AbActivity extends FragmentActivity {
 	 */
 	public void setAbContentView(View contentView) {
 		contentLayout.removeAllViews();
-		contentLayout.addView(contentView,layoutParamsFF);
+		contentLayout.addView(contentView,new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 		//ioc
 		initIocView();
 	}
@@ -205,25 +172,25 @@ public abstract class AbActivity extends FragmentActivity {
 	public void setTitleBarOverlay(boolean overlay) {
 		ab_base.removeAllViews();
 		if(overlay){
-			RelativeLayout.LayoutParams layoutParamsFW1 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+			RelativeLayout.LayoutParams layoutParamsFW1 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 			layoutParamsFW1.addRule(RelativeLayout.ABOVE, mAbBottomBar.getId());
 			ab_base.addView(contentLayout,layoutParamsFW1);
-			RelativeLayout.LayoutParams layoutParamsFW2 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+			RelativeLayout.LayoutParams layoutParamsFW2 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 			layoutParamsFW2.addRule(RelativeLayout.ALIGN_PARENT_TOP,RelativeLayout.TRUE);
 			ab_base.addView(mAbTitleBar,layoutParamsFW2);
 			
-			RelativeLayout.LayoutParams layoutParamsFW3 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+			RelativeLayout.LayoutParams layoutParamsFW3 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 			layoutParamsFW3.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
 			ab_base.addView(mAbBottomBar, layoutParamsFW3);
 			
 		}else{
-			ab_base.addView(mAbTitleBar,layoutParamsFW);
+			ab_base.addView(mAbTitleBar,new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 			
-			RelativeLayout.LayoutParams layoutParamsFW2 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+			RelativeLayout.LayoutParams layoutParamsFW2 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 			layoutParamsFW2.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
 			ab_base.addView(mAbBottomBar, layoutParamsFW2);
 			
-			RelativeLayout.LayoutParams layoutParamsFW1 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+			RelativeLayout.LayoutParams layoutParamsFW1 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 			layoutParamsFW1.addRule(RelativeLayout.BELOW, mAbTitleBar.getId());
 			layoutParamsFW1.addRule(RelativeLayout.ABOVE, mAbBottomBar.getId());
 			ab_base.addView(contentLayout, layoutParamsFW1);
