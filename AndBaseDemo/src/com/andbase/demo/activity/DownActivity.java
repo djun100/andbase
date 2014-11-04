@@ -42,9 +42,8 @@ import com.andbase.global.MyApplication;
  */
 public class DownActivity extends AbActivity {
 
-    private DownFileDao mDownFileDao = null;
     private final String TAG=DownActivity.class.getName();
-
+    //ui declare
     public ImageView itemsIcon;
     public TextView itemsTitle;
     public TextView itemsDesc;
@@ -53,105 +52,46 @@ public class DownActivity extends AbActivity {
     public TextView received_progress_percent;
     public TextView received_progress_number;
     public RelativeLayout received_progressBar;
-
+    //function declare
+    private DownFileDao mDownFileDao = DownFileDao.getInstance(this);
     DownFile mDownFile;
-    public HashMap<String, AbFileDownloader> mFileDownloaders = null;
+    public HashMap<String, AbFileDownloader> mFileDownloaders =  new HashMap<String, AbFileDownloader>();
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setAbContentView(R.layout.activity_down);
-        mDownFileDao = DownFileDao.getInstance(this);
-        mFileDownloaders = new HashMap<String, AbFileDownloader>();
+                
         initDownFileList();
         initView();
-
     }
 
     private void initView() {
-        itemsIcon = (ImageView) findViewById(R.id.itemsIcon);
-        itemsTitle = (TextView) findViewById(R.id.itemsTitle);
-        itemsDesc = (TextView) findViewById(R.id.itemsDesc);
-        operateBtn = (Button) findViewById(R.id.operateBtn);
-        progress = (ProgressBar) findViewById(R.id.received_progress);
-        received_progress_percent = (TextView) findViewById(R.id.received_progress_percent);
-        received_progress_number = (TextView) findViewById(R.id.received_progress_number);
-        received_progressBar = (RelativeLayout) findViewById(R.id.received_progressBar);
+        findView();
         
         itemsTitle.setText(mDownFile.getName());
         itemsDesc.setText(mDownFile.getDescription());
         if (mDownFile.getState() == Constant.undownLoad) {
-            operateBtn.setBackgroundResource(R.drawable.down_load);
-            received_progressBar.setVisibility(View.GONE);
-            itemsDesc.setVisibility(View.VISIBLE);
-            progress.setProgress(0);
-            received_progress_percent.setText(0 + "%");
-            received_progress_number.setText("0KB/" + AbStrUtil.getSizeDesc(mDownFile.getTotalLength()));
+            uiUndownload();
         } else if (mDownFile.getState() == Constant.downInProgress) {
-            operateBtn.setBackgroundResource(R.drawable.down_pause);
-            if (mDownFile.getDownLength() != 0 && mDownFile.getTotalLength() != 0) {
-                int c = (int) (mDownFile.getDownLength() * 100 / mDownFile.getTotalLength());
-                itemsDesc.setVisibility(View.GONE);
-                received_progressBar.setVisibility(View.VISIBLE);
-                progress.setProgress(c);
-                received_progress_percent.setText(c + "%");
-                received_progress_number.setText(AbStrUtil.getSizeDesc(mDownFile.getDownLength()) + "/"
-                        + AbStrUtil.getSizeDesc(mDownFile.getTotalLength()));
-            }
+            uidDownInProgress();
         } else if (mDownFile.getState() == Constant.downLoadPause) {
-            operateBtn.setBackgroundResource(R.drawable.down_load);
-            // 下载了多少
-            if (mDownFile.getDownLength() != 0 && mDownFile.getTotalLength() != 0) {
-                int c = (int) (mDownFile.getDownLength() * 100 / mDownFile.getTotalLength());
-                itemsDesc.setVisibility(View.GONE);
-                received_progressBar.setVisibility(View.VISIBLE);
-                progress.setProgress(c);
-                received_progress_percent.setText(c + "%");
-                received_progress_number.setText(AbStrUtil.getSizeDesc(mDownFile.getDownLength()) + "/"
-                        + AbStrUtil.getSizeDesc(mDownFile.getTotalLength()));
-            } else {
-                itemsDesc.setVisibility(View.VISIBLE);
-                received_progressBar.setVisibility(View.GONE);
-                progress.setProgress(0);
-                received_progress_percent.setText(0 + "%");
-                received_progress_number.setText("0KB/" + AbStrUtil.getSizeDesc(mDownFile.getTotalLength()));
-            }
+            uiDownLoadPause();
         } else if (mDownFile.getState() == Constant.downloadComplete) {
-            operateBtn.setBackgroundResource(R.drawable.down_delete);
-            received_progressBar.setVisibility(View.GONE);
-            itemsDesc.setVisibility(View.VISIBLE);
+            uiDownloadComplete();
         }
         final AbDownloadProgressListener mDownloadProgressListener = new AbDownloadProgressListener() {
             // 实时获知文件已经下载的数据长度
             @Override
             public void onDownloadSize(final long size) {
                 Log.e(TAG, "onDownloadSize:" + size);
-                if (mDownFile.getTotalLength() == 0) {
-                    return;
-                }
-                final int c = (int) (size * 100 / mDownFile.getTotalLength());
-                if (c != progress.getProgress()) {
-                    progress.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            progress.setProgress(c);
-                            received_progress_percent.setText(c + "%");
-                            received_progress_number.setText(AbStrUtil.getSizeDesc(size) + "/"
-                                    + AbStrUtil.getSizeDesc(mDownFile.getTotalLength()));
-                        }
-                    });
-                }
-                if (mDownFile.getTotalLength() == size) {
-                        Log.d(TAG, "下载完成:" + size);
-                    mDownFile.setState(Constant.downloadComplete);
-                    // 下载完成
-                    //mDownFile
-                }
+                uiOnDownloadSize(size);
             }
         };
         
         // 处理按钮事件
         operateBtn.setOnClickListener(new View.OnClickListener() {
-
+            
             @Override
             public void onClick(View v) {
                 if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
@@ -162,61 +102,40 @@ public class DownActivity extends AbActivity {
 
                 if (mDownFile.getState() == Constant.undownLoad || mDownFile.getState() == Constant.downLoadPause) {
                     // 下载
-
-                    itemsDesc.setVisibility(View.GONE);
-                    received_progressBar.setVisibility(View.VISIBLE);
-                    operateBtn.setBackgroundResource(R.drawable.down_pause);
-                    mDownFile.setState(Constant.downInProgress);
-                    AbTask mAbTask = new AbTask();
-                    final AbTaskItem item = new AbTaskItem();
-                    item.setListener(new AbTaskListener() {
-
-                        @Override
-                        public void update() {
-                        }
-
-                        @Override
-                        public void get() {
-                            try {
-                                // 检查文件总长度
-                                int totalLength = AbFileUtil.getContentLengthFromUrl(mDownFile.getDownUrl());
-                                mDownFile.setTotalLength(totalLength);
-                                // 开始下载文件
-                                AbFileDownloader loader = new AbFileDownloader(getApplicationContext(), mDownFile, 4);
-                                mFileDownloaders.put(mDownFile.getDownUrl(), loader);
-                                loader.download(mDownloadProgressListener);
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        };
-                    });
-                    mAbTask.execute(item);
-
+                    doDownInProgress(mDownloadProgressListener);
+                    
                 } else if (mDownFile.getState() == Constant.downInProgress) {
                     // 暂停
-                    operateBtn.setBackgroundResource(R.drawable.down_load);
-                    mDownFile.setState(Constant.undownLoad);
-                    AbFileDownloader mFileDownloader = mFileDownloaders.get(mDownFile.getDownUrl());
-                    // 释放原来的线程
-                    if (mFileDownloader != null) {
-                        mFileDownloader.setFlag(false);
-                        AbDownloadThread mDownloadThread = mFileDownloader.getThreads();
-                        if (mDownloadThread != null) {
-                            mDownloadThread.setFlag(false);
-                            mFileDownloaders.remove(mDownFile.getDownUrl());
-                            mDownloadThread = null;
-                        }
-                        mFileDownloader = null;
-                    }
+                    doUndownLoad();
+                    
                 } else if (mDownFile.getState() == Constant.downloadComplete) {
                     // 下载完成的界面更新
-                    
                 }
-
             }
         });
     }
 
+
+    
+    @Override
+    public void finish() {
+        super.finish();
+
+        // 释放所有的下载线程
+        releaseThread();
+    }
+    
+    private void findView() {
+        itemsIcon = (ImageView) findViewById(R.id.itemsIcon);
+        itemsTitle = (TextView) findViewById(R.id.itemsTitle);
+        itemsDesc = (TextView) findViewById(R.id.itemsDesc);
+        operateBtn = (Button) findViewById(R.id.operateBtn);
+        progress = (ProgressBar) findViewById(R.id.received_progress);
+        received_progress_percent = (TextView) findViewById(R.id.received_progress_percent);
+        received_progress_number = (TextView) findViewById(R.id.received_progress_number);
+        received_progressBar = (RelativeLayout) findViewById(R.id.received_progressBar);
+    }
+    
     /**
      * 初始化所有文件
      */
@@ -246,15 +165,7 @@ public class DownActivity extends AbActivity {
             mDownFile.setState(Constant.undownLoad);
         }
     }
-
-    @Override
-    public void finish() {
-        super.finish();
-
-        // 释放所有的下载线程
-        releaseThread();
-
-    }
+    
     /**
      * 描述：释放线程
      */
@@ -276,5 +187,121 @@ public class DownActivity extends AbActivity {
                 mFileDownloader = null;
             }
         }
+    }
+    private void uiOnDownloadSize(final long size) {
+        if (mDownFile.getTotalLength() == 0) {
+            return;
+        }
+        final int c = (int) (size * 100 / mDownFile.getTotalLength());
+        if (c != progress.getProgress()) {
+            progress.post(new Runnable() {
+                @Override
+                public void run() {
+                    progress.setProgress(c);
+                    received_progress_percent.setText(c + "%");
+                    received_progress_number.setText(AbStrUtil.getSizeDesc(size) + "/"
+                            + AbStrUtil.getSizeDesc(mDownFile.getTotalLength()));
+                }
+            });
+        }
+        if (mDownFile.getTotalLength() == size) {
+                Log.d(TAG, "下载完成:" + size);
+            mDownFile.setState(Constant.downloadComplete);
+            // 下载完成
+            //mDownFile
+        }
+    }
+    private void uiDownloadComplete() {
+        operateBtn.setBackgroundResource(R.drawable.down_delete);
+        received_progressBar.setVisibility(View.GONE);
+        itemsDesc.setVisibility(View.VISIBLE);
+    }
+
+    private void uiDownLoadPause() {
+        operateBtn.setBackgroundResource(R.drawable.down_load);
+        // 下载了多少
+        if (mDownFile.getDownLength() != 0 && mDownFile.getTotalLength() != 0) {
+            int c = (int) (mDownFile.getDownLength() * 100 / mDownFile.getTotalLength());
+            itemsDesc.setVisibility(View.GONE);
+            received_progressBar.setVisibility(View.VISIBLE);
+            progress.setProgress(c);
+            received_progress_percent.setText(c + "%");
+            received_progress_number.setText(AbStrUtil.getSizeDesc(mDownFile.getDownLength()) + "/"
+                    + AbStrUtil.getSizeDesc(mDownFile.getTotalLength()));
+        } else {
+            itemsDesc.setVisibility(View.VISIBLE);
+            received_progressBar.setVisibility(View.GONE);
+            progress.setProgress(0);
+            received_progress_percent.setText(0 + "%");
+            received_progress_number.setText("0KB/" + AbStrUtil.getSizeDesc(mDownFile.getTotalLength()));
+        }
+    }
+
+    private void uidDownInProgress() {
+        operateBtn.setBackgroundResource(R.drawable.down_pause);
+        if (mDownFile.getDownLength() != 0 && mDownFile.getTotalLength() != 0) {
+            int c = (int) (mDownFile.getDownLength() * 100 / mDownFile.getTotalLength());
+            itemsDesc.setVisibility(View.GONE);
+            received_progressBar.setVisibility(View.VISIBLE);
+            progress.setProgress(c);
+            received_progress_percent.setText(c + "%");
+            received_progress_number.setText(AbStrUtil.getSizeDesc(mDownFile.getDownLength()) + "/"
+                    + AbStrUtil.getSizeDesc(mDownFile.getTotalLength()));
+        }
+    }
+
+    private void uiUndownload() {
+        operateBtn.setBackgroundResource(R.drawable.down_load);
+        received_progressBar.setVisibility(View.GONE);
+        itemsDesc.setVisibility(View.VISIBLE);
+        progress.setProgress(0);
+        received_progress_percent.setText(0 + "%");
+        received_progress_number.setText("0KB/" + AbStrUtil.getSizeDesc(mDownFile.getTotalLength()));
+    }
+    private void doUndownLoad() {
+        operateBtn.setBackgroundResource(R.drawable.down_load);
+        mDownFile.setState(Constant.undownLoad);
+        AbFileDownloader mFileDownloader = mFileDownloaders.get(mDownFile.getDownUrl());
+        // 释放原来的线程
+        if (mFileDownloader != null) {
+            mFileDownloader.setFlag(false);
+            AbDownloadThread mDownloadThread = mFileDownloader.getThreads();
+            if (mDownloadThread != null) {
+                mDownloadThread.setFlag(false);
+                mFileDownloaders.remove(mDownFile.getDownUrl());
+                mDownloadThread = null;
+            }
+            mFileDownloader = null;
+        }
+    }
+    private void doDownInProgress(final AbDownloadProgressListener mDownloadProgressListener) {
+        itemsDesc.setVisibility(View.GONE);
+        received_progressBar.setVisibility(View.VISIBLE);
+        operateBtn.setBackgroundResource(R.drawable.down_pause);
+        mDownFile.setState(Constant.downInProgress);
+        AbTask mAbTask = new AbTask();
+        final AbTaskItem item = new AbTaskItem();
+        item.setListener(new AbTaskListener() {
+
+            @Override
+            public void update() {
+            }
+
+            @Override
+            public void get() {
+                try {
+                    // 检查文件总长度
+                    int totalLength = AbFileUtil.getContentLengthFromUrl(mDownFile.getDownUrl());
+                    mDownFile.setTotalLength(totalLength);
+                    // 开始下载文件
+                    AbFileDownloader loader = new AbFileDownloader(getApplicationContext(), mDownFile, 4);
+                    mFileDownloaders.put(mDownFile.getDownUrl(), loader);
+                    loader.download(mDownloadProgressListener);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            };
+        });
+        mAbTask.execute(item);
     }
 }
