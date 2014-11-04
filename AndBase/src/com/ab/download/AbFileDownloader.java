@@ -111,7 +111,8 @@ public class AbFileDownloader {
 			this.mDownFileDao.save(mDownFile);
 			// 循环判断所有线程是否完成下载
 			while (flag && mDownFile.getDownLength() <= mDownFile.getTotalLength()) {
-				Thread.sleep(2000);
+				Thread.sleep(1000);
+//				Thread.sleep(2000);
 				// 如果下载失败,再重新下载
 				if (mDownFile.getDownLength() == -1) {
 					//下载失败

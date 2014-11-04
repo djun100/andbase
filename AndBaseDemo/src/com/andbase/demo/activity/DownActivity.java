@@ -148,6 +148,7 @@ public class DownActivity extends AbActivity {
                 }
             }
         };
+        
         // 处理按钮事件
         operateBtn.setOnClickListener(new View.OnClickListener() {
 

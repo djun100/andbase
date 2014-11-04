@@ -29,8 +29,8 @@ package com.ab.download;
 public interface AbDownloadProgressListener {
 	
 	/**
-	 * On download size.
-	 *
+	 * On download size.<br>
+	 *com.ab.download.AbFileDownloader.download中，每一秒获取一次下载大小
 	 * @param size the size
 	 */
 	public void onDownloadSize(long size);

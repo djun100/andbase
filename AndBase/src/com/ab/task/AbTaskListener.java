@@ -30,14 +30,15 @@ package com.ab.task;
 public class AbTaskListener {
     
     /**
-     * Gets the.
-     *
+     * Gets the.<br>
+     *暴露com.ab.task.AbTask-->doInBackground方法实现
      * @return 返回的结果对象
      */
     public void get(){};
     
     /**
-     * 描述：执行开始后调用.
+     * 描述：执行开始后调用.<br>
+     * 暴露com.ab.task.AbTask-->onPostExecute方法实现
      * */
     public void update(){}; 
     
