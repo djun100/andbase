@@ -28,8 +28,8 @@ import com.ab.util.AbLogUtil;
 
 // TODO: Auto-generated Javadoc
 /**
- * 描述：多线程支持断点续传下载器.
- *
+ * 描述：多线程支持断点续传下载器.<br>
+ *构造函数中saveFile设置保存路径
  * @author 还如一梦中
  * @version v1.0
  * @date：2013-3-14 下午5:00:52

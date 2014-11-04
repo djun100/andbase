@@ -132,6 +132,10 @@
             android:name=".demo.activity.DownListActivity"
             android:configChanges="keyboardHidden|orientation" >
         </activity>
+         <activity
+            android:name=".demo.activity.DownActivity"
+            android:configChanges="keyboardHidden|orientation" >
+        </activity>
         
         <activity
             android:name=".demo.activity.XYLineChartActivity"

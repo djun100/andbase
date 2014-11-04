@@ -219,6 +219,12 @@ public class DemoMainActivity extends AbActivity {
 		map.put("itemsText", "挺实用，小提示");
 		list.add(map);
 
+		map = new HashMap<String, Object>();
+		map.put("itemsIcon", mPhotoList.get(24));
+		map.put("itemsTitle", "26.断点续传");
+		map.put("itemsText", "单程序下载");
+		list.add(map);
+
 		// 使用自定义的Adapter
 		myListViewAdapter = new MyListViewAdapter(DemoMainActivity.this, list,
 				R.layout.item_list, new String[] { "itemsIcon", "itemsTitle",
@@ -332,6 +338,10 @@ public class DemoMainActivity extends AbActivity {
 					intent = new Intent(DemoMainActivity.this, PopoverActivity.class);
 					startActivity(intent);
 					break;
+				case 25:
+				    intent = new Intent(DemoMainActivity.this, DownActivity.class);
+				    startActivity(intent);
+				    break;
 				default:
 					break;
 				}
