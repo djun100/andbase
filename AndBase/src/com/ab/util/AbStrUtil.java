@@ -19,6 +19,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.DecimalFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -430,6 +431,26 @@ public class AbStrUtil {
 		return length;
 	}
     
+	/**
+	 * 获取大小的描述，具体到小数点两位.
+	 *
+	 * @param size 字节个数
+	 * @return  大小的描述
+	 */
+  public static String getSizeDescV2(long fileS) {
+      DecimalFormat df = new DecimalFormat("#.00");
+      String fileSizeString = "";
+      if (fileS < 1024) {
+          fileSizeString = df.format((double) fileS) + "B";
+      } else if (fileS < 1048576) {
+          fileSizeString = df.format((double) fileS / 1024) + "K";
+      } else if (fileS < 1073741824) {
+          fileSizeString = df.format((double) fileS / 1048576) + "M";
+      } else {
+          fileSizeString = df.format((double) fileS / 1073741824) + "G";
+      }
+      return fileSizeString;
+  }
 	/**
 	 * 获取大小的描述.
 	 *
